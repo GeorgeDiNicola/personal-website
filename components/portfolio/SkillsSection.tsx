@@ -1,4 +1,12 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
+import { MotionSection } from "./motion/MotionSection";
+import { createStagger, itemVariants, springTransition } from "./motion/tokens";
 import type { Skill } from "./types";
+
+const skillsStagger = createStagger(0.06, 0.04);
 
 type SkillsSectionProps = {
   isDark: boolean;
@@ -6,8 +14,10 @@ type SkillsSectionProps = {
 };
 
 export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="mt-10">
+    <MotionSection className="mt-10" delay={0.05}>
       <div
         className={`relative overflow-hidden rounded-3xl border p-6 md:p-8 ${
           isDark
@@ -15,10 +25,15 @@ export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
             : "border-cyan-100 bg-gradient-to-br from-white via-cyan-50 to-amber-50"
         }`}
       >
-        <div
+        <motion.div
+          aria-hidden="true"
           className={`pointer-events-none absolute -top-20 left-1/3 h-44 w-44 rounded-full blur-3xl ${
             isDark ? "bg-cyan-500/10" : "bg-cyan-300/30"
           }`}
+          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
+          whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.7 }}
         />
         <div className="relative">
           <p
@@ -40,11 +55,23 @@ export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
             workflows, and frontend development.
           </p>
 
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7">
+          <motion.div
+            className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7"
+            variants={skillsStagger}
+            initial={prefersReducedMotion ? false : "hidden"}
+            whileInView={prefersReducedMotion ? undefined : "show"}
+            viewport={{ once: true, amount: 0.25 }}
+          >
             {skills.map((skill) => (
-              <article
+              <motion.article
                 key={skill.name}
-                className={`rounded-2xl border p-3 text-center ${
+                variants={itemVariants}
+                whileHover={
+                  prefersReducedMotion
+                    ? undefined
+                    : { y: -4, scale: 1.015, transition: springTransition }
+                }
+                className={`rounded-2xl border p-3 text-center transition-colors ${
                   isDark
                     ? "border-slate-700 bg-slate-900/80"
                     : "border-slate-200 bg-white/90"
@@ -69,11 +96,11 @@ export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
                 >
                   {skill.name}
                 </p>
-              </article>
+              </motion.article>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

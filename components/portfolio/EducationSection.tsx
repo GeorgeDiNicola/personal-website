@@ -1,4 +1,17 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
+import { MotionSection } from "./motion/MotionSection";
+import {
+  createStagger,
+  itemVariants,
+  springTransition,
+  timelineLineVariants
+} from "./motion/tokens";
 import type { School } from "./types";
+
+const educationStagger = createStagger(0.14, 0.12);
 
 type EducationSectionProps = {
   isDark: boolean;
@@ -6,8 +19,10 @@ type EducationSectionProps = {
 };
 
 export function EducationSection({ isDark, schools }: EducationSectionProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="mt-12">
+    <MotionSection className="mt-12" delay={0.1}>
       <div
         className={`relative overflow-hidden rounded-3xl border p-6 md:p-8 ${
           isDark
@@ -15,15 +30,25 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
             : "border-cyan-100 bg-gradient-to-br from-white via-cyan-50 to-amber-50"
         }`}
       >
-        <div
+        <motion.div
+          aria-hidden="true"
           className={`pointer-events-none absolute -top-20 -right-16 h-56 w-56 rounded-full blur-3xl ${
             isDark ? "bg-cyan-500/10" : "bg-cyan-300/30"
           }`}
+          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
+          whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.75 }}
         />
-        <div
+        <motion.div
+          aria-hidden="true"
           className={`pointer-events-none absolute -bottom-24 -left-10 h-56 w-56 rounded-full blur-3xl ${
             isDark ? "bg-amber-400/10" : "bg-amber-200/40"
           }`}
+          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
+          whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.35 }}
+          transition={{ duration: 0.8 }}
         />
 
         <div className="relative grid gap-8 lg:grid-cols-12">
@@ -49,20 +74,49 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
           </div>
 
           <div className="relative lg:col-span-8">
-            <div
-              className={`absolute top-1 bottom-1 left-2 w-px ${
+            <motion.div
+              aria-hidden="true"
+              className={`absolute top-1 bottom-1 left-2 w-px origin-top ${
                 isDark ? "bg-slate-700" : "bg-slate-300"
               }`}
+              variants={timelineLineVariants}
+              initial={prefersReducedMotion ? false : "hidden"}
+              whileInView={prefersReducedMotion ? undefined : "show"}
+              viewport={{ once: true, amount: 0.3 }}
             />
-            <div className="space-y-7">
+
+            <motion.div
+              className="space-y-7"
+              variants={educationStagger}
+              initial={prefersReducedMotion ? false : "hidden"}
+              whileInView={prefersReducedMotion ? undefined : "show"}
+              viewport={{ once: true, amount: 0.25 }}
+            >
               {schools.map((school) => (
-                <article key={school.name} className="relative pl-8">
-                  <span
+                <motion.article
+                  key={school.name}
+                  variants={itemVariants}
+                  whileHover={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          x: 4,
+                          transition: springTransition
+                        }
+                  }
+                  className="relative pl-8"
+                >
+                  <motion.span
+                    aria-hidden="true"
                     className={`absolute top-1 left-0 inline-flex h-4 w-4 rounded-full border-2 ${
                       isDark
                         ? "border-cyan-300 bg-slate-900"
                         : "border-cyan-600 bg-white"
                     }`}
+                    initial={prefersReducedMotion ? false : { scale: 0.8, opacity: 0 }}
+                    whileInView={prefersReducedMotion ? {} : { scale: 1, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.4 }}
+                    transition={{ duration: 0.35 }}
                   />
                   <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
                     <h3 className="text-lg font-semibold">{school.name}</h3>
@@ -107,12 +161,12 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
                       </span>
                     )}
                   </div>
-                </article>
+                </motion.article>
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }

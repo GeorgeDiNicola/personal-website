@@ -1,4 +1,12 @@
+"use client";
+
+import { motion, useReducedMotion } from "framer-motion";
+
+import { MotionSection } from "./motion/MotionSection";
+import { createStagger, itemVariants, springTransition } from "./motion/tokens";
 import type { Project } from "./types";
+
+const projectsStagger = createStagger(0.1, 0.08);
 
 type ProjectsSectionProps = {
   isDark: boolean;
@@ -6,8 +14,10 @@ type ProjectsSectionProps = {
 };
 
 export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
-    <section className="mt-12">
+    <MotionSection className="mt-12" delay={0.14}>
       <div
         className={`relative overflow-hidden rounded-3xl border p-6 md:p-8 ${
           isDark
@@ -15,15 +25,25 @@ export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
             : "border-cyan-100 bg-gradient-to-br from-white via-cyan-50 to-amber-50"
         }`}
       >
-        <div
+        <motion.div
+          aria-hidden="true"
           className={`pointer-events-none absolute -top-24 -right-10 h-56 w-56 rounded-full blur-3xl ${
             isDark ? "bg-cyan-500/10" : "bg-cyan-300/30"
           }`}
+          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
+          whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.75 }}
         />
-        <div
+        <motion.div
+          aria-hidden="true"
           className={`pointer-events-none absolute -bottom-24 -left-8 h-56 w-56 rounded-full blur-3xl ${
             isDark ? "bg-amber-500/10" : "bg-amber-200/40"
           }`}
+          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
+          whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.85 }}
         />
 
         <div className="relative grid gap-8 lg:grid-cols-12">
@@ -48,11 +68,27 @@ export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
             </p>
           </div>
 
-          <div className="lg:col-span-8">
+          <motion.div
+            className="lg:col-span-8"
+            variants={projectsStagger}
+            initial={prefersReducedMotion ? false : "hidden"}
+            whileInView={prefersReducedMotion ? undefined : "show"}
+            viewport={{ once: true, amount: 0.25 }}
+          >
             <div className="grid gap-4 sm:grid-cols-2">
               {projects.map((project) => (
-                <article
+                <motion.article
                   key={project.title}
+                  variants={itemVariants}
+                  whileHover={
+                    prefersReducedMotion
+                      ? undefined
+                      : {
+                          y: -5,
+                          scale: 1.01,
+                          transition: springTransition
+                        }
+                  }
                   className={`rounded-2xl border p-5 ${
                     isDark
                       ? "border-slate-700 bg-slate-900/80"
@@ -70,10 +106,15 @@ export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
                     {project.description}
                   </p>
                   {project.link && (
-                    <a
+                    <motion.a
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
+                      whileHover={
+                        prefersReducedMotion
+                          ? undefined
+                          : { x: 4, transition: springTransition }
+                      }
                       className={`mt-4 inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition ${
                         isDark
                           ? "border-cyan-700/70 text-cyan-200 hover:bg-cyan-900/30"
@@ -81,14 +122,14 @@ export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
                       }`}
                     >
                       See Project
-                    </a>
+                    </motion.a>
                   )}
-                </article>
+                </motion.article>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </MotionSection>
   );
 }
