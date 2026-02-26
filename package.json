@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "generate:outdoor-manifest": "node scripts/generate-outdoor-photo-manifest.mjs",
+    "predev": "npm run generate:outdoor-manifest",
     "dev": "next dev",
+    "prebuild": "npm run generate:outdoor-manifest",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"

@@ -94,7 +94,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
               isDark ? "text-cyan-300" : "text-cyan-700"
             }`}
           >
-            Personal Portfolio
+            Professional Portfolio
           </motion.p>
           <motion.h1
             variants={itemVariants}
