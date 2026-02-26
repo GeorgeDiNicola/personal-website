@@ -7,7 +7,7 @@ import type { Theme } from "./types";
 
 type ThemeToggleProps = {
   isDark: boolean;
-  theme: Theme;
+  theme: string;
   onThemeChange: (theme: Theme) => void;
 };
 
