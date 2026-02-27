@@ -36,12 +36,13 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
       if (!event.origin.includes("chess.com")) return;
 
       const data = event.data as { id?: string; frameHeight?: number };
-      if (!data.id || typeof data.frameHeight !== "number") return;
-      if (!chessGamesEmbedIds.includes(data.id)) return;
+      const { id, frameHeight } = data;
+      if (!id || typeof frameHeight !== "number") return;
+      if (!chessGamesEmbedIds.includes(id)) return;
 
       setEmbedHeights((current) => ({
         ...current,
-        [data.id as string]: data.frameHeight + 37
+        [id]: frameHeight + 37
       }));
     };
 
@@ -63,7 +64,7 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
     <SectionCard
       id="best-chess-games"
       title="Some of my best chess games from Chess.com"
-      subtitle="Browse one game at a time using the carousel controls."
+      subtitle="Browse one game at a time using the carousel controls"
       isDark={isDark}
     >
       {activeGameUrl ? (
@@ -112,7 +113,7 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
               className="w-full"
               style={{ height: `${activeEmbedHeight}px`, border: "none" }}
               loading="lazy"
-              allowtransparency="true"
+              allowTransparency
             />
           </div>
 

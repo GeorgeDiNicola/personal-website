@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent } from "react";
 import Image from "next/image";
 
 import { SectionCard } from "@/components/personal/SectionCard";
@@ -8,6 +9,8 @@ import { SectionCard } from "@/components/personal/SectionCard";
 type OutdoorPhoto = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 const OUTDOOR_PHOTO_MANIFEST_PATH = "/images/outdoor-photography/manifest.json";
@@ -21,6 +24,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   const [isPhotosLoading, setIsPhotosLoading] = useState(true);
   const [isPhotoLightboxOpen, setIsPhotoLightboxOpen] = useState(false);
   const [outdoorPhotos, setOutdoorPhotos] = useState<OutdoorPhoto[]>([]);
+  const thumbnailButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const totalPhotos = outdoorPhotos.length;
   const normalizedPhotoIndex = totalPhotos > 0 ? activePhotoIndex % totalPhotos : 0;
   const activePhoto = outdoorPhotos[normalizedPhotoIndex];
@@ -35,17 +39,27 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
 
         const payload = (await response.json()) as unknown;
         const photos = Array.isArray(payload)
-          ? payload.filter(
-              (item): item is OutdoorPhoto =>
-                Boolean(
-                  item &&
-                  typeof item === "object" &&
-                  "src" in item &&
-                  "alt" in item &&
-                  typeof (item as { src: unknown }).src === "string" &&
-                  typeof (item as { alt: unknown }).alt === "string"
-                )
-            )
+          ? payload.filter((item): item is OutdoorPhoto => {
+              if (!item || typeof item !== "object") return false;
+
+              const candidate = item as {
+                src?: unknown;
+                alt?: unknown;
+                width?: unknown;
+                height?: unknown;
+              };
+
+              return (
+                typeof candidate.src === "string" &&
+                typeof candidate.alt === "string" &&
+                typeof candidate.width === "number" &&
+                Number.isFinite(candidate.width) &&
+                candidate.width > 0 &&
+                typeof candidate.height === "number" &&
+                Number.isFinite(candidate.height) &&
+                candidate.height > 0
+              );
+            })
           : [];
 
         if (!isCancelled) setOutdoorPhotos(photos);
@@ -73,15 +87,30 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
     setActivePhotoIndex((index) => (index + 1) % totalPhotos);
   };
 
+  const onCarouselKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      goToPreviousPhoto();
+      return;
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      goToNextPhoto();
+    }
+  };
+
   useEffect(() => {
     if (!isPhotoLightboxOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") setIsPhotoLightboxOpen(false);
       if (event.key === "ArrowLeft" && totalPhotos > 0) {
+        event.preventDefault();
         setActivePhotoIndex((index) => (index - 1 + totalPhotos) % totalPhotos);
       }
       if (event.key === "ArrowRight" && totalPhotos > 0) {
+        event.preventDefault();
         setActivePhotoIndex((index) => (index + 1) % totalPhotos);
       }
     };
@@ -95,6 +124,16 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
       window.removeEventListener("keydown", onKeyDown);
     };
   }, [isPhotoLightboxOpen, totalPhotos]);
+
+  useEffect(() => {
+    if (!totalPhotos) return;
+    const activeThumbnailButton = thumbnailButtonRefs.current[normalizedPhotoIndex];
+    activeThumbnailButton?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center"
+    });
+  }, [normalizedPhotoIndex, totalPhotos]);
 
   return (
     <SectionCard
@@ -111,7 +150,12 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
           Loading photos...
         </div>
       ) : activePhoto ? (
-        <div className="space-y-4">
+        <div
+          className="space-y-4"
+          tabIndex={0}
+          onKeyDown={onCarouselKeyDown}
+          aria-label="Outdoor photo carousel"
+        >
           <div className="flex items-center justify-between gap-3">
             <p className={`text-sm ${isDark ? "text-slate-300" : "text-slate-700"}`}>
               Photo {normalizedPhotoIndex + 1} of {totalPhotos}
@@ -162,7 +206,8 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                   fill
                   sizes="(max-width: 768px) 100vw, 70vw"
                   loading="lazy"
-                  className="object-cover"
+                  quality={100}
+                  className="object-contain"
                 />
               </div>
             </button>
@@ -201,16 +246,19 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
               </button>
 
               <div
-                className="relative h-full w-full max-w-6xl"
+                className="flex h-full w-full max-w-6xl items-center justify-center"
                 onClick={(event) => event.stopPropagation()}
               >
                 <Image
                   src={activePhoto.src}
                   alt={activePhoto.alt}
-                  fill
-                  sizes="100vw"
+                  width={activePhoto.width}
+                  height={activePhoto.height}
+                  sizes="(max-width: 768px) 95vw, 90vw"
+                  unoptimized
+                  quality={100}
                   priority
-                  className="object-contain"
+                  className="h-auto max-h-full w-auto max-w-full object-contain"
                 />
               </div>
 
@@ -234,6 +282,9 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                 <button
                   key={photo.src}
                   type="button"
+                  ref={(element) => {
+                    thumbnailButtonRefs.current[index] = element;
+                  }}
                   onClick={() => setActivePhotoIndex(index)}
                   aria-label={`View photo ${index + 1}`}
                   className={`relative h-16 w-24 overflow-hidden rounded-xl border transition-colors md:h-20 md:w-28 ${
@@ -252,7 +303,8 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                     fill
                     sizes="112px"
                     loading="lazy"
-                    className="object-cover"
+                    quality={100}
+                    className="object-contain"
                   />
                 </button>
               ))}
