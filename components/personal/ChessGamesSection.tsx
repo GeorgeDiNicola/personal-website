@@ -4,16 +4,21 @@ import { useEffect, useState } from "react";
 
 import { SectionCard } from "@/components/personal/SectionCard";
 
-const chessGamesEmbedIds = ["14646933", 
-  "14646659", 
-  "14646697", 
-  "14646749", 
-  "14646787", 
-  "14646781", 
-  "14646719", 
-  "14646731", 
-  "14646737", 
-  "14646771"];
+const chessGamesEmbedIds = [
+  "14648777",
+  "14648709",
+  "14648717",
+  "14648731",
+  "14648747",
+  "14648753",
+  "14648757",
+  "14648763",
+  "14648769",
+  "14648773",
+  "14648929",
+  "14648725",
+  "14648713"
+];
 
 type ChessGamesSectionProps = {
   isDark: boolean;
@@ -21,12 +26,14 @@ type ChessGamesSectionProps = {
 
 export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
   const [activeGameIndex, setActiveGameIndex] = useState(0);
-  const [embedHeights, setEmbedHeights] = useState<Record<string, number>>({});
+  const [lockedEmbedHeight, setLockedEmbedHeight] = useState<number | null>(null);
   const totalGames = chessGamesEmbedIds.length;
   const activeGameId = chessGamesEmbedIds[activeGameIndex] ?? "";
-  const activeEmbedHeight = embedHeights[activeGameId] ?? 560;
+  const activeEmbedHeight = lockedEmbedHeight ?? 560;
   const activeGameUrl = activeGameId
-    ? `https://www.chess.com/emboard?move=5&id=${encodeURIComponent(activeGameId)}`
+    ? `https://www.chess.com/emboard?move=5&id=${encodeURIComponent(activeGameId)}&theme=${
+        isDark ? "dark" : "light"
+      }`
     : "";
 
   useEffect(() => {
@@ -40,13 +47,12 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
       if (!id || typeof frameHeight !== "number") return;
       if (!chessGamesEmbedIds.includes(id)) return;
 
-      setEmbedHeights((current) => ({
-        ...current,
-        [id]: frameHeight + 37
-      }));
+      const measuredHeight = frameHeight + 37;
+      setLockedEmbedHeight((current) => current ?? measuredHeight);
     };
 
     window.addEventListener("message", onMessage);
+    // remove the listener to prevent memory leaks
     return () => window.removeEventListener("message", onMessage);
   }, [totalGames]);
 
@@ -63,13 +69,13 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
   return (
     <SectionCard
       id="best-chess-games"
-      title="Some of my best chess games from Chess.com"
+      title="Featured 10-Minute Games on Chess.com"
       subtitle="Browse one game at a time using the carousel controls"
       isDark={isDark}
     >
       {activeGameUrl ? (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between gap-3">
+        <div className="space-y-5">
+          <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
             <p className={`text-sm ${isDark ? "text-slate-300" : "text-slate-700"}`}>
               Game {activeGameIndex + 1} of {totalGames}
             </p>
@@ -100,24 +106,36 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
           </div>
 
           <div
-            className={`overflow-hidden rounded-2xl border ${
+            className={`mx-auto w-full max-w-[880px] rounded-3xl border p-2 shadow-lg md:p-3 ${
               isDark
-                ? "border-slate-600 bg-slate-950/90"
-                : "border-slate-300/60 bg-white"
+                ? "border-slate-700 bg-gradient-to-b from-slate-900 to-slate-950 shadow-black/40"
+                : "border-cyan-200 bg-gradient-to-b from-white to-cyan-50 shadow-cyan-900/10"
             }`}
           >
-            <iframe
-              id={activeGameId}
-              title={`Chess game ${activeGameIndex + 1}`}
-              src={activeGameUrl}
-              className="w-full"
-              style={{ height: `${activeEmbedHeight}px`, border: "none" }}
-              loading="lazy"
-              allowTransparency
-            />
+            <div
+              className={`overflow-hidden rounded-2xl border ${
+                isDark
+                  ? "border-slate-600 bg-slate-950"
+                  : "border-slate-300/60 bg-white"
+              }`}
+            >
+              <iframe
+                id={activeGameId}
+                title={`Chess game ${activeGameIndex + 1}`}
+                src={activeGameUrl}
+                className="mx-auto block w-full max-w-[760px]"
+                style={{
+                  height: `${activeEmbedHeight}px`,
+                  border: "none",
+                  backgroundColor: isDark ? "#020617" : "#ffffff"
+                }}
+                loading="lazy"
+                allowTransparency
+              />
+            </div>
           </div>
 
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center justify-center gap-2">
             {chessGamesEmbedIds.map((id, index) => (
               <button
                 key={id}
@@ -144,13 +162,6 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
           }`}
         >
           <p className="font-semibold">Chess.com embed placeholder</p>
-          <p className="mt-2">
-            Add your embed IDs to <code>chessGamesEmbedIds</code> in
-            <code> components/personal/ChessGamesSection.tsx</code>.
-          </p>
-          <p className="mt-2">
-            Example: <code>[&quot;14646659&quot;, &quot;14646697&quot;]</code>
-          </p>
         </div>
       )}
     </SectionCard>
