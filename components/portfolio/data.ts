@@ -73,7 +73,7 @@ export const projects: Project[] = [
   {
     title: "Pokemon Rankings Dashboard",
     description:
-      "An interactive Tableau Public dashboard that provides analysis of Pokemon statistics, allowing users to rank and compare Pokemon from different generations across all core battle dimensions",
+      "An interactive Tableau Public dashboard that provides analysis of Pokemon statistics, allowing users to rank and compare Pokemon from different generations across all core battle dimensions.",
     link: "https://public.tableau.com/app/profile/george.dinicola/viz/pokemon_analysis/PokemonRankings"
   }
 ];

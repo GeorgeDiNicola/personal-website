@@ -158,8 +158,8 @@
   {
     "src": "/images/outdoor-photography/16000.jpeg",
     "alt": "16000",
-    "width": 3024,
-    "height": 4032
+    "width": 4032,
+    "height": 3024
   },
   {
     "src": "/images/outdoor-photography/16500.jpeg",
@@ -234,6 +234,12 @@
     "height": 3024
   },
   {
+    "src": "/images/outdoor-photography/23500.jpeg",
+    "alt": "23500",
+    "width": 3024,
+    "height": 4032
+  },
+  {
     "src": "/images/outdoor-photography/24000.jpeg",
     "alt": "24000",
     "width": 4032,
@@ -300,12 +306,6 @@
     "height": 3024
   },
   {
-    "src": "/images/outdoor-photography/32000%20.jpeg",
-    "alt": "32000",
-    "width": 4032,
-    "height": 3024
-  },
-  {
     "src": "/images/outdoor-photography/32500.jpeg",
     "alt": "32500",
     "width": 3024,
@@ -322,12 +322,6 @@
     "alt": "34000",
     "width": 1536,
     "height": 2048
-  },
-  {
-    "src": "/images/outdoor-photography/35000.jpeg",
-    "alt": "35000",
-    "width": 4032,
-    "height": 3024
   },
   {
     "src": "/images/outdoor-photography/36000.jpeg",

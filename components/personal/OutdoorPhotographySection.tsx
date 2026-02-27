@@ -24,6 +24,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   const [isPhotosLoading, setIsPhotosLoading] = useState(true);
   const [isPhotoLightboxOpen, setIsPhotoLightboxOpen] = useState(false);
   const [outdoorPhotos, setOutdoorPhotos] = useState<OutdoorPhoto[]>([]);
+  const thumbnailStripRef = useRef<HTMLDivElement | null>(null);
   const thumbnailButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const totalPhotos = outdoorPhotos.length;
   const normalizedPhotoIndex = totalPhotos > 0 ? activePhotoIndex % totalPhotos : 0;
@@ -128,17 +129,23 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   useEffect(() => {
     if (!totalPhotos) return;
     const activeThumbnailButton = thumbnailButtonRefs.current[normalizedPhotoIndex];
-    activeThumbnailButton?.scrollIntoView({
-      behavior: "smooth",
-      block: "nearest",
-      inline: "center"
+    const thumbnailStrip = thumbnailStripRef.current;
+    if (!activeThumbnailButton || !thumbnailStrip) return;
+
+    const targetLeft = activeThumbnailButton.offsetLeft
+      - thumbnailStrip.clientWidth / 2
+      + activeThumbnailButton.clientWidth / 2;
+
+    thumbnailStrip.scrollTo({
+      left: Math.max(0, targetLeft),
+      behavior: "smooth"
     });
   }, [normalizedPhotoIndex, totalPhotos]);
 
   return (
     <SectionCard
       id="outdoor-photography"
-      title="Hiking & Outdoor Photography"
+      title="Outdoor Photography"
       isDark={isDark}
     >
       {isPhotosLoading ? (
@@ -215,68 +222,69 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
 
           {isPhotoLightboxOpen ? (
             <div
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 px-4 py-8"
+              className="fixed inset-0 z-[100] bg-slate-950/90 px-2 py-4 sm:px-4 sm:py-8"
               role="dialog"
               aria-modal="true"
               aria-label="Expanded photo viewer"
               onClick={() => setIsPhotoLightboxOpen(false)}
             >
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  setIsPhotoLightboxOpen(false);
-                }}
-                aria-label="Close expanded photo"
-                className="absolute top-4 right-4 rounded-full border border-slate-500 bg-slate-900/80 px-3 py-1.5 text-sm text-slate-100 transition-colors hover:bg-slate-800"
-              >
-                Close
-              </button>
-
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  goToPreviousPhoto();
-                }}
-                aria-label="Previous photo"
-                className="absolute left-3 rounded-full border border-slate-500 bg-slate-900/80 px-3 py-2 text-xl text-slate-100 transition-colors hover:bg-slate-800 md:left-6"
-              >
-                ‹
-              </button>
-
               <div
-                className="flex h-full w-full max-w-6xl items-center justify-center"
+                className="mx-auto flex h-full w-full max-w-6xl flex-col"
                 onClick={(event) => event.stopPropagation()}
               >
-                <Image
-                  src={activePhoto.src}
-                  alt={activePhoto.alt}
-                  width={activePhoto.width}
-                  height={activePhoto.height}
-                  sizes="(max-width: 768px) 95vw, 90vw"
-                  unoptimized
-                  quality={100}
-                  priority
-                  className="h-auto max-h-full w-auto max-w-full object-contain"
-                />
-              </div>
+                <div className="flex justify-end pb-3">
+                  <button
+                    type="button"
+                    onClick={() => setIsPhotoLightboxOpen(false)}
+                    aria-label="Close expanded photo"
+                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-500 bg-slate-900/80 text-2xl leading-none text-slate-100 transition-colors hover:bg-slate-800"
+                  >
+                    ×
+                  </button>
+                </div>
 
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  goToNextPhoto();
-                }}
-                aria-label="Next photo"
-                className="absolute right-3 rounded-full border border-slate-500 bg-slate-900/80 px-3 py-2 text-xl text-slate-100 transition-colors hover:bg-slate-800 md:right-6"
-              >
-                ›
-              </button>
+                <div className="relative flex min-h-0 flex-1 items-center justify-center">
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      goToPreviousPhoto();
+                    }}
+                    aria-label="Previous photo"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border border-slate-500 bg-slate-900/80 px-3 py-2 text-xl text-slate-100 transition-colors hover:bg-slate-800 sm:left-3 md:left-6"
+                  >
+                    ‹
+                  </button>
+
+                  <Image
+                    src={activePhoto.src}
+                    alt={activePhoto.alt}
+                    width={activePhoto.width}
+                    height={activePhoto.height}
+                    sizes="(max-width: 768px) 95vw, 90vw"
+                    unoptimized
+                    quality={100}
+                    priority
+                    className="h-auto max-h-full w-auto max-w-full object-contain"
+                  />
+
+                  <button
+                    type="button"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      goToNextPhoto();
+                    }}
+                    aria-label="Next photo"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border border-slate-500 bg-slate-900/80 px-3 py-2 text-xl text-slate-100 transition-colors hover:bg-slate-800 sm:right-3 md:right-6"
+                  >
+                    ›
+                  </button>
+                </div>
+              </div>
             </div>
           ) : null}
 
-          <div className="overflow-x-auto pb-1">
+          <div ref={thumbnailStripRef} className="overflow-x-auto pb-1">
             <div className="flex w-max gap-3">
               {outdoorPhotos.map((photo, index) => (
                 <button
