@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import type { ReactNode } from "react";
 
 import { motionEasing, sectionVariants } from "./tokens";
+import { useResponsiveViewport } from "./useResponsiveViewport";
 
 type MotionSectionProps = {
   children: ReactNode;
@@ -21,6 +22,7 @@ export function MotionSection({
   amount = 0.2
 }: MotionSectionProps) {
   const prefersReducedMotion = useReducedMotion();
+  const { viewportFor } = useResponsiveViewport();
 
   if (prefersReducedMotion) {
     return <section className={className}>{children}</section>;
@@ -31,7 +33,7 @@ export function MotionSection({
       className={className}
       initial="hidden"
       whileInView="show"
-      viewport={{ once, amount }}
+      viewport={viewportFor(amount, Math.min(amount, 0.14), once)}
       variants={sectionVariants}
       transition={{ delay, ease: motionEasing.outExpo }}
     >

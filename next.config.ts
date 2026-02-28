@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
   basePath: normalizedBasePath,
   assetPrefix: normalizedBasePath,
   images: {
+    qualities: [75, 100],
     unoptimized: true, // Required: GitHub Pages can't process images server-side
   }
 };

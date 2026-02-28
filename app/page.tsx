@@ -9,7 +9,6 @@ import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
 import { SiteNavbar } from "@/components/portfolio/SiteNavbar";
 import { SkillsSection } from "@/components/portfolio/SkillsSection";
-import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
 import { WorkHistorySection } from "@/components/portfolio/WorkHistorySection";
 import {
   githubUsername,
@@ -37,8 +36,7 @@ export default function HomePage() {
     >
       <ParallaxBackground isDark={isDark} />
       <ScrollProgressBar isDark={isDark} />
-      <ThemeToggle isDark={isDark} theme={theme} onThemeChange={setTheme} />
-      <SiteNavbar isDark={isDark} />
+      <SiteNavbar isDark={isDark} theme={theme} onThemeChange={setTheme} />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
         <HeroSection isDark={isDark} />

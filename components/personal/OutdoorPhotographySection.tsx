@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import type { KeyboardEvent as ReactKeyboardEvent } from "react";
+import type { KeyboardEvent as ReactKeyboardEvent, TouchEvent as ReactTouchEvent } from "react";
 import Image from "next/image";
 
 import { SectionCard } from "@/components/personal/SectionCard";
@@ -26,6 +26,8 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   const [outdoorPhotos, setOutdoorPhotos] = useState<OutdoorPhoto[]>([]);
   const thumbnailStripRef = useRef<HTMLDivElement | null>(null);
   const thumbnailButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const lightboxTouchStartXRef = useRef<number | null>(null);
+  const lightboxTouchStartYRef = useRef<number | null>(null);
   const totalPhotos = outdoorPhotos.length;
   const normalizedPhotoIndex = totalPhotos > 0 ? activePhotoIndex % totalPhotos : 0;
   const activePhoto = outdoorPhotos[normalizedPhotoIndex];
@@ -99,6 +101,37 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
       event.preventDefault();
       goToNextPhoto();
     }
+  };
+
+  const onLightboxTouchStart = (event: ReactTouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    lightboxTouchStartXRef.current = touch.clientX;
+    lightboxTouchStartYRef.current = touch.clientY;
+  };
+
+  const onLightboxTouchEnd = (event: ReactTouchEvent<HTMLDivElement>) => {
+    const startX = lightboxTouchStartXRef.current;
+    const startY = lightboxTouchStartYRef.current;
+    const touch = event.changedTouches[0];
+
+    lightboxTouchStartXRef.current = null;
+    lightboxTouchStartYRef.current = null;
+
+    if (startX === null || startY === null || !touch) return;
+
+    const deltaX = touch.clientX - startX;
+    const deltaY = touch.clientY - startY;
+    const minimumSwipeDistance = 48;
+
+    if (Math.abs(deltaX) < minimumSwipeDistance || Math.abs(deltaX) <= Math.abs(deltaY)) return;
+
+    if (deltaX < 0) {
+      goToNextPhoto();
+      return;
+    }
+
+    goToPreviousPhoto();
   };
 
   useEffect(() => {
@@ -243,7 +276,11 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                   </button>
                 </div>
 
-                <div className="relative flex min-h-0 flex-1 items-center justify-center">
+                <div
+                  className="relative flex min-h-0 flex-1 items-center justify-center"
+                  onTouchStart={onLightboxTouchStart}
+                  onTouchEnd={onLightboxTouchEnd}
+                >
                   <button
                     type="button"
                     onClick={(event) => {

@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import { MotionSection } from "./motion/MotionSection";
 import { createStagger, itemVariants, springTransition } from "./motion/tokens";
+import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 import type { Skill } from "./types";
 
 const skillsStagger = createStagger(0.06, 0.04);
@@ -15,6 +16,7 @@ type SkillsSectionProps = {
 
 export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
   const prefersReducedMotion = useReducedMotion();
+  const { viewportFor } = useResponsiveViewport();
 
   return (
     <MotionSection className="mt-10" delay={0.05}>
@@ -32,7 +34,7 @@ export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
           }`}
           initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
           whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={viewportFor(0.4, 0.16)}
           transition={{ duration: 0.7 }}
         />
         <div className="relative">
@@ -60,7 +62,7 @@ export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
             variants={skillsStagger}
             initial={prefersReducedMotion ? false : "hidden"}
             whileInView={prefersReducedMotion ? undefined : "show"}
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={viewportFor(0.25, 0.12)}
           >
             {skills.map((skill) => (
               <motion.article

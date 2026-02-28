@@ -10,6 +10,7 @@ import {
   motionEasing,
   springTransition
 } from "./motion/tokens";
+import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 
 const heroStagger = createStagger(0.12, 0.08);
 
@@ -19,6 +20,7 @@ type HeroSectionProps = {
 
 export function HeroSection({ isDark }: HeroSectionProps) {
   const prefersReducedMotion = useReducedMotion();
+  const { viewportFor } = useResponsiveViewport();
 
   return (
     <MotionSection className="relative" amount={0.55}>
@@ -29,7 +31,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
         }`}
         initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
         whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-        viewport={{ once: true, amount: 0.55 }}
+        viewport={viewportFor(0.55, 0.2)}
         transition={{ duration: 0.8, ease: motionEasing.outExpo }}
       />
 
@@ -53,7 +55,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
           variants={heroStagger}
           initial={prefersReducedMotion ? false : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "show"}
-          viewport={{ once: true, amount: 0.55 }}
+          viewport={viewportFor(0.55, 0.2)}
         >
           <motion.div variants={itemVariants} className="relative">
             <motion.div
@@ -64,7 +66,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
               }`}
               initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.8 }}
               whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-              viewport={{ once: true, amount: 0.55 }}
+              viewport={viewportFor(0.55, 0.2)}
               transition={{ duration: 0.7, ease: motionEasing.outExpo, delay: 0.08 }}
             />
             <motion.div

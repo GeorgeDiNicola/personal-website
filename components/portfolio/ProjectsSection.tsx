@@ -4,6 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import { MotionSection } from "./motion/MotionSection";
 import { createStagger, itemVariants, springTransition } from "./motion/tokens";
+import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 import type { Project } from "./types";
 
 const projectsStagger = createStagger(0.1, 0.08);
@@ -15,6 +16,7 @@ type ProjectsSectionProps = {
 
 export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
   const prefersReducedMotion = useReducedMotion();
+  const { viewportFor } = useResponsiveViewport();
 
   return (
     <MotionSection className="mt-12" delay={0.14}>
@@ -32,7 +34,7 @@ export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
           }`}
           initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
           whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={viewportFor(0.3, 0.14)}
           transition={{ duration: 0.75 }}
         />
         <motion.div
@@ -42,7 +44,7 @@ export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
           }`}
           initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
           whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={viewportFor(0.3, 0.14)}
           transition={{ duration: 0.85 }}
         />
 
@@ -73,7 +75,7 @@ export function ProjectsSection({ isDark, projects }: ProjectsSectionProps) {
             variants={projectsStagger}
             initial={prefersReducedMotion ? false : "hidden"}
             whileInView={prefersReducedMotion ? undefined : "show"}
-            viewport={{ once: true, amount: 0.25 }}
+            viewport={viewportFor(0.25, 0.12)}
           >
             <div className="grid gap-4 sm:grid-cols-2">
               {projects.map((project) => (

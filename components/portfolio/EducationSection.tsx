@@ -9,6 +9,7 @@ import {
   springTransition,
   timelineLineVariants
 } from "./motion/tokens";
+import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 import type { School } from "./types";
 
 const educationStagger = createStagger(0.14, 0.12);
@@ -20,6 +21,7 @@ type EducationSectionProps = {
 
 export function EducationSection({ isDark, schools }: EducationSectionProps) {
   const prefersReducedMotion = useReducedMotion();
+  const { viewportFor } = useResponsiveViewport();
 
   return (
     <MotionSection className="mt-12" delay={0.1}>
@@ -37,7 +39,7 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
           }`}
           initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
           whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.35 }}
+          viewport={viewportFor(0.35, 0.15)}
           transition={{ duration: 0.75 }}
         />
         <motion.div
@@ -47,7 +49,7 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
           }`}
           initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.9 }}
           whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.35 }}
+          viewport={viewportFor(0.35, 0.15)}
           transition={{ duration: 0.8 }}
         />
 
@@ -82,7 +84,7 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
               variants={timelineLineVariants}
               initial={prefersReducedMotion ? false : "hidden"}
               whileInView={prefersReducedMotion ? undefined : "show"}
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={viewportFor(0.3, 0.14)}
             />
 
             <motion.div
@@ -90,7 +92,7 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
               variants={educationStagger}
               initial={prefersReducedMotion ? false : "hidden"}
               whileInView={prefersReducedMotion ? undefined : "show"}
-              viewport={{ once: true, amount: 0.25 }}
+              viewport={viewportFor(0.25, 0.12)}
             >
               {schools.map((school) => (
                 <motion.article
@@ -115,7 +117,7 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
                     }`}
                     initial={prefersReducedMotion ? false : { scale: 0.8, opacity: 0 }}
                     whileInView={prefersReducedMotion ? {} : { scale: 1, opacity: 1 }}
-                    viewport={{ once: true, amount: 0.4 }}
+                    viewport={viewportFor(0.4, 0.16)}
                     transition={{ duration: 0.35 }}
                   />
                   <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
