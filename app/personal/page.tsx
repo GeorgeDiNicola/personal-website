@@ -1,13 +1,15 @@
 "use client";
 
 import { ChessGamesSection } from "@/components/personal/ChessGamesSection";
+import { OpenLibraryBooksSection } from "@/components/personal/OpenLibraryBooksSection";
 import { OutdoorPhotographySection } from "@/components/personal/OutdoorPhotographySection";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
 import { ParallaxBackground } from "@/components/portfolio/ParallaxBackground";
 import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
 import { SiteNavbar } from "@/components/portfolio/SiteNavbar";
-import { ThemeToggle } from "@/components/portfolio/ThemeToggle";
 import { useThemePreference } from "@/components/portfolio/useThemePreference";
+
+const OPEN_LIBRARY_USERNAME = process.env.NEXT_PUBLIC_OPEN_LIBRARY_USERNAME?.trim() || "george3d";
 
 export default function PersonalPage() {
   const { theme, setTheme, isDark } = useThemePreference();
@@ -22,8 +24,7 @@ export default function PersonalPage() {
     >
       <ParallaxBackground isDark={isDark} />
       <ScrollProgressBar isDark={isDark} />
-      <ThemeToggle isDark={isDark} theme={theme} onThemeChange={setTheme} />
-      <SiteNavbar isDark={isDark} />
+      <SiteNavbar isDark={isDark} theme={theme} onThemeChange={setTheme} />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl space-y-8 px-6 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
         <section
@@ -50,6 +51,7 @@ export default function PersonalPage() {
 
         <OutdoorPhotographySection isDark={isDark} />
         <ChessGamesSection isDark={isDark} />
+        <OpenLibraryBooksSection isDark={isDark} username={OPEN_LIBRARY_USERNAME} />
       </div>
 
       <BackToTopButton isDark={isDark} />

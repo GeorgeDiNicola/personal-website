@@ -37,6 +37,34 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.open-library-3d-wrap {
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+}
+
+.open-library-book-card {
+  transform-style: preserve-3d;
+  transition:
+    transform var(--dur-fast) var(--ease-out-soft),
+    box-shadow var(--dur-fast) var(--ease-out-soft),
+    border-color var(--dur-fast) var(--ease-smooth);
+  will-change: transform;
+}
+
+.open-library-book-card:hover,
+.open-library-book-card:focus-visible {
+  transform: translateY(-8px) rotateX(8deg) rotateY(-6deg) scale(1.015);
+  box-shadow: 0 20px 42px rgba(2, 6, 23, 0.28);
+}
+
+.open-library-book-cover {
+  transform: translateZ(34px);
+}
+
+.open-library-book-meta {
+  transform: translateZ(18px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
