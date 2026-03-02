@@ -44,10 +44,10 @@ const subscribeTheme = (onStoreChange: () => void) => {
 };
 
 export function useThemePreference() {
-  const theme = useSyncExternalStore(
+  const theme = useSyncExternalStore<Theme>(
     subscribeTheme,
     getThemeSnapshot,
-    () => "dark"
+    (): Theme => "dark"
   );
 
   const setTheme = (nextTheme: Theme) => {

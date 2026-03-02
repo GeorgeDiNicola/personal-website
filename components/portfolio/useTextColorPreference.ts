@@ -63,10 +63,10 @@ const subscribeTextColor = (onStoreChange: () => void) => {
 };
 
 export function useTextColorPreference(theme: Theme) {
-  const textColor = useSyncExternalStore(
+  const textColor = useSyncExternalStore<TextColor>(
     subscribeTextColor,
     getTextColorSnapshot,
-    () => "default"
+    (): TextColor => "default"
   );
 
   const setTextColor = (nextTextColor: TextColor) => {
