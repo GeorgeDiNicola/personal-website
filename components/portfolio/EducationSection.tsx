@@ -56,7 +56,7 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
         <div className="relative grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p
-              className={`text-sm font-medium uppercase tracking-[0.18em] ${
+              className={`site-text-static text-sm font-medium uppercase tracking-[0.18em] ${
                 isDark ? "text-cyan-300" : "text-cyan-700"
               }`}
             >
@@ -160,6 +160,17 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
                         }`}
                       >
                         Minor: {school.minor}
+                      </span>
+                    )}
+                    {school.concentration && (
+                      <span
+                        className={`rounded-full border px-3 py-1 text-xs font-medium ${
+                          isDark
+                            ? "border-cyan-800 bg-cyan-950/50 text-cyan-200"
+                            : "border-cyan-200 bg-cyan-100/60 text-cyan-800"
+                        }`}
+                      >
+                        Concentration: {school.concentration}
                       </span>
                     )}
                   </div>

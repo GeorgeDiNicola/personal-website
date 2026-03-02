@@ -14,6 +14,7 @@ export type School = {
   degree1: string;
   degree2?: string;
   minor?: string;
+  concentration?: string;
 };
 
 export type Project = {

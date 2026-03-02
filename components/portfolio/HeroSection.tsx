@@ -92,7 +92,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
 
           <motion.p
             variants={itemVariants}
-            className={`text-sm font-medium uppercase tracking-[0.2em] ${
+            className={`site-text-static text-sm font-medium uppercase tracking-[0.2em] ${
               isDark ? "text-cyan-300" : "text-cyan-700"
             }`}
           >

@@ -17,10 +17,12 @@ import {
   skills,
   workHistory
 } from "@/components/portfolio/data";
+import { useTextColorPreference } from "@/components/portfolio/useTextColorPreference";
 import { useThemePreference } from "@/components/portfolio/useThemePreference";
 
 export default function HomePage() {
   const { theme, setTheme, isDark } = useThemePreference();
+  const { textColor, setTextColor } = useTextColorPreference(theme);
   const githubProfileUrl = `https://github.com/${githubUsername}`;
   const githubCalendarUrl = `https://ghchart.rshah.org/${
     isDark ? "42F527" : "0f766e"
@@ -36,7 +38,13 @@ export default function HomePage() {
     >
       <ParallaxBackground isDark={isDark} />
       <ScrollProgressBar isDark={isDark} />
-      <SiteNavbar isDark={isDark} theme={theme} onThemeChange={setTheme} />
+      <SiteNavbar
+        isDark={isDark}
+        theme={theme}
+        onThemeChange={setTheme}
+        textColor={textColor}
+        onTextColorChange={setTextColor}
+      />
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
         <HeroSection isDark={isDark} />

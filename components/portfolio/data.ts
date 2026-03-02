@@ -41,7 +41,7 @@ export const schools: School[] = [
     name: "Columbia University",
     period: "2021 - 2022",
     degree1: "MS Computer Science",
-    minor: "Software Systems Concentration"
+    concentration: "Software Systems"
   },
   {
     name: "Drexel University, Pennoni Honors College",

@@ -39,7 +39,7 @@ export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
         />
         <div className="relative">
           <p
-            className={`text-sm font-medium uppercase tracking-[0.18em] ${
+            className={`site-text-static text-sm font-medium uppercase tracking-[0.18em] ${
               isDark ? "text-cyan-300" : "text-cyan-700"
             }`}
           >
