@@ -7,6 +7,9 @@ import type { Theme } from "@/components/portfolio/types";
 const THEME_STORAGE_KEY = "theme";
 const THEME_CHANGED_EVENT = "theme-change";
 
+const getSystemTheme = (): Theme =>
+  window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+
 const getStoredTheme = (): Theme | null => {
   const storedTheme = window.localStorage.getItem(THEME_STORAGE_KEY);
   return storedTheme === "light" || storedTheme === "dark" ? storedTheme : null;
@@ -16,7 +19,7 @@ const getThemeSnapshot = (): Theme => {
   const storedTheme = getStoredTheme();
   if (storedTheme) return storedTheme;
 
-  return "dark";
+  return getSystemTheme();
 };
 
 const subscribeTheme = (onStoreChange: () => void) => {
@@ -47,7 +50,7 @@ export function useThemePreference() {
   const theme = useSyncExternalStore<Theme>(
     subscribeTheme,
     getThemeSnapshot,
-    (): Theme => "dark"
+    (): Theme => "light"
   );
 
   const setTheme = (nextTheme: Theme) => {
@@ -57,6 +60,7 @@ export function useThemePreference() {
 
   useEffect(() => {
     document.documentElement.style.colorScheme = theme;
+    document.documentElement.dataset.theme = theme;
   }, [theme]);
 
   return { theme, setTheme, isDark: theme === "dark" };

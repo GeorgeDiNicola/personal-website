@@ -14,7 +14,26 @@ const geistMono = Geist_Mono({
 
 const siteTitle = "George DiNicola | Software Engineer";
 const siteDescription = "Personal portfolio and software engineering work.";
-const siteUrl = "https://georgedinicola.github.io"
+const siteUrl = "https://georgedinicola.github.io";
+const themeBootScript = `
+(() => {
+  try {
+    const storedTheme = localStorage.getItem("theme");
+    const legacyStoredThemePreference = localStorage.getItem("theme-preference");
+    const resolvedTheme =
+      storedTheme === "light" || storedTheme === "dark"
+        ? storedTheme
+        : legacyStoredThemePreference === "light" ||
+            legacyStoredThemePreference === "dark"
+          ? legacyStoredThemePreference
+          : window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+    document.documentElement.dataset.theme = resolvedTheme;
+    document.documentElement.style.colorScheme = resolvedTheme;
+  } catch {}
+})();
+`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -49,10 +68,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
         {children}
       </body>
     </html>
