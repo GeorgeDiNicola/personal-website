@@ -701,7 +701,7 @@ export function OpenLibraryBooksSection({
               isDark ? "border-slate-600 text-slate-300" : "border-slate-300 text-slate-700"
             }`}
           >
-            Loading your shelves...
+            Loading shelves...
           </div>
         ) : null}
 

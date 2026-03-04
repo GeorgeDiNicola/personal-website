@@ -80,8 +80,10 @@ export const projects: Project[] = [
 
 export const skills: Skill[] = [
   { name: "Go", logo: "https://cdn.simpleicons.org/go" },
+  { name: "Gin", logo: "https://cdn.simpleicons.org/gin" },
   { name: "Python", logo: "https://cdn.simpleicons.org/python" },
-  { name: "Flask", logo: "https://cdn.simpleicons.org/flask" },
+  { name: "FastAPI", logo: "https://cdn.simpleicons.org/fastAPI" },
+  { name: "pytest", logo: "https://cdn.simpleicons.org/pytest" },
   { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
   { name: "React", logo: "https://cdn.simpleicons.org/react" },
   { name: "Docker", logo: "https://cdn.simpleicons.org/docker" },
@@ -89,8 +91,12 @@ export const skills: Skill[] = [
   { name: "SQL", logo: "https://cdn.simpleicons.org/sqlite" },
   { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql" },
   { name: "Git", logo: "https://cdn.simpleicons.org/git" },
-  { name: "AWS", logo: "/aws.svg" },
+  { name: "Terraform", logo: "https://cdn.simpleicons.org/terraform" },
+  { name: "Prometheus", logo: "https://cdn.simpleicons.org/prometheus" },
+  { name: "Grafana", logo: "https://cdn.simpleicons.org/grafana" },
+  { name: "Open Telemetry", logo: "https://cdn.simpleicons.org/opentelemetry" },
+  { name: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
   { name: "Jenkins", logo: "https://cdn.simpleicons.org/jenkins" },
   { name: "HashiCorp Vault", logo: "https://cdn.simpleicons.org/vault" },
-  { name: "Tableau", logo: "/tableau.png" }
+  { name: "AWS", logo: "/aws.svg" }
 ];
