@@ -2,6 +2,7 @@ import { execFile } from "node:child_process";
 import { mkdir, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { promisify } from "node:util";
+import sharp from 'sharp';
 
 const PHOTO_DIR = path.join(process.cwd(), "public", "images", "outdoor-photography");
 const MANIFEST_PATH = path.join(PHOTO_DIR, "manifest.json");
@@ -34,32 +35,21 @@ const getFileDescription = async (filePath) => {
 
 const getImageSize = async (filePath) => {
   try {
-    const { stdout } = await runCommand("sips", ["-g", "pixelWidth", "-g", "pixelHeight", filePath]);
-    const widthMatch = stdout.match(/pixelWidth:\s*(\d+)/i);
-    const heightMatch = stdout.match(/pixelHeight:\s*(\d+)/i);
-    if (!widthMatch || !heightMatch) return null;
-
+    const metadata = await sharp(filePath).metadata();
     return {
-      width: Number(widthMatch[1]),
-      height: Number(heightMatch[1])
+      width: metadata.width,
+      height: metadata.height
     };
-  } catch {
+  } catch (error) {
+    console.error(`Sharp failed to read ${filePath}:`, error);
     return null;
   }
 };
 
 const convertToJpeg = async (inputPath, outputPath) => {
-  await runCommand("sips", [
-    "-s",
-    "format",
-    "jpeg",
-    "-s",
-    "formatOptions",
-    "best",
-    inputPath,
-    "--out",
-    outputPath
-  ]);
+  await sharp(inputPath)
+    .jpeg({ quality: 100 })
+    .toFile(outputPath);
 };
 
 const normalizeHeifFiles = async (fileNames) => {
