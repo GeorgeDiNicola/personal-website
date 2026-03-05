@@ -62,6 +62,18 @@ jobs:
           find . -maxdepth 1 ! -name '.' ! -name '..' ! -name '.git' -exec rm -rf {} +
           cp -r ../out/* .
 
+          touch .nojekyll
+
+          cat <<EOF > .gitignore
+            # Node.js files
+            node_modules/
+            package-lock.json
+            package.json
+
+            # Misc
+            .DS_Store
+            EOF
+
           # Check if there are actually changes before pushing
           if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to deploy."
