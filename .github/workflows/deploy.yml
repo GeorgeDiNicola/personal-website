@@ -1,0 +1,77 @@
+name: Build and Create PR to Pages Repository
+
+on:
+  push:
+    branches:
+      - main
+
+# Prevent multiple runs from clashing by cancelling anything in progress
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v4
+    
+        # save compute time for runner minutes during install & build
+      - name: Install pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '23'
+          cache: 'pnpm'
+    
+      - name: Install and Build
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm run build
+    
+      - name: Checkout Pages Repository into a subfolder
+        uses: actions/checkout@v4
+        with:
+          repository: GeorgeDiNicola/georgedinicola.github.io
+          path: pages-dest-folder
+          token: ${{ secrets.AUTO_DEPLOY_TOKEN }}
+    
+      - name: Sync Files and Create PR
+        env:
+          GH_TOKEN: ${{ secrets.AUTO_DEPLOY_TOKEN }}
+        run: |
+          BRANCH_NAME="deploy/build-${{ github.run_id }}"
+          
+          cd pages-dest-folder
+          
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          git checkout -b $BRANCH_NAME
+          
+          # Remove old files, then copy from the source's /out folder
+          # ../out points to the 'out' folder in the parent (source) directory
+          find . -maxdepth 1 ! -name '.' ! -name '..' ! -name '.git' -exec rm -rf {} +
+          cp -r ../out/* .
+
+          # Check if there are actually changes before pushing
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No changes to deploy."
+            exit 0
+          fi
+          
+          git add .
+          git commit -m "Automated build: ${{ github.event.head_commit.message }}"
+          git push origin $BRANCH_NAME
+          
+          gh pr create \
+            --title "New Build: ${{ github.event.head_commit.message }}" \
+            --body "Automated update from personal website repository." \
+            --base main \
+            --head $BRANCH_NAME
