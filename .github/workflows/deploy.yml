@@ -64,16 +64,6 @@ jobs:
 
           touch .nojekyll
 
-          cat <<EOF > .gitignore
-            # Node.js files
-            node_modules/
-            package-lock.json
-            package.json
-
-            # Misc
-            .DS_Store
-            EOF
-
           # Check if there are actually changes before pushing
           if [ -z "$(git status --porcelain)" ]; then
             echo "No changes to deploy."
