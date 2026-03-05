@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Checkout Source Repository
         uses: actions/checkout@v4
+        with:
+            lfs: true  # ensure actual images are downloaded
     
         # save compute time for runner minutes during install & build
       - name: Install pnpm
