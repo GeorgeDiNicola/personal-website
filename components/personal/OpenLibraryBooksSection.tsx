@@ -7,6 +7,7 @@ import { SectionCard } from "@/components/personal/SectionCard";
 
 const OPEN_LIBRARY_API_ROOT = "https://openlibrary.org";
 const OPEN_LIBRARY_CACHE_TTL_MS = 1000 * 60 * 30;
+const SHOULD_USE_OPEN_LIBRARY_PERSISTENT_CACHE = process.env.NODE_ENV === "production";
 const OPEN_LIBRARY_PLACEHOLDER_COVER_SRC = "/images/open-library-cover-placeholder.svg";
 const OPEN_LIBRARY_INITIAL_PAGE_SIZE = 24;
 const OPEN_LIBRARY_MAX_TOTAL_COUNT_PAGES = 400;
@@ -157,6 +158,7 @@ const readCachedShelfStates = (cacheKey: string): OpenLibraryShelfStates | null 
   }
 
   if (typeof window === "undefined") return null;
+  if (!SHOULD_USE_OPEN_LIBRARY_PERSISTENT_CACHE) return null;
 
   try {
     const rawCached = window.localStorage.getItem(cacheKey);
@@ -193,6 +195,7 @@ const writeCachedShelfStates = (cacheKey: string, shelfStates: OpenLibraryShelfS
   openLibraryBooksMemoryCache.set(cacheKey, payload);
 
   if (typeof window === "undefined") return;
+  if (!SHOULD_USE_OPEN_LIBRARY_PERSISTENT_CACHE) return;
 
   try {
     window.localStorage.setItem(cacheKey, JSON.stringify(payload));
@@ -553,6 +556,10 @@ export function OpenLibraryBooksSection({
           if (key.startsWith("open-library-reading-log:") && key !== cacheKey) {
             window.localStorage.removeItem(key);
           }
+        }
+
+        if (!SHOULD_USE_OPEN_LIBRARY_PERSISTENT_CACHE && cacheKey) {
+          window.localStorage.removeItem(cacheKey);
         }
       }
 

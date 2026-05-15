@@ -48,9 +48,9 @@ export default function HomePage() {
 
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
         <HeroSection isDark={isDark} />
-        <SkillsSection isDark={isDark} skills={skills} />
         <WorkHistorySection isDark={isDark} workHistory={workHistory} />
         <EducationSection isDark={isDark} schools={schools} />
+        <SkillsSection isDark={isDark} skills={skills} />
         <GitHubActivitySection
           isDark={isDark}
           githubUsername={githubUsername}
