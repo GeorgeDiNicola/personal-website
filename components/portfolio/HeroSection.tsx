@@ -112,7 +112,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
             >
               Software Engineer with 3+ years of experience. I specialize in
               production backend systems and data infrastructure, with interest
-              in distributed systems, cybersecurity, and machine learning.
+              in distributed systems, data engineering, and machine learning.
             </p>
           </motion.div>
         </motion.div>

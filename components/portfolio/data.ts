@@ -21,7 +21,7 @@ export const workHistory: WorkExperience[] = [
   },
   {
     role: "Database Engineer II",
-    department: "Business Intelligence Services",
+    department: "Business Intelligence Platform",
     company: "Comcast Business",
     period: "2019 - 2021",
     summary:
@@ -61,7 +61,7 @@ export const projects: Project[] = [
   {
     title: "Macroeconomic Data Pipeline - World Bank Dataset",
     description:
-      "World Bank dataset generation via a custom software application that discovers and groups high-quality indicators with rules-based logic & artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. Currently has 12k+ views and 2.5k+ downloads.",
+      "World Bank dataset generation via a custom software application that discovers and groups high-quality indicators with rules-based logic & artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. Currently has 13k+ views and 2.5k+ downloads.",
     link: "https://www.kaggle.com/datasets/georgejdinicola/world-bank-indicators"
   },
   {
@@ -80,10 +80,9 @@ export const projects: Project[] = [
 
 export const skills: Skill[] = [
   { name: "Go", logo: "https://cdn.simpleicons.org/go" },
-  { name: "Gin", logo: "https://cdn.simpleicons.org/gin" },
   { name: "Python", logo: "https://cdn.simpleicons.org/python" },
-  { name: "FastAPI", logo: "https://cdn.simpleicons.org/fastAPI" },
   { name: "pytest", logo: "https://cdn.simpleicons.org/pytest" },
+  { name: "Pandas", logo: "https://cdn.simpleicons.org/pandas" },
   { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
   { name: "React", logo: "https://cdn.simpleicons.org/react" },
   { name: "Docker", logo: "https://cdn.simpleicons.org/docker" },
@@ -94,9 +93,7 @@ export const skills: Skill[] = [
   { name: "Terraform", logo: "https://cdn.simpleicons.org/terraform" },
   { name: "Prometheus", logo: "https://cdn.simpleicons.org/prometheus" },
   { name: "Grafana", logo: "https://cdn.simpleicons.org/grafana" },
-  { name: "Open Telemetry", logo: "https://cdn.simpleicons.org/opentelemetry" },
   { name: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
-  { name: "Jenkins", logo: "https://cdn.simpleicons.org/jenkins" },
-  { name: "HashiCorp Vault", logo: "https://cdn.simpleicons.org/vault" },
-  { name: "AWS", logo: "/aws.svg" }
+  { name: "AWS", logo: "/aws.svg" },
+  { name: "Tableau", logo: "/tableau.png" }
 ];

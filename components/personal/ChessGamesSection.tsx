@@ -130,7 +130,6 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
                   backgroundColor: isDark ? "#020617" : "#ffffff"
                 }}
                 loading="lazy"
-                allowTransparency
               />
             </div>
           </div>

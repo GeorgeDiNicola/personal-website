@@ -134,8 +134,8 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
                     <span
                       className={`rounded-full border px-3 py-1 text-xs font-medium ${
                         isDark
-                          ? "border-slate-600 bg-slate-800 text-slate-200"
-                          : "border-slate-300 bg-white text-slate-700"
+                          ? "border-cyan-800 bg-cyan-950/50 text-cyan-200"
+                          : "border-cyan-200 bg-cyan-100/60 text-cyan-800"
                       }`}
                     >
                       {school.degree1}
@@ -144,8 +144,8 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
                       <span
                         className={`rounded-full border px-3 py-1 text-xs font-medium ${
                           isDark
-                            ? "border-slate-600 bg-slate-800 text-slate-200"
-                            : "border-slate-300 bg-white text-slate-700"
+                            ? "border-cyan-800 bg-cyan-950/50 text-cyan-200"
+                            : "border-cyan-200 bg-cyan-100/60 text-cyan-800"  
                         }`}
                       >
                         {school.degree2}
@@ -155,8 +155,8 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
                       <span
                         className={`rounded-full border px-3 py-1 text-xs font-medium ${
                           isDark
-                            ? "border-cyan-800 bg-cyan-950/50 text-cyan-200"
-                            : "border-cyan-200 bg-cyan-100/60 text-cyan-800"
+                            ? "border-slate-600 bg-slate-800 text-slate-200"
+                            : "border-slate-300 bg-white text-slate-700"
                         }`}
                       >
                         Minor: {school.minor}
@@ -166,8 +166,8 @@ export function EducationSection({ isDark, schools }: EducationSectionProps) {
                       <span
                         className={`rounded-full border px-3 py-1 text-xs font-medium ${
                           isDark
-                            ? "border-cyan-800 bg-cyan-950/50 text-cyan-200"
-                            : "border-cyan-200 bg-cyan-100/60 text-cyan-800"
+                            ? "border-slate-600 bg-slate-800 text-slate-200"
+                            : "border-slate-300 bg-white text-slate-700"
                         }`}
                       >
                         Concentration: {school.concentration}
