@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "generate:outdoor-manifest": "node scripts/generate-outdoor-photo-manifest.mjs",
-    "predev": "npm run generate:outdoor-manifest",
+    "generate:open-library-books": "node scripts/generate-open-library-books.mjs",
+    "generate:prebuild": "pnpm run generate:outdoor-manifest && pnpm run generate:open-library-books",
+    "predev": "pnpm run generate:prebuild",
     "dev": "next dev",
-    "prebuild": "npm run generate:outdoor-manifest",
+    "prebuild": "pnpm run generate:prebuild",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
