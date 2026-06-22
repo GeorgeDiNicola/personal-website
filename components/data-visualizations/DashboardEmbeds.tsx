@@ -43,12 +43,14 @@ function FlourishEmbed({ isDark }: DashboardEmbedsProps) {
         className="flourish-embed flourish-bar-chart-race min-h-[420px]"
         data-src="visualisation/29463966"
       >
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html:
-              '<img src="https://public.flourish.studio/visualisation/29463966/thumbnail" width="100%" alt="bar-chart-race visualization" />'
-          }}
-        />
+        <noscript>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="https://public.flourish.studio/visualisation/29463966/thumbnail"
+            width="100%"
+            alt="bar-chart-race visualization"
+          />
+        </noscript>
       </div>
     </div>
   );
@@ -88,11 +90,12 @@ function TableauEmbed({ id, title, name, staticImage, rssImage, isDark }: Tablea
       }`}
     >
       <div ref={placeholderRef} id={id} className="tableauPlaceholder relative">
-        <noscript
-          dangerouslySetInnerHTML={{
-            __html: `<a href="#"><img alt="${title}" src="${rssImage}" style="border: none" /></a>`
-          }}
-        />
+        <noscript>
+          <a href="#">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img alt={title} src={rssImage} style={{ border: "none" }} />
+          </a>
+        </noscript>
         <object className="tableauViz hidden" aria-label={title}>
           <param name="host_url" value="https%3A%2F%2Fpublic.tableau.com%2F" />
           <param name="embed_code_version" value="3" />

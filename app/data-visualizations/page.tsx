@@ -52,7 +52,7 @@ export default function DataVisualizationsPage() {
                 isDark ? "text-slate-300" : "text-slate-700"
               }`}
             >
-              Interactive data visualization dashboards I've created
+              Interactive data visualization dashboards I&apos;ve created
             </p>
           </div>
         </section>
