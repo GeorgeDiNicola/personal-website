@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-06-12T17:35:55.610Z",
+  "generatedAt": "2026-06-22T20:55:32.487Z",
   "username": "george3d",
   "shelves": {
     "currently-reading": {
       "books": [
         {
-          "key": "/works/OL19340986W",
-          "href": "/works/OL19340986W/Golden_Son?edition=key%3A/books/OL43165581M",
-          "title": "Golden Son",
+          "key": "/works/OL19650409W",
+          "href": "/works/OL19650409W/Morning_Star?edition=key%3A/books/OL29316221M",
+          "title": "Morning Star",
           "authors": [
             "Pierce Brown"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/id/15180063-M.jpg",
-          "firstPublishYear": 2015,
+          "coverUrl": "https://covers.openlibrary.org/b/id/12401168-M.jpg",
+          "firstPublishYear": 2016,
           "readAt": null,
           "readOrder": 0
         },
@@ -34,6 +34,18 @@
     "read": {
       "books": [
         {
+          "key": "/works/OL19340986W",
+          "href": "/works/OL19340986W/Golden_Son?edition=key%3A/books/OL43165581M",
+          "title": "Golden Son",
+          "authors": [
+            "Pierce Brown"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/id/15180063-M.jpg",
+          "firstPublishYear": 2015,
+          "readAt": null,
+          "readOrder": 0
+        },
+        {
           "key": "/works/OL16421115W",
           "href": "/works/OL16421115W/Micro?edition=key%3A/books/OL26465141M",
           "title": "Micro: a novel",
@@ -45,7 +57,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/13136600-M.jpg",
           "firstPublishYear": 1805,
           "readAt": null,
-          "readOrder": 0
+          "readOrder": 1
         },
         {
           "key": "/works/OL8052942W",
@@ -57,19 +69,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/11476708-M.jpg",
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 1
+          "readOrder": 2
         },
         {
           "key": "/works/OL16564627W",
-          "href": "/works/OL16564627W/Redshirts?edition=ia%3Aredshirts00scal",
+          "href": "/works/OL16564627W/Redshirts?edition=ia%3Aredshirts0000scal",
           "title": "Redshirts",
           "authors": [
             "John Scalzi"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25253043M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26784040M-M.jpg",
           "firstPublishYear": 2012,
           "readAt": null,
-          "readOrder": 2
+          "readOrder": 3
         },
         {
           "key": "/works/OL17076473W",
@@ -81,31 +93,31 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/15134076-M.jpg",
           "firstPublishYear": 2014,
           "readAt": null,
-          "readOrder": 3
+          "readOrder": 4
         },
         {
           "key": "/works/OL20907281W",
-          "href": "/works/OL20907281W/Ready_Player_Two?edition=ia%3Areadyplayertwono0000clin_r6t8",
+          "href": "/works/OL20907281W/Ready_Player_Two?edition=ia%3Areadyplayertwono0000erne",
           "title": "Ready Player Two",
           "authors": [
             "Ernest Cline"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL28337503M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL30315672M-M.jpg",
           "firstPublishYear": 2019,
           "readAt": null,
-          "readOrder": 4
+          "readOrder": 5
         },
         {
           "key": "/works/OL83884W",
-          "href": "/works/OL83884W/The_Queen's_gambit?edition=ia%3Aqueensgambit00tevi",
+          "href": "/works/OL83884W/The_Queen's_gambit?edition=ia%3Agambitodedamaque0000walt",
           "title": "The Queen's gambit",
           "authors": [
             "Walter S. Tevis"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL3495073M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL31933450M-M.jpg",
           "firstPublishYear": 1983,
           "readAt": null,
-          "readOrder": 5
+          "readOrder": 6
         },
         {
           "key": "/works/OL3337386W",
@@ -117,19 +129,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL3430714M-M.jpg",
           "firstPublishYear": 2006,
           "readAt": null,
-          "readOrder": 6
+          "readOrder": 7
         },
         {
           "key": "/works/OL103134W",
-          "href": "/works/OL103134W/The_Martian_Chronicles?edition=ia%3Acrnicasmarcianas0000rayb",
+          "href": "/works/OL103134W/The_Martian_Chronicles?edition=ia%3Aisbn_9783257208634",
           "title": "The Martian Chronicles",
           "authors": [
             "Ray Bradbury"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL13268200M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL37841723M-M.jpg",
           "firstPublishYear": 1950,
           "readAt": null,
-          "readOrder": 7
+          "readOrder": 8
         },
         {
           "key": "/works/OL16806686W",
@@ -143,19 +155,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26394601M-M.jpg",
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 8
+          "readOrder": 9
         },
         {
           "key": "/works/OL25595002W",
-          "href": "/works/OL25595002W/Mary_Shelley's_Frankenstein_or_the_Modern_Prometheus_(1818_text)?edition=ia%3Afrankensteinorig0000mary",
+          "href": "/works/OL25595002W/Mary_Shelley's_Frankenstein_or_the_Modern_Prometheus_(1818_text)?edition=ia%3Afrankenstein18180000shel_d1a8",
           "title": "Mary Shelley's Frankenstein; or, the Modern Prometheus (1818 text)",
           "authors": [
             "Mary Shelley"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL43718600M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL30183544M-M.jpg",
           "firstPublishYear": 1818,
           "readAt": null,
-          "readOrder": 9
+          "readOrder": 10
         },
         {
           "key": "/works/OL43831379W",
@@ -168,7 +180,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/15111141-M.jpg",
           "firstPublishYear": 2020,
           "readAt": null,
-          "readOrder": 10
+          "readOrder": 11
         },
         {
           "key": "/works/OL38499W",
@@ -180,7 +192,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL8887888M-M.jpg",
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 11
+          "readOrder": 12
         },
         {
           "key": "/works/OL20805971W",
@@ -192,55 +204,55 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL28166035M-M.jpg",
           "firstPublishYear": 2021,
           "readAt": null,
-          "readOrder": 12
+          "readOrder": 13
         },
         {
           "key": "/works/OL20073906W",
-          "href": "/works/OL20073906W/Recursion?edition=ia%3Arecursionnovel0000crou_c6w8",
+          "href": "/works/OL20073906W/Recursion?edition=ia%3Arecursionnovel0000blak",
           "title": "Recursion",
           "authors": [
             "Blake Crouch"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL28217336M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27967371M-M.jpg",
           "firstPublishYear": 2019,
-          "readAt": null,
-          "readOrder": 13
-        },
-        {
-          "key": "/works/OL17358795W",
-          "href": "/works/OL17358795W/Dark_Matter?edition=ia%3Adarkmatternovel0000crou_e0n8",
-          "title": "Dark Matter",
-          "authors": [
-            "Blake Crouch"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27301547M-M.jpg",
-          "firstPublishYear": 2016,
           "readAt": null,
           "readOrder": 14
         },
         {
-          "key": "/works/OL4288870W",
-          "href": "/works/OL4288870W/Einstein?edition=ia%3Aeinsteinhislifeu0000walt_j7e4",
-          "title": "Einstein",
+          "key": "/works/OL17358795W",
+          "href": "/works/OL17358795W/Dark_Matter?edition=ia%3Adarkmatternovel0000crou_n9e8",
+          "title": "Dark Matter",
           "authors": [
-            "Walter Isaacson"
+            "Blake Crouch"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL60357760M-M.jpg",
-          "firstPublishYear": 2007,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25936656M-M.jpg",
+          "firstPublishYear": 2016,
           "readAt": null,
           "readOrder": 15
         },
         {
+          "key": "/works/OL4288870W",
+          "href": "/works/OL4288870W/Einstein?edition=ia%3Aeinsteinhislifeu0000walt_q0p4",
+          "title": "Einstein",
+          "authors": [
+            "Walter Isaacson"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL9837560M-M.jpg",
+          "firstPublishYear": 2007,
+          "readAt": null,
+          "readOrder": 16
+        },
+        {
           "key": "/works/OL46396W",
-          "href": "/works/OL46396W/Gold?edition=ia%3Agoldfinalscience0000asim_p6t8",
+          "href": "/works/OL46396W/Gold?edition=ia%3Agoldfinalscience0000isaa",
           "title": "Gold: The Final Science Fiction Collection",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7278564M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7287017M-M.jpg",
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 16
+          "readOrder": 17
         },
         {
           "key": "/works/OL98484W",
@@ -252,7 +264,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL7439289M-M.jpg",
           "firstPublishYear": 1952,
           "readAt": null,
-          "readOrder": 17
+          "readOrder": 18
         },
         {
           "key": "/works/OL37620414W",
@@ -264,7 +276,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/15125912-M.jpg",
           "firstPublishYear": 2024,
           "readAt": null,
-          "readOrder": 18
+          "readOrder": 19
         },
         {
           "key": "/works/OL20735675W",
@@ -276,7 +288,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL28044727M-M.jpg",
           "firstPublishYear": 2020,
           "readAt": null,
-          "readOrder": 19
+          "readOrder": 20
         },
         {
           "key": "/works/OL42406623W",
@@ -288,7 +300,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL57535416M-M.jpg",
           "firstPublishYear": 2025,
           "readAt": null,
-          "readOrder": 20
+          "readOrder": 21
         },
         {
           "key": "/works/OL52114W",
@@ -300,7 +312,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL33225306M-M.jpg",
           "firstPublishYear": null,
           "readAt": null,
-          "readOrder": 21
+          "readOrder": 22
         },
         {
           "key": "/works/OL24349461W",
@@ -312,7 +324,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/10874214-M.jpg",
           "firstPublishYear": 2021,
           "readAt": null,
-          "readOrder": 22
+          "readOrder": 23
         },
         {
           "key": "/works/OL11374287W",
@@ -324,7 +336,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26940301M-M.jpg",
           "firstPublishYear": 1954,
           "readAt": null,
-          "readOrder": 23
+          "readOrder": 24
         },
         {
           "key": "/works/OL17362758W",
@@ -336,7 +348,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25940955M-M.jpg",
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 24
+          "readOrder": 25
         },
         {
           "key": "/works/OL19763338W",
@@ -348,7 +360,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26976340M-M.jpg",
           "firstPublishYear": 2018,
           "readAt": null,
-          "readOrder": 25
+          "readOrder": 26
         },
         {
           "key": "/works/OL19753589W",
@@ -360,19 +372,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26966631M-M.jpg",
           "firstPublishYear": 2018,
           "readAt": null,
-          "readOrder": 26
+          "readOrder": 27
         },
         {
           "key": "/works/OL17268007W",
-          "href": "/works/OL17268007W/Annihilation?edition=ia%3Aannihilation0000vand_l9b7",
+          "href": "/works/OL17268007W/Annihilation?edition=ia%3Aannihilation0000vand",
           "title": "Annihilation",
           "authors": [
             "Jeff VanderMeer"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL30693826M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25841044M-M.jpg",
           "firstPublishYear": 2014,
           "readAt": null,
-          "readOrder": 27
+          "readOrder": 28
         },
         {
           "key": "/works/OL17381975W",
@@ -384,20 +396,20 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25961562M-M.jpg",
           "firstPublishYear": 2010,
           "readAt": null,
-          "readOrder": 28
+          "readOrder": 29
         },
         {
           "key": "/works/OL17940461W",
-          "href": "/works/OL17940461W/The_art_of_thinking_clearly?edition=ia%3Aartofthinkingcle0000rolf",
+          "href": "/works/OL17940461W/The_art_of_thinking_clearly?edition=ia%3Aartofthinkingcle0000dobe_b3z7",
           "title": "The art of thinking clearly",
           "authors": [
             "Rolf Dobelli",
             "Rolf Dobelli"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL46556356M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL28283675M-M.jpg",
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 29
+          "readOrder": 30
         },
         {
           "key": "/works/OL19747311W",
@@ -409,7 +421,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/10537139-M.jpg",
           "firstPublishYear": 2018,
           "readAt": null,
-          "readOrder": 30
+          "readOrder": 31
         },
         {
           "key": "/works/OL17914663W",
@@ -421,7 +433,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26500848M-M.jpg",
           "firstPublishYear": 2017,
           "readAt": null,
-          "readOrder": 31
+          "readOrder": 32
         },
         {
           "key": "/works/OL15936512W",
@@ -433,7 +445,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL24842593M-M.jpg",
           "firstPublishYear": 2008,
           "readAt": null,
-          "readOrder": 32
+          "readOrder": 33
         },
         {
           "key": "/works/OL59797W",
@@ -445,19 +457,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/2270607-M.jpg",
           "firstPublishYear": 1972,
           "readAt": null,
-          "readOrder": 33
+          "readOrder": 34
         },
         {
           "key": "/works/OL103128W",
-          "href": "/works/OL103128W/The_Illustrated_Man?edition=ia%3Aisbn_9788445070611",
+          "href": "/works/OL103128W/The_Illustrated_Man?edition=ia%3Aelhombreilustrad0000brad",
           "title": "The Illustrated Man",
           "authors": [
             "Ray Bradbury"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL49348350M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL9131941M-M.jpg",
           "firstPublishYear": 1951,
           "readAt": null,
-          "readOrder": 34
+          "readOrder": 35
         },
         {
           "key": "/works/OL37625416W",
@@ -469,7 +481,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL50734302M-M.jpg",
           "firstPublishYear": 2024,
           "readAt": null,
-          "readOrder": 35
+          "readOrder": 36
         },
         {
           "key": "/works/OL17075811W",
@@ -481,7 +493,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26592198M-M.jpg",
           "firstPublishYear": 2011,
           "readAt": null,
-          "readOrder": 36
+          "readOrder": 37
         },
         {
           "key": "/works/OL4288868W",
@@ -495,7 +507,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL23007984M-M.jpg",
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 37
+          "readOrder": 38
         },
         {
           "key": "/works/OL29022822W",
@@ -507,19 +519,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/13007011-M.jpg",
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 38
+          "readOrder": 39
         },
         {
           "key": "/works/OL1317211W",
-          "href": "/works/OL1317211W/Meditations?edition=ia%3Ameditationsempe00gatagoog",
+          "href": "/works/OL1317211W/Meditations?edition=ia%3Acu31924029002108",
           "title": "Meditations",
           "authors": [
             "Marcus Aurelius"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL20620886M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24182009M-M.jpg",
           "firstPublishYear": 1626,
           "readAt": null,
-          "readOrder": 39
+          "readOrder": 40
         },
         {
           "key": "/works/OL7982451W",
@@ -531,19 +543,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/107192-M.jpg",
           "firstPublishYear": 2004,
           "readAt": null,
-          "readOrder": 40
+          "readOrder": 41
         },
         {
           "key": "/works/OL46883W",
-          "href": "/works/OL46883W/Prey?edition=ia%3Abeuteroman0000cric",
+          "href": "/works/OL46883W/Prey?edition=ia%3Alaproie0000cric_x9i0",
           "title": "Prey",
           "authors": [
             "Michael Crichton"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26772243M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL35445001M-M.jpg",
           "firstPublishYear": 2002,
           "readAt": null,
-          "readOrder": 41
+          "readOrder": 42
         },
         {
           "key": "/works/OL15188875W",
@@ -556,7 +568,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL7613854M-M.jpg",
           "firstPublishYear": 2001,
           "readAt": null,
-          "readOrder": 42
+          "readOrder": 43
         },
         {
           "key": "/works/OL4618292W",
@@ -568,22 +580,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL2053119M-M.jpg",
           "firstPublishYear": 1989,
           "readAt": null,
-          "readOrder": 43
+          "readOrder": 44
         },
         {
           "key": "/works/OL98459W",
-          "href": "/works/OL98459W/Slaughterhouse-Five?edition=ia%3Aabatorulcinci0000vonn",
+          "href": "/works/OL98459W/Slaughterhouse-Five?edition=ia%3Aabattoir5oulacro00vonn",
           "title": "Slaughterhouse-Five",
           "authors": [
-            "Kurt Vonnegut",
-            "jr kurt vonnegut",
-            "kurt vonnegut,jr.",
-            "Kurt Vonnegut Jr."
+            "Kurt Vonnegut"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL39796401M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24375294M-M.jpg",
           "firstPublishYear": 1956,
           "readAt": null,
-          "readOrder": 44
+          "readOrder": 45
         },
         {
           "key": "/works/OL15420005W",
@@ -596,7 +605,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL24388975M-M.jpg",
           "firstPublishYear": 1974,
           "readAt": null,
-          "readOrder": 45
+          "readOrder": 46
         },
         {
           "key": "/works/OL115336W",
@@ -608,7 +617,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/1000639-M.jpg",
           "firstPublishYear": 1994,
           "readAt": null,
-          "readOrder": 46
+          "readOrder": 47
         },
         {
           "key": "/works/OL1806212W",
@@ -620,7 +629,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL660218M-M.jpg",
           "firstPublishYear": 1991,
           "readAt": null,
-          "readOrder": 47
+          "readOrder": 48
         },
         {
           "key": "/works/OL35720357W",
@@ -632,7 +641,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL51798371M-M.jpg",
           "firstPublishYear": 2023,
           "readAt": null,
-          "readOrder": 48
+          "readOrder": 49
         },
         {
           "key": "/works/OL262426W",
@@ -644,127 +653,127 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL45822934M-M.jpg",
           "firstPublishYear": 1927,
           "readAt": null,
-          "readOrder": 49
+          "readOrder": 50
         },
         {
           "key": "/works/OL262452W",
-          "href": "/works/OL262452W/His_Last_Bow_8_stories?edition=ia%3Ahislastbowaremi01doylgoog",
+          "href": "/works/OL262452W/His_Last_Bow_8_stories?edition=ia%3Ahislastbowremini00doyliala",
           "title": "His Last Bow [8 stories]",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL23515393M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7128457M-M.jpg",
           "firstPublishYear": 1917,
-          "readAt": null,
-          "readOrder": 50
-        },
-        {
-          "key": "/works/OL262505W",
-          "href": "/works/OL262505W/The_Valley_of_Fear?edition=ia%3Avalleyoffear0000unse",
-          "title": "The Valley of Fear",
-          "authors": [
-            "Arthur Conan Doyle"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7500374M-M.jpg",
-          "firstPublishYear": 1914,
           "readAt": null,
           "readOrder": 51
         },
         {
-          "key": "/works/OL262477W",
-          "href": "/works/OL262477W/The_Return_of_Sherlock_Holmes?edition=ia%3Areturnofsherlock00doyl",
-          "title": "The Return of Sherlock Holmes",
+          "key": "/works/OL262505W",
+          "href": "/works/OL262505W/The_Valley_of_Fear?edition=ia%3Acihm_76775",
+          "title": "The Valley of Fear",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24197209M-M.jpg",
-          "firstPublishYear": 1903,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL17505600M-M.jpg",
+          "firstPublishYear": 1914,
           "readAt": null,
           "readOrder": 52
         },
         {
-          "key": "/works/OL262454W",
-          "href": "/works/OL262454W/The_Hound_of_the_Baskervilles?edition=librivox%3Athe-hound-of-the-baskervilles-by-sir-arthur-conan-doyle-6",
-          "title": "The Hound of the Baskervilles",
+          "key": "/works/OL262477W",
+          "href": "/works/OL262477W/The_Return_of_Sherlock_Holmes?edition=ia%3Areturnofsherlock00doyluoft",
+          "title": "The Return of Sherlock Holmes",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL32161331M-M.jpg",
-          "firstPublishYear": 1900,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7138645M-M.jpg",
+          "firstPublishYear": 1903,
           "readAt": null,
           "readOrder": 53
         },
         {
-          "key": "/works/OL262463W",
-          "href": "/works/OL262463W/Memoirs_of_Sherlock_Holmes_11_stories?edition=ia%3Ain.ernet.dli.2015.274267",
-          "title": "Memoirs of Sherlock Holmes [11 stories]",
+          "key": "/works/OL262454W",
+          "href": "/works/OL262454W/The_Hound_of_the_Baskervilles?edition=ia%3Ahoundofbaskervil0000doyl_k0u7",
+          "title": "The Hound of the Baskervilles",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26659913M-M.jpg",
-          "firstPublishYear": 1893,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL43101000M-M.jpg",
+          "firstPublishYear": 1900,
           "readAt": null,
           "readOrder": 54
         },
         {
-          "key": "/works/OL262421W",
-          "href": "/works/OL262421W/The_Adventures_of_Sherlock_Holmes_12_stories?edition=ia%3Aadventuresofsher0000cona_u1c7",
-          "title": "The Adventures of Sherlock Holmes [12 stories]",
+          "key": "/works/OL262463W",
+          "href": "/works/OL262463W/Memoirs_of_Sherlock_Holmes_11_stories?edition=ia%3Adli.bengal.10689.8738",
+          "title": "Memoirs of Sherlock Holmes [11 stories]",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL47072492M-M.jpg",
-          "firstPublishYear": 1892,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26664093M-M.jpg",
+          "firstPublishYear": 1893,
           "readAt": null,
           "readOrder": 55
         },
         {
-          "key": "/works/OL262438W",
-          "href": "/works/OL262438W/The_Sign_of_Four?edition=librivox%3A13019",
-          "title": "The Sign of Four",
+          "key": "/works/OL262421W",
+          "href": "/works/OL262421W/The_Adventures_of_Sherlock_Holmes_12_stories?edition=ia%3AArthurConanDoyleTheAdventuresOfSherlockHolmes",
+          "title": "The Adventures of Sherlock Holmes [12 stories]",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27888511M-M.jpg",
-          "firstPublishYear": 1889,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26689466M-M.jpg",
+          "firstPublishYear": 1892,
           "readAt": null,
           "readOrder": 56
         },
         {
-          "key": "/works/OL262496W",
-          "href": "/works/OL262496W/A_Study_in_Scarlet?edition=ia%3Astudyinscarlet0000unse",
-          "title": "A Study in Scarlet",
+          "key": "/works/OL262438W",
+          "href": "/works/OL262438W/The_Sign_of_Four?edition=ia%3Acu31924013342740",
+          "title": "The Sign of Four",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL18089607M-M.jpg",
-          "firstPublishYear": 1887,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24173605M-M.jpg",
+          "firstPublishYear": 1889,
           "readAt": null,
           "readOrder": 57
         },
         {
-          "key": "/works/OL27258W",
-          "href": "/works/OL27258W/Neuromancer?edition=ia%3Aneuromancer00gibs_0",
-          "title": "Neuromancer",
+          "key": "/works/OL262496W",
+          "href": "/works/OL262496W/A_Study_in_Scarlet?edition=librivox%3Acrime-etrange-by-sir-arthur-conan-doyle",
+          "title": "A Study in Scarlet",
           "authors": [
-            "William Gibson"
+            "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL3963678M-M.jpg",
-          "firstPublishYear": 1984,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL46850026M-M.jpg",
+          "firstPublishYear": 1887,
           "readAt": null,
           "readOrder": 58
         },
         {
+          "key": "/works/OL27258W",
+          "href": "/works/OL27258W/Neuromancer?edition=ia%3Aneuromancien00gibs",
+          "title": "Neuromancer",
+          "authors": [
+            "William Gibson"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL21395048M-M.jpg",
+          "firstPublishYear": 1984,
+          "readAt": null,
+          "readOrder": 59
+        },
+        {
           "key": "/works/OL17829905W",
-          "href": "/works/OL17829905W/Seveneves?edition=ia%3Aseveneves0000step_s6f6",
+          "href": "/works/OL17829905W/Seveneves?edition=ia%3Aseveneves0000neal",
           "title": "Seveneves",
           "authors": [
             "Neal Stephenson"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL35671156M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL28016843M-M.jpg",
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 59
+          "readOrder": 60
         },
         {
           "key": "/works/OL25337316W",
@@ -778,21 +787,21 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL33943472M-M.jpg",
           "firstPublishYear": 2022,
           "readAt": null,
-          "readOrder": 60
+          "readOrder": 61
         },
         {
           "key": "/works/OL6572297W",
-          "href": "/works/OL6572297W/Bobby_Fischer_Teaches_Chess?edition=ia%3Abobbyfischerteac00bobb",
+          "href": "/works/OL6572297W/Bobby_Fischer_Teaches_Chess?edition=ia%3Abobbyfischerteac0000bobb_q8s5",
           "title": "Bobby Fischer Teaches Chess",
           "authors": [
             "Bobby Fischer",
             "Stuart Margulies",
             "Donn Mosenfelder"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL14437424M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL5979676M-M.jpg",
           "firstPublishYear": 1966,
           "readAt": null,
-          "readOrder": 61
+          "readOrder": 62
         },
         {
           "key": "/works/OL38495W",
@@ -804,7 +813,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL3564771M-M.jpg",
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 62
+          "readOrder": 63
         },
         {
           "key": "/works/OL20013673W",
@@ -816,55 +825,55 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/15125163-M.jpg",
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 63
+          "readOrder": 64
         },
         {
           "key": "/works/OL38501W",
-          "href": "/works/OL38501W/Snow_Crash?edition=ia%3Asnowcrash00step_0",
+          "href": "/works/OL38501W/Snow_Crash?edition=ia%3Asnowcrash0000step_s2m4",
           "title": "Snow Crash",
           "authors": [
             "Neal Stephenson"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL18141225M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL14813122M-M.jpg",
           "firstPublishYear": 1992,
-          "readAt": null,
-          "readOrder": 64
-        },
-        {
-          "key": "/works/OL38494W",
-          "href": "/works/OL38494W/Cryptonomicon?edition=ia%3Acryptonomico00step",
-          "title": "Cryptonomicon",
-          "authors": [
-            "Neal Stephenson"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL31320M-M.jpg",
-          "firstPublishYear": 1999,
           "readAt": null,
           "readOrder": 65
         },
         {
-          "key": "/works/OL14996932W",
-          "href": "/works/OL14996932W/Freedom™?edition=ia%3Afreedomtm0000unse",
-          "title": "Freedom™",
+          "key": "/works/OL38494W",
+          "href": "/works/OL38494W/Cryptonomicon?edition=ia%3Acryptonomicon0000step",
+          "title": "Cryptonomicon",
           "authors": [
-            "Daniel Suarez"
+            "Neal Stephenson"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24654152M-M.jpg",
-          "firstPublishYear": 2010,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL31948100M-M.jpg",
+          "firstPublishYear": 1999,
           "readAt": null,
           "readOrder": 66
         },
         {
+          "key": "/works/OL14996932W",
+          "href": "/works/OL14996932W/Freedom™?edition=ia%3Afreedomtm0000suar",
+          "title": "Freedom™",
+          "authors": [
+            "Daniel Suarez"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL38574861M-M.jpg",
+          "firstPublishYear": 2010,
+          "readAt": null,
+          "readOrder": 67
+        },
+        {
           "key": "/works/OL46337W",
-          "href": "/works/OL46337W/Robot_Visions?edition=ia%3Arobotvisions0000asim",
+          "href": "/works/OL46337W/Robot_Visions?edition=ia%3Arobotvisions0000isaa",
           "title": "Robot Visions",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL20048706M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26828627M-M.jpg",
           "firstPublishYear": 1990,
           "readAt": null,
-          "readOrder": 67
+          "readOrder": 68
         },
         {
           "key": "/works/OL46190W",
@@ -876,7 +885,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL13364202M-M.jpg",
           "firstPublishYear": 1986,
           "readAt": null,
-          "readOrder": 68
+          "readOrder": 69
         },
         {
           "key": "/works/OL16816263W",
@@ -888,19 +897,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25442597M-M.jpg",
           "firstPublishYear": 2010,
           "readAt": null,
-          "readOrder": 69
+          "readOrder": 70
         },
         {
           "key": "/works/OL21745884W",
-          "href": "/works/OL21745884W/Project_Hail_Mary?edition=ia%3Aprojecthailmaryn0000weir",
+          "href": "/works/OL21745884W/Project_Hail_Mary?edition=ia%3Aprojecthailmaryn0000andy",
           "title": "Project Hail Mary",
           "authors": [
             "Andy Weir"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL30036715M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL29597011M-M.jpg",
           "firstPublishYear": 2021,
           "readAt": null,
-          "readOrder": 70
+          "readOrder": 71
         },
         {
           "key": "/works/OL893508W",
@@ -912,7 +921,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL8890324M-M.jpg",
           "firstPublishYear": 1985,
           "readAt": null,
-          "readOrder": 71
+          "readOrder": 72
         },
         {
           "key": "/works/OL46395W",
@@ -924,11 +933,11 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25645423M-M.jpg",
           "firstPublishYear": 1972,
           "readAt": null,
-          "readOrder": 72
+          "readOrder": 73
         },
         {
           "key": "/works/OL16132451W",
-          "href": "/works/OL16132451W/Ghost_in_the_wires?edition=ia%3Aghostinwiresmya00mitn_0",
+          "href": "/works/OL16132451W/Ghost_in_the_wires?edition=ia%3Aghostinwiresmyad0000mitn_u0w0",
           "title": "Ghost in the wires",
           "authors": [
             "Kevin D. Mitnick"
@@ -936,7 +945,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25016402M-M.jpg",
           "firstPublishYear": 2011,
           "readAt": null,
-          "readOrder": 73
+          "readOrder": 74
         },
         {
           "key": "/works/OL893502W",
@@ -948,19 +957,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL27011540M-M.jpg",
           "firstPublishYear": 1984,
           "readAt": null,
-          "readOrder": 74
+          "readOrder": 75
         },
         {
           "key": "/works/OL98488W",
-          "href": "/works/OL98488W/Breakfast_of_Champions?edition=ia%3Abreakfastofchamp0000vonn",
+          "href": "/works/OL98488W/Breakfast_of_Champions?edition=ia%3Abreakfastofchamp0000vonn_f2w6",
           "title": "Breakfast of Champions: or, Goodbye blue Monday!",
           "authors": [
             "Kurt Vonnegut"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL16985797M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7320065M-M.jpg",
           "firstPublishYear": 1973,
           "readAt": null,
-          "readOrder": 75
+          "readOrder": 76
         },
         {
           "key": "/works/OL893515W",
@@ -972,7 +981,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL31379919M-M.jpg",
           "firstPublishYear": 1981,
           "readAt": null,
-          "readOrder": 76
+          "readOrder": 77
         },
         {
           "key": "/works/OL893516W",
@@ -984,7 +993,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26917266M-M.jpg",
           "firstPublishYear": 1976,
           "readAt": null,
-          "readOrder": 77
+          "readOrder": 78
         },
         {
           "key": "/works/OL893526W",
@@ -996,55 +1005,55 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL23044495M-M.jpg",
           "firstPublishYear": 1969,
           "readAt": null,
-          "readOrder": 78
+          "readOrder": 79
         },
         {
           "key": "/works/OL893415W",
-          "href": "/works/OL893415W/Dune?edition=ia%3Adune00herb_5",
+          "href": "/works/OL893415W/Dune?edition=ia%3Aillustrateddune00fran",
           "title": "Dune",
           "authors": [
             "Frank Herbert"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26242482M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7500941M-M.jpg",
           "firstPublishYear": 1965,
-          "readAt": null,
-          "readOrder": 79
-        },
-        {
-          "key": "/works/OL69179W",
-          "href": "/works/OL69179W/My_bondage_and_my_freedom?edition=ia%3Amybondagemyfree00doug",
-          "title": "My bondage and my freedom",
-          "authors": [
-            "Frederick Douglass"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL13502373M-M.jpg",
-          "firstPublishYear": 1815,
           "readAt": null,
           "readOrder": 80
         },
         {
-          "key": "/works/OL18941W",
-          "href": "/works/OL18941W/Fight_Club?edition=ia%3Afightclub0000pala",
-          "title": "Fight Club",
+          "key": "/works/OL69179W",
+          "href": "/works/OL69179W/My_bondage_and_my_freedom?edition=ia%3Asclavereiundfre00douggoog",
+          "title": "My bondage and my freedom",
           "authors": [
-            "Chuck Palahniuk"
+            "Frederick Douglass"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7319935M-M.jpg",
-          "firstPublishYear": 1996,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL53592056M-M.jpg",
+          "firstPublishYear": 1815,
           "readAt": null,
           "readOrder": 81
         },
         {
+          "key": "/works/OL18941W",
+          "href": "/works/OL18941W/Fight_Club?edition=ia%3Afightclub0000chuc",
+          "title": "Fight Club",
+          "authors": [
+            "Chuck Palahniuk"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL48188559M-M.jpg",
+          "firstPublishYear": 1996,
+          "readAt": null,
+          "readOrder": 82
+        },
+        {
           "key": "/works/OL46876W",
-          "href": "/works/OL46876W/The_Lost_World?edition=ia%3Alemondeperdu0000mich",
+          "href": "/works/OL46876W/The_Lost_World?edition=ia%3Adeverlorenwereld0000cric",
           "title": "The Lost World",
           "authors": [
             "Michael Crichton"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL9760111M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL33897477M-M.jpg",
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 82
+          "readOrder": 83
         },
         {
           "key": "/works/OL46881W",
@@ -1056,7 +1065,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL32768116M-M.jpg",
           "firstPublishYear": 1990,
           "readAt": null,
-          "readOrder": 83
+          "readOrder": 84
         },
         {
           "key": "/works/OL17091839W",
@@ -1068,7 +1077,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL27193574M-M.jpg",
           "firstPublishYear": 2011,
           "readAt": null,
-          "readOrder": 84
+          "readOrder": 85
         },
         {
           "key": "/works/OL13646905W",
@@ -1080,31 +1089,31 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL23136686M-M.jpg",
           "firstPublishYear": 2009,
           "readAt": null,
-          "readOrder": 85
+          "readOrder": 86
         },
         {
           "key": "/works/OL20080323W",
-          "href": "/works/OL20080323W/Permanent_Record?edition=ia%3Apermanentrecord0000snow",
+          "href": "/works/OL20080323W/Permanent_Record?edition=ia%3Apermanentrecord0000snow_c1w5",
           "title": "Permanent Record",
           "authors": [
             "Edward Snowden"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27322193M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL28124257M-M.jpg",
           "firstPublishYear": 2019,
           "readAt": null,
-          "readOrder": 86
+          "readOrder": 87
         },
         {
           "key": "/works/OL2163623W",
-          "href": "/works/OL2163623W/Life_the_Universe_and_Everything?edition=ia%3Alifeuniverseever00adam",
+          "href": "/works/OL2163623W/Life_the_Universe_and_Everything?edition=ia%3Adaslebendasunive0000adam",
           "title": "Life, the Universe and Everything",
           "authors": [
             "Douglas Adams"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24212506M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL9040946M-M.jpg",
           "firstPublishYear": 1982,
           "readAt": null,
-          "readOrder": 87
+          "readOrder": 88
         },
         {
           "key": "/works/OL2163649W",
@@ -1116,7 +1125,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL9064209M-M.jpg",
           "firstPublishYear": 1979,
           "readAt": null,
-          "readOrder": 88
+          "readOrder": 89
         },
         {
           "key": "/works/OL2163655W",
@@ -1128,11 +1137,11 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL29575988M-M.jpg",
           "firstPublishYear": 1980,
           "readAt": null,
-          "readOrder": 89
+          "readOrder": 90
         },
         {
           "key": "/works/OL35621W",
-          "href": "/works/OL35621W/Bloodchild_and_other_stories?edition=ia%3Abloodchildothers0000butl",
+          "href": "/works/OL35621W/Bloodchild_and_other_stories?edition=ia%3Abloodchildothers00butl",
           "title": "Bloodchild and other stories",
           "authors": [
             "Octavia E. Butler",
@@ -1141,10 +1150,10 @@
             "Arrate Hidalgo",
             "Nadia Barkate"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL3403693M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL789245M-M.jpg",
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 90
+          "readOrder": 91
         },
         {
           "key": "/works/OL35618W",
@@ -1156,19 +1165,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL374094M-M.jpg",
           "firstPublishYear": 1998,
           "readAt": null,
-          "readOrder": 91
+          "readOrder": 92
         },
         {
           "key": "/works/OL158041W",
-          "href": "/works/OL158041W/Fear_and_Loathing_in_Las_Vegas?edition=ia%3Afearloathinginla00thom",
+          "href": "/works/OL158041W/Fear_and_Loathing_in_Las_Vegas?edition=ia%3Aisbn_0445084316",
           "title": "Fear and Loathing in Las Vegas",
           "authors": [
             "Hunter S. Thompson"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL67655M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL4896974M-M.jpg",
           "firstPublishYear": 1971,
           "readAt": null,
-          "readOrder": 92
+          "readOrder": 93
         },
         {
           "key": "/works/OL2172356W",
@@ -1180,7 +1189,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL24735408M-M.jpg",
           "firstPublishYear": 1968,
           "readAt": null,
-          "readOrder": 93
+          "readOrder": 94
         },
         {
           "key": "/works/OL15968W",
@@ -1192,20 +1201,20 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL28702572M-M.jpg",
           "firstPublishYear": 1540,
           "readAt": null,
-          "readOrder": 94
+          "readOrder": 95
         },
         {
           "key": "/works/OL35616W",
-          "href": "/works/OL35616W/Kindred?edition=ia%3Akindred0000octa",
+          "href": "/works/OL35616W/Kindred?edition=ia%3Akindredgroundbre0000octa",
           "title": "Kindred",
           "authors": [
             "Octavia E. Butler",
             "SparkNotes"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7666663M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL48176769M-M.jpg",
           "firstPublishYear": 1979,
           "readAt": null,
-          "readOrder": 95
+          "readOrder": 96
         },
         {
           "key": "/works/OL17336696W",
@@ -1217,7 +1226,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL27414102M-M.jpg",
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 96
+          "readOrder": 97
         },
         {
           "key": "/works/OL16806526W",
@@ -1229,7 +1238,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25430346M-M.jpg",
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 97
+          "readOrder": 98
         },
         {
           "key": "/works/OL16806525W",
@@ -1241,31 +1250,31 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25430345M-M.jpg",
           "firstPublishYear": 2012,
           "readAt": null,
-          "readOrder": 98
+          "readOrder": 99
         },
         {
           "key": "/works/OL59863W",
-          "href": "/works/OL59863W/The_Dispossessed?edition=ia%3Adispossessednove00legu",
+          "href": "/works/OL59863W/The_Dispossessed?edition=ia%3Adispossessed0000legu_e2z8",
           "title": "The Dispossessed: An Ambiguous Utopia",
           "authors": [
             "Ursula K. Le Guin"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL3684801M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL22131875M-M.jpg",
           "firstPublishYear": 1974,
           "readAt": null,
-          "readOrder": 99
+          "readOrder": 100
         },
         {
           "key": "/works/OL6216050W",
-          "href": "/works/OL6216050W/Stories_of_Your_Life_and_Others?edition=ia%3Aisbn_9780765304193",
+          "href": "/works/OL6216050W/Stories_of_Your_Life_and_Others?edition=ia%3Astoriesofyourlif0000tedc",
           "title": "Stories of Your Life and Others",
           "authors": [
             "Ted Chiang"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL3956559M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL51322405M-M.jpg",
           "firstPublishYear": 2002,
           "readAt": null,
-          "readOrder": 100
+          "readOrder": 101
         },
         {
           "key": "/works/OL46302W",
@@ -1277,19 +1286,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26868168M-M.jpg",
           "firstPublishYear": 1977,
           "readAt": null,
-          "readOrder": 101
+          "readOrder": 102
         },
         {
           "key": "/works/OL46309W",
-          "href": "/works/OL46309W/Second_Foundation?edition=ia%3Asecondfoundation0000isaa_y4n8",
+          "href": "/works/OL46309W/Second_Foundation?edition=ia%3Asecondefondation0000unse",
           "title": "Second Foundation",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL47314617M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25425943M-M.jpg",
           "firstPublishYear": 1953,
           "readAt": null,
-          "readOrder": 102
+          "readOrder": 103
         },
         {
           "key": "/works/OL20149336W",
@@ -1301,7 +1310,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL27329035M-M.jpg",
           "firstPublishYear": 2014,
           "readAt": null,
-          "readOrder": 103
+          "readOrder": 104
         },
         {
           "key": "/works/OL17415W",
@@ -1313,43 +1322,43 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL24937563M-M.jpg",
           "firstPublishYear": 1952,
           "readAt": null,
-          "readOrder": 104
+          "readOrder": 105
         },
         {
           "key": "/works/OL17268037W",
-          "href": "/works/OL17268037W/The_Peripheral?edition=ia%3Aperipheral0000unse",
+          "href": "/works/OL17268037W/The_Peripheral?edition=ia%3Aperipheral0000gibs_y7y2",
           "title": "The Peripheral",
           "authors": [
             "William Gibson"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25841079M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27176668M-M.jpg",
           "firstPublishYear": 2014,
-          "readAt": null,
-          "readOrder": 105
-        },
-        {
-          "key": "/works/OL40873W",
-          "href": "/works/OL40873W/The_Road?edition=ia%3Aroad0000mcca_z2u4",
-          "title": "The Road",
-          "authors": [
-            "Cormac McCarthy"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL22561333M-M.jpg",
-          "firstPublishYear": 2006,
           "readAt": null,
           "readOrder": 106
         },
         {
+          "key": "/works/OL40873W",
+          "href": "/works/OL40873W/The_Road?edition=ia%3Aroad0000mcca_z7i3",
+          "title": "The Road",
+          "authors": [
+            "Cormac McCarthy"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL32029168M-M.jpg",
+          "firstPublishYear": 2006,
+          "readAt": null,
+          "readOrder": 107
+        },
+        {
           "key": "/works/OL17610507W",
-          "href": "/works/OL17610507W/Death's_End_(The_Three-Body_Problem_Series_Book_3)?edition=ia%3Alamortimmortelle0000unse",
+          "href": "/works/OL17610507W/Death's_End_(The_Three-Body_Problem_Series_Book_3)?edition=ia%3Ajenseitsderzeit0000unse",
           "title": "Death's End (The Three-Body Problem Series Book 3)",
           "authors": [
             "刘慈欣"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26700171M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL35692699M-M.jpg",
           "firstPublishYear": 2010,
           "readAt": null,
-          "readOrder": 107
+          "readOrder": 108
         },
         {
           "key": "/works/OL16314245W",
@@ -1361,11 +1370,11 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26700170M-M.jpg",
           "firstPublishYear": 2008,
           "readAt": null,
-          "readOrder": 108
+          "readOrder": 109
         },
         {
           "key": "/works/OL17267881W",
-          "href": "/works/OL17267881W/三体?edition=ia%3Asantidiancangban0000liuc",
+          "href": "/works/OL17267881W/三体?edition=ia%3Asantidiibusanti0000liuc",
           "title": "三体",
           "authors": [
             "刘慈欣",
@@ -1373,10 +1382,10 @@
             "Gwennaël Gaffric",
             "Marc Simonetti"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL30624206M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26951073M-M.jpg",
           "firstPublishYear": 2008,
           "readAt": null,
-          "readOrder": 109
+          "readOrder": 110
         },
         {
           "key": "/works/OL15000756W",
@@ -1388,43 +1397,43 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26502506M-M.jpg",
           "firstPublishYear": 2009,
           "readAt": null,
-          "readOrder": 110
+          "readOrder": 111
         },
         {
           "key": "/works/OL492642W",
-          "href": "/works/OL492642W/The_Last_Olympian?edition=ia%3Aboxijiekesenzhon0000rior",
+          "href": "/works/OL492642W/The_Last_Olympian?edition=ia%3Adieletztegottin0000rior",
           "title": "The Last Olympian",
           "authors": [
             "Rick Riordan"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27120014M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL42478363M-M.jpg",
           "firstPublishYear": 2009,
-          "readAt": null,
-          "readOrder": 111
-        },
-        {
-          "key": "/works/OL492640W",
-          "href": "/works/OL492640W/The_Battle_of_the_Labyrinth?edition=ia%3Adestrijdomhetlab0000rior",
-          "title": "The Battle of the Labyrinth",
-          "authors": [
-            "Rick Riordan"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27345416M-M.jpg",
-          "firstPublishYear": 2005,
           "readAt": null,
           "readOrder": 112
         },
         {
+          "key": "/works/OL492640W",
+          "href": "/works/OL492640W/The_Battle_of_the_Labyrinth?edition=ia%3Aboxijiekexunyumi0000rick",
+          "title": "The Battle of the Labyrinth",
+          "authors": [
+            "Rick Riordan"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL42480188M-M.jpg",
+          "firstPublishYear": 2005,
+          "readAt": null,
+          "readOrder": 113
+        },
+        {
           "key": "/works/OL492647W",
-          "href": "/works/OL492647W/The_Titan's_Curse?edition=ia%3Alamaldiciondelti0000rick",
+          "href": "/works/OL492647W/The_Titan's_Curse?edition=ia%3Alamaldicindeltit0000rior",
           "title": "The Titan's Curse",
           "authors": [
             "Rick Riordan"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL41447235M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25899211M-M.jpg",
           "firstPublishYear": 2007,
           "readAt": null,
-          "readOrder": 113
+          "readOrder": 114
         },
         {
           "key": "/works/OL492646W",
@@ -1436,7 +1445,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25440628M-M.jpg",
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 114
+          "readOrder": 115
         },
         {
           "key": "/works/OL492658W",
@@ -1448,31 +1457,31 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL3439844M-M.jpg",
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 115
+          "readOrder": 116
         },
         {
           "key": "/works/OL64365W",
-          "href": "/works/OL64365W/Brave_New_World?edition=ia%3Ameilixinshijie0000huxl",
+          "href": "/works/OL64365W/Brave_New_World?edition=ia%3Alemeilleurdesmon0000aldo",
           "title": "Brave New World",
           "authors": [
             "Aldous Huxley"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL23063511M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL8890320M-M.jpg",
           "firstPublishYear": 1932,
           "readAt": null,
-          "readOrder": 116
+          "readOrder": 117
         },
         {
           "key": "/works/OL82586W",
-          "href": "/works/OL82586W/Harry_Potter_and_the_Deathly_Hallows?edition=ia%3Aisbn_9780606379298",
+          "href": "/works/OL82586W/Harry_Potter_and_the_Deathly_Hallows?edition=ia%3Aharrypotterdeath0000rowl_n2u6",
           "title": "Harry Potter and the Deathly Hallows",
           "authors": [
             "J. K. Rowling"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL61068813M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL39794425M-M.jpg",
           "firstPublishYear": 2007,
           "readAt": null,
-          "readOrder": 117
+          "readOrder": 118
         },
         {
           "key": "/works/OL82565W",
@@ -1484,19 +1493,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL61090591M-M.jpg",
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 118
+          "readOrder": 119
         },
         {
           "key": "/works/OL82548W",
-          "href": "/works/OL82548W/Harry_Potter_and_the_Order_of_the_Phoenix?edition=ia%3Aharrypotterundde0000rowl_z3l1",
+          "href": "/works/OL82548W/Harry_Potter_and_the_Order_of_the_Phoenix?edition=ia%3Aharrypotterorde00rowl",
           "title": "Harry Potter and the Order of the Phoenix",
           "authors": [
             "J. K. Rowling"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL22816269M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24610609M-M.jpg",
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 119
+          "readOrder": 120
         },
         {
           "key": "/works/OL82560W",
@@ -1508,7 +1517,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL61089427M-M.jpg",
           "firstPublishYear": 2000,
           "readAt": null,
-          "readOrder": 120
+          "readOrder": 121
         },
         {
           "key": "/works/OL82536W",
@@ -1520,19 +1529,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL48101764M-M.jpg",
           "firstPublishYear": 1999,
           "readAt": null,
-          "readOrder": 121
+          "readOrder": 122
         },
         {
           "key": "/works/OL82537W",
-          "href": "/works/OL82537W/Harry_Potter_and_the_Chamber_of_Secrets?edition=ia%3Aisbn_9786041008465",
+          "href": "/works/OL82537W/Harry_Potter_and_the_Chamber_of_Secrets?edition=ia%3Aharrypotterchamb0000rowl_i3d9",
           "title": "Harry Potter and the Chamber of Secrets",
           "authors": [
             "J. K. Rowling"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL61067727M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL32371075M-M.jpg",
           "firstPublishYear": 1998,
           "readAt": null,
-          "readOrder": 122
+          "readOrder": 123
         },
         {
           "key": "/works/OL82563W",
@@ -1544,7 +1553,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL61057835M-M.jpg",
           "firstPublishYear": 1997,
           "readAt": null,
-          "readOrder": 123
+          "readOrder": 124
         },
         {
           "key": "/works/OL46917W",
@@ -1557,19 +1566,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL39479385M-M.jpg",
           "firstPublishYear": 1980,
           "readAt": null,
-          "readOrder": 124
+          "readOrder": 125
         },
         {
           "key": "/works/OL1846076W",
-          "href": "/works/OL1846076W/The_Giver?edition=ia%3Abwb_S0-BOD-943",
+          "href": "/works/OL1846076W/The_Giver?edition=ia%3Adadorderecuerdos0000lois",
           "title": "The Giver",
           "authors": [
             "Lois Lowry"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL57945037M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL38583713M-M.jpg",
           "firstPublishYear": 1993,
           "readAt": null,
-          "readOrder": 125
+          "readOrder": 126
         },
         {
           "key": "/works/OL1168007W",
@@ -1581,7 +1590,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL32627922M-M.jpg",
           "firstPublishYear": 1945,
           "readAt": null,
-          "readOrder": 126
+          "readOrder": 127
         },
         {
           "key": "/works/OL50283W",
@@ -1593,7 +1602,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL6783046M-M.jpg",
           "firstPublishYear": 1980,
           "readAt": null,
-          "readOrder": 127
+          "readOrder": 128
         },
         {
           "key": "/works/OL3926217W",
@@ -1606,7 +1615,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL6047735M-M.jpg",
           "firstPublishYear": 1948,
           "readAt": null,
-          "readOrder": 128
+          "readOrder": 129
         },
         {
           "key": "/works/OL46241W",
@@ -1618,7 +1627,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL9129665M-M.jpg",
           "firstPublishYear": 1950,
           "readAt": null,
-          "readOrder": 129
+          "readOrder": 130
         },
         {
           "key": "/works/OL46224W",
@@ -1630,7 +1639,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL26378295M-M.jpg",
           "firstPublishYear": 1945,
           "readAt": null,
-          "readOrder": 130
+          "readOrder": 131
         },
         {
           "key": "/works/OL46125W",
@@ -1642,43 +1651,43 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL47079543M-M.jpg",
           "firstPublishYear": 1951,
           "readAt": null,
-          "readOrder": 131
+          "readOrder": 132
         },
         {
           "key": "/works/OL98454W",
-          "href": "/works/OL98454W/Cat's_Cradle?edition=ia%3Acatscradle00kurt",
+          "href": "/works/OL98454W/Cat's_Cradle?edition=ia%3Acatscradle00vonn",
           "title": "Cat's Cradle",
           "authors": [
             "Kurt Vonnegut"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7517241M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24202926M-M.jpg",
           "firstPublishYear": 1963,
-          "readAt": null,
-          "readOrder": 132
-        },
-        {
-          "key": "/works/OL46377W",
-          "href": "/works/OL46377W/The_Robots_of_Dawn?edition=ia%3Alesrobotsdelaube0000asim",
-          "title": "The Robots of Dawn",
-          "authors": [
-            "Isaac Asimov"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26789647M-M.jpg",
-          "firstPublishYear": 1983,
           "readAt": null,
           "readOrder": 133
         },
         {
+          "key": "/works/OL46377W",
+          "href": "/works/OL46377W/The_Robots_of_Dawn?edition=ia%3Alosrobotsdelaman0000asim",
+          "title": "The Robots of Dawn",
+          "authors": [
+            "Isaac Asimov"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL9112146M-M.jpg",
+          "firstPublishYear": 1983,
+          "readAt": null,
+          "readOrder": 134
+        },
+        {
           "key": "/works/OL46398W",
-          "href": "/works/OL46398W/The_Naked_Sun?edition=ia%3Abwb_KR-304-978",
+          "href": "/works/OL46398W/The_Naked_Sun?edition=ia%3Aisbn_8476340974_0",
           "title": "The Naked Sun",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL47079550M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25759213M-M.jpg",
           "firstPublishYear": 1954,
           "readAt": null,
-          "readOrder": 134
+          "readOrder": 135
         },
         {
           "key": "/works/OL46877W",
@@ -1690,7 +1699,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL46915723M-M.jpg",
           "firstPublishYear": 1993,
           "readAt": null,
-          "readOrder": 135
+          "readOrder": 136
         },
         {
           "key": "/works/OL15894W",
@@ -1702,7 +1711,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL13635950M-M.jpg",
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 136
+          "readOrder": 137
         },
         {
           "key": "/works/OL2827199W",
@@ -1714,7 +1723,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL8580424M-M.jpg",
           "firstPublishYear": 2000,
           "readAt": null,
-          "readOrder": 137
+          "readOrder": 138
         },
         {
           "key": "/works/OL103123W",
@@ -1726,7 +1735,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL27198278M-M.jpg",
           "firstPublishYear": 1953,
           "readAt": null,
-          "readOrder": 138
+          "readOrder": 139
         },
         {
           "key": "/works/OL31157W",
@@ -1738,7 +1747,7 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL32170054M-M.jpg",
           "firstPublishYear": 1999,
           "readAt": null,
-          "readOrder": 139
+          "readOrder": 140
         },
         {
           "key": "/works/OL46909W",
@@ -1750,19 +1759,19 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL42517267M-M.jpg",
           "firstPublishYear": 1969,
           "readAt": null,
-          "readOrder": 140
+          "readOrder": 141
         },
         {
           "key": "/works/OL46401W",
-          "href": "/works/OL46401W/The_Caves_of_Steel?edition=ia%3Aisbn_9789875665019",
+          "href": "/works/OL46401W/The_Caves_of_Steel?edition=ia%3Alescavernesdacie0000isaa",
           "title": "The Caves of Steel",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL46966902M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL49357653M-M.jpg",
           "firstPublishYear": 1953,
           "readAt": null,
-          "readOrder": 141
+          "readOrder": 142
         },
         {
           "key": "/works/OL59800W",
@@ -1774,47 +1783,47 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL47362576M-M.jpg",
           "firstPublishYear": 1969,
           "readAt": null,
-          "readOrder": 142
+          "readOrder": 143
         },
         {
           "key": "/works/OL46913W",
-          "href": "/works/OL46913W/Congo?edition=ia%3Agangguojinghun0000keli",
+          "href": "/works/OL46913W/Congo?edition=ia%3Acongo0000cric_d2f4",
           "title": "Congo",
           "authors": [
             "Michael Crichton"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL31975979M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL22016128M-M.jpg",
           "firstPublishYear": 1980,
-          "readAt": null,
-          "readOrder": 143
-        },
-        {
-          "key": "/works/OL2163706W",
-          "href": "/works/OL2163706W/Works_(Hitch_Hiker's_Guide_to_the_Galaxy_Restaurant_at_the_End_of_the_Universe_Life_the_Universe_and?edition=ia%3Aultimatehitchhik0000adam_n0o9",
-          "title": "Works (Hitch Hiker's Guide to the Galaxy / Restaurant at the End of the Universe / Life, the Universe and Everything / So Long, and Thanks for All the Fish / Mostly Harmless / Young Zaphod Plays it Safe)",
-          "authors": [
-            "Douglas Adams"
-          ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7677549M-M.jpg",
-          "firstPublishYear": 1996,
           "readAt": null,
           "readOrder": 144
         },
         {
-          "key": "/works/OL35623W",
-          "href": "/works/OL35623W/Parable_of_the_Sower?edition=ia%3Aoctaviaebutlersp0000duff",
-          "title": "Parable of the Sower",
+          "key": "/works/OL2163706W",
+          "href": "/works/OL2163706W/Works_(Hitch_Hiker's_Guide_to_the_Galaxy_Restaurant_at_the_End_of_the_Universe_Life_the_Universe_and?edition=ia%3Aultimatehitchhik0000adam_j6z1",
+          "title": "Works (Hitch Hiker's Guide to the Galaxy / Restaurant at the End of the Universe / Life, the Universe and Everything / So Long, and Thanks for All the Fish / Mostly Harmless / Young Zaphod Plays it Safe)",
           "authors": [
-            "Octavia E. Butler"
+            "Douglas Adams"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27970132M-M.jpg",
-          "firstPublishYear": 1993,
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL3420524M-M.jpg",
+          "firstPublishYear": 1996,
           "readAt": null,
           "readOrder": 145
         },
         {
+          "key": "/works/OL35623W",
+          "href": "/works/OL35623W/Parable_of_the_Sower?edition=ia%3Aparableofsower0000butl",
+          "title": "Parable of the Sower",
+          "authors": [
+            "Octavia E. Butler"
+          ],
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL46938M-M.jpg",
+          "firstPublishYear": 1993,
+          "readAt": null,
+          "readOrder": 146
+        },
+        {
           "key": "/works/OL5748544W",
-          "href": "/works/OL5748544W/The_Pragmatic_Programmer?edition=ia%3Apragmaticprogram0000unse",
+          "href": "/works/OL5748544W/The_Pragmatic_Programmer?edition=ia%3Aisbn_9780201616224",
           "title": "The Pragmatic Programmer",
           "authors": [
             "Andy Hunt",
@@ -1822,22 +1831,22 @@
             "Dave Thomas",
             "David . Thomas"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27533114M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7408140M-M.jpg",
           "firstPublishYear": 1999,
           "readAt": null,
-          "readOrder": 146
+          "readOrder": 147
         },
         {
           "key": "/works/OL1168083W",
-          "href": "/works/OL1168083W/Nineteen_Eighty-Four?edition=ia%3Ayijiubasi0000orwe_y0s9",
+          "href": "/works/OL1168083W/Nineteen_Eighty-Four?edition=ia%3A19840000unse",
           "title": "Nineteen Eighty-Four",
           "authors": [
             "George Orwell"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL28309668M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25892628M-M.jpg",
           "firstPublishYear": 1949,
           "readAt": null,
-          "readOrder": 147
+          "readOrder": 148
         },
         {
           "key": "/works/OL278022W",
@@ -1851,10 +1860,10 @@
           "coverUrl": "https://covers.openlibrary.org/b/olid/OL25416125M-M.jpg",
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 148
+          "readOrder": 149
         }
       ],
-      "totalCount": 149
+      "totalCount": 150
     }
   }
 }
