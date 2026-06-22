@@ -39,14 +39,27 @@ export function SiteNavbar({
   const [isPaletteOpen, setPaletteOpen] = useState(false);
   const paletteRef = useRef<HTMLDivElement>(null);
   const isPersonalRoute = /\/personal(?:\/|$)/.test(pathname);
+  const isDataVisualizationsRoute = /\/data-visualizations(?:\/|$)/.test(pathname);
   const defaultModeColor = isDark ? "#f1f5f9" : "#0f172a";
 
   const tabs = [
-    { href: "/", label: "Professional", active: !isPersonalRoute },
+    {
+      href: "/",
+      label: "Professional",
+      compactLabel: "Work",
+      active: !isPersonalRoute && !isDataVisualizationsRoute
+    },
     {
       href: "/personal",
       label: "Personal",
+      compactLabel: "Personal",
       active: isPersonalRoute
+    },
+    {
+      href: "/data-visualizations",
+      label: "Dashboards",
+      compactLabel: "Dashboards",
+      active: isDataVisualizationsRoute
     }
   ];
   const textColorOptions: Array<{ value: TextColor; label: string; color: string }> = [
@@ -97,7 +110,8 @@ export function SiteNavbar({
             <Link
               key={tab.href}
               href={tab.href}
-              className={`flex-1 rounded-xl px-3 py-2 text-center text-sm font-semibold tracking-wide transition-colors md:px-4 md:text-base ${
+              aria-current={tab.active ? "page" : undefined}
+              className={`flex-1 rounded-xl px-2 py-2 text-center text-xs font-semibold tracking-wide transition-colors sm:text-sm md:px-4 md:text-base ${
                 tab.active
                   ? isDark
                     ? "bg-cyan-400/20 text-cyan-200"
@@ -107,7 +121,8 @@ export function SiteNavbar({
                     : "text-slate-700 hover:bg-slate-100"
               }`}
             >
-              {tab.label}
+              <span className="md:hidden">{tab.compactLabel}</span>
+              <span className="hidden md:inline">{tab.label}</span>
             </Link>
           ))}
         </nav>
