@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import type { CSSProperties } from "react";
 
 import { MotionSection } from "./motion/MotionSection";
 import { createStagger, itemVariants, springTransition } from "./motion/tokens";
@@ -8,6 +9,24 @@ import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 import type { Project } from "./types";
 
 const projectsStagger = createStagger(0.1, 0.08);
+const projectMetadata = [
+  {
+    accent: "var(--accent)",
+    tags: ["ETL", "ML Forecasting", "Tableau"]
+  },
+  {
+    accent: "var(--accent-three)",
+    tags: ["Data Pipeline", "AI Metadata", "Kaggle"]
+  },
+  {
+    accent: "var(--accent-two)",
+    tags: ["Middleware", "Research", "Databases"]
+  },
+  {
+    accent: "var(--accent)",
+    tags: ["Tableau", "Analytics", "Interactive"]
+  }
+] as const;
 
 type ProjectsSectionProps = {
   projects: Project[];
@@ -18,7 +37,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const { viewportFor } = useResponsiveViewport();
 
   return (
-    <MotionSection className="mt-12" delay={0.14}>
+    <MotionSection id="projects" className="mt-12 scroll-mt-32" delay={0.14}>
       <div className="portfolio-surface">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
@@ -42,7 +61,13 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             viewport={viewportFor(0.25, 0.12)}
           >
             <div className="grid gap-4 sm:grid-cols-2">
-              {projects.map((project) => (
+              {projects.map((project, index) => {
+                const metadata = projectMetadata[index % projectMetadata.length];
+                const projectCardStyle = {
+                  "--project-accent": metadata.accent
+                } as CSSProperties;
+
+                return (
                 <motion.article
                   key={project.title}
                   variants={itemVariants}
@@ -55,12 +80,23 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           transition: springTransition
                         }
                   }
-                  className="portfolio-card p-5"
+                  className="portfolio-card portfolio-card-accent flex min-h-full flex-col p-5"
+                  style={projectCardStyle}
                 >
                   <h3 className="text-base font-semibold tracking-tight md:text-lg">
                     {project.title}
                   </h3>
-                  <p className="portfolio-copy mt-2 text-sm">
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {metadata.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-[var(--border)] bg-[var(--surface-inset)] px-2 py-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.06em] text-[var(--text-muted)]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="portfolio-copy mt-3 flex-1 text-sm">
                     {project.description}
                   </p>
                   {project.link && (
@@ -79,7 +115,8 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                     </motion.a>
                   )}
                 </motion.article>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
         </div>

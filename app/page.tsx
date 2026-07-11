@@ -1,5 +1,6 @@
 "use client";
 
+import { AmbientPointerGlow } from "@/components/portfolio/AmbientPointerGlow";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
 import { EducationSection } from "@/components/portfolio/EducationSection";
 import { GitHubActivitySection } from "@/components/portfolio/GitHubActivitySection";
@@ -31,6 +32,7 @@ export default function HomePage() {
   return (
     <main className="portfolio-page relative">
       <ParallaxBackground isDark={isDark} />
+      <AmbientPointerGlow />
       <ScrollProgressBar />
       <SiteNavbar
         isDark={isDark}

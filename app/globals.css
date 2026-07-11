@@ -21,6 +21,8 @@
   --accent-ring: rgba(8, 145, 178, 0.34);
   --accent-two: #b7791f;
   --accent-two-soft: rgba(183, 121, 31, 0.1);
+  --accent-three: #2f8f72;
+  --accent-three-soft: rgba(47, 143, 114, 0.1);
   --shadow-soft: 0 24px 70px rgba(32, 70, 92, 0.14);
   --shadow-card: 0 14px 36px rgba(32, 70, 92, 0.11);
   --grid-line: rgba(10, 93, 116, 0.075);
@@ -63,6 +65,8 @@
   --accent-ring: rgba(103, 232, 249, 0.35);
   --accent-two: #fbbf24;
   --accent-two-soft: rgba(251, 191, 36, 0.11);
+  --accent-three: #34d399;
+  --accent-three-soft: rgba(52, 211, 153, 0.1);
   --shadow-soft: 0 28px 80px rgba(0, 0, 0, 0.46);
   --shadow-card: 0 20px 48px rgba(0, 0, 0, 0.28);
   --grid-line: rgba(125, 211, 252, 0.07);
@@ -89,6 +93,8 @@
     --accent-ring: rgba(103, 232, 249, 0.35);
     --accent-two: #fbbf24;
     --accent-two-soft: rgba(251, 191, 36, 0.11);
+    --accent-three: #34d399;
+    --accent-three-soft: rgba(52, 211, 153, 0.1);
     --shadow-soft: 0 28px 80px rgba(0, 0, 0, 0.46);
     --shadow-card: 0 20px 48px rgba(0, 0, 0, 0.28);
     --grid-line: rgba(125, 211, 252, 0.07);
@@ -112,6 +118,8 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
 
 @layer components {
   .portfolio-page {
+    --pointer-x: 50vw;
+    --pointer-y: 20vh;
     min-height: 100vh;
     overflow-x: clip;
     background:
@@ -179,6 +187,22 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
     transform: translateZ(0);
   }
 
+  .portfolio-pointer-glow {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      radial-gradient(
+        440px circle at var(--pointer-x) var(--pointer-y),
+        color-mix(in srgb, var(--accent) 16%, transparent),
+        transparent 58%
+      );
+    mix-blend-mode: plus-lighter;
+    opacity: 0.48;
+    transition: opacity var(--dur-base) var(--ease-smooth);
+  }
+
   .portfolio-surface,
   .portfolio-hero-surface {
     position: relative;
@@ -190,6 +214,10 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
       radial-gradient(circle at bottom right, var(--accent-two-soft), transparent 34%);
     box-shadow: var(--shadow-soft);
     backdrop-filter: blur(22px) saturate(1.16);
+  }
+
+  .portfolio-hero-surface {
+    isolation: isolate;
   }
 
   .portfolio-surface {
@@ -253,10 +281,35 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
 
   .portfolio-card:hover,
   .portfolio-card:focus-within {
+    transform: translateY(-2px);
     border-color: var(--border-strong);
     box-shadow:
       var(--shadow-card),
       0 0 0 1px color-mix(in srgb, var(--accent) 9%, transparent);
+  }
+
+  .portfolio-card-accent {
+    --project-accent: var(--accent);
+  }
+
+  .portfolio-card-accent::after {
+    content: "";
+    position: absolute;
+    inset: auto 1rem 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, var(--project-accent), transparent);
+    opacity: 0.72;
+    transform: scaleX(0.4);
+    transition:
+      opacity var(--dur-fast) var(--ease-smooth),
+      transform var(--dur-fast) var(--ease-out-soft);
+  }
+
+  .portfolio-card-accent:hover::after,
+  .portfolio-card-accent:focus-within::after {
+    opacity: 1;
+    transform: scaleX(1);
   }
 
   .portfolio-inset {
@@ -389,6 +442,171 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
     background: var(--accent);
     box-shadow: 0 0 16px var(--accent-ring);
   }
+
+  .portfolio-hero-orbit {
+    position: absolute;
+    inset: -18%;
+    border-radius: 999px;
+    background:
+      conic-gradient(from 90deg, transparent, color-mix(in srgb, var(--accent) 48%, transparent), transparent 35%, color-mix(in srgb, var(--accent-two) 42%, transparent), transparent 68%),
+      radial-gradient(circle, transparent 57%, color-mix(in srgb, var(--accent) 28%, transparent) 58% 59%, transparent 60%);
+    opacity: 0.78;
+    filter: blur(0.2px);
+    animation: portfolio-hero-orbit 18s linear infinite;
+  }
+
+  .portfolio-hero-orbit::after {
+    content: "";
+    position: absolute;
+    inset: 13%;
+    border: 1px solid var(--border-strong);
+    border-radius: inherit;
+    background:
+      linear-gradient(90deg, transparent 48%, var(--border-strong) 49% 51%, transparent 52%),
+      linear-gradient(0deg, transparent 48%, var(--border-strong) 49% 51%, transparent 52%);
+    opacity: 0.42;
+  }
+
+  .portfolio-hero-console {
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 84%, transparent), var(--surface-inset)),
+      radial-gradient(circle at 12% 0%, var(--accent-soft), transparent 42%);
+    box-shadow: var(--shadow-card);
+  }
+
+  .portfolio-console-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding: 0.65rem 0;
+    color: var(--text-soft);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+  }
+
+  .portfolio-console-row:first-child {
+    border-top: 0;
+  }
+
+  .portfolio-console-key {
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .dashboard-hero-grid {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .dashboard-signal-panel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 1.25rem;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 88%, transparent), var(--surface-inset)),
+      radial-gradient(circle at 16% 8%, var(--accent-soft), transparent 38%),
+      radial-gradient(circle at 86% 88%, var(--accent-three-soft), transparent 34%);
+    box-shadow: var(--shadow-card);
+  }
+
+  .dashboard-signal-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 22px 22px;
+    mask-image: radial-gradient(circle at 70% 40%, black, transparent 72%);
+    opacity: 0.88;
+  }
+
+  .dashboard-signal-row {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid var(--border);
+    padding: 0.85rem 0;
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.75rem;
+  }
+
+  .dashboard-signal-row:first-child {
+    border-top: 0;
+  }
+
+  .dashboard-signal-name {
+    color: var(--text-soft);
+    font-weight: 650;
+  }
+
+  .dashboard-signal-type {
+    color: var(--accent-strong);
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .dashboard-card {
+    isolation: isolate;
+  }
+
+  .dashboard-embed-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.15rem;
+  }
+
+  .dashboard-embed-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    border-radius: inherit;
+    box-shadow:
+      inset 0 1px 0 var(--highlight),
+      inset 0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent);
+  }
+
+  .dashboard-frame-chrome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in srgb, var(--surface-strong) 74%, transparent);
+    padding: 0.7rem 0.9rem;
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.68rem;
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .dashboard-frame-dots {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  .dashboard-frame-dots span {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 14px var(--accent-ring);
+  }
 }
 
 :where(a, button, [tabindex]):focus-visible {
@@ -408,6 +626,16 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
 
   to {
     background-position: 0 -120%;
+  }
+}
+
+@keyframes portfolio-hero-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -451,6 +679,10 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+
+  .portfolio-pointer-glow {
+    display: none;
+  }
 }
 
 @media (min-width: 768px) {
@@ -466,5 +698,24 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
   .portfolio-hero-surface {
     border-radius: 2rem;
     padding: 3.5rem 3rem;
+  }
+
+  .dashboard-hero-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .portfolio-console-row,
+  .dashboard-signal-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .portfolio-pointer-glow {
+    display: none;
   }
 }

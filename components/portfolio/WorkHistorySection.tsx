@@ -27,7 +27,7 @@ export function WorkHistorySection({
   const { viewportFor } = useResponsiveViewport();
 
   return (
-    <MotionSection className="mt-10" delay={0.08}>
+    <MotionSection id="experience" className="mt-10 scroll-mt-32" delay={0.08}>
       <div className="portfolio-surface">
         <div className="grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">

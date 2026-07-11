@@ -3,6 +3,7 @@
 import { ChessGamesSection } from "@/components/personal/ChessGamesSection";
 import { OpenLibraryBooksSection } from "@/components/personal/OpenLibraryBooksSection";
 import { OutdoorPhotographySection } from "@/components/personal/OutdoorPhotographySection";
+import { AmbientPointerGlow } from "@/components/portfolio/AmbientPointerGlow";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
 import { ParallaxBackground } from "@/components/portfolio/ParallaxBackground";
 import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
@@ -19,6 +20,7 @@ export default function PersonalPage() {
   return (
     <main className="portfolio-page relative">
       <ParallaxBackground isDark={isDark} />
+      <AmbientPointerGlow />
       <ScrollProgressBar />
       <SiteNavbar
         isDark={isDark}
@@ -38,7 +40,7 @@ export default function PersonalPage() {
               Personal Life
             </h1>
             <p className="portfolio-copy mx-auto mt-4 max-w-2xl text-base md:text-lg">
-              A collection of my interests outside of software engineering
+              A collection of my interests outside of work
             </p>
           </div>
         </section>

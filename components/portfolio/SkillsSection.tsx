@@ -19,7 +19,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   const { viewportFor } = useResponsiveViewport();
 
   return (
-    <MotionSection className="mt-10" delay={0.05}>
+    <MotionSection id="skills" className="mt-10 scroll-mt-32" delay={0.05}>
       <div className="portfolio-surface">
         <div>
           <p className="portfolio-eyebrow site-text-static">

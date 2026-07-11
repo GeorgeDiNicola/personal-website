@@ -10,6 +10,7 @@ type MotionSectionProps = {
   children: ReactNode;
   className?: string;
   delay?: number;
+  id?: string;
   once?: boolean;
   amount?: number;
 };
@@ -18,6 +19,7 @@ export function MotionSection({
   children,
   className,
   delay = 0,
+  id,
   once = true,
   amount = 0.2
 }: MotionSectionProps) {
@@ -25,11 +27,16 @@ export function MotionSection({
   const { viewportFor } = useResponsiveViewport();
 
   if (prefersReducedMotion) {
-    return <section className={className}>{children}</section>;
+    return (
+      <section id={id} className={className}>
+        {children}
+      </section>
+    );
   }
 
   return (
     <motion.section
+      id={id}
       className={className}
       initial="hidden"
       whileInView="show"

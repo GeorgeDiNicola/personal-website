@@ -37,7 +37,11 @@ export function SiteNavbar({
 }: SiteNavbarProps) {
   const pathname = usePathname();
   const [isPaletteOpen, setPaletteOpen] = useState(false);
+  const [isNavbarHidden, setNavbarHidden] = useState(false);
   const paletteRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<number | null>(null);
+  const isPaletteOpenRef = useRef(false);
+  const lastScrollYRef = useRef(0);
   const isPersonalRoute = /\/personal(?:\/|$)/.test(pathname);
   const isDataVisualizationsRoute = /\/data-visualizations(?:\/|$)/.test(pathname);
   const defaultModeColor = isDark ? "#f1f5f9" : "#0f172a";
@@ -96,8 +100,61 @@ export function SiteNavbar({
     };
   }, [isPaletteOpen]);
 
+  useEffect(() => {
+    isPaletteOpenRef.current = isPaletteOpen;
+  }, [isPaletteOpen]);
+
+  useEffect(() => {
+    const scrollActivationDistance = 96;
+    const scrollDeadZone = 6;
+
+    const updateNavbarVisibility = () => {
+      frameRef.current = null;
+      const currentScrollY = window.scrollY;
+
+      if (isPaletteOpenRef.current) {
+        lastScrollYRef.current = currentScrollY;
+        return;
+      }
+
+      const scrollDelta = currentScrollY - lastScrollYRef.current;
+      const isScrollingDown = scrollDelta > scrollDeadZone;
+      const isScrollingUp = scrollDelta < -scrollDeadZone;
+
+      if (currentScrollY <= scrollActivationDistance || isScrollingUp) {
+        setNavbarHidden(false);
+      } else if (isScrollingDown) {
+        setNavbarHidden(true);
+      }
+
+      lastScrollYRef.current = currentScrollY;
+    };
+
+    const onScroll = () => {
+      if (frameRef.current === null) {
+        frameRef.current = window.requestAnimationFrame(updateNavbarVisibility);
+      }
+    };
+
+    lastScrollYRef.current = window.scrollY;
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+
+      if (frameRef.current !== null) {
+        window.cancelAnimationFrame(frameRef.current);
+      }
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 w-full px-3 pt-3 md:px-5 md:pt-4">
+    <header
+      className={`sticky top-0 z-40 w-full px-3 pt-3 transition duration-300 ease-[var(--ease-out-soft)] md:px-5 md:pt-4 ${
+        isNavbarHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
+      }`}
+      onFocusCapture={() => setNavbarHidden(false)}
+    >
       <div
         className="mx-auto flex w-full max-w-6xl items-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-2 py-1.5 shadow-[var(--shadow-card)] backdrop-blur-2xl md:px-3"
       >
@@ -129,7 +186,10 @@ export function SiteNavbar({
         <div className="relative shrink-0" ref={paletteRef}>
           <button
             type="button"
-            onClick={() => setPaletteOpen((open) => !open)}
+            onClick={() => {
+              setNavbarHidden(false);
+              setPaletteOpen((open) => !open);
+            }}
             aria-haspopup="menu"
             aria-expanded={isPaletteOpen}
             aria-label="Open text color palette"
