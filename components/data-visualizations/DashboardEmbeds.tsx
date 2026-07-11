@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-
-const flourishScriptUrl = "https://public.flourish.studio/resources/embed.js";
+const worldBankDashboardEmbedUrl = "https://flo.uri.sh/visualisation/29463966/embed";
 const pokemonDashboardUrl =
   "https://public.tableau.com/app/profile/george.dinicola/viz/pokemon_analysis/PokemonRankings";
 const pokemonDashboardEmbedUrl =
@@ -13,35 +11,15 @@ const collegeMajorSalariesDashboardEmbedUrl =
   "https://public.tableau.com/views/CollegeMajorsMedianStartingandMid-CareerSalaries/CollegeMajorSalaries?:showVizHome=no&:embed=true&:toolbar=yes";
 
 function FlourishEmbed() {
-  const embedRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const scriptElement = document.createElement("script");
-    scriptElement.src = flourishScriptUrl;
-    scriptElement.async = true;
-    embedRef.current?.appendChild(scriptElement);
-
-    return () => {
-      scriptElement.remove();
-    };
-  }, []);
-
   return (
     <div className="portfolio-inset overflow-hidden">
-      <div
-        ref={embedRef}
-        className="flourish-embed flourish-bar-chart-race min-h-[420px]"
-        data-src="visualisation/29463966"
-      >
-        <noscript>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="https://public.flourish.studio/visualisation/29463966/thumbnail"
-            width="100%"
-            alt="bar-chart-race visualization"
-          />
-        </noscript>
-      </div>
+      <iframe
+        src={worldBankDashboardEmbedUrl}
+        title="Animated World Bank bar chart race"
+        className="h-[520px] w-full md:h-[640px]"
+        loading="lazy"
+        sandbox="allow-same-origin allow-forms allow-scripts allow-downloads allow-popups allow-popups-to-escape-sandbox allow-top-navigation-by-user-activation"
+      />
     </div>
   );
 }
