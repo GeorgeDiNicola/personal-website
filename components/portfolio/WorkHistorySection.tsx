@@ -89,6 +89,20 @@ export function WorkHistorySection({
               whileInView={prefersReducedMotion ? undefined : "show"}
               viewport={viewportFor(0.3, 0.14)}
             />
+            <motion.div
+              aria-hidden="true"
+              className={`absolute top-1 bottom-1 left-2 w-px origin-top rounded-full ${
+                prefersReducedMotion ? "" : "portfolio-timeline-flow"
+              } ${
+                isDark
+                  ? "bg-gradient-to-b from-transparent via-amber-200 to-transparent"
+                  : "bg-gradient-to-b from-transparent via-amber-500 to-transparent"
+              }`}
+              variants={timelineLineVariants}
+              initial={prefersReducedMotion ? false : "hidden"}
+              whileInView={prefersReducedMotion ? undefined : "show"}
+              viewport={viewportFor(0.3, 0.14)}
+            />
 
             <motion.div
               className="space-y-8"
@@ -120,8 +134,32 @@ export function WorkHistorySection({
                     }`}
                     initial={prefersReducedMotion ? false : { scale: 0.8, opacity: 0 }}
                     whileInView={prefersReducedMotion ? {} : { scale: 1, opacity: 1 }}
+                    animate={
+                      prefersReducedMotion
+                        ? undefined
+                        : {
+                            boxShadow: isDark
+                              ? [
+                                  "0 0 0 0 rgba(251, 191, 36, 0)",
+                                  "0 0 0 7px rgba(251, 191, 36, 0.12)",
+                                  "0 0 0 0 rgba(251, 191, 36, 0)"
+                                ]
+                              : [
+                                  "0 0 0 0 rgba(217, 119, 6, 0)",
+                                  "0 0 0 7px rgba(217, 119, 6, 0.12)",
+                                  "0 0 0 0 rgba(217, 119, 6, 0)"
+                                ]
+                          }
+                    }
                     viewport={viewportFor(0.4, 0.16)}
-                    transition={{ duration: 0.35 }}
+                    transition={{
+                      boxShadow: {
+                        duration: 2.8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                      },
+                      duration: 0.35
+                    }}
                   />
                   <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
                     <h3 className="text-lg font-semibold">

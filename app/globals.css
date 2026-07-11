@@ -42,6 +42,21 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
   color: var(--site-text-color) !important;
 }
 
+.portfolio-timeline-flow {
+  animation: portfolio-timeline-flow 3.4s var(--ease-out-soft) infinite;
+  background-size: 100% 220%;
+}
+
+@keyframes portfolio-timeline-flow {
+  from {
+    background-position: 0 120%;
+  }
+
+  to {
+    background-position: 0 -120%;
+  }
+}
+
 .open-library-3d-wrap {
   perspective: 1200px;
   perspective-origin: 50% 50%;
