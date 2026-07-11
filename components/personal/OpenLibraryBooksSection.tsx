@@ -117,7 +117,7 @@ export function OpenLibraryBooksSection({
       <div className="space-y-6">
         {usernameMismatch && process.env.NODE_ENV === 'development' ? (
           <div
-            className={`rounded-2xl border p-4 text-sm ${
+            className={`portfolio-card p-4 text-sm ${
               isDark
                 ? "border-amber-700/70 bg-amber-900/20 text-amber-200"
                 : "border-amber-300 bg-amber-50 text-amber-900"
@@ -130,9 +130,7 @@ export function OpenLibraryBooksSection({
 
         {totalBooks === 0 ? (
           <div
-            className={`rounded-2xl border border-dashed p-5 text-sm ${
-              isDark ? "border-slate-600 text-slate-300" : "border-slate-300 text-slate-700"
-            }`}
+            className="portfolio-inset border-dashed p-5 text-sm text-[var(--text-soft)]"
           >
             No generated Open Library books are available yet.
           </div>
@@ -148,12 +146,10 @@ export function OpenLibraryBooksSection({
           return (
             <section key={key} className="space-y-3">
               <div className="flex items-center justify-between gap-3">
-                <h3 className="text-lg font-semibold md:text-xl">{title}</h3>
-                <p
-                  className={`text-xs font-medium uppercase tracking-wide ${
-                    isDark ? "text-slate-400" : "text-slate-500"
-                  }`}
-                >
+                <h3 className="text-lg font-semibold tracking-tight md:text-xl">
+                  {title}
+                </h3>
+                <p className="portfolio-muted font-mono text-xs font-medium uppercase tracking-wide">
                   {displayBookCount} book{displayBookCount === 1 ? "" : "s"}
                 </p>
               </div>
@@ -173,17 +169,13 @@ export function OpenLibraryBooksSection({
                           href={toAbsoluteOpenLibraryUrl(book.href)}
                           target="_blank"
                           rel="noreferrer"
-                          className={`open-library-book-card group block h-full rounded-2xl border p-2 ${
+                          className={`portfolio-card open-library-book-card group block h-full p-2 ${
                             isDark
-                              ? "border-slate-700 bg-slate-900/75 hover:border-cyan-300/60"
-                              : "border-slate-300 bg-white/90 hover:border-cyan-600/60"
+                              ? "hover:border-cyan-300/70"
+                              : "hover:border-cyan-700/60"
                           }`}
                         >
-                          <div
-                            className={`overflow-hidden rounded-xl border ${
-                              isDark ? "border-slate-700" : "border-slate-200"
-                            }`}
-                          >
+                          <div className="portfolio-inset overflow-hidden">
                             <div className="relative aspect-[2/3] w-full">
                               <Image
                                 src={coverSrc}
@@ -207,11 +199,11 @@ export function OpenLibraryBooksSection({
                             <p className="overflow-hidden text-sm font-semibold leading-tight [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:2]">
                               {book.title}
                             </p>
-                            <p className={`truncate text-xs ${isDark ? "text-slate-300" : "text-slate-700"}`}>
+                            <p className="portfolio-copy truncate text-xs">
                               {book.authors.length > 0 ? book.authors.join(", ") : "Unknown author"}
                             </p>
                             {book.firstPublishYear ? (
-                              <p className={`text-xs ${isDark ? "text-slate-400" : "text-slate-500"}`}>
+                              <p className="portfolio-muted font-mono text-xs">
                                 First published {book.firstPublishYear}
                               </p>
                             ) : null}
@@ -223,9 +215,7 @@ export function OpenLibraryBooksSection({
                 </ul>
               ) : (
                 <div
-                  className={`rounded-xl border border-dashed p-4 text-sm ${
-                    isDark ? "border-slate-700 text-slate-300" : "border-slate-300 text-slate-700"
-                  }`}
+                  className="portfolio-inset border-dashed p-4 text-sm text-[var(--text-soft)]"
                 >
                   {emptyMessage}
                 </div>
@@ -236,11 +226,7 @@ export function OpenLibraryBooksSection({
                   <button
                     type="button"
                     onClick={() => handleLoadMore(key)}
-                    className={`min-w-40 rounded-xl border px-6 py-3 text-sm font-semibold transition-colors ${
-                      isDark
-                        ? "border-slate-600 text-slate-200 hover:bg-slate-800"
-                        : "border-slate-300 text-slate-700 hover:bg-slate-100"
-                    }`}
+                    className="portfolio-control min-w-40 rounded-xl px-6 py-3 text-sm font-semibold"
                   >
                     Load More
                   </button>

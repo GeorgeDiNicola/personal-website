@@ -97,13 +97,9 @@ export function SiteNavbar({
   }, [isPaletteOpen]);
 
   return (
-    <header className="relative z-40 w-full pt-3 md:pt-4">
+    <header className="sticky top-0 z-40 w-full px-3 pt-3 md:px-5 md:pt-4">
       <div
-        className={`flex w-full items-center gap-2 border px-2 py-1.5 backdrop-blur-xl md:px-3 ${
-          isDark
-            ? "border-slate-700/80 bg-slate-900/70"
-            : "border-slate-200 bg-white/80"
-        }`}
+        className="mx-auto flex w-full max-w-6xl items-center gap-2 rounded-2xl border border-[var(--border)] bg-[var(--surface)] px-2 py-1.5 shadow-[var(--shadow-card)] backdrop-blur-2xl md:px-3"
       >
         <nav aria-label="Main" className="flex min-w-0 flex-1 gap-1">
           {tabs.map((tab) => (
@@ -111,16 +107,20 @@ export function SiteNavbar({
               key={tab.href}
               href={tab.href}
               aria-current={tab.active ? "page" : undefined}
-              className={`flex-1 rounded-xl px-2 py-2 text-center text-xs font-semibold tracking-wide transition-colors sm:text-sm md:px-4 md:text-base ${
+              className={`relative flex-1 overflow-hidden rounded-xl px-2 py-2 text-center text-xs font-semibold tracking-wide transition-all duration-200 sm:text-sm md:px-4 md:text-base ${
                 tab.active
-                  ? isDark
-                    ? "bg-cyan-400/20 text-cyan-200"
-                    : "bg-cyan-100 text-cyan-800"
+                  ? "bg-[var(--accent-soft)] text-[var(--accent-strong)] shadow-[inset_0_1px_0_var(--highlight)]"
                   : isDark
-                    ? "text-slate-300 hover:bg-slate-800/70"
-                    : "text-slate-700 hover:bg-slate-100"
+                    ? "text-slate-300 hover:bg-white/[0.04] hover:text-slate-100"
+                    : "text-slate-700 hover:bg-slate-900/[0.04] hover:text-slate-950"
               }`}
             >
+              {tab.active ? (
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-3 bottom-0 h-px bg-[linear-gradient(90deg,transparent,var(--accent),transparent)]"
+                />
+              ) : null}
               <span className="md:hidden">{tab.compactLabel}</span>
               <span className="hidden md:inline">{tab.label}</span>
             </Link>
@@ -134,14 +134,10 @@ export function SiteNavbar({
             aria-expanded={isPaletteOpen}
             aria-label="Open text color palette"
             title="Open text color palette"
-            className={`inline-flex h-10 w-10 items-center justify-center rounded-full border transition-colors ${
-              isDark
-                ? "border-slate-600 bg-slate-800"
-                : "border-slate-300 bg-slate-100"
-            }`}
+            className="portfolio-icon-button inline-flex h-10 w-10 items-center justify-center rounded-full"
           >
             <span
-              className="block h-4 w-4 rounded-full border border-black/30"
+              className="block h-4 w-4 rounded-full border border-black/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.55)]"
               style={{ backgroundColor: selectedColorOption.color }}
             />
           </button>
@@ -149,11 +145,7 @@ export function SiteNavbar({
             role="menu"
             aria-label="Website text color"
             aria-hidden={!isPaletteOpen}
-            className={`absolute right-0 top-full z-50 mt-2 flex origin-top-right flex-col gap-1.5 rounded-xl border p-1.5 backdrop-blur-xl transition-all duration-200 ease-out ${
-              isDark
-                ? "border-slate-600 bg-slate-900/95"
-                : "border-slate-300 bg-white/95"
-            } ${
+            className={`absolute right-0 top-full z-50 mt-2 flex origin-top-right flex-col gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-1.5 shadow-[var(--shadow-card)] backdrop-blur-xl transition-all duration-200 ease-out ${
               isPaletteOpen
                 ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
                 : "pointer-events-none -translate-y-1 scale-95 opacity-0"
@@ -175,9 +167,7 @@ export function SiteNavbar({
                   tabIndex={isPaletteOpen ? 0 : -1}
                   className={`inline-flex h-7 w-7 items-center justify-center rounded-full transition ${
                     isSelected
-                      ? isDark
-                        ? "ring-2 ring-cyan-400 ring-offset-2 ring-offset-slate-900"
-                        : "ring-2 ring-cyan-500 ring-offset-2 ring-offset-white"
+                      ? "ring-2 ring-[var(--accent)] ring-offset-2 ring-offset-[var(--surface-strong)]"
                       : "opacity-90 hover:scale-105 hover:opacity-100"
                   }`}
                   aria-label={option.label}
@@ -197,13 +187,43 @@ export function SiteNavbar({
           onClick={() => onThemeChange(theme === "dark" ? "light" : "dark")}
           aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
           title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          className={`inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-lg transition-colors ${
-            isDark
-              ? "border-slate-600 bg-slate-800"
-              : "border-slate-300 bg-slate-100"
-          }`}
+          className="portfolio-icon-button inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
         >
-          {theme === "dark" ? "☀" : "☾"}
+          {theme === "dark" ? (
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 2v2" />
+              <path d="M12 20v2" />
+              <path d="m4.93 4.93 1.41 1.41" />
+              <path d="m17.66 17.66 1.41 1.41" />
+              <path d="M2 12h2" />
+              <path d="M20 12h2" />
+              <path d="m6.34 17.66-1.41 1.41" />
+              <path d="m19.07 4.93-1.41 1.41" />
+            </svg>
+          ) : (
+            <svg
+              aria-hidden="true"
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M12 3a6 6 0 0 0 9 7.5A8.5 8.5 0 1 1 12 3Z" />
+            </svg>
+          )}
         </button>
       </div>
     </header>

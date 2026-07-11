@@ -14,44 +14,15 @@ import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 
 const heroStagger = createStagger(0.12, 0.08);
 
-type HeroSectionProps = {
-  isDark: boolean;
-};
-
-export function HeroSection({ isDark }: HeroSectionProps) {
+export function HeroSection() {
   const prefersReducedMotion = useReducedMotion();
   const { viewportFor } = useResponsiveViewport();
 
   return (
     <MotionSection className="relative" amount={0.55}>
-      <motion.div
-        aria-hidden="true"
-        className={`pointer-events-none absolute -top-14 left-1/2 h-48 w-48 -translate-x-1/2 rounded-full blur-3xl ${
-          isDark ? "bg-cyan-500/15" : "bg-cyan-300/40"
-        }`}
-        initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
-        whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-        viewport={viewportFor(0.55, 0.2)}
-        transition={{ duration: 0.8, ease: motionEasing.outExpo }}
-      />
-
-      <div
-        className={`relative mx-auto max-w-4xl overflow-hidden rounded-[2rem] border px-6 py-10 text-center md:px-12 md:py-14 ${
-          isDark
-            ? "border-slate-700 bg-slate-900/75"
-            : "border-cyan-100 bg-gradient-to-br from-white via-cyan-50 to-amber-50"
-        }`}
-      >
-        <div
-          className={`pointer-events-none absolute inset-0 opacity-70 ${
-            isDark
-              ? "bg-[radial-gradient(circle_at_top,rgba(34,211,238,0.15),transparent_55%)]"
-              : "bg-[radial-gradient(circle_at_top,rgba(14,116,144,0.16),transparent_55%)]"
-          }`}
-        />
-
+      <div className="portfolio-hero-surface mx-auto max-w-4xl text-center">
         <motion.div
-          className="relative flex flex-col items-center gap-5"
+          className="flex flex-col items-center gap-5"
           variants={heroStagger}
           initial={prefersReducedMotion ? false : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "show"}
@@ -59,11 +30,7 @@ export function HeroSection({ isDark }: HeroSectionProps) {
         >
           <motion.div variants={itemVariants} className="relative">
             <motion.div
-              className={`absolute -inset-1 rounded-full blur-sm ${
-                isDark
-                  ? "bg-gradient-to-br from-cyan-300/50 to-amber-200/40"
-                  : "bg-gradient-to-br from-cyan-500/45 to-amber-400/45"
-              }`}
+              className="absolute -inset-2 rounded-full bg-[conic-gradient(from_210deg,var(--accent),transparent_35%,var(--accent-two),transparent_70%,var(--accent))] opacity-70 blur-sm"
               initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.8 }}
               whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
               viewport={viewportFor(0.55, 0.2)}
@@ -83,33 +50,25 @@ export function HeroSection({ isDark }: HeroSectionProps) {
                 width={168}
                 height={168}
                 priority
-                className={`relative h-32 w-32 rounded-full object-cover md:h-40 md:w-40 ${
-                  isDark ? "border-2 border-slate-800" : "border-2 border-white"
-                }`}
+                className="relative h-32 w-32 rounded-full border-2 border-[var(--surface-strong)] object-cover shadow-[0_18px_42px_rgba(0,0,0,0.22)] md:h-40 md:w-40"
               />
             </motion.div>
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className={`site-text-static text-sm font-medium uppercase tracking-[0.2em] ${
-              isDark ? "text-cyan-300" : "text-cyan-700"
-            }`}
+            className="portfolio-eyebrow site-text-static"
           >
             Professional Portfolio
           </motion.p>
           <motion.h1
             variants={itemVariants}
-            className="text-3xl font-bold leading-tight md:text-5xl"
+            className="text-4xl font-semibold leading-tight tracking-tight md:text-6xl"
           >
             George DiNicola
           </motion.h1>
-          <motion.div variants={itemVariants} className="max-w-3xl space-y-3">
-            <p
-              className={`text-base leading-relaxed md:text-lg ${
-                isDark ? "text-slate-300" : "text-slate-700"
-              }`}
-            >
+          <motion.div variants={itemVariants} className="max-w-3xl space-y-4">
+            <p className="portfolio-copy text-base md:text-lg">
               Software Engineer with 3+ years of experience. I specialize in
               production backend systems and data infrastructure, with interest
               in distributed systems, data engineering, and machine learning.

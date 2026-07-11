@@ -183,9 +183,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
     >
       {isPhotosLoading ? (
         <div
-          className={`rounded-2xl border border-dashed p-5 text-sm ${
-            isDark ? "border-slate-600 text-slate-300" : "border-slate-300 text-slate-700"
-          }`}
+          className="portfolio-inset border-dashed p-5 text-sm text-[var(--text-soft)]"
         >
           Loading photos...
         </div>
@@ -197,42 +195,28 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
           aria-label="Outdoor photo carousel"
         >
           <div className="flex items-center justify-between gap-3">
-            <p className={`text-sm ${isDark ? "text-slate-300" : "text-slate-700"}`}>
+            <p className="portfolio-panel-label site-text-static">
               Photo {normalizedPhotoIndex + 1} of {totalPhotos}
             </p>
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={goToPreviousPhoto}
-                className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
-                  isDark
-                    ? "border-slate-600 text-slate-200 hover:bg-slate-800"
-                    : "border-slate-300 text-slate-700 hover:bg-slate-100"
-                }`}
+                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
               >
                 Previous
               </button>
               <button
                 type="button"
                 onClick={goToNextPhoto}
-                className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
-                  isDark
-                    ? "border-slate-600 text-slate-200 hover:bg-slate-800"
-                    : "border-slate-300 text-slate-700 hover:bg-slate-100"
-                }`}
+                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
               >
                 Next
               </button>
             </div>
           </div>
 
-          <div
-            className={`overflow-hidden rounded-2xl border ${
-              isDark
-                ? "border-slate-600 bg-slate-950/90"
-                : "border-slate-300/60 bg-white"
-            }`}
-          >
+          <div className="portfolio-inset overflow-hidden">
             <button
               type="button"
               onClick={() => setIsPhotoLightboxOpen(true)}
@@ -268,8 +252,8 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                 <div className="flex justify-end pb-3">
                   <button
                     type="button"
-                    onClick={() => setIsPhotoLightboxOpen(false)}
-                    aria-label="Close expanded photo"
+                  onClick={() => setIsPhotoLightboxOpen(false)}
+                  aria-label="Close expanded photo"
                     className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-500 bg-slate-900/80 text-2xl leading-none text-slate-100 transition-colors hover:bg-slate-800"
                   >
                     ×
@@ -332,11 +316,11 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                   }}
                   onClick={() => setActivePhotoIndex(index)}
                   aria-label={`View photo ${index + 1}`}
-                  className={`relative h-16 w-24 overflow-hidden rounded-xl border transition-colors md:h-20 md:w-28 ${
+                  className={`relative h-16 w-24 overflow-hidden rounded-xl border bg-[var(--surface-inset)] transition-all duration-200 md:h-20 md:w-28 ${
                     index === normalizedPhotoIndex
                       ? isDark
-                        ? "border-cyan-300"
-                        : "border-cyan-700"
+                        ? "border-cyan-300 shadow-[0_0_0_3px_rgba(103,232,249,0.14)]"
+                        : "border-cyan-700 shadow-[0_0_0_3px_rgba(14,116,144,0.12)]"
                       : isDark
                         ? "border-slate-700 hover:border-slate-500"
                         : "border-slate-300 hover:border-slate-400"
@@ -358,9 +342,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
         </div>
       ) : (
         <div
-          className={`rounded-2xl border border-dashed p-5 text-sm ${
-            isDark ? "border-slate-600 text-slate-300" : "border-slate-300 text-slate-700"
-          }`}
+          className="portfolio-inset border-dashed p-5 text-sm text-[var(--text-soft)]"
         >
           <p className="font-semibold">Outdoor photo gallery placeholder</p>
           <p className="mt-2">

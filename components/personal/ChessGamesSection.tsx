@@ -76,49 +76,29 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
       {activeGameUrl ? (
         <div className="space-y-5">
           <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
-            <p className={`text-sm ${isDark ? "text-slate-300" : "text-slate-700"}`}>
+            <p className="portfolio-panel-label site-text-static">
               Game {activeGameIndex + 1} of {totalGames}
             </p>
             <div className="flex items-center gap-2">
               <button
                 type="button"
                 onClick={goToPreviousGame}
-                className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
-                  isDark
-                    ? "border-slate-600 text-slate-200 hover:bg-slate-800"
-                    : "border-slate-300 text-slate-700 hover:bg-slate-100"
-                }`}
+                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
               >
                 Previous
               </button>
               <button
                 type="button"
                 onClick={goToNextGame}
-                className={`rounded-lg border px-3 py-1.5 text-sm font-medium transition-colors ${
-                  isDark
-                    ? "border-slate-600 text-slate-200 hover:bg-slate-800"
-                    : "border-slate-300 text-slate-700 hover:bg-slate-100"
-                }`}
+                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
               >
                 Next
               </button>
             </div>
           </div>
 
-          <div
-            className={`mx-auto w-full max-w-[880px] rounded-3xl border p-2 shadow-lg md:p-3 ${
-              isDark
-                ? "border-slate-700 bg-gradient-to-b from-slate-900 to-slate-950 shadow-black/40"
-                : "border-cyan-200 bg-gradient-to-b from-white to-cyan-50 shadow-cyan-900/10"
-            }`}
-          >
-            <div
-              className={`overflow-hidden rounded-2xl border ${
-                isDark
-                  ? "border-slate-600 bg-slate-950"
-                  : "border-slate-300/60 bg-white"
-              }`}
-            >
+          <div className="portfolio-card mx-auto w-full max-w-[880px] p-2 md:p-3">
+            <div className="portfolio-inset overflow-hidden">
               <iframe
                 id={activeGameId}
                 title={`Chess game ${activeGameIndex + 1}`}
@@ -141,11 +121,11 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
                 type="button"
                 aria-label={`View chess game ${index + 1}`}
                 onClick={() => setActiveGameIndex(index)}
-                className={`h-2.5 w-7 rounded-full transition-colors ${
+                className={`h-2.5 w-7 rounded-full transition-all duration-200 ${
                   index === activeGameIndex
                     ? isDark
-                      ? "bg-cyan-300"
-                      : "bg-cyan-700"
+                      ? "bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.45)]"
+                      : "bg-cyan-700 shadow-[0_0_12px_rgba(14,116,144,0.25)]"
                     : isDark
                       ? "bg-slate-600 hover:bg-slate-500"
                       : "bg-slate-300 hover:bg-slate-400"
@@ -156,9 +136,7 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
         </div>
       ) : (
         <div
-          className={`rounded-2xl border border-dashed p-5 text-sm ${
-            isDark ? "border-slate-600 text-slate-300" : "border-slate-300 text-slate-700"
-          }`}
+          className="portfolio-inset border-dashed p-5 text-sm text-[var(--text-soft)]"
         >
           <p className="font-semibold">Chess.com embed placeholder</p>
         </div>

@@ -1,9 +1,30 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7fbff;
+  --foreground: #102033;
   --site-text-color: var(--foreground);
+
+  --page-bg: #f7fbff;
+  --page-bg-deep: #eaf5fb;
+  --surface: rgba(255, 255, 255, 0.82);
+  --surface-strong: rgba(255, 255, 255, 0.94);
+  --surface-muted: rgba(237, 247, 250, 0.74);
+  --surface-inset: rgba(231, 244, 248, 0.68);
+  --border: rgba(86, 115, 138, 0.2);
+  --border-strong: rgba(10, 93, 116, 0.32);
+  --text-soft: #31475c;
+  --text-muted: #607387;
+  --accent: #0e7490;
+  --accent-strong: #0f5f78;
+  --accent-soft: rgba(14, 116, 144, 0.1);
+  --accent-ring: rgba(8, 145, 178, 0.34);
+  --accent-two: #b7791f;
+  --accent-two-soft: rgba(183, 121, 31, 0.1);
+  --shadow-soft: 0 24px 70px rgba(32, 70, 92, 0.14);
+  --shadow-card: 0 14px 36px rgba(32, 70, 92, 0.11);
+  --grid-line: rgba(10, 93, 116, 0.075);
+  --highlight: rgba(255, 255, 255, 0.86);
 
   --dur-fast: 220ms;
   --dur-base: 420ms;
@@ -21,10 +42,57 @@
   --font-mono: var(--font-geist-mono);
 }
 
+:root[data-theme="dark"] {
+  --background: #060b12;
+  --foreground: #edf7fb;
+  --site-text-color: var(--foreground);
+
+  --page-bg: #050a11;
+  --page-bg-deep: #0d1722;
+  --surface: rgba(10, 18, 28, 0.78);
+  --surface-strong: rgba(12, 22, 34, 0.92);
+  --surface-muted: rgba(15, 29, 44, 0.68);
+  --surface-inset: rgba(3, 9, 18, 0.64);
+  --border: rgba(149, 185, 207, 0.17);
+  --border-strong: rgba(103, 232, 249, 0.28);
+  --text-soft: #b9c8d6;
+  --text-muted: #8597aa;
+  --accent: #67e8f9;
+  --accent-strong: #22d3ee;
+  --accent-soft: rgba(34, 211, 238, 0.11);
+  --accent-ring: rgba(103, 232, 249, 0.35);
+  --accent-two: #fbbf24;
+  --accent-two-soft: rgba(251, 191, 36, 0.11);
+  --shadow-soft: 0 28px 80px rgba(0, 0, 0, 0.46);
+  --shadow-card: 0 20px 48px rgba(0, 0, 0, 0.28);
+  --grid-line: rgba(125, 211, 252, 0.07);
+  --highlight: rgba(255, 255, 255, 0.08);
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme]) {
+    --background: #060b12;
+    --foreground: #edf7fb;
+    --page-bg: #050a11;
+    --page-bg-deep: #0d1722;
+    --surface: rgba(10, 18, 28, 0.78);
+    --surface-strong: rgba(12, 22, 34, 0.92);
+    --surface-muted: rgba(15, 29, 44, 0.68);
+    --surface-inset: rgba(3, 9, 18, 0.64);
+    --border: rgba(149, 185, 207, 0.17);
+    --border-strong: rgba(103, 232, 249, 0.28);
+    --text-soft: #b9c8d6;
+    --text-muted: #8597aa;
+    --accent: #67e8f9;
+    --accent-strong: #22d3ee;
+    --accent-soft: rgba(34, 211, 238, 0.11);
+    --accent-ring: rgba(103, 232, 249, 0.35);
+    --accent-two: #fbbf24;
+    --accent-two-soft: rgba(251, 191, 36, 0.11);
+    --shadow-soft: 0 28px 80px rgba(0, 0, 0, 0.46);
+    --shadow-card: 0 20px 48px rgba(0, 0, 0, 0.28);
+    --grid-line: rgba(125, 211, 252, 0.07);
+    --highlight: rgba(255, 255, 255, 0.08);
   }
 }
 
@@ -35,11 +103,297 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
 }
 
 body.site-text-color-active :where(p, li, span):not(.site-text-static) {
   color: var(--site-text-color) !important;
+}
+
+@layer components {
+  .portfolio-page {
+    min-height: 100vh;
+    overflow-x: clip;
+    background:
+      linear-gradient(180deg, var(--page-bg) 0%, var(--page-bg-deep) 46%, var(--page-bg) 100%);
+    color: var(--foreground);
+    transition:
+      background-color var(--dur-base) var(--ease-smooth),
+      color var(--dur-base) var(--ease-smooth);
+  }
+
+  .portfolio-content {
+    position: relative;
+    z-index: 10;
+    margin-inline: auto;
+    width: 100%;
+    max-width: 72rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .portfolio-content-spaced {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .portfolio-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .portfolio-backdrop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 20% 0%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 34%),
+      radial-gradient(ellipse at 82% 18%, color-mix(in srgb, var(--accent-two) 14%, transparent), transparent 35%),
+      linear-gradient(115deg, transparent 0 34%, color-mix(in srgb, var(--accent) 5%, transparent) 46%, transparent 62%),
+      linear-gradient(180deg, color-mix(in srgb, var(--highlight) 32%, transparent), transparent 34%);
+    opacity: 0.95;
+  }
+
+  .portfolio-backdrop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-position: top center;
+    background-size: 42px 42px;
+    mask-image: linear-gradient(to bottom, black, transparent 80%);
+  }
+
+  .portfolio-light-sweep {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(100deg, transparent 0 28%, color-mix(in srgb, var(--accent) 10%, transparent) 45%, transparent 64%),
+      repeating-linear-gradient(90deg, transparent 0 76px, color-mix(in srgb, var(--accent) 4%, transparent) 77px 78px);
+    opacity: 0.62;
+    transform: translateZ(0);
+  }
+
+  .portfolio-surface,
+  .portfolio-hero-surface {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 96%, transparent), var(--surface)),
+      radial-gradient(circle at top left, var(--accent-soft), transparent 36%),
+      radial-gradient(circle at bottom right, var(--accent-two-soft), transparent 34%);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(22px) saturate(1.16);
+  }
+
+  .portfolio-surface {
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  .portfolio-hero-surface {
+    border-radius: 1.75rem;
+    padding: 2.5rem 1.5rem;
+  }
+
+  .portfolio-surface::before,
+  .portfolio-hero-surface::before,
+  .portfolio-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, var(--highlight), transparent 24%),
+      linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 7%, transparent), transparent);
+    opacity: 0.72;
+  }
+
+  .portfolio-surface::after,
+  .portfolio-hero-surface::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(var(--grid-line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 28px 28px;
+    mask-image: linear-gradient(150deg, black, transparent 56%);
+    opacity: 0.72;
+  }
+
+  .portfolio-surface > *,
+  .portfolio-hero-surface > *,
+  .portfolio-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .portfolio-card {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background:
+      linear-gradient(180deg, var(--surface-strong), var(--surface-muted));
+    box-shadow: var(--shadow-card);
+    transition:
+      border-color var(--dur-fast) var(--ease-smooth),
+      background-color var(--dur-fast) var(--ease-smooth),
+      box-shadow var(--dur-fast) var(--ease-out-soft),
+      transform var(--dur-fast) var(--ease-out-soft);
+  }
+
+  .portfolio-card:hover,
+  .portfolio-card:focus-within {
+    border-color: var(--border-strong);
+    box-shadow:
+      var(--shadow-card),
+      0 0 0 1px color-mix(in srgb, var(--accent) 9%, transparent);
+  }
+
+  .portfolio-inset {
+    border: 1px solid var(--border);
+    border-radius: 1rem;
+    background: var(--surface-inset);
+  }
+
+  .portfolio-eyebrow {
+    color: var(--accent);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.74rem;
+    font-weight: 650;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .portfolio-copy {
+    color: var(--text-soft);
+    line-height: 1.72;
+  }
+
+  .portfolio-muted {
+    color: var(--text-muted);
+  }
+
+  .portfolio-chip,
+  .portfolio-chip-muted {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    padding: 0.34rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .portfolio-chip {
+    border-color: var(--border-strong);
+    background: var(--accent-soft);
+    color: var(--accent-strong);
+  }
+
+  .portfolio-chip-muted {
+    background: var(--surface-muted);
+    color: var(--text-soft);
+  }
+
+  .portfolio-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    border: 1px solid var(--border-strong);
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 74%, var(--accent-soft)), var(--accent-soft));
+    color: var(--accent-strong);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+    transition:
+      border-color var(--dur-fast) var(--ease-smooth),
+      background-color var(--dur-fast) var(--ease-smooth),
+      box-shadow var(--dur-fast) var(--ease-out-soft),
+      color var(--dur-fast) var(--ease-smooth);
+  }
+
+  .portfolio-action:hover {
+    border-color: color-mix(in srgb, var(--accent) 62%, var(--border-strong));
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+
+  .portfolio-icon-button,
+  .portfolio-quiet-button {
+    border: 1px solid var(--border);
+    background: var(--surface-strong);
+    color: var(--foreground);
+    box-shadow: 0 10px 24px color-mix(in srgb, var(--page-bg-deep) 22%, transparent);
+    transition:
+      transform var(--dur-fast) var(--ease-out-soft),
+      border-color var(--dur-fast) var(--ease-smooth),
+      background-color var(--dur-fast) var(--ease-smooth),
+      box-shadow var(--dur-fast) var(--ease-out-soft);
+  }
+
+  .portfolio-icon-button:hover,
+  .portfolio-quiet-button:hover {
+    border-color: var(--border-strong);
+    background: color-mix(in srgb, var(--surface-strong) 82%, var(--accent-soft));
+    box-shadow: 0 14px 34px color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+
+  .portfolio-control {
+    border: 1px solid var(--border);
+    background: var(--surface-muted);
+    color: var(--text-soft);
+    transition:
+      border-color var(--dur-fast) var(--ease-smooth),
+      background-color var(--dur-fast) var(--ease-smooth),
+      color var(--dur-fast) var(--ease-smooth);
+  }
+
+  .portfolio-control:hover {
+    border-color: var(--border-strong);
+    background: var(--accent-soft);
+    color: var(--foreground);
+  }
+
+  .portfolio-panel-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .portfolio-panel-label::before {
+    content: "";
+    width: 0.44rem;
+    height: 0.44rem;
+    border-radius: 999px;
+    background: var(--accent);
+    box-shadow: 0 0 16px var(--accent-ring);
+  }
+}
+
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .portfolio-timeline-flow {
@@ -96,5 +450,21 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .portfolio-content {
+    padding: 2.5rem 2.5rem 4rem;
+  }
+
+  .portfolio-surface {
+    border-radius: 1.75rem;
+    padding: 2rem;
+  }
+
+  .portfolio-hero-surface {
+    border-radius: 2rem;
+    padding: 3.5rem 3rem;
   }
 }

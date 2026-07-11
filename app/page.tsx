@@ -29,15 +29,9 @@ export default function HomePage() {
   }/${githubUsername}`;
 
   return (
-    <main
-      className={`relative min-h-screen overflow-x-clip transition-colors ${
-        isDark
-          ? "bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-slate-100"
-          : "bg-gradient-to-b from-amber-50 via-white to-cyan-50 text-slate-900"
-      }`}
-    >
+    <main className="portfolio-page relative">
       <ParallaxBackground isDark={isDark} />
-      <ScrollProgressBar isDark={isDark} />
+      <ScrollProgressBar />
       <SiteNavbar
         isDark={isDark}
         theme={theme}
@@ -46,21 +40,20 @@ export default function HomePage() {
         onTextColorChange={setTextColor}
       />
 
-      <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-12 pt-8 md:px-10 md:pb-16 md:pt-10">
-        <HeroSection isDark={isDark} />
+      <div className="portfolio-content">
+        <HeroSection />
         <WorkHistorySection isDark={isDark} workHistory={workHistory} />
         <EducationSection isDark={isDark} schools={schools} />
-        <SkillsSection isDark={isDark} skills={skills} />
+        <SkillsSection skills={skills} />
         <GitHubActivitySection
-          isDark={isDark}
           githubUsername={githubUsername}
           githubProfileUrl={githubProfileUrl}
           githubCalendarUrl={githubCalendarUrl}
         />
-        <ProjectsSection isDark={isDark} projects={projects} />
+        <ProjectsSection projects={projects} />
       </div>
 
-      <BackToTopButton isDark={isDark} />
+      <BackToTopButton />
     </main>
   );
 }

@@ -9,14 +9,12 @@ import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 const githubStagger = createStagger(0.12, 0.08);
 
 type GitHubActivitySectionProps = {
-  isDark: boolean;
   githubUsername: string;
   githubProfileUrl: string;
   githubCalendarUrl: string;
 };
 
 export function GitHubActivitySection({
-  isDark,
   githubUsername,
   githubProfileUrl,
   githubCalendarUrl
@@ -26,26 +24,9 @@ export function GitHubActivitySection({
 
   return (
     <MotionSection className="mt-12" delay={0.12}>
-      <div
-        className={`relative overflow-hidden rounded-3xl border p-6 md:p-8 ${
-          isDark
-            ? "border-slate-700 bg-slate-900/70"
-            : "border-cyan-100 bg-gradient-to-br from-white via-cyan-50 to-amber-50"
-        }`}
-      >
+      <div className="portfolio-surface">
         <motion.div
-          aria-hidden="true"
-          className={`pointer-events-none absolute -top-16 -right-16 h-48 w-48 rounded-full blur-3xl ${
-            isDark ? "bg-cyan-500/10" : "bg-cyan-300/30"
-          }`}
-          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
-          whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-          viewport={viewportFor(0.3, 0.14)}
-          transition={{ duration: 0.75 }}
-        />
-
-        <motion.div
-          className="relative space-y-5"
+          className="space-y-5"
           variants={githubStagger}
           initial={prefersReducedMotion ? false : "hidden"}
           whileInView={prefersReducedMotion ? undefined : "show"}
@@ -56,14 +37,10 @@ export function GitHubActivitySection({
             variants={itemVariants}
           >
             <div>
-              <p
-                className={`site-text-static text-sm font-medium uppercase tracking-[0.18em] ${
-                  isDark ? "text-cyan-300" : "text-cyan-700"
-                }`}
-              >
+              <p className="portfolio-eyebrow site-text-static">
                 GitHub
               </p>
-              <h2 className="mt-2 text-2xl font-semibold md:text-3xl">
+              <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
                 Activity
               </h2>
             </div>
@@ -76,11 +53,7 @@ export function GitHubActivitySection({
                   ? undefined
                   : { y: -2, x: 3, transition: springTransition }
               }
-              className={`inline-flex items-center rounded-full border px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.12em] transition ${
-                isDark
-                  ? "border-cyan-700/70 text-cyan-200 hover:bg-cyan-900/30"
-                  : "border-cyan-300 text-cyan-800 hover:bg-cyan-100/70"
-              }`}
+              className="portfolio-action px-3 py-1.5"
             >
               View Profile
             </motion.a>
@@ -88,11 +61,7 @@ export function GitHubActivitySection({
 
           <motion.div
             variants={itemVariants}
-            className={`overflow-hidden rounded-2xl border p-4 ${
-              isDark
-                ? "border-slate-700 bg-slate-950/40"
-                : "border-slate-200 bg-white/90"
-            }`}
+            className="portfolio-inset overflow-hidden p-4"
           >
             <motion.img
               src={githubCalendarUrl}

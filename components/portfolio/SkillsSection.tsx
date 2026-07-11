@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Image from "next/image";
 
 import { MotionSection } from "./motion/MotionSection";
 import { createStagger, itemVariants, springTransition } from "./motion/tokens";
@@ -10,49 +11,24 @@ import type { Skill } from "./types";
 const skillsStagger = createStagger(0.06, 0.04);
 
 type SkillsSectionProps = {
-  isDark: boolean;
   skills: Skill[];
 };
 
-export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
+export function SkillsSection({ skills }: SkillsSectionProps) {
   const prefersReducedMotion = useReducedMotion();
   const { viewportFor } = useResponsiveViewport();
 
   return (
     <MotionSection className="mt-10" delay={0.05}>
-      <div
-        className={`relative overflow-hidden rounded-3xl border p-6 md:p-8 ${
-          isDark
-            ? "border-slate-700 bg-slate-900/70"
-            : "border-cyan-100 bg-gradient-to-br from-white via-cyan-50 to-amber-50"
-        }`}
-      >
-        <motion.div
-          aria-hidden="true"
-          className={`pointer-events-none absolute -top-20 left-1/3 h-44 w-44 rounded-full blur-3xl ${
-            isDark ? "bg-cyan-500/10" : "bg-cyan-300/30"
-          }`}
-          initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.85 }}
-          whileInView={prefersReducedMotion ? {} : { opacity: 1, scale: 1 }}
-          viewport={viewportFor(0.4, 0.16)}
-          transition={{ duration: 0.7 }}
-        />
-        <div className="relative">
-          <p
-            className={`site-text-static text-sm font-medium uppercase tracking-[0.18em] ${
-              isDark ? "text-cyan-300" : "text-cyan-700"
-            }`}
-          >
+      <div className="portfolio-surface">
+        <div>
+          <p className="portfolio-eyebrow site-text-static">
             Skills
           </p>
-          <h2 className="mt-3 text-2xl font-semibold md:text-3xl">
+          <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
             Technical Toolkit
           </h2>
-          <p
-            className={`mt-3 max-w-3xl text-sm leading-relaxed ${
-              isDark ? "text-slate-300" : "text-slate-700"
-            }`}
-          >
+          <p className="portfolio-copy mt-3 max-w-3xl text-sm">
             Core technologies I use for backend systems, infrastructure, data
             workflows, and frontend development.
           </p>
@@ -73,29 +49,21 @@ export function SkillsSection({ isDark, skills }: SkillsSectionProps) {
                     ? undefined
                     : { y: -4, scale: 1.015, transition: springTransition }
                 }
-                className={`rounded-2xl border p-3 text-center transition-colors ${
-                  isDark
-                    ? "border-slate-700 bg-slate-900/80"
-                    : "border-slate-200 bg-white/90"
-                }`}
+                className="portfolio-card p-3 text-center"
               >
                 <div
-                  className={`mx-auto flex h-12 w-12 items-center justify-center rounded-xl ${
-                    isDark ? "bg-slate-800" : "bg-slate-100"
-                  }`}
+                  className="portfolio-inset mx-auto flex h-12 w-12 items-center justify-center"
                 >
-                  <img
+                  <Image
                     src={skill.logo}
                     alt={`${skill.name} logo`}
-                    loading="lazy"
+                    width={28}
+                    height={28}
+                    unoptimized
                     className="h-7 w-7 object-contain"
                   />
                 </div>
-                <p
-                  className={`mt-2 text-xs font-semibold md:text-sm ${
-                    isDark ? "text-slate-200" : "text-slate-800"
-                  }`}
-                >
+                <p className="mt-2 text-xs font-semibold text-[var(--text-soft)] md:text-sm">
                   {skill.name}
                 </p>
               </motion.article>

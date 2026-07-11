@@ -2,11 +2,7 @@
 
 import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 
-type ScrollProgressBarProps = {
-  isDark: boolean;
-};
-
-export function ScrollProgressBar({ isDark }: ScrollProgressBarProps) {
+export function ScrollProgressBar() {
   const prefersReducedMotion = useReducedMotion();
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -22,11 +18,7 @@ export function ScrollProgressBar({ isDark }: ScrollProgressBarProps) {
   return (
     <motion.div
       aria-hidden="true"
-      className={`fixed top-0 left-0 z-[60] h-1 w-full origin-left ${
-        isDark
-          ? "bg-gradient-to-r from-cyan-400 via-emerald-300 to-cyan-500"
-          : "bg-gradient-to-r from-cyan-600 via-emerald-500 to-cyan-700"
-      }`}
+      className="fixed top-0 left-0 z-[60] h-1 w-full origin-left bg-[linear-gradient(90deg,var(--accent),var(--accent-two),var(--accent))] shadow-[0_0_18px_var(--accent-ring)]"
       style={{ scaleX }}
     />
   );

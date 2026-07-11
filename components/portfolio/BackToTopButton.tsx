@@ -5,11 +5,7 @@ import { useState } from "react";
 
 import { springTransition } from "./motion/tokens";
 
-type BackToTopButtonProps = {
-  isDark: boolean;
-};
-
-export function BackToTopButton({ isDark }: BackToTopButtonProps) {
+export function BackToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
   const { scrollY } = useScroll();
   const prefersReducedMotion = useReducedMotion();
@@ -39,11 +35,7 @@ export function BackToTopButton({ isDark }: BackToTopButtonProps) {
               ? undefined
               : { scale: 0.94, transition: springTransition }
           }
-          className={`fixed right-4 bottom-4 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full border text-xl font-bold shadow-lg transition md:right-6 md:bottom-6 ${
-            isDark
-              ? "border-slate-600 bg-slate-900/90 text-slate-100 hover:bg-slate-800"
-              : "border-slate-300 bg-white/90 text-slate-900 hover:bg-slate-100"
-          }`}
+          className="portfolio-icon-button fixed right-4 bottom-4 z-50 inline-flex h-11 w-11 items-center justify-center rounded-full text-xl font-bold backdrop-blur-xl md:right-6 md:bottom-6"
         >
           <svg
             aria-hidden="true"
