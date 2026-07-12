@@ -3,6 +3,7 @@
 import { ChessGamesSection } from "@/components/personal/ChessGamesSection";
 import { OpenLibraryBooksSection } from "@/components/personal/OpenLibraryBooksSection";
 import { OutdoorPhotographySection } from "@/components/personal/OutdoorPhotographySection";
+import { PersonalHeroSection } from "@/components/personal/PersonalHeroSection";
 import { AmbientPointerGlow } from "@/components/portfolio/AmbientPointerGlow";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
 import { ParallaxBackground } from "@/components/portfolio/ParallaxBackground";
@@ -31,19 +32,7 @@ export default function PersonalPage() {
       />
 
       <div className="portfolio-content portfolio-content-spaced">
-        <section className="portfolio-hero-surface">
-          <div className="text-center">
-            <p className="portfolio-eyebrow site-text-static">
-              Personal
-            </p>
-            <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">
-              Personal Life
-            </h1>
-            <p className="portfolio-copy mx-auto mt-4 max-w-2xl text-base md:text-lg">
-              A collection of my interests outside of work
-            </p>
-          </div>
-        </section>
+        <PersonalHeroSection />
 
         <OutdoorPhotographySection isDark={isDark} />
         <ChessGamesSection isDark={isDark} />
