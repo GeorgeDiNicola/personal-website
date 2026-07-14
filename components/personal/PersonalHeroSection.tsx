@@ -8,7 +8,6 @@ type PersonalInterest = {
 };
 
 const personalInterests: PersonalInterest[] = [
-  { label: "Mountains", Icon: MountainIcon },
   { label: "Trees", Icon: TreesIcon },
   { label: "Photography", Icon: CameraIcon },
   { label: "Chess", Icon: ChessKnightIcon },
@@ -58,24 +57,6 @@ export function PersonalHeroSection() {
         </div>
       </div>
     </section>
-  );
-}
-
-function MountainIcon(props: SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.7"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M3 18.5 9.2 7.5l4.1 6.6 2.1-3.4 5.6 7.8H3Z" />
-      <path d="m7.3 18.5 3-5.2 2.1 3.2" />
-    </svg>
   );
 }
 

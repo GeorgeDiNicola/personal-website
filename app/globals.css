@@ -203,6 +203,195 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
     transition: opacity var(--dur-base) var(--ease-smooth);
   }
 
+  .portfolio-nav-shell {
+    position: relative;
+    overflow: visible;
+    border: 1px solid var(--border);
+    background:
+      linear-gradient(135deg, color-mix(in srgb, var(--surface-strong) 82%, transparent), var(--surface)),
+      radial-gradient(circle at 12% 0%, var(--accent-soft), transparent 38%),
+      radial-gradient(circle at 86% 100%, var(--accent-two-soft), transparent 34%);
+    box-shadow:
+      var(--shadow-card),
+      inset 0 1px 0 var(--highlight);
+    backdrop-filter: blur(24px) saturate(1.18);
+  }
+
+  .portfolio-nav-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    overflow: hidden;
+    background:
+      linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 10%, transparent), transparent),
+      repeating-linear-gradient(90deg, transparent 0 52px, color-mix(in srgb, var(--accent) 5%, transparent) 53px 54px);
+    opacity: 0.5;
+  }
+
+  .portfolio-nav-shell::after {
+    content: "";
+    position: absolute;
+    inset: auto 1rem 0;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-two), transparent);
+    opacity: 0.6;
+  }
+
+  .portfolio-nav-shell > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .portfolio-nav-brand {
+    min-height: 2.5rem;
+    color: var(--accent-strong);
+  }
+
+  .portfolio-nav-brand-mark {
+    display: inline-grid;
+    width: 2rem;
+    aspect-ratio: 1;
+    place-items: center;
+    border: 1px solid var(--border-strong);
+    border-radius: 0.8rem;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 86%, transparent), var(--accent-soft));
+    box-shadow:
+      inset 0 1px 0 var(--highlight),
+      0 0 24px color-mix(in srgb, var(--accent) 14%, transparent);
+    font-size: 0.72rem;
+    line-height: 1;
+  }
+
+  .portfolio-nav-tabs {
+    border: 1px solid color-mix(in srgb, var(--border) 72%, transparent);
+    border-radius: 1rem;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-inset) 74%, transparent), color-mix(in srgb, var(--surface-muted) 70%, transparent));
+    padding: 0.18rem;
+    box-shadow: inset 0 1px 0 color-mix(in srgb, var(--highlight) 54%, transparent);
+  }
+
+  .portfolio-nav-tab {
+    position: relative;
+    display: inline-flex;
+    min-width: 0;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 0.42rem;
+    overflow: hidden;
+    border: 1px solid transparent;
+    border-radius: 0.82rem;
+    padding: 0.58rem 0.5rem;
+    color: var(--text-soft);
+    font-size: 0.76rem;
+    font-weight: 720;
+    letter-spacing: 0.01em;
+    transition:
+      background-color var(--dur-fast) var(--ease-smooth),
+      color var(--dur-fast) var(--ease-smooth),
+      box-shadow var(--dur-fast) var(--ease-out-soft),
+      transform var(--dur-fast) var(--ease-out-soft);
+  }
+
+  .portfolio-nav-tab:hover {
+    background: color-mix(in srgb, var(--surface-strong) 58%, var(--accent-soft));
+    color: var(--foreground);
+    transform: translateY(-1px);
+  }
+
+  .portfolio-nav-tab-active {
+    border: 1px solid color-mix(in srgb, var(--accent) 34%, var(--border));
+    background:
+      radial-gradient(circle at 50% 0%, color-mix(in srgb, var(--accent) 20%, transparent), transparent 62%),
+      linear-gradient(180deg, color-mix(in srgb, var(--surface-strong) 84%, var(--accent-soft)), var(--accent-soft));
+    color: var(--accent-strong);
+    box-shadow:
+      inset 0 1px 0 var(--highlight),
+      0 10px 24px color-mix(in srgb, var(--accent) 10%, transparent);
+  }
+
+  .portfolio-nav-active-beam {
+    position: absolute;
+    inset: auto 0.85rem 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    box-shadow: 0 0 16px var(--accent-ring);
+  }
+
+  .portfolio-nav-tab-icon {
+    display: inline-grid;
+    width: 1.1rem;
+    aspect-ratio: 1;
+    place-items: center;
+    color: currentColor;
+    opacity: 0.86;
+  }
+
+  .portfolio-nav-tab-icon svg {
+    width: 1rem;
+    height: 1rem;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1.65;
+  }
+
+  .portfolio-nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .portfolio-nav-mode {
+    align-items: center;
+    gap: 0.4rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface-muted);
+    padding: 0.44rem 0.68rem;
+    color: var(--text-muted);
+    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.64rem;
+    font-weight: 760;
+    letter-spacing: 0.11em;
+    line-height: 1;
+    text-transform: uppercase;
+  }
+
+  .portfolio-nav-mode::before {
+    content: "";
+    width: 0.42rem;
+    height: 0.42rem;
+    border-radius: 999px;
+    background: var(--accent-two);
+    box-shadow: 0 0 14px color-mix(in srgb, var(--accent-two) 54%, transparent);
+  }
+
+  .portfolio-nav-mode-dark::before {
+    background: var(--accent);
+    box-shadow: 0 0 14px var(--accent-ring);
+  }
+
+  .portfolio-nav-control {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portfolio-nav-control::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: linear-gradient(180deg, var(--highlight), transparent 48%);
+    opacity: 0.55;
+  }
+
   .portfolio-surface,
   .portfolio-hero-surface {
     position: relative;
