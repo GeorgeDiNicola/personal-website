@@ -20,7 +20,10 @@ export type School = {
 export type Project = {
   title: string;
   description: string;
+  accent?: string;
+  featured?: boolean;
   link?: string;
+  tags?: string[];
 };
 
 export type Skill = {

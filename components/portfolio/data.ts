@@ -56,25 +56,35 @@ export const projects: Project[] = [
   {
     title: "Automated Jeopardy! Insights Dashboard & Predictive Machine Learning Model",
     description:
-      "Designed and built a Jeopardy! data system that automates ETL processes for a live Tableau dashboard and implements a self-developed machine learning model to forecast game outcomes for reigning champions."
+      "Designed and built a Jeopardy! data system that automates ETL processes for a live Tableau dashboard and implements a self-developed machine learning model to forecast game outcomes for reigning champions.",
+    accent: "var(--accent)",
+    featured: true,
+    tags: ["ETL", "ML Forecasting", "Tableau"]
   },
   {
     title: "Macroeconomic Data Pipeline - World Bank Dataset",
     description:
       "World Bank dataset generation via a custom software application that discovers and groups high-quality indicators with rules-based logic & artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. Currently has 13k+ views and 2.5k+ downloads.",
-    link: "https://www.kaggle.com/datasets/georgejdinicola/world-bank-indicators"
+    accent: "var(--accent-three)",
+    featured: true,
+    link: "https://www.kaggle.com/datasets/georgejdinicola/world-bank-indicators",
+    tags: ["Data Pipeline", "AI Metadata", "Kaggle"]
   },
   {
     title: "Blockchain-based Middleware for Relational Database Management Systems",
     description:
       "Built a middleware application design presented in research studies for internally tamper-proofing centralized and decentralized relational database management systems for Topics in Software Engineering final project at Columbia Univeristy.",
-    link: "https://github.com/GeorgeDiNicola/TDRB-Middleware-Extension"
+    accent: "var(--accent-two)",
+    link: "https://github.com/GeorgeDiNicola/TDRB-Middleware-Extension",
+    tags: ["Middleware", "Research", "Databases"]
   },
   {
     title: "Pokemon Rankings Dashboard",
     description:
       "An interactive Tableau Public dashboard that provides analysis of Pokemon statistics, allowing users to rank and compare Pokemon from different generations across all core battle dimensions.",
-    link: "https://public.tableau.com/app/profile/george.dinicola/viz/pokemon_analysis/PokemonRankings"
+    accent: "var(--accent)",
+    link: "https://public.tableau.com/app/profile/george.dinicola/viz/pokemon_analysis/PokemonRankings",
+    tags: ["Tableau", "Analytics", "Interactive"]
   }
 ];
 

@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { KeyboardEvent as ReactKeyboardEvent, TouchEvent as ReactTouchEvent } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 import { SectionCard } from "@/components/personal/SectionCard";
@@ -24,6 +25,10 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   const [isPhotosLoading, setIsPhotosLoading] = useState(true);
   const [isPhotoLightboxOpen, setIsPhotoLightboxOpen] = useState(false);
   const [outdoorPhotos, setOutdoorPhotos] = useState<OutdoorPhoto[]>([]);
+  const lightboxCloseButtonRef = useRef<HTMLButtonElement | null>(null);
+  const lightboxOpenButtonRef = useRef<HTMLButtonElement | null>(null);
+  const lightboxThumbnailStripRef = useRef<HTMLDivElement | null>(null);
+  const lightboxThumbnailButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const thumbnailStripRef = useRef<HTMLDivElement | null>(null);
   const thumbnailButtonRefs = useRef<Array<HTMLButtonElement | null>>([]);
   const lightboxTouchStartXRef = useRef<number | null>(null);
@@ -31,6 +36,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   const totalPhotos = outdoorPhotos.length;
   const normalizedPhotoIndex = totalPhotos > 0 ? activePhotoIndex % totalPhotos : 0;
   const activePhoto = outdoorPhotos[normalizedPhotoIndex];
+  const canUseDocument = typeof document !== "undefined";
 
   useEffect(() => {
     let isCancelled = false;
@@ -79,6 +85,14 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
       isCancelled = true;
     };
   }, []);
+
+  const closeLightbox = useCallback(() => {
+    setIsPhotoLightboxOpen(false);
+  }, []);
+
+  const openLightbox = () => {
+    setIsPhotoLightboxOpen(true);
+  };
 
   const goToPreviousPhoto = () => {
     if (!totalPhotos) return;
@@ -138,7 +152,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
     if (!isPhotoLightboxOpen) return;
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setIsPhotoLightboxOpen(false);
+      if (event.key === "Escape") closeLightbox();
       if (event.key === "ArrowLeft" && totalPhotos > 0) {
         event.preventDefault();
         setActivePhotoIndex((index) => (index - 1 + totalPhotos) % totalPhotos);
@@ -150,29 +164,45 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
     };
 
     const previousOverflow = document.body.style.overflow;
+    const lightboxOpenButton = lightboxOpenButtonRef.current;
     document.body.style.overflow = "hidden";
+    window.requestAnimationFrame(() => lightboxCloseButtonRef.current?.focus());
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      lightboxOpenButton?.focus();
     };
-  }, [isPhotoLightboxOpen, totalPhotos]);
+  }, [closeLightbox, isPhotoLightboxOpen, totalPhotos]);
 
   useEffect(() => {
     if (!totalPhotos) return;
-    const activeThumbnailButton = thumbnailButtonRefs.current[normalizedPhotoIndex];
-    const thumbnailStrip = thumbnailStripRef.current;
-    if (!activeThumbnailButton || !thumbnailStrip) return;
 
-    const targetLeft = activeThumbnailButton.offsetLeft
-      - thumbnailStrip.clientWidth / 2
-      + activeThumbnailButton.clientWidth / 2;
+    const centerActiveThumbnail = (
+      strip: HTMLDivElement | null,
+      button: HTMLButtonElement | null
+    ) => {
+      if (!button || !strip) return;
 
-    thumbnailStrip.scrollTo({
-      left: Math.max(0, targetLeft),
-      behavior: "smooth"
-    });
+      const targetLeft = button.offsetLeft
+        - strip.clientWidth / 2
+        + button.clientWidth / 2;
+
+      strip.scrollTo({
+        left: Math.max(0, targetLeft),
+        behavior: "smooth"
+      });
+    };
+
+    centerActiveThumbnail(
+      thumbnailStripRef.current,
+      thumbnailButtonRefs.current[normalizedPhotoIndex] ?? null
+    );
+    centerActiveThumbnail(
+      lightboxThumbnailStripRef.current,
+      lightboxThumbnailButtonRefs.current[normalizedPhotoIndex] ?? null
+    );
   }, [normalizedPhotoIndex, totalPhotos]);
 
   return (
@@ -202,24 +232,29 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
               <button
                 type="button"
                 onClick={goToPreviousPhoto}
-                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
+                aria-label="Previous photo"
+                title="Previous photo"
+                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
               >
-                Previous
+                <ChevronLeftIcon />
               </button>
               <button
                 type="button"
                 onClick={goToNextPhoto}
-                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
+                aria-label="Next photo"
+                title="Next photo"
+                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
               >
-                Next
+                <ChevronRightIcon />
               </button>
             </div>
           </div>
 
-          <div className="portfolio-inset overflow-hidden">
+          <div className="portfolio-inset outdoor-photo-stage overflow-hidden">
             <button
+              ref={lightboxOpenButtonRef}
               type="button"
-              onClick={() => setIsPhotoLightboxOpen(true)}
+              onClick={openLightbox}
               aria-label="Open larger photo"
               className="block w-full cursor-zoom-in"
             >
@@ -237,76 +272,112 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
             </button>
           </div>
 
-          {isPhotoLightboxOpen ? (
+          {canUseDocument && isPhotoLightboxOpen ? createPortal(
             <div
-              className="fixed inset-0 z-[100] bg-slate-950/90 px-2 py-4 sm:px-4 sm:py-8"
+              className="photo-lightbox fixed inset-0 z-[100]"
               role="dialog"
               aria-modal="true"
               aria-label="Expanded photo viewer"
-              onClick={() => setIsPhotoLightboxOpen(false)}
+              onClick={closeLightbox}
             >
-              <div
-                className="mx-auto flex h-full w-full max-w-6xl flex-col"
-                onClick={(event) => event.stopPropagation()}
+              <button
+                ref={lightboxCloseButtonRef}
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  closeLightbox();
+                }}
+                aria-label="Close expanded photo"
+                title="Close expanded photo"
+                className="photo-lightbox-control photo-lightbox-close"
               >
-                <div className="flex justify-end pb-3">
-                  <button
-                    type="button"
-                  onClick={() => setIsPhotoLightboxOpen(false)}
-                  aria-label="Close expanded photo"
-                    className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-500 bg-slate-900/80 text-2xl leading-none text-slate-100 transition-colors hover:bg-slate-800"
-                  >
-                    ×
-                  </button>
-                </div>
+                <CloseIcon />
+              </button>
 
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  goToPreviousPhoto();
+                }}
+                aria-label="Previous photo"
+                title="Previous photo"
+                className="photo-lightbox-control photo-lightbox-nav photo-lightbox-nav-previous"
+              >
+                <ChevronLeftIcon />
+              </button>
+
+              <div className="photo-lightbox-stage">
                 <div
-                  className="relative flex min-h-0 flex-1 items-center justify-center"
+                  className="photo-lightbox-image-area"
+                  onClick={(event) => event.stopPropagation()}
                   onTouchStart={onLightboxTouchStart}
                   onTouchEnd={onLightboxTouchEnd}
                 >
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      goToPreviousPhoto();
-                    }}
-                    aria-label="Previous photo"
-                    className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full border border-slate-500 bg-slate-900/80 px-3 py-2 text-xl text-slate-100 transition-colors hover:bg-slate-800 sm:left-3 md:left-6"
-                  >
-                    ‹
-                  </button>
-
                   <Image
                     src={activePhoto.src}
                     alt={activePhoto.alt}
-                    width={activePhoto.width}
-                    height={activePhoto.height}
+                    fill
                     sizes="(max-width: 768px) 95vw, 90vw"
                     unoptimized
                     quality={100}
                     priority
-                    className="h-auto max-h-full w-auto max-w-full object-contain"
+                    className="object-contain"
                   />
-
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      goToNextPhoto();
-                    }}
-                    aria-label="Next photo"
-                    className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full border border-slate-500 bg-slate-900/80 px-3 py-2 text-xl text-slate-100 transition-colors hover:bg-slate-800 sm:right-3 md:right-6"
-                  >
-                    ›
-                  </button>
                 </div>
               </div>
-            </div>
+
+              <button
+                type="button"
+                onClick={(event) => {
+                  event.stopPropagation();
+                  goToNextPhoto();
+                }}
+                aria-label="Next photo"
+                title="Next photo"
+                className="photo-lightbox-control photo-lightbox-nav photo-lightbox-nav-next"
+              >
+                <ChevronRightIcon />
+              </button>
+
+              <div
+                ref={lightboxThumbnailStripRef}
+                className="photo-lightbox-thumbnails"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <div className="flex w-max gap-2">
+                  {outdoorPhotos.map((photo, index) => (
+                    <button
+                      key={`lightbox-${photo.src}`}
+                      type="button"
+                      ref={(element) => {
+                        lightboxThumbnailButtonRefs.current[index] = element;
+                      }}
+                      onClick={() => setActivePhotoIndex(index)}
+                      aria-label={`View photo ${index + 1}`}
+                      className={`photo-lightbox-thumbnail ${
+                        index === normalizedPhotoIndex ? "photo-lightbox-thumbnail-active" : ""
+                      }`}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="88px"
+                        loading="lazy"
+                        quality={100}
+                        className="object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>,
+            document.body
           ) : null}
 
-          <div ref={thumbnailStripRef} className="overflow-x-auto pb-1">
-            <div className="flex w-max gap-3">
+          <div ref={thumbnailStripRef} className="outdoor-thumbnail-strip overflow-x-auto pb-1">
+            <div className="flex w-max gap-2.5 md:gap-3">
               {outdoorPhotos.map((photo, index) => (
                 <button
                   key={photo.src}
@@ -316,7 +387,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                   }}
                   onClick={() => setActivePhotoIndex(index)}
                   aria-label={`View photo ${index + 1}`}
-                  className={`relative h-16 w-24 overflow-hidden rounded-xl border bg-[var(--surface-inset)] transition-all duration-200 md:h-20 md:w-28 ${
+                  className={`outdoor-thumbnail-button relative h-16 w-24 overflow-hidden rounded-xl border bg-[var(--surface-inset)] transition-all duration-200 md:h-20 md:w-28 ${
                     index === normalizedPhotoIndex
                       ? isDark
                         ? "border-cyan-300 shadow-[0_0_0_3px_rgba(103,232,249,0.14)]"
@@ -355,5 +426,57 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
         </div>
       )}
     </SectionCard>
+  );
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.9"
+    >
+      <path d="m10 3.5-4.5 4.5 4.5 4.5" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.9"
+    >
+      <path d="m6 3.5 4.5 4.5-4.5 4.5" />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.9"
+    >
+      <path d="m4 4 8 8" />
+      <path d="m12 4-8 8" />
+    </svg>
   );
 }

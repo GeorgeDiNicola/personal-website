@@ -9,24 +9,6 @@ import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 import type { Project } from "./types";
 
 const projectsStagger = createStagger(0.1, 0.08);
-const projectMetadata = [
-  {
-    accent: "var(--accent)",
-    tags: ["ETL", "ML Forecasting", "Tableau"]
-  },
-  {
-    accent: "var(--accent-three)",
-    tags: ["Data Pipeline", "AI Metadata", "Kaggle"]
-  },
-  {
-    accent: "var(--accent-two)",
-    tags: ["Middleware", "Research", "Databases"]
-  },
-  {
-    accent: "var(--accent)",
-    tags: ["Tableau", "Analytics", "Interactive"]
-  }
-] as const;
 
 type ProjectsSectionProps = {
   projects: Project[];
@@ -61,10 +43,9 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             viewport={viewportFor(0.25, 0.12)}
           >
             <div className="grid gap-4 sm:grid-cols-2">
-              {projects.map((project, index) => {
-                const metadata = projectMetadata[index % projectMetadata.length];
+              {projects.map((project) => {
                 const projectCardStyle = {
-                  "--project-accent": metadata.accent
+                  "--project-accent": project.accent ?? "var(--accent)"
                 } as CSSProperties;
 
                 return (
@@ -80,22 +61,26 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           transition: springTransition
                         }
                   }
-                  className="portfolio-card portfolio-card-accent flex min-h-full flex-col p-5"
+                  className={`portfolio-card portfolio-card-accent project-showcase-card flex min-h-full flex-col p-5 ${
+                    project.featured ? "project-showcase-card-featured sm:col-span-2" : ""
+                  }`}
                   style={projectCardStyle}
                 >
                   <h3 className="text-base font-semibold tracking-tight md:text-lg">
                     {project.title}
                   </h3>
-                  <div className="mt-3 flex flex-wrap gap-1.5">
-                    {metadata.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-[var(--border)] bg-[var(--surface-inset)] px-2 py-1 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.06em] text-[var(--text-muted)]"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                  {project.tags && project.tags.length > 0 ? (
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="project-tag site-text-static"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  ) : null}
                   <p className="portfolio-copy mt-3 flex-1 text-sm">
                     {project.description}
                   </p>
@@ -109,9 +94,22 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                           ? undefined
                           : { x: 4, transition: springTransition }
                       }
-                      className="portfolio-action mt-4 px-3 py-1.5"
+                      className="portfolio-action project-card-link mt-4 px-3 py-1.5"
                     >
-                      See Project
+                      <span>See Project</span>
+                      <svg
+                        aria-hidden="true"
+                        viewBox="0 0 16 16"
+                        className="h-3.5 w-3.5"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.8"
+                      >
+                        <path d="M5.2 4.5h6.3v6.3" />
+                        <path d="m4.5 11.5 7-7" />
+                      </svg>
                     </motion.a>
                   )}
                 </motion.article>

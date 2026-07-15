@@ -136,6 +136,21 @@ export function OpenLibraryBooksSection({
           </div>
         ) : null}
 
+        {totalBooks > 0 ? (
+          <div className="reading-summary-grid">
+            {OPEN_LIBRARY_SHELVES.map(({ key, title }) => {
+              const displayBookCount = getDisplayBookCount(manifest.shelves[key]);
+
+              return (
+                <div key={key} className="portfolio-inset reading-summary-tile">
+                  <span className="reading-summary-count">{displayBookCount}</span>
+                  <span className="reading-summary-label site-text-static">{title}</span>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
+
         {OPEN_LIBRARY_SHELVES.map(({ key, title, emptyMessage }) => {
           const shelf = manifest.shelves[key];
           const visibleCount = visibleCounts[key];

@@ -83,21 +83,25 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
               <button
                 type="button"
                 onClick={goToPreviousGame}
-                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
+                aria-label="Previous game"
+                title="Previous game"
+                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
               >
-                Previous
+                <ChevronLeftIcon />
               </button>
               <button
                 type="button"
                 onClick={goToNextGame}
-                className="portfolio-control rounded-lg px-3 py-1.5 text-sm font-medium"
+                aria-label="Next game"
+                title="Next game"
+                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
               >
-                Next
+                <ChevronRightIcon />
               </button>
             </div>
           </div>
 
-          <div className="portfolio-card mx-auto w-full max-w-[880px] p-2 md:p-3">
+          <div className="portfolio-card chess-frame mx-auto w-full max-w-[880px] p-2 md:p-3">
             <div className="portfolio-inset overflow-hidden">
               <iframe
                 id={activeGameId}
@@ -142,5 +146,39 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
         </div>
       )}
     </SectionCard>
+  );
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.9"
+    >
+      <path d="m10 3.5-4.5 4.5 4.5 4.5" />
+    </svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 16 16"
+      className="h-4 w-4"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.9"
+    >
+      <path d="m6 3.5 4.5 4.5-4.5 4.5" />
+    </svg>
   );
 }

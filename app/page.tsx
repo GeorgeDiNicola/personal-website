@@ -44,8 +44,8 @@ export default function HomePage() {
 
       <div className="portfolio-content">
         <HeroSection />
-        <WorkHistorySection isDark={isDark} workHistory={workHistory} />
         <EducationSection isDark={isDark} schools={schools} />
+        <WorkHistorySection isDark={isDark} workHistory={workHistory} />
         <SkillsSection skills={skills} />
         <GitHubActivitySection
           githubUsername={githubUsername}
