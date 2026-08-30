@@ -1,6 +1,7 @@
 name: Build and Create PR to Pages Repository
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
