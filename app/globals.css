@@ -869,6 +869,86 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
     transform: translateY(-2px);
   }
 
+  .dog-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows:
+      clamp(10.5rem, 56vw, 18rem)
+      repeat(2, clamp(8.5rem, 38vw, 13rem))
+      clamp(9.5rem, 45vw, 14rem);
+    gap: clamp(0.5rem, 2.4vw, 0.75rem);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .dog-photo-tile {
+    position: relative;
+    isolation: isolate;
+    min-width: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: clamp(0.8rem, 2vw, 1.1rem);
+    background: var(--surface-inset);
+    box-shadow:
+      inset 0 1px 0 var(--highlight),
+      0 16px 34px color-mix(in srgb, var(--accent) 8%, transparent);
+    transition:
+      border-color var(--dur-fast) var(--ease-smooth),
+      box-shadow var(--dur-fast) var(--ease-out-soft),
+      transform var(--dur-fast) var(--ease-out-soft);
+  }
+
+  .dog-photo-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    border-radius: inherit;
+    background:
+      linear-gradient(180deg, color-mix(in srgb, var(--highlight) 46%, transparent), transparent 18%),
+      linear-gradient(0deg, color-mix(in srgb, var(--page-bg-deep) 8%, transparent), transparent 32%);
+  }
+
+  .dog-photo-image {
+    z-index: 2;
+    transition:
+      filter var(--dur-base) var(--ease-smooth),
+      transform var(--dur-slow) var(--ease-out-soft);
+  }
+
+  .dog-photo-backdrop {
+    filter: blur(22px) saturate(0.9) brightness(0.82);
+    opacity: 0.72;
+    transform: scale(1.12);
+  }
+
+  .dog-photo-tile--feature {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  .dog-photo-tile--portrait {
+    grid-column: 1;
+    grid-row: 2 / 4;
+  }
+
+  .dog-photo-tile--detail-one {
+    grid-column: 2;
+    grid-row: 2;
+  }
+
+  .dog-photo-tile--detail-two {
+    grid-column: 2;
+    grid-row: 3;
+  }
+
+  .dog-photo-tile--detail-three {
+    grid-column: 1 / -1;
+    grid-row: 4;
+  }
+
   .photo-lightbox {
     position: fixed;
     inset: 0;
@@ -1156,6 +1236,37 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
     grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
   }
 
+  .dog-photo-grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: repeat(3, clamp(8.5rem, 14vw, 11rem));
+    gap: 0.75rem;
+  }
+
+  .dog-photo-tile--feature {
+    grid-column: 1 / 10;
+    grid-row: 1 / 3;
+  }
+
+  .dog-photo-tile--portrait {
+    grid-column: 10 / 13;
+    grid-row: 1 / 4;
+  }
+
+  .dog-photo-tile--detail-one {
+    grid-column: 1 / 4;
+    grid-row: 3;
+  }
+
+  .dog-photo-tile--detail-two {
+    grid-column: 4 / 7;
+    grid-row: 3;
+  }
+
+  .dog-photo-tile--detail-three {
+    grid-column: 7 / 10;
+    grid-row: 3;
+  }
+
 }
 
 @media (max-width: 640px) {
@@ -1188,5 +1299,20 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
 @media (hover: none), (pointer: coarse) {
   .portfolio-pointer-glow {
     display: none;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .dog-photo-tile:hover {
+    border-color: var(--border-strong);
+    box-shadow:
+      inset 0 1px 0 var(--highlight),
+      0 18px 38px color-mix(in srgb, var(--accent) 12%, transparent);
+    transform: translateY(-2px);
+  }
+
+  .dog-photo-tile:hover .dog-photo-image {
+    filter: saturate(1.04) contrast(1.01);
+    transform: scale(1.018);
   }
 }

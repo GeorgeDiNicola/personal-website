@@ -10,6 +10,7 @@ type PersonalInterest = {
 const personalInterests: PersonalInterest[] = [
   { label: "Trees", Icon: TreesIcon },
   { label: "Photography", Icon: CameraIcon },
+  { label: "Dog", Icon: DogIcon },
   { label: "Chess", Icon: ChessKnightIcon },
   { label: "Books", Icon: BooksIcon }
 ];
@@ -49,6 +50,9 @@ export function PersonalHeroSection() {
             Outdoors
           </span>
           <span className="portfolio-chip site-text-static">
+            Dog
+          </span>
+          <span className="portfolio-chip site-text-static">
             Chess
           </span>
           <span className="portfolio-chip site-text-static">
@@ -77,6 +81,29 @@ function TreesIcon(props: SVGProps<SVGSVGElement>) {
       <path d="M4.2 15.5 7.5 5l3.3 10.5H4.2Z" />
       <path d="M12.6 14.5 16.5 4l3.9 10.5h-7.8Z" />
       <path d="M5 19h14" />
+    </svg>
+  );
+}
+
+function DogIcon(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="1.7"
+      aria-hidden="true"
+      {...props}
+    >
+      <path d="m7.2 9-2.7-2.1v5.3c0 1.4.8 2.6 2 3.2" />
+      <path d="m16.8 9 2.7-2.1v5.3c0 1.4-.8 2.6-2 3.2" />
+      <path d="M7 10.5C7 7.5 9.2 5 12 5s5 2.5 5 5.5v3c0 3-2.2 5.5-5 5.5s-5-2.5-5-5.5v-3Z" />
+      <path d="M9.5 11.5h.1" />
+      <path d="M14.4 11.5h.1" />
+      <path d="m10.7 15 1.3.8 1.3-.8" />
+      <path d="M12 15.8v1.1" />
     </svg>
   );
 }

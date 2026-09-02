@@ -1,6 +1,7 @@
 "use client";
 
 import { ChessGamesSection } from "@/components/personal/ChessGamesSection";
+import { DogPhotoSection } from "@/components/personal/DogPhotoSection";
 import { OpenLibraryBooksSection } from "@/components/personal/OpenLibraryBooksSection";
 import { OutdoorPhotographySection } from "@/components/personal/OutdoorPhotographySection";
 import { PersonalHeroSection } from "@/components/personal/PersonalHeroSection";
@@ -35,6 +36,7 @@ export default function PersonalPage() {
         <PersonalHeroSection />
 
         <OutdoorPhotographySection isDark={isDark} />
+        <DogPhotoSection isDark={isDark} />
         <ChessGamesSection isDark={isDark} />
         <OpenLibraryBooksSection isDark={isDark} username={OPEN_LIBRARY_USERNAME} />
       </div>
