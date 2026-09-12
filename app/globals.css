@@ -531,8 +531,58 @@ body.site-text-color-active :where(p, li, span):not(.site-text-static) {
   }
 
   .project-card-link {
-    gap: 0.4rem;
-    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    min-height: 3.5rem;
+    margin-top: 1.25rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-soft);
+    font-size: 0.8rem;
+    font-weight: 650;
+    text-align: left;
+  }
+
+  .project-card-link-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, var(--border));
+    border-radius: 50%;
+    color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 8%, var(--surface-inset));
+    transition:
+      background-color var(--dur-fast) var(--ease-smooth),
+      transform var(--dur-fast) var(--ease-out-soft);
+  }
+
+  a.project-card-link:hover .project-card-link-icon {
+    background: color-mix(in srgb, var(--accent) 18%, var(--surface-inset));
+    transform: translateX(3px);
+  }
+
+  .project-card-link:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+    border-radius: 0.25rem;
+  }
+
+  .project-card-link:disabled {
+    color: var(--text-muted);
+    cursor: default;
+  }
+
+  .project-card-link:disabled .project-card-link-icon {
+    border-color: var(--border);
+    color: var(--text-muted);
+    background: var(--surface-inset);
+    opacity: 0.6;
   }
 
   .portfolio-inset {

@@ -17,7 +17,7 @@ export const workHistory: WorkExperience[] = [
     company: "Columbia Build Lab Fellowship",
     period: "2021 - 2021",
     summary:
-      "Spearheaded design and development of a financial tech web application using Java Spring Boot and JavaScript React, delivering MVP in 2 months."
+      "Spearheaded design and development of a financial tech web application using Java Spring Boot and JavaScript React, delivering an MVP in two months."
   },
   {
     role: "Database Engineer II",
@@ -29,6 +29,7 @@ export const workHistory: WorkExperience[] = [
   },
   {
     role: "Business Intelligence Analyst II",
+    department: "Business Intelligence Platform",
     company: "Newrez",
     period: "2018 - 2019",
     summary:
@@ -54,37 +55,56 @@ export const schools: School[] = [
 
 export const projects: Project[] = [
   {
-    title: "Automated Jeopardy! Insights Dashboard & Predictive Machine Learning Model",
+    title: "Adaptive TV Audio Controller",
     description:
-      "Designed and built a Jeopardy! data system that automates ETL processes for a live Tableau dashboard and implements a self-developed machine learning model to forecast game outcomes for reigning champions.",
+      "I built an Arduino Uno controller that monitors relative signal variation from a sound sensor and automatically lowers TV volume during sustained loudness or sudden spikes using rolling-window analysis and infrared remote commands.",
     accent: "var(--accent)",
     featured: true,
-    tags: ["ETL", "ML Forecasting", "Tableau"]
+    link: "https://github.com/GeorgeDiNicola/adaptive-tv-audio-controller",
+    tags: ["Arduino / C++", "Embedded Systems", "Signal Processing"]
+  },
+  {
+    title: "Automated Jeopardy! Insights Dashboard & Predictive Machine Learning Model",
+    description:
+      "I designed and built a Jeopardy! data system that automates ETL processes for a live Tableau dashboard and implements a self-developed machine learning model to forecast game outcomes for reigning champions.",
+    accent: "var(--accent)",
+    featured: true,
+    link: "/projects/jeopardy/",
+    tags: ["AI/ML Forecasting", "Data Engineering"]
+  },
+  {
+    title: "DIY Radio Antenna",
+    description:
+      "I built a radio antenna from wood, bronze, coaxial cable, and solder, and use software-defined radio (SDR) to receive and explore amateur radio signals on my computer.",
+    accent: "var(--accent)",
+    featured: true,
+    link: "/projects/radio-antenna/",
+    tags: ["Software-Defined Radio", "Antenna Hardware", "Soldering"]
   },
   {
     title: "Macroeconomic Data Pipeline - World Bank Dataset",
     description:
-      "World Bank dataset generation via a custom software application that discovers and groups high-quality indicators with rules-based logic & artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. Currently has 13k+ views and 2.5k+ downloads.",
+      "I built a pipeline that discovers and groups high-quality indicators using rules-based logic and artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. The dataset has 13k+ views and 2.5k+ downloads.",
     accent: "var(--accent-three)",
     featured: true,
     link: "https://www.kaggle.com/datasets/georgejdinicola/world-bank-indicators",
-    tags: ["Data Pipeline", "AI Metadata", "Kaggle"]
+    tags: ["Data Engineering", "AI/NLP", "Kaggle"]
   },
   {
     title: "Blockchain-based Middleware for Relational Database Management Systems",
     description:
-      "Built a middleware application design presented in research studies for internally tamper-proofing centralized and decentralized relational database management systems for Topics in Software Engineering final project at Columbia Univeristy.",
-    accent: "var(--accent-two)",
+      "I implemented blockchain-based middleware for relational databases as my final project for Topics in Software Engineering at Columbia University.",
+    accent: "var(--accent)",
     link: "https://github.com/GeorgeDiNicola/TDRB-Middleware-Extension",
-    tags: ["Middleware", "Research", "Databases"]
+    tags: ["Infrastructure", "Databases", "Research"]
   },
   {
-    title: "Pokemon Rankings Dashboard",
+    title: "Tableau Public Dashboards",
     description:
-      "An interactive Tableau Public dashboard that provides analysis of Pokemon statistics, allowing users to rank and compare Pokemon from different generations across all core battle dimensions.",
+      "I create public dashboards using Tableau and Flourish to explore data, compare rankings, and visualize trends through interactive analytics.",
     accent: "var(--accent)",
-    link: "https://public.tableau.com/app/profile/george.dinicola/viz/pokemon_analysis/PokemonRankings",
-    tags: ["Tableau", "Analytics", "Interactive"]
+    link: "/data-visualizations/",
+    tags: ["Analytics", "Tableau", "Flourish"]
   }
 ];
 
@@ -93,6 +113,7 @@ export const skills: Skill[] = [
   { name: "Python", logo: "https://cdn.simpleicons.org/python" },
   { name: "pytest", logo: "https://cdn.simpleicons.org/pytest" },
   { name: "Pandas", logo: "https://cdn.simpleicons.org/pandas" },
+  { name: "Apache Spark", logo: "https://cdn.simpleicons.org/apachespark" },
   { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript" },
   { name: "React", logo: "https://cdn.simpleicons.org/react" },
   { name: "Docker", logo: "https://cdn.simpleicons.org/docker" },
@@ -105,5 +126,7 @@ export const skills: Skill[] = [
   { name: "Grafana", logo: "https://cdn.simpleicons.org/grafana" },
   { name: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },
   { name: "AWS", logo: "/aws.svg" },
-  { name: "Tableau", logo: "/tableau.png" }
+  { name: "Tableau", logo: "/tableau.png" },
+  { name: "Arduino", logo: "https://cdn.simpleicons.org/arduino" },
+  { name: "Raspberry Pi", logo: "https://cdn.simpleicons.org/raspberrypi" }
 ];

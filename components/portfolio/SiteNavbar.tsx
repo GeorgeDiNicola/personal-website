@@ -6,7 +6,11 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import type { Theme } from "@/components/portfolio/types";
-import type { TextColor } from "@/components/portfolio/useTextColorPreference";
+import {
+  resolveTextColorValue,
+  TEXT_COLOR_PALETTE,
+  type TextColor
+} from "@/components/portfolio/useTextColorPreference";
 
 type SiteNavbarProps = {
   isDark: boolean;
@@ -16,23 +20,11 @@ type SiteNavbarProps = {
   onTextColorChange: (color: TextColor) => void;
 };
 
-const customTextColorOptions: Array<{
-  value: Exclude<TextColor, "default">;
-  label: string;
-  color: string;
-}> = [
-  { value: "purple", label: "Purple", color: "#a855f7" },
-  { value: "yellow", label: "Yellow", color: "#fde047" },
-  { value: "pink", label: "Pink", color: "#f472b6" },
-  { value: "green", label: "Green", color: "#4ade80" },
-  { value: "blue", label: "Blue", color: "#60a5fa" }
-];
-
 type NavigationTab = {
   href: string;
   label: string;
   compactLabel: string;
-  icon: "work" | "personal" | "dashboards";
+  icon: "work" | "personal";
   active: boolean;
 };
 
@@ -51,8 +43,6 @@ export function SiteNavbar({
   const isPaletteOpenRef = useRef(false);
   const lastScrollYRef = useRef(0);
   const isPersonalRoute = /\/personal(?:\/|$)/.test(pathname);
-  const isDataVisualizationsRoute = /\/data-visualizations(?:\/|$)/.test(pathname);
-  const defaultModeColor = isDark ? "#f1f5f9" : "#0f172a";
 
   const tabs: NavigationTab[] = [
     {
@@ -60,7 +50,7 @@ export function SiteNavbar({
       label: "Professional",
       compactLabel: "Work",
       icon: "work",
-      active: !isPersonalRoute && !isDataVisualizationsRoute
+      active: !isPersonalRoute
     },
     {
       href: "/personal",
@@ -68,22 +58,19 @@ export function SiteNavbar({
       compactLabel: "Personal",
       icon: "personal",
       active: isPersonalRoute
-    },
-    {
-      href: "/data-visualizations",
-      label: "Dashboards",
-      compactLabel: "Data",
-      icon: "dashboards",
-      active: isDataVisualizationsRoute
     }
   ];
   const textColorOptions: Array<{ value: TextColor; label: string; color: string }> = [
     {
       value: "default",
       label: isDark ? "Mode default (dark)" : "Mode default (light)",
-      color: defaultModeColor
+      color: resolveTextColorValue("default", theme)
     },
-    ...customTextColorOptions
+    ...Object.entries(TEXT_COLOR_PALETTE).map(([value, option]) => ({
+      value: value as Exclude<TextColor, "default">,
+      label: option.label,
+      color: option[theme]
+    }))
   ];
   const selectedColorOption =
     textColorOptions.find((option) => option.value === textColor) ??
@@ -326,17 +313,6 @@ function NavIcon({ icon }: { icon: NavigationTab["icon"] }) {
       <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
         <path d="M8 8.6c2 0 3.6-1.5 3.6-3.4S10 1.8 8 1.8 4.4 3.3 4.4 5.2 6 8.6 8 8.6Z" />
         <path d="M2.8 14.1c.6-2.2 2.6-3.7 5.2-3.7s4.6 1.5 5.2 3.7" />
-      </svg>
-    );
-  }
-
-  if (icon === "dashboards") {
-    return (
-      <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-        <path d="M2.3 13.7V2.3h11.4v11.4H2.3Z" />
-        <path d="M5 10.6V7.2" />
-        <path d="M8 10.6V4.8" />
-        <path d="M11 10.6V6.1" />
       </svg>
     );
   }

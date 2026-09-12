@@ -22,6 +22,7 @@ export type Project = {
   description: string;
   accent?: string;
   featured?: boolean;
+  /** Destination for project details. Leave empty until a destination is ready. */
   link?: string;
   tags?: string[];
 };
