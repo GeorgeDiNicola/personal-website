@@ -75,7 +75,7 @@ export function HeroSection() {
           >
             <div className="portfolio-hero-orbit" aria-hidden="true" />
             <motion.div
-              className="relative"
+              className="relative aspect-square w-[70%] md:w-[75%]"
               whileHover={
                 prefersReducedMotion
                   ? undefined
@@ -90,14 +90,16 @@ export function HeroSection() {
                 viewport={viewportFor(0.55, 0.2)}
                 transition={{ duration: 0.7, ease: motionEasing.outExpo, delay: 0.08 }}
               />
-              <Image
-                src="/me.jpg"
-                alt="Portrait of George DiNicola"
-                width={168}
-                height={168}
-                priority
-                className="relative h-32 w-32 rounded-full border-2 border-[var(--surface-strong)] object-cover shadow-[0_18px_42px_rgba(0,0,0,0.22)] md:h-40 md:w-40"
-              />
+              <div className="relative h-full w-full overflow-hidden rounded-full border-2 border-[var(--surface-strong)] shadow-[0_18px_42px_rgba(0,0,0,0.22)]">
+                <Image
+                  src="/me-thumbnail.webp"
+                  alt="Portrait of George DiNicola"
+                  fill
+                  sizes="(min-width: 768px) 216px, 168px"
+                  priority
+                  className="object-cover"
+                />
+              </div>
             </motion.div>
           </motion.div>
         </motion.div>

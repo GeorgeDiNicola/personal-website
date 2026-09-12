@@ -10,16 +10,20 @@ const TEXT_COLOR_STORAGE_KEY = "text-color";
 const TEXT_COLOR_CHANGED_EVENT = "text-color-change";
 
 const MODE_DEFAULT_TEXT_COLOR: Record<Theme, string> = {
-  dark: "#f1f5f9",
-  light: "#0f172a"
+  dark: "#edf7fb",
+  light: "#102033"
 };
 
-const TEXT_COLOR_VALUE_MAP: Record<Exclude<TextColor, "default">, string> = {
-  purple: "#a855f7",
-  yellow: "#fde047",
-  pink: "#f472b6",
-  green: "#4ade80",
-  blue: "#60a5fa"
+// Keep the stored keys stable when refining the displayed palette.
+export const TEXT_COLOR_PALETTE: Record<
+  Exclude<TextColor, "default">,
+  { label: string; light: string; dark: string }
+> = {
+  purple: { label: "Violet", light: "#6d28a8", dark: "#c4b5fd" },
+  yellow: { label: "Amber", light: "#854d0e", dark: "#f0cd83" },
+  pink: { label: "Rose", light: "#a12c58", dark: "#efa6bd" },
+  green: { label: "Teal", light: "#126757", dark: "#8dd3bb" },
+  blue: { label: "Blue", light: "#245b91", dark: "#9bc5eb" }
 };
 
 const getStoredTextColor = (): TextColor | null => {
@@ -41,9 +45,10 @@ const getStoredTextColor = (): TextColor | null => {
 
 const getTextColorSnapshot = (): TextColor => getStoredTextColor() ?? "default";
 
-const resolveTextColorValue = (textColor: TextColor, theme: Theme) => {
+/** Resolve the same theme-aware shade for page text and its picker swatch. */
+export const resolveTextColorValue = (textColor: TextColor, theme: Theme) => {
   if (textColor === "default") return MODE_DEFAULT_TEXT_COLOR[theme];
-  return TEXT_COLOR_VALUE_MAP[textColor];
+  return TEXT_COLOR_PALETTE[textColor][theme];
 };
 
 const subscribeTextColor = (onStoreChange: () => void) => {

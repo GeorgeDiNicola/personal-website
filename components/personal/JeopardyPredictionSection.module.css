@@ -1,0 +1,398 @@
+.section {
+  --jeopardy-correct: #087e68;
+  --jeopardy-incorrect: #b45309;
+  --jeopardy-pending: var(--text-muted);
+}
+
+.section[data-dark="true"] {
+  --jeopardy-correct: #5ee5ba;
+  --jeopardy-incorrect: #fbbf70;
+}
+
+.overview {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.prediction, .record, .history {
+  padding: clamp(1rem, 3vw, 1.75rem);
+}
+
+.prediction {
+  background: radial-gradient(ellipse at 0% 0%, var(--accent-soft), transparent 75%), var(--surface-inset);
+}
+
+.cardHeader, .probabilityLabel, .probabilityScale, .historyDates {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .75rem;
+}
+
+.cardHeader {
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .3rem;
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: 999px;
+  padding: .25rem .65rem;
+  font-size: .7rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.correct {
+  color: var(--jeopardy-correct);
+  background-color: color-mix(in srgb, var(--jeopardy-correct) 12%, var(--surface-strong));
+}
+
+.incorrect {
+  color: var(--jeopardy-incorrect);
+  background-color: color-mix(in srgb, var(--jeopardy-incorrect) 12%, var(--surface-strong));
+}
+
+.pending {
+  color: var(--jeopardy-pending);
+  background-color: var(--surface-muted);
+}
+
+.date {
+  margin-top: 1.5rem;
+  font-size: .8rem;
+  color: var(--text-soft);
+}
+
+.championLabel {
+  margin-top: 1rem;
+  font-size: .7rem;
+  color: var(--text-muted);
+}
+
+.name {
+  margin-top: .45rem;
+  font-size: clamp(1.5rem, 3vw, 2.15rem);
+  font-weight: 750;
+  letter-spacing: -.04em;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.hometown {
+  margin-top: .4rem;
+  font-size: .65rem;
+  letter-spacing: .08em;
+  color: var(--text-muted);
+}
+
+.call {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  margin-block: 1.4rem;
+  font-size: 1.1rem;
+  font-weight: 650;
+}
+
+.call > span {
+  color: var(--accent);
+}
+
+.probabilityLabel {
+  color: var(--text-soft);
+  font-size: .75rem;
+}
+
+.probabilityLabel strong {
+  color: var(--accent);
+  font-size: 1.1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.probabilityTrack {
+  height: .5rem;
+  margin-top: .55rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--border);
+}
+
+.probabilityTrack > div {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.probabilityScale, .historyDates {
+  margin-top: .4rem;
+  color: var(--text-muted);
+  font-size: .65rem;
+}
+
+.record {
+  display: flex;
+  flex-direction: column;
+}
+
+.accuracy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(1rem, 2vw, 2rem);
+  flex: 1;
+  margin-block: 1.75rem;
+}
+
+.ring {
+  flex: 0 0 8.5rem;
+  width: 8.5rem;
+  height: 8.5rem;
+  padding: .5rem;
+  border-radius: 50%;
+}
+
+.ring > div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--surface-strong);
+}
+
+.ring strong {
+  font-size: 1.9rem;
+  font-weight: 750;
+  letter-spacing: -.06em;
+}
+
+.ring span {
+  color: var(--text-muted);
+  font-size: .75rem;
+}
+
+.totals {
+  display: grid;
+  flex: 1 0 8rem;
+  max-width: 10rem;
+  gap: .8rem;
+  font-size: .8rem;
+}
+
+.totals > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.totals dt {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  color: var(--text-soft);
+}
+
+.totals dd {
+  font-weight: 750;
+  font-variant-numeric: tabular-nums;
+}
+
+.legendDot {
+  display: inline-block;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.recordNote {
+  color: var(--text-muted);
+  font-size: .72rem;
+  line-height: 1.6;
+}
+
+.history {
+  margin-top: 1rem;
+}
+
+.historyTitle {
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.historyCount {
+  font-size: .72rem;
+  color: var(--text-muted);
+}
+
+.historyHelp {
+  margin-top: .4rem;
+  color: var(--text-muted);
+  font-size: .75rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-block: 1rem;
+  font-size: .7rem;
+  color: var(--text-soft);
+}
+
+.legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+.legendSymbol {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: .2rem;
+  font-weight: 700;
+}
+
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1.8rem, 1fr));
+  gap: .3rem;
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.9rem;
+  border: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  border-radius: .3rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 150ms ease;
+}
+
+.tile:hover {
+  background-color: color-mix(in srgb, currentColor 23%, var(--surface-strong));
+}
+
+.tile[aria-pressed="true"] {
+  outline: 2px solid var(--foreground);
+  outline-offset: 1px;
+}
+
+.tile:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.historyDates {
+  margin-top: .75rem;
+}
+
+.gameDetail {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+
+.detailDate {
+  font-size: .68rem;
+  color: var(--text-muted);
+}
+
+.detailName {
+  margin-top: .3rem;
+  font-size: .8rem;
+  font-weight: 700;
+}
+
+.gameFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.gameFacts dt {
+  font-size: .65rem;
+  color: var(--text-muted);
+}
+
+.gameFacts dd {
+  margin-top: .3rem;
+  font-size: .85rem;
+  font-weight: 650;
+}
+
+.message {
+  display: flex;
+  min-height: 16rem;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: .9rem;
+}
+
+.loadingDot {
+  width: .7rem;
+  height: .7rem;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  to {
+    opacity: .3;
+  }
+}
+
+@media (max-width: 760px) {
+  .overview {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .accuracy {
+    justify-content: flex-start;
+  }
+  .ring {
+    flex-basis: 7.5rem;
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+  .gameFacts {
+    width: 100%;
+    gap: 1.25rem;
+  }
+  .tile {
+    min-height: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loadingDot {
+    animation: none;
+  }
+  .tile {
+    transition: none;
+  }
+}

@@ -47,9 +47,9 @@ export const metadata: Metadata = {
     siteName: "George DiNicola Portfolio",
     images: [
       {
-        url: "/me.jpg",
-        width: 500,
-        height: 500,
+        url: "/me.png",
+        width: 1448,
+        height: 1086,
         alt: "George DiNicola"
       }
     ]
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: siteTitle,
     description: siteDescription,
-    images: ["/me.jpg"]
+    images: ["/me.png"]
   }
 };
 

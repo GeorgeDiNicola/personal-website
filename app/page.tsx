@@ -47,12 +47,12 @@ export default function HomePage() {
         <EducationSection isDark={isDark} schools={schools} />
         <WorkHistorySection isDark={isDark} workHistory={workHistory} />
         <SkillsSection skills={skills} />
+        <ProjectsSection projects={projects} />
         <GitHubActivitySection
           githubUsername={githubUsername}
           githubProfileUrl={githubProfileUrl}
           githubCalendarUrl={githubCalendarUrl}
         />
-        <ProjectsSection projects={projects} />
       </div>
 
       <BackToTopButton />

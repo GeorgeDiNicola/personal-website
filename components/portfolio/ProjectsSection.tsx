@@ -1,6 +1,7 @@
 "use client";
 
 import { motion, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import { MotionSection } from "./motion/MotionSection";
@@ -21,22 +22,17 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   return (
     <MotionSection id="projects" className="mt-12 scroll-mt-32" delay={0.14}>
       <div className="portfolio-surface">
-        <div className="grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+        <div className="grid gap-6">
+          <div>
             <p className="portfolio-eyebrow site-text-static">
               Projects
             </p>
             <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
-              Featured Work
+              Featured Personal Projects
             </h2>
-            <p className="portfolio-copy mt-3 text-sm">
-              Selected projects spanning analytics, automation, and software
-              systems.
-            </p>
           </div>
 
           <motion.div
-            className="lg:col-span-8"
             variants={projectsStagger}
             initial={prefersReducedMotion ? false : "hidden"}
             whileInView={prefersReducedMotion ? undefined : "show"}
@@ -84,34 +80,7 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
                   <p className="portfolio-copy mt-3 flex-1 text-sm">
                     {project.description}
                   </p>
-                  {project.link && (
-                    <motion.a
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={
-                        prefersReducedMotion
-                          ? undefined
-                          : { x: 4, transition: springTransition }
-                      }
-                      className="portfolio-action project-card-link mt-4 px-3 py-1.5"
-                    >
-                      <span>See Project</span>
-                      <svg
-                        aria-hidden="true"
-                        viewBox="0 0 16 16"
-                        className="h-3.5 w-3.5"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="1.8"
-                      >
-                        <path d="M5.2 4.5h6.3v6.3" />
-                        <path d="m4.5 11.5 7-7" />
-                      </svg>
-                    </motion.a>
-                  )}
+                  <ProjectDetailsLink project={project} />
                 </motion.article>
                 );
               })}
@@ -120,5 +89,56 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
         </div>
       </div>
     </MotionSection>
+  );
+}
+
+function ProjectDetailsLink({ project }: { project: Project }) {
+  const href = project.link?.trim();
+  const isExternal = !!href && /^https?:\/\//.test(href);
+  const icon = (
+    <span className="project-card-link-icon site-text-static" aria-hidden="true">
+      <svg
+        viewBox="0 0 16 16"
+        className="h-4 w-4"
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="1.6"
+      >
+        {isExternal ? (
+          <path d="M4 12 12 4M4 4h8v8" />
+        ) : (
+          <path d="M3 8h10M8 3l5 5-5 5" />
+        )}
+      </svg>
+    </span>
+  );
+
+  if (!href) {
+    return (
+      <button
+        type="button"
+        disabled
+        className="project-card-link"
+        aria-label={`Details for ${project.title} are coming soon`}
+      >
+        <span className="site-text-static">Details coming soon</span>
+        {icon}
+      </button>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className="project-card-link"
+      aria-label={`View details for ${project.title}${isExternal ? " (opens in a new tab)" : ""}`}
+    >
+      <span className="site-text-static">View details</span>
+      {icon}
+    </Link>
   );
 }
