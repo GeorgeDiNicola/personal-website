@@ -11,6 +11,7 @@ import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
 import { SiteNavbar } from "@/components/portfolio/SiteNavbar";
 import { SkillsSection } from "@/components/portfolio/SkillsSection";
 import { WorkHistorySection } from "@/components/portfolio/WorkHistorySection";
+import introStyles from "@/components/portfolio/motion/HomepageIntro.module.css";
 import {
   githubUsername,
   projects,
@@ -30,7 +31,7 @@ export default function HomePage() {
   }/${githubUsername}`;
 
   return (
-    <main className="portfolio-page relative">
+    <main className={`portfolio-page relative ${introStyles.page}`}>
       <ParallaxBackground isDark={isDark} />
       <AmbientPointerGlow />
       <ScrollProgressBar />
@@ -44,15 +45,17 @@ export default function HomePage() {
 
       <div className="portfolio-content">
         <HeroSection />
-        <EducationSection isDark={isDark} schools={schools} />
-        <WorkHistorySection isDark={isDark} workHistory={workHistory} />
-        <SkillsSection skills={skills} />
-        <ProjectsSection projects={projects} />
-        <GitHubActivitySection
-          githubUsername={githubUsername}
-          githubProfileUrl={githubProfileUrl}
-          githubCalendarUrl={githubCalendarUrl}
-        />
+        <div className={introStyles.continuation}>
+          <EducationSection isDark={isDark} schools={schools} />
+          <WorkHistorySection isDark={isDark} workHistory={workHistory} />
+          <SkillsSection skills={skills} />
+          <ProjectsSection projects={projects} />
+          <GitHubActivitySection
+            githubUsername={githubUsername}
+            githubProfileUrl={githubProfileUrl}
+            githubCalendarUrl={githubCalendarUrl}
+          />
+        </div>
       </div>
 
       <BackToTopButton />

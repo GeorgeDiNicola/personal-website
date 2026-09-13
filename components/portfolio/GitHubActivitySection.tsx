@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useHydratedReducedMotion } from "./motion/useHydratedReducedMotion";
 
 import { MotionSection } from "./motion/MotionSection";
 import { createStagger, itemVariants, springTransition } from "./motion/tokens";
@@ -19,7 +20,7 @@ export function GitHubActivitySection({
   githubProfileUrl,
   githubCalendarUrl
 }: GitHubActivitySectionProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useHydratedReducedMotion();
   const { viewportFor } = useResponsiveViewport();
 
   return (

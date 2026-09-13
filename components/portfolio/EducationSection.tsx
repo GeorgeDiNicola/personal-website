@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useHydratedReducedMotion } from "./motion/useHydratedReducedMotion";
 
 import { MotionSection } from "./motion/MotionSection";
 import {
@@ -20,7 +21,7 @@ type EducationSectionProps = {
 };
 
 export function EducationSection({ isDark, schools }: EducationSectionProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useHydratedReducedMotion();
   const { viewportFor } = useResponsiveViewport();
 
   return (

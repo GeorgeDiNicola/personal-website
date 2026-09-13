@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { homepageIntroBootScript } from "@/components/portfolio/motion/homepageIntro";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -73,6 +74,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+        <script dangerouslySetInnerHTML={{ __html: homepageIntroBootScript }} />
         {children}
       </body>
     </html>

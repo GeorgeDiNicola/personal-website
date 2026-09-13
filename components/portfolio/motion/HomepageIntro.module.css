@@ -1,0 +1,135 @@
+.page {
+  /* One timeline, in milliseconds. The identity is readable within the first second. */
+  --intro-duration: 1900ms;
+  --intro-name-delay: 180ms;
+  --intro-name-duration: 850ms;
+  --intro-frame-delay: 300ms;
+  --intro-frame-duration: 1100ms;
+  --intro-eyebrow-delay: 420ms;
+  --intro-portrait-delay: 480ms;
+  --intro-portrait-duration: 1000ms;
+  --intro-roles-delay: 620ms;
+  --intro-details-delay: 740ms;
+  --intro-context-delay: 860ms;
+  --intro-settle-duration: 700ms;
+}
+
+.hero {
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.hero::before,
+.hero::after {
+  content: none;
+}
+
+.hero > .frame {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  padding: 0;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.identity {
+  position: relative;
+}
+
+.rule {
+  position: absolute;
+  inset-inline: 0;
+  bottom: -10px;
+  height: 1px;
+  background: var(--accent);
+  opacity: 0.65;
+  transform: scaleX(0.085);
+  transform-origin: left;
+  pointer-events: none;
+}
+
+.nameMask {
+  overflow: hidden;
+}
+
+.name {
+  display: block;
+}
+
+/* Existing scroll reveals must also be readable before hydration or without JS. */
+@media (prefers-reduced-motion: reduce), (scripting: none) {
+  .continuation :global([style]) {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .rule {
+    transform-origin: center;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :global(html[data-home-intro="playing"]) .rule {
+    animation: construct var(--intro-duration) var(--ease-out-soft) backwards;
+  }
+
+  :global(html[data-home-intro="playing"]) .name {
+    animation: name-reveal var(--intro-name-duration) var(--ease-out-expo) var(--intro-name-delay) backwards;
+  }
+
+  :global(html[data-home-intro="playing"]) .frame {
+    animation: surface-reveal var(--intro-frame-duration) var(--ease-out-soft) var(--intro-frame-delay) backwards;
+  }
+
+  :global(html[data-home-intro="playing"]) .portrait {
+    animation: portrait-reveal var(--intro-portrait-duration) var(--ease-out-soft) var(--intro-portrait-delay) backwards;
+  }
+
+  :global(html[data-home-intro="playing"]) :is(.eyebrow, .roles, .details) {
+    animation: settle var(--intro-settle-duration) var(--ease-out-soft) var(--intro-delay) backwards;
+  }
+
+  .eyebrow { --intro-delay: var(--intro-eyebrow-delay); }
+  .roles { --intro-delay: var(--intro-roles-delay); }
+  .details { --intro-delay: var(--intro-details-delay); }
+
+  :global(html[data-home-intro="playing"]) .page > :global(header),
+  :global(html[data-home-intro="playing"]) .page > :global(.portfolio-backdrop),
+  :global(html[data-home-intro="playing"]) .page > :global(.portfolio-pointer-glow),
+  :global(html[data-home-intro="playing"]) .continuation {
+    animation: surface-reveal var(--intro-settle-duration) var(--ease-out-soft) var(--intro-context-delay) backwards;
+  }
+}
+
+/* Backwards fill only: the normal, readable page wins even if cleanup fails. */
+@keyframes construct {
+  0% { transform: scaleX(0); }
+  28%, 58% { transform: scaleX(1); }
+  100% { transform: scaleX(0.085); }
+}
+
+@keyframes name-reveal {
+  from { transform: translateY(105%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes portrait-reveal {
+  from { clip-path: inset(-20% -20% 120% -20%); transform: translateY(10px); }
+  to { clip-path: inset(-20%); transform: translateY(0); }
+}
+
+@keyframes settle {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes surface-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
