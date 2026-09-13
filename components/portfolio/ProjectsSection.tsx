@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useHydratedReducedMotion } from "./motion/useHydratedReducedMotion";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 
@@ -16,7 +17,7 @@ type ProjectsSectionProps = {
 };
 
 export function ProjectsSection({ projects }: ProjectsSectionProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useHydratedReducedMotion();
   const { viewportFor } = useResponsiveViewport();
 
   return (

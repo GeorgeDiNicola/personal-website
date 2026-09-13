@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useHydratedReducedMotion } from "./motion/useHydratedReducedMotion";
 import Image from "next/image";
 
 import { MotionSection } from "./motion/MotionSection";
@@ -15,7 +16,7 @@ type SkillsSectionProps = {
 };
 
 export function SkillsSection({ skills }: SkillsSectionProps) {
-  const prefersReducedMotion = useReducedMotion();
+  const prefersReducedMotion = useHydratedReducedMotion();
   const { viewportFor } = useResponsiveViewport();
 
   return (
