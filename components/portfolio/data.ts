@@ -4,7 +4,7 @@ export const githubUsername = "GeorgeDiNicola";
 
 export const workHistory: WorkExperience[] = [
   {
-    role: "Software Developer Engineer II",
+    role: "Software Development Engineer II",
     department: "Trust Intelligence Platform",
     company: "Remitly",
     period: "2026 - Present",

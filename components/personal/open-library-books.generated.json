@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-13T01:08:44.988Z",
+  "generatedAt": "2026-09-13T01:19:24.943Z",
   "username": "george3d",
   "shelves": {
     "currently-reading": {
@@ -157,12 +157,12 @@
         },
         {
           "key": "/works/OL103134W",
-          "href": "/works/OL103134W/The_Martian_Chronicles?edition=ia%3Acronicasmarciana0000rayb",
+          "href": "/works/OL103134W/The_Martian_Chronicles?edition=ia%3Abwb_O8-CZL-512",
           "title": "The Martian Chronicles",
           "authors": [
             "Ray Bradbury"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL45645957M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL46927866M-M.jpg",
           "firstPublishYear": 1950,
           "readAt": null,
           "readOrder": 10
@@ -425,13 +425,13 @@
         },
         {
           "key": "/works/OL17940461W",
-          "href": "/works/OL17940461W/The_art_of_thinking_clearly?edition=ia%3Aartofthinkingcle0000rolf",
+          "href": "/works/OL17940461W/The_art_of_thinking_clearly?edition=ia%3Aartofthinkingcle0000dobe_j6l7",
           "title": "The art of thinking clearly",
           "authors": [
             "Rolf Dobelli",
             "Rolf Dobelli"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL46556356M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL26531571M-M.jpg",
           "firstPublishYear": 2013,
           "readAt": null,
           "readOrder": 32
@@ -609,12 +609,12 @@
         },
         {
           "key": "/works/OL98459W",
-          "href": "/works/OL98459W/Slaughterhouse-Five?edition=ia%3Aabattoir5oulacro00vonn",
+          "href": "/works/OL98459W/Slaughterhouse-Five?edition=ia%3Aabatorulcinci0000vonn",
           "title": "Slaughterhouse-Five",
           "authors": [
             "Kurt Vonnegut"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24375294M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL39796401M-M.jpg",
           "firstPublishYear": 1956,
           "readAt": null,
           "readOrder": 47
@@ -670,12 +670,12 @@
         },
         {
           "key": "/works/OL262426W",
-          "href": "/works/OL262426W/The_Case-Book_of_Sherlock_Holmes?edition=ia%3Aarchivessursherl0000arth",
+          "href": "/works/OL262426W/The_Case-Book_of_Sherlock_Holmes?edition=ia%3Acasebookofsherlo0000unse_z4r5",
           "title": "The Case-Book of Sherlock Holmes",
           "authors": [
             "Arthur Conan Doyle"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL46917880M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL45822934M-M.jpg",
           "firstPublishYear": 1927,
           "readAt": null,
           "readOrder": 52
@@ -950,12 +950,12 @@
         },
         {
           "key": "/works/OL46395W",
-          "href": "/works/OL46395W/The_Gods_Themselves?edition=ia%3Alospropiosdioses0000asim",
+          "href": "/works/OL46395W/The_Gods_Themselves?edition=ia%3Alospropiosdioses0000asim_y4c5",
           "title": "The Gods Themselves",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL13187451M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25645423M-M.jpg",
           "firstPublishYear": 1972,
           "readAt": null,
           "readOrder": 75
@@ -986,7 +986,7 @@
         },
         {
           "key": "/works/OL98488W",
-          "href": "/works/OL98488W/Breakfast_of_Champions?edition=ia%3Abreakfastofchamp0000vonn",
+          "href": "/works/OL98488W/Breakfast_of_Champions?edition=ia%3Abreakfastofchamp0000unse",
           "title": "Breakfast of Champions: or, Goodbye blue Monday!",
           "authors": [
             "Kurt Vonnegut",
@@ -994,7 +994,7 @@
             "Irma Triginé",
             "Daniel Martí i Colom"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL16985797M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL14432886M-M.jpg",
           "firstPublishYear": 1973,
           "readAt": null,
           "readOrder": 78
@@ -1049,24 +1049,24 @@
         },
         {
           "key": "/works/OL69179W",
-          "href": "/works/OL69179W/My_bondage_and_my_freedom?edition=ia%3Amybondagemyfreed00doug",
+          "href": "/works/OL69179W/My_bondage_and_my_freedom?edition=ia%3Amybondageandmyf01douggoog",
           "title": "My bondage and my freedom",
           "authors": [
             "Frederick Douglass"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL6565340M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL44039357M-M.jpg",
           "firstPublishYear": 1815,
           "readAt": null,
           "readOrder": 83
         },
         {
           "key": "/works/OL18941W",
-          "href": "/works/OL18941W/Fight_Club?edition=ia%3Afightclub00pala",
+          "href": "/works/OL18941W/Fight_Club?edition=ia%3Afightclub0000chuc",
           "title": "Fight Club",
           "authors": [
             "Chuck Palahniuk"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL7454243M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL48188559M-M.jpg",
           "firstPublishYear": 1996,
           "readAt": null,
           "readOrder": 84
@@ -1109,12 +1109,12 @@
         },
         {
           "key": "/works/OL13646905W",
-          "href": "/works/OL13646905W/Daemon?edition=ia%3Adaemonnovel00suar",
+          "href": "/works/OL13646905W/Daemon?edition=ia%3Adaemon00dani",
           "title": "Daemon",
           "authors": [
             "Daniel Suarez"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL23136686M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25424889M-M.jpg",
           "firstPublishYear": 2009,
           "readAt": null,
           "readOrder": 88
@@ -1233,13 +1233,13 @@
         },
         {
           "key": "/works/OL35616W",
-          "href": "/works/OL35616W/Kindred?edition=ia%3Akindred0000octa_z8l7",
+          "href": "/works/OL35616W/Kindred?edition=ia%3Akindred00butl",
           "title": "Kindred",
           "authors": [
             "Octavia E. Butler",
             "SparkNotes"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL39640470M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL24747594M-M.jpg",
           "firstPublishYear": 1979,
           "readAt": null,
           "readOrder": 98
@@ -1465,12 +1465,12 @@
         },
         {
           "key": "/works/OL492646W",
-          "href": "/works/OL492646W/The_Sea_of_Monsters?edition=ia%3Apercyjacksonseao0000rior_z0y5",
+          "href": "/works/OL492646W/The_Sea_of_Monsters?edition=ia%3Aboxijiekexunyumo0000rior",
           "title": "The Sea of Monsters",
           "authors": [
             "Rick Riordan"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27312894M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL35343668M-M.jpg",
           "firstPublishYear": 2005,
           "readAt": null,
           "readOrder": 117
@@ -1501,12 +1501,12 @@
         },
         {
           "key": "/works/OL82586W",
-          "href": "/works/OL82586W/Harry_Potter_and_the_Deathly_Hallows?edition=ia%3Ahaliboteyusiwang0000rowl",
+          "href": "/works/OL82586W/Harry_Potter_and_the_Deathly_Hallows?edition=ia%3Aharrynbsppottery0000jkro_o5h6",
           "title": "Harry Potter and the Deathly Hallows",
           "authors": [
             "J. K. Rowling"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL61091398M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL34141815M-M.jpg",
           "firstPublishYear": 2007,
           "readAt": null,
           "readOrder": 120
@@ -1549,12 +1549,12 @@
         },
         {
           "key": "/works/OL82536W",
-          "href": "/works/OL82536W/Harry_Potter_and_the_Prisoner_of_Azkaban?edition=ia%3Abdrc-W8LS66814",
+          "href": "/works/OL82536W/Harry_Potter_and_the_Prisoner_of_Azkaban?edition=ia%3Abwb_S0-ATO-987",
           "title": "Harry Potter and the Prisoner of Azkaban",
           "authors": [
             "J. K. Rowling"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL48101764M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL58691653M-M.jpg",
           "firstPublishYear": 1999,
           "readAt": null,
           "readOrder": 124
@@ -1674,12 +1674,12 @@
         },
         {
           "key": "/works/OL46125W",
-          "href": "/works/OL46125W/Foundation?edition=ia%3Afoundation0000unse_c1b9",
+          "href": "/works/OL46125W/Foundation?edition=ia%3Afoundation0000unse_e1i2",
           "title": "Foundation",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL27757278M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL47079543M-M.jpg",
           "firstPublishYear": 1951,
           "readAt": null,
           "readOrder": 134
@@ -1711,12 +1711,12 @@
         },
         {
           "key": "/works/OL46398W",
-          "href": "/works/OL46398W/The_Naked_Sun?edition=ia%3Abwb_KL-304-309",
+          "href": "/works/OL46398W/The_Naked_Sun?edition=ia%3Aisbn_8476340974_0",
           "title": "The Naked Sun",
           "authors": [
             "Isaac Asimov"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL47676547M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25759213M-M.jpg",
           "firstPublishYear": 1954,
           "readAt": null,
           "readOrder": 137
@@ -1868,12 +1868,12 @@
         },
         {
           "key": "/works/OL1168083W",
-          "href": "/works/OL1168083W/Nineteen_Eighty-Four?edition=ia%3A1984orwe00orwe",
+          "href": "/works/OL1168083W/Nineteen_Eighty-Four?edition=ia%3A19840000unse",
           "title": "Nineteen Eighty-Four",
           "authors": [
             "George Orwell"
           ],
-          "coverUrl": "https://covers.openlibrary.org/b/olid/OL31487668M-M.jpg",
+          "coverUrl": "https://covers.openlibrary.org/b/olid/OL25892628M-M.jpg",
           "firstPublishYear": 1949,
           "readAt": null,
           "readOrder": 150

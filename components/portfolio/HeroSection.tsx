@@ -6,8 +6,7 @@ import styles from "./motion/HomepageIntro.module.css";
 
 const heroSignalRows = [
   ["Focus", "Backend Systems + Data Engineering"],
-  ["Recent", "Core Platform + Identity Systems"],
-  ["Previous", "Data Science + Machine Learning"]
+  ["Previous", "Core Platform + Identity Systems"],
 ] as const;
 
 export function HeroSection() {
