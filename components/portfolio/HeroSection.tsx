@@ -5,7 +5,7 @@ import Image from "next/image";
 import styles from "./motion/HomepageIntro.module.css";
 
 const heroSignalRows = [
-  ["Focus", "Backend Systems & Data Engineering"],
+  ["Current", "Backend Systems & Data Engineering"],
   ["Previous", "Core Platform & Identity Systems"],
 ] as const;
 

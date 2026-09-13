@@ -107,9 +107,9 @@ export const projects: Project[] = [
     tags: ["Infrastructure", "Databases", "Research"]
   },
   {
-    title: "Tableau Public Dashboards",
+    title: "Data Visualizations",
     description:
-      "I create public dashboards using Tableau and Flourish to explore data, compare rankings, and visualize trends through interactive analytics.",
+      "I created public dashboards using Tableau and Flourish to explore data, compare rankings, and visualize trends through interactive analytics.",
     accent: "var(--accent)",
     link: "/data-visualizations/",
     tags: ["Analytics", "Tableau", "Flourish"]
