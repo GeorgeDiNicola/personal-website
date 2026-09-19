@@ -21,7 +21,7 @@ export function BackToTopButton() {
           type="button"
           aria-label="Back to top"
           title="Back to top"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          onClick={() => window.scrollTo({ top: 0, behavior: prefersReducedMotion ? "instant" : "smooth" })}
           initial={prefersReducedMotion ? false : { opacity: 0, y: 12, scale: 0.9 }}
           animate={prefersReducedMotion ? undefined : { opacity: 1, y: 0, scale: 1 }}
           exit={prefersReducedMotion ? undefined : { opacity: 0, y: 12, scale: 0.9 }}
