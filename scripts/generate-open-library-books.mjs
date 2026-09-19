@@ -13,9 +13,21 @@ const OUTPUT_PATH = path.join(
   "open-library-books.generated.json"
 );
 const REQUEST_HEADERS = {
-  Accept: "text/html,application/xhtml+xml",
+  Accept: "application/json,text/html,application/xhtml+xml",
   "User-Agent": "personal-website/1.0 (personal-website@example.com)"
 };
+const SEARCH_BATCH_SIZE = 40;
+const MAX_FETCH_ATTEMPTS = 3;
+
+// These catalog records have verified English titles and covers, but Open Library omits their
+// language field. Keeping the exceptions explicit prevents an arbitrary translated edition from
+// replacing them during a later shelf refresh.
+const ENGLISH_EDITION_OVERRIDES = new Map([
+  ["/works/OL17362758W", { editionKey: "/books/OL25940955M", coverId: 13048107 }],
+  ["/works/OL17381975W", { editionKey: "/books/OL25961562M", coverId: 7466856 }],
+  ["/works/OL7982451W", { editionKey: "/books/OL7358557M", coverId: 107192 }],
+  ["/works/OL16806525W", { editionKey: "/books/OL25430345M", coverId: 7261361 }]
+]);
 
 const SHELVES = [
   {
@@ -52,12 +64,38 @@ const decodeHtml = (value) =>
 
 const stripTags = (value) => decodeHtml(value.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim());
 
-const normalizeOpenLibraryUrl = (value) => {
-  const decoded = decodeHtml(value.trim());
-  if (decoded.startsWith("//")) return `https:${decoded}`;
-  if (decoded.startsWith("/")) return `${OPEN_LIBRARY_ROOT}${decoded}`;
-  return decoded;
+const wait = (milliseconds) =>
+  new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+
+const fetchOpenLibrary = async (url) => {
+  for (let attempt = 1; attempt <= MAX_FETCH_ATTEMPTS; attempt += 1) {
+    let response;
+    try {
+      response = await fetch(url, { headers: REQUEST_HEADERS });
+    } catch (error) {
+      if (attempt === MAX_FETCH_ATTEMPTS) throw error;
+      await wait(500 * 2 ** (attempt - 1));
+      continue;
+    }
+
+    if (response.ok) return response;
+
+    const canRetry = response.status === 429 || response.status >= 500;
+    if (!canRetry || attempt === MAX_FETCH_ATTEMPTS) {
+      throw new Error(`Open Library returned ${response.status} for ${url}`);
+    }
+
+    await wait(500 * 2 ** (attempt - 1));
+  }
+
+  throw new Error(`Open Library did not return a response for ${url}`);
 };
+
+const fetchHtml = async (url) => (await fetchOpenLibrary(url)).text();
+
+const fetchJson = async (url) => (await fetchOpenLibrary(url)).json();
 
 const getShelfUrl = (slug, page) => {
   const url = new URL(`/people/${encodeURIComponent(USERNAME)}/books/${slug}`, OPEN_LIBRARY_ROOT);
@@ -67,11 +105,7 @@ const getShelfUrl = (slug, page) => {
 
 const fetchShelfHtml = async (slug, page) => {
   const url = getShelfUrl(slug, page);
-  const response = await fetch(url, { headers: REQUEST_HEADERS });
-  if (!response.ok) {
-    throw new Error(`Open Library returned ${response.status} for ${url}`);
-  }
-  return response.text();
+  return fetchHtml(url);
 };
 
 const parseTotalPages = (html) => {
@@ -111,7 +145,6 @@ const parseBookItem = (html, readOrder) => {
 
   const href = decodeHtml(titleMatch[1]);
   const workKey = href.match(/^(\/works\/[^/?#]+)/)?.[1] ?? href;
-  const coverMatch = html.match(/<img\b[^>]*\bitemprop="image"[^>]*\bsrc="([^"]+)"/i);
   const publishYearMatch = html.match(/First published in\s*(\d{3,4})/i);
 
   return {
@@ -119,7 +152,6 @@ const parseBookItem = (html, readOrder) => {
     href,
     title: stripTags(titleMatch[2]),
     authors: parseAuthors(html),
-    coverUrl: coverMatch ? normalizeOpenLibraryUrl(coverMatch[1]) : null,
     firstPublishYear: publishYearMatch ? Number(publishYearMatch[1]) : null,
     readAt: null,
     readOrder
@@ -132,6 +164,122 @@ const parseBooks = (html, startingReadOrder) => {
   return items
     .map((item, index) => parseBookItem(item, startingReadOrder + index))
     .filter(Boolean);
+};
+
+const getEnglishEditionSearchUrl = (workKeys) => {
+  const quotedWorkKeys = workKeys.map((key) => JSON.stringify(key)).join(" OR ");
+  const url = new URL("/search.json", OPEN_LIBRARY_ROOT);
+  url.searchParams.set("q", `key:(${quotedWorkKeys}) AND language:eng`);
+  url.searchParams.set(
+    "fields",
+    "key,editions,editions.key,editions.cover_i,editions.language"
+  );
+  url.searchParams.set("lang", "en");
+  url.searchParams.set("limit", String(workKeys.length));
+  return url.toString();
+};
+
+const getEnglishEditionSelection = (document) => {
+  const edition = document.editions?.docs?.find(
+    (candidate) =>
+      candidate.language?.includes("eng") &&
+      Number.isInteger(candidate.cover_i) &&
+      candidate.cover_i > 0
+  );
+  if (!edition) return null;
+
+  return {
+    coverUrl: `https://covers.openlibrary.org/b/id/${edition.cover_i}-M.jpg`,
+    editionKey: edition.key
+  };
+};
+
+const getWorkEditionsUrl = (workKey) => {
+  const workId = workKey.match(/^\/works\/(OL\d+W)$/)?.[1];
+  if (!workId) throw new Error(`Invalid Open Library work key: ${workKey}`);
+
+  const url = new URL(`/works/${workId}/editions.json`, OPEN_LIBRARY_ROOT);
+  url.searchParams.set("limit", "1000");
+  return url.toString();
+};
+
+const getEnglishEditionRecordSelection = (edition) => {
+  const isEnglish = edition.languages?.some(
+    (language) => language.key === "/languages/eng"
+  );
+  const coverId = edition.covers?.find((candidate) => Number.isInteger(candidate) && candidate > 0);
+  if (!isEnglish || !coverId || typeof edition.key !== "string") return null;
+
+  return {
+    coverUrl: `https://covers.openlibrary.org/b/id/${coverId}-M.jpg`,
+    editionKey: edition.key
+  };
+};
+
+const fetchEnglishEditionSelections = async (workKeys) => {
+  const selectionByWorkKey = new Map();
+
+  for (let index = 0; index < workKeys.length; index += SEARCH_BATCH_SIZE) {
+    const batch = workKeys.slice(index, index + SEARCH_BATCH_SIZE);
+    const response = await fetchJson(getEnglishEditionSearchUrl(batch));
+
+    for (const document of response.docs ?? []) {
+      const selection = getEnglishEditionSelection(document);
+      if (selection) selectionByWorkKey.set(document.key, selection);
+    }
+  }
+
+  const searchMisses = workKeys.filter((key) => !selectionByWorkKey.has(key));
+  for (const workKey of searchMisses) {
+    const response = await fetchJson(getWorkEditionsUrl(workKey));
+    const selection = response.entries
+      ?.map(getEnglishEditionRecordSelection)
+      .find(Boolean);
+    if (selection) selectionByWorkKey.set(workKey, selection);
+  }
+
+  for (const [workKey, override] of ENGLISH_EDITION_OVERRIDES) {
+    if (!workKeys.includes(workKey) || selectionByWorkKey.has(workKey)) continue;
+    selectionByWorkKey.set(workKey, {
+      coverUrl: `https://covers.openlibrary.org/b/id/${override.coverId}-M.jpg`,
+      editionKey: override.editionKey
+    });
+  }
+
+  return selectionByWorkKey;
+};
+
+const setEditionHref = (href, editionKey) => {
+  const url = new URL(href, OPEN_LIBRARY_ROOT);
+  url.searchParams.set("edition", `key:${editionKey}`);
+  return `${url.pathname}${url.search}`;
+};
+
+const resolveEnglishEditions = async (shelfEntries) => {
+  const books = shelfEntries.flatMap(([, shelf]) => shelf.books);
+  const workKeys = [...new Set(books.map((book) => book.key))];
+  const selectionByWorkKey = await fetchEnglishEditionSelections(workKeys);
+  const missingWorkKeys = workKeys.filter((key) => !selectionByWorkKey.has(key));
+  if (missingWorkKeys.length > 0) {
+    throw new Error(
+      `Could not find an English edition with a cover for: ${missingWorkKeys.join(", ")}`
+    );
+  }
+
+  return shelfEntries.map(([key, shelf]) => [
+    key,
+    {
+      ...shelf,
+      books: shelf.books.map((book) => {
+        const selection = selectionByWorkKey.get(book.key);
+        return {
+          ...book,
+          href: setEditionHref(book.href, selection.editionKey),
+          coverUrl: selection.coverUrl
+        };
+      })
+    }
+  ]);
 };
 
 const fetchShelf = async ({ key, slug }) => {
@@ -181,6 +329,7 @@ const generateOpenLibraryBooks = async () => {
   let shelfEntries;
   try {
     shelfEntries = await Promise.all(SHELVES.map((shelf) => fetchShelf(shelf)));
+    shelfEntries = await resolveEnglishEditions(shelfEntries);
   } catch (error) {
     const existingManifest = await readExistingManifest();
     if (!hasReusableExistingManifest(existingManifest)) throw error;
