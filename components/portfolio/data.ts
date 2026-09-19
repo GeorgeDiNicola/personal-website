@@ -21,7 +21,7 @@ export const workHistory: WorkExperience[] = [
   },
   {
     role: "Full-Stack Software Engineer",
-    department: "Product",
+    department: "Product & Infrastructure",
     company: "Columbia Build Lab Fellowship",
     period: "2021 - 2021",
     summary:
@@ -63,15 +63,6 @@ export const schools: School[] = [
 
 export const projects: Project[] = [
   {
-    title: "Adaptive TV Audio Controller",
-    description:
-      "I built an Arduino Uno controller that monitors relative signal variation from a sound sensor and automatically lowers TV volume during sustained loudness or sudden spikes using rolling-window analysis and infrared remote commands.",
-    accent: "var(--accent)",
-    featured: true,
-    link: "https://github.com/GeorgeDiNicola/adaptive-tv-audio-controller",
-    tags: ["Arduino / C++", "Embedded Systems", "Signal Processing"]
-  },
-  {
     title: "Automated Jeopardy! Insights Dashboard & Predictive Machine Learning Model",
     description:
       "I designed and built a Jeopardy! data system that automates ETL processes for a live Tableau dashboard and implements a self-developed machine learning model to forecast game outcomes for reigning champions.",
@@ -81,6 +72,24 @@ export const projects: Project[] = [
     tags: ["AI/ML Forecasting", "Data Engineering"]
   },
   {
+    title: "Macroeconomic Data Pipeline - World Bank Dataset",
+    description:
+      "I built a pipeline that discovers and groups high-quality indicators using rules-based logic and artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. The dataset has 15k+ views and 3k+ downloads.",
+    accent: "var(--accent-three)",
+    featured: true,
+    link: "https://www.kaggle.com/datasets/georgejdinicola/world-bank-indicators",
+    tags: ["Data Engineering", "AI/NLP", "Kaggle"]
+  },
+  {
+    title: "Adaptive TV Audio Controller",
+    description:
+      "I built an Arduino Uno controller that monitors relative signal variation from a sound sensor and automatically lowers TV volume during sustained loudness or sudden spikes using rolling-window analysis and infrared remote commands.",
+    accent: "var(--accent)",
+    featured: true,
+    link: "https://github.com/GeorgeDiNicola/adaptive-tv-audio-controller",
+    tags: ["Arduino / C++", "Embedded Systems", "Signal Processing"]
+  },
+  {
     title: "DIY Radio Antenna",
     description:
       "I built a radio antenna from wood, bronze, coaxial cable, and solder, and use software-defined radio (SDR) to receive and explore amateur radio signals on my computer.",
@@ -88,15 +97,6 @@ export const projects: Project[] = [
     featured: true,
     link: "/projects/radio-antenna/",
     tags: ["Software-Defined Radio", "Antenna Hardware", "Soldering"]
-  },
-  {
-    title: "Macroeconomic Data Pipeline - World Bank Dataset",
-    description:
-      "I built a pipeline that discovers and groups high-quality indicators using rules-based logic and artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. The dataset has 13k+ views and 2.5k+ downloads.",
-    accent: "var(--accent-three)",
-    featured: true,
-    link: "https://www.kaggle.com/datasets/georgejdinicola/world-bank-indicators",
-    tags: ["Data Engineering", "AI/NLP", "Kaggle"]
   },
   {
     title: "Blockchain-based Middleware for Relational Database Management Systems",

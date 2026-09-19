@@ -64,7 +64,7 @@ export function JeopardyPredictionSection({ isDark }: { isDark: boolean }) {
     <SectionCard
       id="jeopardy-predictions"
       title="My Jeopardy! Predictions"
-      subtitle="I built a machine learning model to predict whether the reigning Jeopardy! champion will win their next game"
+      subtitle="I built a machine learning model to predict whether the reigning Jeopardy! champion will win their next game."
       isDark={isDark}
     >
       <div className={styles.section} data-dark={isDark}>

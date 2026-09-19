@@ -60,7 +60,6 @@ export function DogPhotoSection({ isDark }: DogPhotoSectionProps) {
     <SectionCard
       id="my-dog"
       title="My Dog, Peanut"
-      subtitle="A few favorite moments with my sidekick"
       isDark={isDark}
     >
       <ul className="dog-photo-grid" aria-label="Dog photo collage">
