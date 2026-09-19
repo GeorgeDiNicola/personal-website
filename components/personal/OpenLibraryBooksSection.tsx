@@ -124,7 +124,7 @@ export function OpenLibraryBooksSection({
             }`}
           >
             The generated Open Library data is for {manifestUsername}, but this page is configured
-            for {normalizedUsername}. Run the prebuild step again to refresh the book manifest.
+            for {normalizedUsername}. Run pnpm generate:open-library-books to refresh the book manifest.
           </div>
         ) : null}
 
