@@ -10,8 +10,8 @@ const TEXT_COLOR_STORAGE_KEY = "text-color";
 const TEXT_COLOR_CHANGED_EVENT = "text-color-change";
 
 const MODE_DEFAULT_TEXT_COLOR: Record<Theme, string> = {
-  dark: "#edf7fb",
-  light: "#102033"
+  dark: "#f1f4f7",
+  light: "#1d252d"
 };
 
 // Keep the stored keys stable when refining the displayed palette.
@@ -45,7 +45,7 @@ const getStoredTextColor = (): TextColor | null => {
 
 const getTextColorSnapshot = (): TextColor => getStoredTextColor() ?? "default";
 
-/** Resolve the same theme-aware shade for page text and its picker swatch. */
+/** Resolve the same theme-aware shade for body text and its picker swatch. */
 export const resolveTextColorValue = (textColor: TextColor, theme: Theme) => {
   if (textColor === "default") return MODE_DEFAULT_TEXT_COLOR[theme];
   return TEXT_COLOR_PALETTE[textColor][theme];
