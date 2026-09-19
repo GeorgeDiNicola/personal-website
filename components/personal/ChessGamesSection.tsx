@@ -1,8 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import { SectionCard } from "@/components/personal/SectionCard";
+
+const CHESS_EMBED_ORIGIN = "https://www.chess.com";
+const MIN_CHESS_EMBED_HEIGHT = 320;
+const MAX_CHESS_EMBED_HEIGHT = 1200;
 
 const chessGamesEmbedIds = [
   "14648777",
@@ -27,6 +31,7 @@ type ChessGamesSectionProps = {
 export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
   const [activeGameIndex, setActiveGameIndex] = useState(0);
   const [lockedEmbedHeight, setLockedEmbedHeight] = useState<number | null>(null);
+  const chessEmbedRef = useRef<HTMLIFrameElement | null>(null);
   const totalGames = chessGamesEmbedIds.length;
   const activeGameId = chessGamesEmbedIds[activeGameIndex] ?? "";
   const activeEmbedHeight = lockedEmbedHeight ?? 560;
@@ -40,12 +45,15 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
     if (!totalGames) return;
 
     const onMessage = (event: MessageEvent) => {
-      if (!event.origin.includes("chess.com")) return;
+      if (event.origin !== CHESS_EMBED_ORIGIN) return;
+      if (event.source !== chessEmbedRef.current?.contentWindow) return;
+      if (!event.data || typeof event.data !== "object") return;
 
       const data = event.data as { id?: string; frameHeight?: number };
       const { id, frameHeight } = data;
-      if (!id || typeof frameHeight !== "number") return;
+      if (!id || typeof frameHeight !== "number" || !Number.isFinite(frameHeight)) return;
       if (!chessGamesEmbedIds.includes(id)) return;
+      if (frameHeight < MIN_CHESS_EMBED_HEIGHT || frameHeight > MAX_CHESS_EMBED_HEIGHT) return;
 
       const measuredHeight = frameHeight + 37;
       setLockedEmbedHeight((current) => current ?? measuredHeight);
@@ -104,6 +112,7 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
           <div className="portfolio-card chess-frame mx-auto w-full max-w-[880px] p-2 md:p-3">
             <div className="portfolio-inset overflow-hidden">
               <iframe
+                ref={chessEmbedRef}
                 id={activeGameId}
                 title={`Chess game ${activeGameIndex + 1}`}
                 src={activeGameUrl}
@@ -124,18 +133,18 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
                 key={id}
                 type="button"
                 aria-label={`View chess game ${index + 1}`}
+                aria-pressed={index === activeGameIndex}
                 onClick={() => setActiveGameIndex(index)}
-                className={`h-2.5 w-7 rounded-full transition-all duration-200 ${
-                  index === activeGameIndex
-                    ? isDark
-                      ? "bg-cyan-300 shadow-[0_0_14px_rgba(103,232,249,0.45)]"
-                      : "bg-cyan-700 shadow-[0_0_12px_rgba(14,116,144,0.25)]"
-                    : isDark
-                      ? "bg-slate-600 hover:bg-slate-500"
-                      : "bg-slate-300 hover:bg-slate-400"
-                }`}
-              />
+                className="chess-pagination-button"
+              >
+                <span aria-hidden="true" />
+              </button>
             ))}
+          </div>
+          <div className="text-center">
+            <a href={activeGameUrl} target="_blank" rel="noopener noreferrer" className="portfolio-action">
+              Open game on Chess.com <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       ) : (

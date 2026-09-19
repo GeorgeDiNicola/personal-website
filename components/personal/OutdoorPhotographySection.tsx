@@ -25,6 +25,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   const [isPhotosLoading, setIsPhotosLoading] = useState(true);
   const [isPhotoLightboxOpen, setIsPhotoLightboxOpen] = useState(false);
   const [outdoorPhotos, setOutdoorPhotos] = useState<OutdoorPhoto[]>([]);
+  const lightboxDialogRef = useRef<HTMLDivElement | null>(null);
   const lightboxCloseButtonRef = useRef<HTMLButtonElement | null>(null);
   const lightboxOpenButtonRef = useRef<HTMLButtonElement | null>(null);
   const lightboxThumbnailStripRef = useRef<HTMLDivElement | null>(null);
@@ -153,6 +154,36 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
 
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") closeLightbox();
+      if (event.key === "Tab") {
+        const dialog = lightboxDialogRef.current;
+        if (!dialog) return;
+
+        const focusableElements = Array.from(
+          dialog.querySelectorAll<HTMLElement>(
+            'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+          )
+        ).filter((element) => element.getAttribute("aria-hidden") !== "true");
+        const firstFocusableElement = focusableElements[0];
+        const lastFocusableElement = focusableElements.at(-1);
+        const activeElement = document.activeElement;
+
+        if (!firstFocusableElement || !lastFocusableElement) {
+          event.preventDefault();
+          dialog.focus();
+          return;
+        }
+
+        if (event.shiftKey && activeElement === firstFocusableElement) {
+          event.preventDefault();
+          lastFocusableElement.focus();
+          return;
+        }
+
+        if (!event.shiftKey && activeElement === lastFocusableElement) {
+          event.preventDefault();
+          firstFocusableElement.focus();
+        }
+      }
       if (event.key === "ArrowLeft" && totalPhotos > 0) {
         event.preventDefault();
         setActivePhotoIndex((index) => (index - 1 + totalPhotos) % totalPhotos);
@@ -165,13 +196,25 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
 
     const previousOverflow = document.body.style.overflow;
     const lightboxOpenButton = lightboxOpenButtonRef.current;
+    const page = lightboxOpenButton?.closest<HTMLElement>("main") ?? null;
+    const pageWasInert = page?.inert ?? false;
+    const previousAriaHidden = page?.getAttribute("aria-hidden") ?? null;
     document.body.style.overflow = "hidden";
+    if (page) {
+      page.inert = true;
+      page.setAttribute("aria-hidden", "true");
+    }
     window.requestAnimationFrame(() => lightboxCloseButtonRef.current?.focus());
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", onKeyDown);
+      if (page) {
+        page.inert = pageWasInert;
+        if (previousAriaHidden === null) page.removeAttribute("aria-hidden");
+        else page.setAttribute("aria-hidden", previousAriaHidden);
+      }
       lightboxOpenButton?.focus();
     };
   }, [closeLightbox, isPhotoLightboxOpen, totalPhotos]);
@@ -274,10 +317,12 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
 
           {canUseDocument && isPhotoLightboxOpen ? createPortal(
             <div
+              ref={lightboxDialogRef}
               className="photo-lightbox fixed inset-0 z-[100]"
               role="dialog"
               aria-modal="true"
               aria-label="Expanded photo viewer"
+              tabIndex={-1}
               onClick={closeLightbox}
             >
               <button

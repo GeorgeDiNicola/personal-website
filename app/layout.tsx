@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Geist, Geist_Mono } from "next/font/google";
 import { homepageIntroBootScript } from "@/components/portfolio/motion/homepageIntro";
 import "./globals.css";
@@ -73,8 +74,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <script dangerouslySetInnerHTML={{ __html: themeBootScript }} />
-        <script dangerouslySetInnerHTML={{ __html: homepageIntroBootScript }} />
+        <Script id="site-theme" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: themeBootScript }} />
+        <Script id="home-intro" strategy="beforeInteractive" dangerouslySetInnerHTML={{ __html: homepageIntroBootScript }} />
+        <a href="#main-content" className="skip-link">Skip to content</a>
         {children}
       </body>
     </html>

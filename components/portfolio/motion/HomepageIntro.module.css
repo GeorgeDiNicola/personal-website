@@ -1,38 +1,47 @@
 .page {
-  /* One timeline, in milliseconds. The identity is readable within the first second. */
-  --intro-duration: 1900ms;
-  --intro-name-delay: 180ms;
-  --intro-name-duration: 850ms;
-  --intro-frame-delay: 300ms;
-  --intro-frame-duration: 1100ms;
-  --intro-eyebrow-delay: 420ms;
-  --intro-portrait-delay: 480ms;
-  --intro-portrait-duration: 1000ms;
-  --intro-roles-delay: 620ms;
-  --intro-details-delay: 740ms;
-  --intro-context-delay: 860ms;
-  --intro-settle-duration: 700ms;
+  /* A single short sequence: establish, construct, resolve. */
+  --intro-header-delay: 60ms;
+  --intro-eyebrow-delay: 130ms;
+  --intro-name-delay: 210ms;
+  --intro-name-duration: 820ms;
+  --intro-rule-delay: 340ms;
+  --intro-rule-duration: 1250ms;
+  --intro-portrait-delay: 450ms;
+  --intro-portrait-duration: 1050ms;
+  --intro-system-delay: 640ms;
+  --intro-system-duration: 1050ms;
+  --intro-roles-delay: 930ms;
+  --intro-details-delay: 1080ms;
+  --intro-context-delay: 1450ms;
+  --intro-settle-duration: 650ms;
+  --intro-trace-delay: 80ms;
+  --intro-trace-duration: 2100ms;
 }
 
 .hero {
+  isolation: isolate;
   background: none;
   border-color: transparent;
   box-shadow: none;
   backdrop-filter: none;
 }
 
+.introTrace {
+  position: absolute;
+  z-index: 5;
+  top: 17%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--accent) 18%, var(--accent-three) 72%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 35%, transparent);
+  opacity: 0;
+}
+
 .hero::before,
 .hero::after {
   content: none;
-}
-
-.hero > .frame {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  padding: 0;
-  border-radius: inherit;
-  pointer-events: none;
 }
 
 .identity {
@@ -55,8 +64,13 @@
   overflow: hidden;
 }
 
-.name {
+.nameLine {
   display: block;
+}
+
+.engineeringSystem,
+.portraitImage {
+  will-change: transform, opacity;
 }
 
 /* Existing scroll reveals must also be readable before hydration or without JS. */
@@ -68,27 +82,35 @@
   }
 }
 
-@media (max-width: 767px) {
-  .rule {
-    transform-origin: center;
-  }
-}
-
 @media (prefers-reduced-motion: no-preference) {
+  :global(html[data-home-intro="playing"]) .page::before {
+    animation: grid-reveal 1100ms var(--ease-out-soft) backwards;
+  }
+
+  :global(html[data-home-intro="playing"]) .page::after {
+    animation: page-line-reveal 1250ms var(--ease-out-expo) 180ms backwards;
+  }
+
+  :global(html[data-home-intro="playing"]) .introTrace {
+    animation: trace-scan var(--intro-trace-duration) var(--ease-out-expo) var(--intro-trace-delay) backwards;
+  }
+
   :global(html[data-home-intro="playing"]) .rule {
-    animation: construct var(--intro-duration) var(--ease-out-soft) backwards;
+    animation: construct var(--intro-rule-duration) var(--ease-out-soft) var(--intro-rule-delay) backwards;
   }
 
-  :global(html[data-home-intro="playing"]) .name {
-    animation: name-reveal var(--intro-name-duration) var(--ease-out-expo) var(--intro-name-delay) backwards;
+  :global(html[data-home-intro="playing"]) .nameLine {
+    animation: name-reveal var(--intro-name-duration) var(--ease-out-expo) calc(var(--intro-name-delay) + var(--intro-line-delay, 0ms)) backwards;
   }
 
-  :global(html[data-home-intro="playing"]) .frame {
-    animation: surface-reveal var(--intro-frame-duration) var(--ease-out-soft) var(--intro-frame-delay) backwards;
-  }
+  .nameLine:nth-child(2) { --intro-line-delay: 135ms; }
 
-  :global(html[data-home-intro="playing"]) .portrait {
+  :global(html[data-home-intro="playing"]) .portraitImage {
     animation: portrait-reveal var(--intro-portrait-duration) var(--ease-out-soft) var(--intro-portrait-delay) backwards;
+  }
+
+  :global(html[data-home-intro="playing"]) .engineeringSystem {
+    animation: system-assemble var(--intro-system-duration) var(--ease-out-expo) var(--intro-system-delay) backwards;
   }
 
   :global(html[data-home-intro="playing"]) :is(.eyebrow, .roles, .details) {
@@ -99,9 +121,10 @@
   .roles { --intro-delay: var(--intro-roles-delay); }
   .details { --intro-delay: var(--intro-details-delay); }
 
-  :global(html[data-home-intro="playing"]) .page > :global(header),
-  :global(html[data-home-intro="playing"]) .page > :global(.portfolio-backdrop),
-  :global(html[data-home-intro="playing"]) .page > :global(.portfolio-pointer-glow),
+  :global(html[data-home-intro="playing"]) .page > :global(header) {
+    animation: header-reveal 700ms var(--ease-out-expo) var(--intro-header-delay) backwards;
+  }
+
   :global(html[data-home-intro="playing"]) .continuation {
     animation: surface-reveal var(--intro-settle-duration) var(--ease-out-soft) var(--intro-context-delay) backwards;
   }
@@ -109,19 +132,25 @@
 
 /* Backwards fill only: the normal, readable page wins even if cleanup fails. */
 @keyframes construct {
-  0% { transform: scaleX(0); }
-  28%, 58% { transform: scaleX(1); }
+  0% { opacity: 0; transform: scaleX(0); }
+  16% { opacity: 0.9; }
+  42%, 68% { transform: scaleX(1); }
   100% { transform: scaleX(0.085); }
 }
 
 @keyframes name-reveal {
-  from { transform: translateY(105%); }
-  to { transform: translateY(0); }
+  from { opacity: 0.15; transform: translateY(112%) skewY(2deg); }
+  to { opacity: 1; transform: translateY(0) skewY(0); }
 }
 
 @keyframes portrait-reveal {
-  from { clip-path: inset(-20% -20% 120% -20%); transform: translateY(10px); }
-  to { clip-path: inset(-20%); transform: translateY(0); }
+  from { opacity: 0; clip-path: circle(18% at 50% 50%); transform: scale(0.84); }
+  to { opacity: 1; clip-path: circle(75% at 50% 50%); transform: scale(1); }
+}
+
+@keyframes system-assemble {
+  from { opacity: 0; transform: scale(0.82); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes settle {
@@ -130,6 +159,29 @@
 }
 
 @keyframes surface-reveal {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes header-reveal {
+  from { opacity: 0; transform: translateY(-100%); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes grid-reveal {
+  from { opacity: 0; transform: scale(1.035); }
+  to { opacity: 0.72; transform: scale(1); }
+}
+
+@keyframes page-line-reveal {
+  from { opacity: 0; transform: scaleX(0); }
+  to { opacity: 0.18; transform: scaleX(1); }
+}
+
+@keyframes trace-scan {
+  0% { opacity: 0; transform: translateY(-12px) scaleX(0); transform-origin: left; }
+  14% { opacity: 0.75; }
+  48% { opacity: 0.55; transform: translateY(46vh) scaleX(1); transform-origin: left; }
+  76% { opacity: 0.3; transform: translateY(68vh) scaleX(0.36); transform-origin: right; }
+  100% { opacity: 0; transform: translateY(76vh) scaleX(0); transform-origin: right; }
 }

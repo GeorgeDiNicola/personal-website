@@ -3,9 +3,7 @@
 import Link from "next/link";
 
 import { DashboardEmbeds } from "@/components/data-visualizations/DashboardEmbeds";
-import { AmbientPointerGlow } from "@/components/portfolio/AmbientPointerGlow";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
-import { ParallaxBackground } from "@/components/portfolio/ParallaxBackground";
 import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
 import { SiteNavbar } from "@/components/portfolio/SiteNavbar";
 import { useTextColorPreference } from "@/components/portfolio/useTextColorPreference";
@@ -23,8 +21,6 @@ export default function DataVisualizationsPage() {
 
   return (
     <main className="portfolio-page relative">
-      <ParallaxBackground isDark={isDark} />
-      <AmbientPointerGlow />
       <ScrollProgressBar />
       <SiteNavbar
         isDark={isDark}
@@ -34,7 +30,7 @@ export default function DataVisualizationsPage() {
         onTextColorChange={setTextColor}
       />
 
-      <div className="portfolio-content portfolio-content-spaced">
+      <div id="main-content" tabIndex={-1} className="portfolio-content portfolio-content-spaced">
         <section className="portfolio-hero-surface">
           <Link href="/#projects" className="portfolio-action mb-6 px-4 py-2 text-sm">
             <span aria-hidden="true" className="site-text-static">←</span>
@@ -45,7 +41,7 @@ export default function DataVisualizationsPage() {
               <p className="portfolio-eyebrow site-text-static">
                 Dashboards
               </p>
-              <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">
+              <h1 className="mt-3">
                 Data Visualizations
               </h1>
               <p className="portfolio-copy mx-auto mt-4 max-w-3xl text-base md:mx-0 md:text-lg">

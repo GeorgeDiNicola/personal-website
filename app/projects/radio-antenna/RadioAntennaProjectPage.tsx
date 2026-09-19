@@ -4,9 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { SectionCard } from "@/components/personal/SectionCard";
-import { AmbientPointerGlow } from "@/components/portfolio/AmbientPointerGlow";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
-import { ParallaxBackground } from "@/components/portfolio/ParallaxBackground";
 import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
 import { SiteNavbar } from "@/components/portfolio/SiteNavbar";
 import { useTextColorPreference } from "@/components/portfolio/useTextColorPreference";
@@ -31,8 +29,6 @@ export function RadioAntennaProjectPage() {
 
   return (
     <main className="portfolio-page relative">
-      <ParallaxBackground isDark={isDark} />
-      <AmbientPointerGlow />
       <ScrollProgressBar />
       <SiteNavbar
         isDark={isDark}
@@ -42,19 +38,19 @@ export function RadioAntennaProjectPage() {
         onTextColorChange={setTextColor}
       />
 
-      <div className="portfolio-content portfolio-content-spaced">
+      <div id="main-content" tabIndex={-1} className="portfolio-content portfolio-content-spaced">
         <header className="portfolio-hero-surface">
           <Link href="/#projects" className="portfolio-action mb-6 px-4 py-2 text-sm">
             <span aria-hidden="true" className="site-text-static">←</span>
             <span className="site-text-static">Back to projects</span>
           </Link>
           <p className="portfolio-eyebrow site-text-static">Software-defined radio · Hardware</p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">
+          <h1 className="mt-3">
             DIY Radio Antenna
           </h1>
           <p className="portfolio-copy mt-4 max-w-2xl">
             I built a radio antenna from wood, bronze, coaxial cable, and solder,
-            and use software-defined radio (SDR) to receive and explore amateur
+            and used software-defined radio (SDR) to receive and explore amateur
             radio signals on my computer. The build follows Diana Eng’s Yagi
             antenna project featured in Make: magazine.
           </p>
@@ -70,12 +66,6 @@ export function RadioAntennaProjectPage() {
               The antenna feeds an SDR receiver, which turns radio signals into
               digital samples for the computer to process. Software handles
               filtering and demodulation and lets me tune across frequencies.
-            </p>
-            <p>
-              Common amateur (ham) radio signals include FM voice transmissions
-              in the VHF and UHF bands. These can be direct conversations between
-              operators or traffic through repeaters, which receive and
-              retransmit signals to extend their coverage.
             </p>
           </div>
         </SectionCard>

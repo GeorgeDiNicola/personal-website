@@ -5,9 +5,7 @@ import { DogPhotoSection } from "@/components/personal/DogPhotoSection";
 import { OpenLibraryBooksSection } from "@/components/personal/OpenLibraryBooksSection";
 import { OutdoorPhotographySection } from "@/components/personal/OutdoorPhotographySection";
 import { PersonalHeroSection } from "@/components/personal/PersonalHeroSection";
-import { AmbientPointerGlow } from "@/components/portfolio/AmbientPointerGlow";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
-import { ParallaxBackground } from "@/components/portfolio/ParallaxBackground";
 import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
 import { SiteNavbar } from "@/components/portfolio/SiteNavbar";
 import { useTextColorPreference } from "@/components/portfolio/useTextColorPreference";
@@ -21,8 +19,6 @@ export default function PersonalPage() {
 
   return (
     <main className="portfolio-page relative">
-      <ParallaxBackground isDark={isDark} />
-      <AmbientPointerGlow />
       <ScrollProgressBar />
       <SiteNavbar
         isDark={isDark}
@@ -32,7 +28,7 @@ export default function PersonalPage() {
         onTextColorChange={setTextColor}
       />
 
-      <div className="portfolio-content portfolio-content-spaced">
+      <div id="main-content" tabIndex={-1} className="portfolio-content portfolio-content-spaced">
         <PersonalHeroSection />
 
         <OutdoorPhotographySection isDark={isDark} />

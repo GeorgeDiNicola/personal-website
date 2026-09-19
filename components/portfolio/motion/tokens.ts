@@ -7,7 +7,7 @@ export const motionEasing = {
 };
 
 export const sectionTransition: Transition = {
-  duration: 0.72,
+  duration: 0.6,
   ease: motionEasing.outExpo
 };
 
@@ -24,11 +24,10 @@ export const springTransition: Transition = {
 };
 
 export const sectionVariants: Variants = {
-  hidden: { opacity: 0, y: 26, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 16 },
   show: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
     transition: sectionTransition
   }
 };
