@@ -5,7 +5,7 @@ import { useHydratedReducedMotion } from "./motion/useHydratedReducedMotion";
 import Image from "next/image";
 
 import { MotionSection } from "./motion/MotionSection";
-import { createStagger, itemVariants, springTransition } from "./motion/tokens";
+import { createStagger, itemVariants } from "./motion/tokens";
 import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 import type { Skill } from "./types";
 
@@ -20,13 +20,13 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
   const { viewportFor } = useResponsiveViewport();
 
   return (
-    <MotionSection id="skills" className="mt-10 scroll-mt-32" delay={0.05}>
+    <MotionSection id="skills" className="portfolio-section" delay={0.05}>
       <div className="portfolio-surface">
         <div>
           <p className="portfolio-eyebrow site-text-static">
             Skills
           </p>
-          <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+          <h2 className="mt-3">
             Technical Toolkit
           </h2>
           <p className="portfolio-copy mt-3 max-w-3xl text-sm">
@@ -35,7 +35,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
           </p>
 
           <motion.div
-            className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7"
+            className="portfolio-skills-grid"
             variants={skillsStagger}
             initial={prefersReducedMotion ? false : "hidden"}
             whileInView={prefersReducedMotion ? undefined : "show"}
@@ -45,15 +45,10 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
               <motion.article
                 key={skill.name}
                 variants={itemVariants}
-                whileHover={
-                  prefersReducedMotion
-                    ? undefined
-                    : { y: -4, scale: 1.015, transition: springTransition }
-                }
-                className="portfolio-card p-3 text-center"
+                className="portfolio-skill"
               >
                 <div
-                  className="portfolio-inset mx-auto flex h-12 w-12 items-center justify-center"
+                  className="portfolio-skill-icon"
                 >
                   <Image
                     src={skill.logo}
@@ -64,9 +59,7 @@ export function SkillsSection({ skills }: SkillsSectionProps) {
                     className="h-7 w-7 object-contain"
                   />
                 </div>
-                <p className="mt-2 text-xs font-semibold text-[var(--text-soft)] md:text-sm">
-                  {skill.name}
-                </p>
+                <p>{skill.name}</p>
               </motion.article>
             ))}
           </motion.div>

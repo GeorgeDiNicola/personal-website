@@ -17,9 +17,9 @@ export function SectionCard({ id, title, ariaLabel, subtitle, isDark, children }
       className="portfolio-surface"
     >
       {title || subtitle ? (
-        <header className="mb-5 space-y-2 text-center">
+        <header className="personal-section-header space-y-4">
           {title ? (
-            <h2 className="text-2xl font-semibold tracking-tight md:text-3xl">
+            <h2 className="">
               {title}
             </h2>
           ) : null}

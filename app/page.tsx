@@ -1,11 +1,9 @@
 "use client";
 
-import { AmbientPointerGlow } from "@/components/portfolio/AmbientPointerGlow";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
 import { EducationSection } from "@/components/portfolio/EducationSection";
 import { GitHubActivitySection } from "@/components/portfolio/GitHubActivitySection";
 import { HeroSection } from "@/components/portfolio/HeroSection";
-import { ParallaxBackground } from "@/components/portfolio/ParallaxBackground";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { ScrollProgressBar } from "@/components/portfolio/ScrollProgressBar";
 import { SiteNavbar } from "@/components/portfolio/SiteNavbar";
@@ -32,8 +30,6 @@ export default function HomePage() {
 
   return (
     <main className={`portfolio-page relative ${introStyles.page}`}>
-      <ParallaxBackground isDark={isDark} />
-      <AmbientPointerGlow />
       <ScrollProgressBar />
       <SiteNavbar
         isDark={isDark}
@@ -43,11 +39,11 @@ export default function HomePage() {
         onTextColorChange={setTextColor}
       />
 
-      <div className="portfolio-content">
+      <div id="main-content" tabIndex={-1} className="portfolio-content">
         <HeroSection />
         <div className={introStyles.continuation}>
-          <EducationSection isDark={isDark} schools={schools} />
-          <WorkHistorySection isDark={isDark} workHistory={workHistory} />
+          <EducationSection schools={schools} />
+          <WorkHistorySection workHistory={workHistory} />
           <SkillsSection skills={skills} />
           <ProjectsSection projects={projects} />
           <GitHubActivitySection

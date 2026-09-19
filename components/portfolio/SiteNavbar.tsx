@@ -23,7 +23,6 @@ type SiteNavbarProps = {
 type NavigationTab = {
   href: string;
   label: string;
-  compactLabel: string;
   icon: "work" | "personal";
   active: boolean;
 };
@@ -39,6 +38,7 @@ export function SiteNavbar({
   const [isPaletteOpen, setPaletteOpen] = useState(false);
   const [isNavbarHidden, setNavbarHidden] = useState(false);
   const paletteRef = useRef<HTMLDivElement>(null);
+  const paletteTriggerRef = useRef<HTMLButtonElement>(null);
   const frameRef = useRef<number | null>(null);
   const isPaletteOpenRef = useRef(false);
   const lastScrollYRef = useRef(0);
@@ -48,14 +48,12 @@ export function SiteNavbar({
     {
       href: "/",
       label: "Professional",
-      compactLabel: "Work",
       icon: "work",
       active: !isPersonalRoute
     },
     {
       href: "/personal",
       label: "Personal",
-      compactLabel: "Personal",
       icon: "personal",
       active: isPersonalRoute
     }
@@ -79,6 +77,10 @@ export function SiteNavbar({
   useEffect(() => {
     if (!isPaletteOpen) return;
 
+    paletteRef.current
+      ?.querySelector<HTMLButtonElement>('[role="menuitemradio"][aria-checked="true"]')
+      ?.focus();
+
     const handlePointerDown = (event: MouseEvent) => {
       if (!paletteRef.current?.contains(event.target as Node)) {
         setPaletteOpen(false);
@@ -86,7 +88,10 @@ export function SiteNavbar({
     };
 
     const handleEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setPaletteOpen(false);
+      if (event.key === "Escape") {
+        setPaletteOpen(false);
+        paletteTriggerRef.current?.focus();
+      }
     };
 
     window.addEventListener("mousedown", handlePointerDown);
@@ -148,25 +153,25 @@ export function SiteNavbar({
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full px-3 pt-3 transition duration-300 ease-[var(--ease-out-soft)] md:px-5 md:pt-4 ${
+      className={`site-header ${
         isNavbarHidden ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
       }`}
       onFocusCapture={() => setNavbarHidden(false)}
     >
       <div
-        className="portfolio-nav-shell mx-auto flex w-full max-w-6xl items-center gap-2 rounded-2xl px-2 py-1.5 md:px-3"
+        className="portfolio-nav-shell"
       >
         <Link
           href="/"
           aria-label="Go to professional homepage"
-          className="portfolio-nav-brand site-text-static hidden shrink-0 items-center gap-2 md:inline-flex"
+          className="portfolio-nav-brand site-text-static inline-flex shrink-0 items-center"
         >
           <span className="portfolio-nav-brand-mark" aria-hidden="true">
             GD
           </span>
         </Link>
 
-        <nav aria-label="Main" className="portfolio-nav-tabs flex min-w-0 flex-1 gap-1">
+        <nav aria-label="Main" className="portfolio-nav-tabs min-w-0">
           {tabs.map((tab) => (
             <Link
               key={tab.href}
@@ -176,74 +181,46 @@ export function SiteNavbar({
                 tab.active ? "portfolio-nav-tab-active" : ""
               }`}
             >
-              {tab.active ? (
-                <span
-                  aria-hidden="true"
-                  className="portfolio-nav-active-beam"
-                />
-              ) : null}
+              {tab.active ? <span className="portfolio-nav-active-beam" aria-hidden="true" /> : null}
               <span className="portfolio-nav-tab-icon" aria-hidden="true">
                 <NavIcon icon={tab.icon} />
               </span>
-              <span className="md:hidden">{tab.compactLabel}</span>
-              <span className="hidden md:inline">{tab.label}</span>
+              <span>{tab.label}</span>
             </Link>
           ))}
         </nav>
 
         <div className="portfolio-nav-actions">
-          <span
-            className={`portfolio-nav-mode site-text-static hidden lg:inline-flex ${
-              isDark ? "portfolio-nav-mode-dark" : ""
-            }`}
-          >
-            {isDark ? "Dark" : "Light"}
-          </span>
           <button
             type="button"
             onClick={() => onThemeChange(theme === "dark" ? "light" : "dark")}
             aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
             title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            className="portfolio-icon-button portfolio-nav-control inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+            className="portfolio-icon-button portfolio-nav-button portfolio-nav-control"
           >
-            {theme === "dark" ? (
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <circle cx="12" cy="12" r="4" />
-                <path d="M12 2v2" />
-                <path d="M12 20v2" />
-                <path d="m4.93 4.93 1.41 1.41" />
-                <path d="m17.66 17.66 1.41 1.41" />
-                <path d="M2 12h2" />
-                <path d="M20 12h2" />
-                <path d="m6.34 17.66-1.41 1.41" />
-                <path d="m19.07 4.93-1.41 1.41" />
-              </svg>
-            ) : (
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                className="h-5 w-5"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M12 3a6 6 0 0 0 9 7.5A8.5 8.5 0 1 1 12 3Z" />
-              </svg>
-            )}
+            <span className="portfolio-nav-button-icon" aria-hidden="true">
+              {theme === "dark" ? (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <circle cx="12" cy="12" r="4" />
+                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+                </svg>
+              ) : (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 3a6 6 0 0 0 9 7.5A8.5 8.5 0 1 1 12 3Z" />
+                </svg>
+              )}
+            </span>
+            <span className="portfolio-nav-button-label">{theme === "dark" ? "Light" : "Dark"}</span>
           </button>
-          <div className="relative shrink-0" ref={paletteRef}>
+          <div
+            className="relative shrink-0"
+            ref={paletteRef}
+            onBlur={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget)) setPaletteOpen(false);
+            }}
+          >
             <button
+              ref={paletteTriggerRef}
               type="button"
               onClick={() => {
                 setNavbarHidden(false);
@@ -251,19 +228,33 @@ export function SiteNavbar({
               }}
               aria-haspopup="menu"
               aria-expanded={isPaletteOpen}
-              aria-label="Open text color palette"
-              title="Open text color palette"
-              className="portfolio-icon-button inline-flex h-10 w-10 items-center justify-center rounded-full"
+              aria-label="Open body text color palette"
+              title="Open body text color palette"
+              className="portfolio-icon-button portfolio-nav-button"
             >
               <span
-                className="block h-4 w-4 rounded-full border border-black/30 shadow-[inset_0_1px_1px_rgba(255,255,255,0.55)]"
+                className="portfolio-color-swatch"
                 style={{ backgroundColor: selectedColorOption.color }}
               />
+              <span className="portfolio-nav-button-label">Text color</span>
             </button>
             <div
               role="menu"
-              aria-label="Website text color"
+              aria-label="Body text color"
               aria-hidden={!isPaletteOpen}
+              onKeyDown={(event) => {
+                const keys = ["ArrowDown", "ArrowUp", "Home", "End"];
+                if (!keys.includes(event.key)) return;
+                event.preventDefault();
+                const options = Array.from(
+                  event.currentTarget.querySelectorAll<HTMLButtonElement>('[role="menuitemradio"]')
+                );
+                const currentIndex = options.indexOf(document.activeElement as HTMLButtonElement);
+                const nextIndex = event.key === "Home" ? 0
+                  : event.key === "End" ? options.length - 1
+                  : (currentIndex + (event.key === "ArrowDown" ? 1 : -1) + options.length) % options.length;
+                options[nextIndex]?.focus();
+              }}
               className={`absolute right-0 top-full z-50 mt-2 flex origin-top-right flex-col gap-1.5 rounded-xl border border-[var(--border)] bg-[var(--surface-strong)] p-1.5 shadow-[var(--shadow-card)] backdrop-blur-xl transition-all duration-200 ease-out ${
                 isPaletteOpen
                   ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
@@ -282,9 +273,10 @@ export function SiteNavbar({
                     onClick={() => {
                       onTextColorChange(option.value);
                       setPaletteOpen(false);
+                      paletteTriggerRef.current?.focus();
                     }}
                     tabIndex={isPaletteOpen ? 0 : -1}
-                    className={`inline-flex h-7 w-7 items-center justify-center rounded-full transition ${
+                    className={`inline-flex h-11 w-11 items-center justify-center rounded-full transition ${
                       isSelected
                         ? "ring-2 ring-[var(--accent)] ring-offset-2 ring-offset-[var(--surface-strong)]"
                         : "opacity-90 hover:scale-105 hover:opacity-100"

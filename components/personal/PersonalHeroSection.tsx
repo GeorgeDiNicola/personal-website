@@ -8,7 +8,7 @@ type PersonalInterest = {
 };
 
 const personalInterests: PersonalInterest[] = [
-  { label: "Trees", Icon: TreesIcon },
+  { label: "Outdoors", Icon: TreesIcon },
   { label: "Photography", Icon: CameraIcon },
   { label: "Chess", Icon: ChessKnightIcon },
   { label: "Books", Icon: BooksIcon }
@@ -16,30 +16,30 @@ const personalInterests: PersonalInterest[] = [
 
 export function PersonalHeroSection() {
   return (
-    <section className="portfolio-hero-surface">
-      <div className="text-center">
+    <section className="portfolio-hero-surface personal-hero">
+      <div className="text-left">
         <p className="portfolio-eyebrow site-text-static">
           Personal
         </p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight md:text-5xl">
+        <h1 className="mt-3">
           Personal Life
         </h1>
-        <p className="portfolio-copy mx-auto mt-4 max-w-2xl text-base md:text-lg">
+        <p className="portfolio-copy mt-5 max-w-2xl text-base md:text-lg">
           A collection of my interests outside of work
         </p>
 
         <div
-          className="mx-auto mt-7 flex max-w-md flex-wrap items-center justify-center gap-3"
+          className="personal-interests"
           aria-label="Personal interests"
         >
           {personalInterests.map(({ label, Icon }) => (
             <div
               key={label}
-              className="portfolio-inset grid h-14 w-14 place-items-center rounded-2xl bg-[var(--surface-muted)] text-[var(--accent-strong)] shadow-[var(--shadow-card)]"
+              className="personal-interest"
               title={label}
             >
-              <Icon className="h-7 w-7" />
-              <span className="sr-only">{label}</span>
+              <Icon className="h-5 w-5" />
+              <span>{label}</span>
             </div>
           ))}
         </div>

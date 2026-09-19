@@ -3,10 +3,9 @@
 import { motion } from "framer-motion";
 import { useHydratedReducedMotion } from "./motion/useHydratedReducedMotion";
 import Link from "next/link";
-import type { CSSProperties } from "react";
 
 import { MotionSection } from "./motion/MotionSection";
-import { createStagger, itemVariants, springTransition } from "./motion/tokens";
+import { createStagger, itemVariants } from "./motion/tokens";
 import { useResponsiveViewport } from "./motion/useResponsiveViewport";
 import type { Project } from "./types";
 
@@ -21,14 +20,14 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
   const { viewportFor } = useResponsiveViewport();
 
   return (
-    <MotionSection id="projects" className="mt-12 scroll-mt-32" delay={0.14}>
+    <MotionSection id="projects" className="portfolio-section" delay={0.14}>
       <div className="portfolio-surface">
         <div className="grid gap-6">
           <div>
             <p className="portfolio-eyebrow site-text-static">
               Projects
             </p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+            <h2 className="mt-3">
               Featured Personal Projects
             </h2>
           </div>
@@ -39,52 +38,33 @@ export function ProjectsSection({ projects }: ProjectsSectionProps) {
             whileInView={prefersReducedMotion ? undefined : "show"}
             viewport={viewportFor(0.25, 0.12)}
           >
-            <div className="grid gap-4 sm:grid-cols-2">
-              {projects.map((project) => {
-                const projectCardStyle = {
-                  "--project-accent": project.accent ?? "var(--accent)"
-                } as CSSProperties;
-
-                return (
+            <div className="portfolio-project-grid">
+              {projects.map((project) => (
                 <motion.article
                   key={project.title}
                   variants={itemVariants}
-                  whileHover={
-                    prefersReducedMotion
-                      ? undefined
-                      : {
-                          y: -5,
-                          scale: 1.01,
-                          transition: springTransition
-                        }
-                  }
-                  className={`portfolio-card portfolio-card-accent project-showcase-card flex min-h-full flex-col p-5 ${
-                    project.featured ? "project-showcase-card-featured sm:col-span-2" : ""
+                  className={`portfolio-card project-showcase-card ${
+                    project.featured ? "project-showcase-card-featured" : ""
                   }`}
-                  style={projectCardStyle}
                 >
-                  <h3 className="text-base font-semibold tracking-tight md:text-lg">
-                    {project.title}
-                  </h3>
-                  {project.tags && project.tags.length > 0 ? (
-                    <div className="mt-3 flex flex-wrap gap-1.5">
-                      {project.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="project-tag site-text-static"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-                  <p className="portfolio-copy mt-3 flex-1 text-sm">
+                  <div className="project-card-heading">
+                    <h3>{project.title}</h3>
+                    {project.tags && project.tags.length > 0 ? (
+                      <div className="mt-5 flex flex-wrap gap-y-2">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="project-tag site-text-static">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    ) : null}
+                  </div>
+                  <p className="portfolio-copy flex-1">
                     {project.description}
                   </p>
                   <ProjectDetailsLink project={project} />
                 </motion.article>
-                );
-              })}
+              ))}
             </div>
           </motion.div>
         </div>

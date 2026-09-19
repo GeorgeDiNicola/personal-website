@@ -24,7 +24,7 @@ export function GitHubActivitySection({
   const { viewportFor } = useResponsiveViewport();
 
   return (
-    <MotionSection className="mt-12" delay={0.12}>
+    <MotionSection className="portfolio-section" delay={0.12}>
       <div className="portfolio-surface">
         <motion.div
           className="space-y-5"
@@ -41,7 +41,7 @@ export function GitHubActivitySection({
               <p className="portfolio-eyebrow site-text-static">
                 GitHub
               </p>
-              <h2 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
+              <h2 className="mt-2">
                 Activity
               </h2>
             </div>
