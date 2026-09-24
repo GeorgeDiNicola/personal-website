@@ -37,6 +37,8 @@ test("scores both predicted wins and losses and excludes pending results", () =>
   assert.equal(summary.pending, 1);
   assert.equal(summary.settled, 3);
   assert.ok(Math.abs(summary.accuracy! - 200 / 3) < 1e-10);
+  assert.equal(summary.precision, 50);
+  assert.equal(summary.recall, 100);
 });
 
 test("blank results never become losses; open rows never count as settled", () => {
@@ -46,7 +48,10 @@ test("blank results never become losses; open rows never count as settled", () =
     [2, "2026-07-22", "B", "TWO", "1", 100, 1, "Pending"]
   ]);
   assert.ok(predictions.every((prediction) => prediction.actualWin === null));
-  assert.equal(summarizePredictions(predictions).accuracy, null);
+  const summary = summarizePredictions(predictions);
+  assert.equal(summary.accuracy, null);
+  assert.equal(summary.precision, null);
+  assert.equal(summary.recall, null);
 });
 
 test("rejects incomplete schemas, empty workbooks, and malformed latest rows", () => {

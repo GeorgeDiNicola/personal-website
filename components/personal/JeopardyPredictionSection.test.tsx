@@ -17,7 +17,11 @@ it("renders workbook results and lets the visitor explore prediction history", a
   const buttons = within(history).getAllByRole("button");
   expect(buttons).toHaveLength(3);
   expect(buttons[2]).toHaveAttribute("aria-pressed", "true");
-  expect(screen.getByText(/50.0% accuracy/)).toBeInTheDocument();
+  expect(screen.getByText("Accuracy")).toBeInTheDocument();
+  expect(screen.getByText("Precision")).toBeInTheDocument();
+  expect(screen.getByText("Recall")).toBeInTheDocument();
+  expect(screen.getByText(/how often a predicted win was right/i)).toBeInTheDocument();
+  expect(screen.getByText(/how many actual wins the model caught/i)).toBeInTheDocument();
   for (const [index, name] of ["Alex One", "Blair Two", "Casey Three"].entries()) {
     await user.click(buttons[index]);
     expect(buttons[index]).toHaveAttribute("aria-pressed", "true");
@@ -42,7 +46,7 @@ it("handles an all-pending workbook without inventing an accuracy", async () => 
   const rows = [predictionRows[0], [9, "2026-07-23", "New", "Champion", 1, 80, null, "Pending"]];
   vi.stubGlobal("fetch", vi.fn().mockResolvedValue(response(rows)));
   render(<JeopardyPredictionSection isDark={false} />);
-  expect(await screen.findByText(/no accuracy available/i)).toBeInTheDocument();
+  expect(await screen.findByText("Accuracy")).toBeInTheDocument();
   expect(screen.getByText(/predicted to win/i)).toBeInTheDocument();
 });
 

@@ -126,37 +126,29 @@ function PredictionContent({ predictions }: { predictions: JeopardyPrediction[] 
 
         <article className={`${styles.record} portfolio-inset`}>
           <p className="portfolio-panel-label site-text-static">The track record</p>
-          <div className={styles.accuracy}>
-            <div
-              className={styles.ring}
-              style={{ background: summary.accuracy === null ? "var(--border)" : `conic-gradient(var(--jeopardy-correct) ${summary.accuracy}%, var(--jeopardy-incorrect) 0)` }}
-              aria-hidden="true"
-            >
-              <div>
-                <strong>{summary.accuracy === null ? "—" : `${summary.accuracy.toFixed(1)}%`}</strong>
-                <span className="site-text-static">accuracy</span>
-              </div>
-            </div>
-            <dl className={styles.totals}>
-              <div>
-                <dt><span className={`${styles.legendDot} ${styles.correct}`} aria-hidden="true" />Correct</dt>
-                <dd>{summary.correct}</dd>
-              </div>
-              <div>
-                <dt><span className={`${styles.legendDot} ${styles.incorrect}`} aria-hidden="true" />Incorrect</dt>
-                <dd>{summary.incorrect}</dd>
-              </div>
-              <div>
-                <dt><span className={`${styles.legendDot} ${styles.pending}`} aria-hidden="true" />Pending</dt>
-                <dd>{summary.pending}</dd>
-              </div>
-            </dl>
+          <div className={styles.metrics}>
+            <MetricDonut
+              label="Accuracy"
+              metric={summary.accuracy}
+              description="How often any prediction was right"
+              completeColor="var(--jeopardy-correct)"
+              remainingColor="var(--jeopardy-incorrect)"
+            />
+            <MetricDonut
+              label="Precision"
+              metric={summary.precision}
+              description="How often a predicted win was right"
+              completeColor="var(--jeopardy-correct)"
+              remainingColor="var(--jeopardy-incorrect)"
+            />
+            <MetricDonut
+              label="Recall"
+              metric={summary.recall}
+              description="How many actual wins the model caught"
+              completeColor="var(--jeopardy-correct)"
+              remainingColor="var(--jeopardy-incorrect)"
+            />
           </div>
-          <p className={styles.recordNote}>
-            <span className="sr-only">{summary.accuracy === null ? "No accuracy available." : `${summary.accuracy.toFixed(1)}% accuracy.`} </span>
-            Correct means the predicted win or loss matched the actual result.
-            Accuracy is based on {summary.settled} completed games; pending results are excluded.
-          </p>
         </article>
       </div>
 
@@ -218,6 +210,42 @@ function PredictionContent({ predictions }: { predictions: JeopardyPrediction[] 
       </div>
     </>
   );
+}
+
+function MetricDonut({
+  label,
+  metric,
+  description,
+  completeColor,
+  remainingColor
+}: {
+  label: string;
+  metric: number | null;
+  description: string;
+  completeColor: string;
+  remainingColor: string;
+}) {
+  const value = formatMetric(metric);
+  const background = metric === null
+    ? "var(--border)"
+    : `conic-gradient(${completeColor} ${metric}%, ${remainingColor} 0)`;
+
+  return (
+    <div className={styles.metric}>
+      <div className={styles.ring} style={{ background }} aria-hidden="true">
+        <div><strong>{value}</strong></div>
+      </div>
+      <dl>
+        <dt>{label}</dt>
+        <dd>{value}</dd>
+      </dl>
+      <p>{description}</p>
+    </div>
+  );
+}
+
+function formatMetric(metric: number | null) {
+  return metric === null ? "—" : `${metric.toFixed(1)}%`;
 }
 
 function OutcomeBadge({ outcome }: { outcome: PredictionOutcome }) {

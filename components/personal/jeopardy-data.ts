@@ -131,17 +131,23 @@ export function normalizePredictions(rows: unknown[][]): JeopardyPrediction[] {
   return predictions;
 }
 
-/** Count only settled predictions in the accuracy denominator. */
+/** Calculate evaluation metrics from completed games only. */
 export function summarizePredictions(predictions: JeopardyPrediction[]) {
-  const correct = predictions.filter((prediction) => prediction.outcome === "correct").length;
-  const incorrect = predictions.filter((prediction) => prediction.outcome === "incorrect").length;
+  const settledPredictions = predictions.filter((prediction) => prediction.actualWin !== null);
+  const correct = settledPredictions.filter((prediction) => prediction.outcome === "correct").length;
+  const incorrect = settledPredictions.filter((prediction) => prediction.outcome === "incorrect").length;
   const settled = correct + incorrect;
+  const truePositives = settledPredictions.filter((prediction) => prediction.predictedWin && prediction.actualWin).length;
+  const falsePositives = settledPredictions.filter((prediction) => prediction.predictedWin && !prediction.actualWin).length;
+  const falseNegatives = settledPredictions.filter((prediction) => !prediction.predictedWin && prediction.actualWin).length;
   return {
     correct,
     incorrect,
     pending: predictions.length - settled,
     settled,
-    accuracy: settled ? (correct / settled) * 100 : null
+    accuracy: settled ? (correct / settled) * 100 : null,
+    precision: truePositives + falsePositives ? (truePositives / (truePositives + falsePositives)) * 100 : null,
+    recall: truePositives + falseNegatives ? (truePositives / (truePositives + falseNegatives)) * 100 : null
   };
 }
 
