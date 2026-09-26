@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { BackToProjectsLink } from "@/components/portfolio/BackToProjectsLink";
 
 import { SectionCard } from "@/components/personal/SectionCard";
 import { BackToTopButton } from "@/components/portfolio/BackToTopButton";
@@ -40,10 +40,7 @@ export function RadioAntennaProjectPage() {
 
       <div id="main-content" tabIndex={-1} className="portfolio-content portfolio-content-spaced">
         <header className="portfolio-hero-surface">
-          <Link href="/#projects" className="portfolio-action mb-6 px-4 py-2 text-sm">
-            <span aria-hidden="true" className="site-text-static">←</span>
-            <span className="site-text-static">Back to projects</span>
-          </Link>
+          <BackToProjectsLink />
           <p className="portfolio-eyebrow site-text-static">Software-defined radio · Hardware</p>
           <h1 className="mt-3">
             DIY Radio Antenna
