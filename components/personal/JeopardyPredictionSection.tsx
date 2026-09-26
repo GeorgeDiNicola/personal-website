@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 
 import { SectionCard } from "@/components/personal/SectionCard";
 import {
@@ -130,7 +130,13 @@ function PredictionContent({ predictions }: { predictions: JeopardyPrediction[] 
             <MetricDonut
               label="Accuracy"
               metric={summary.accuracy}
-              description="How often any prediction was right"
+              description={
+                <>
+                  Of all predictions, how many
+                  <br />
+                  were correct?
+                </>
+              }
               numerator="Correct predictions"
               denominator="Completed games"
               completeColor="var(--jeopardy-correct)"
@@ -139,7 +145,13 @@ function PredictionContent({ predictions }: { predictions: JeopardyPrediction[] 
             <MetricDonut
               label="Precision"
               metric={summary.precision}
-              description="How often a predicted win was right"
+              description={
+                <>
+                  Of predicted wins, how many
+                  <br />
+                  were correct?
+                </>
+              }
               numerator="Correctly predicted wins"
               denominator="All predicted wins"
               completeColor="var(--jeopardy-correct)"
@@ -148,7 +160,13 @@ function PredictionContent({ predictions }: { predictions: JeopardyPrediction[] 
             <MetricDonut
               label="Recall"
               metric={summary.recall}
-              description="What proportion of actual wins the model predicted correctly"
+              description={
+                <>
+                  Of actual wins, how many
+                  <br />
+                  did the model predict?
+                </>
+              }
               numerator="Correctly predicted wins"
               denominator="All actual wins"
               completeColor="var(--jeopardy-correct)"
@@ -229,7 +247,7 @@ function MetricDonut({
 }: {
   label: string;
   metric: number | null;
-  description: string;
+  description: ReactNode;
   numerator: string;
   denominator: string;
   completeColor: string;
