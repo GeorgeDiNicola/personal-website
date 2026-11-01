@@ -1,8 +1,26 @@
 {
-  "generatedAt": "2026-09-19T20:24:39.417Z",
+  "generatedAt": "2026-11-01T05:39:02.279Z",
   "username": "george3d",
   "shelves": {
     "currently-reading": {
+      "books": [
+        {
+          "key": "/works/OL45032671W",
+          "href": "/works/OL45032671W/How_to_Win_at_Chess_Next_Level?edition=key%3A%2Fbooks%2FOL61431859M",
+          "title": "How to Win at Chess, Next Level: The Ultimate Guide for Intermediate Play",
+          "authors": [
+            "Levy Rozman",
+            "GothamChess"
+          ],
+          "firstPublishYear": 2026,
+          "readAt": null,
+          "readOrder": 0,
+          "coverUrl": "https://covers.openlibrary.org/b/id/15243805-M.jpg"
+        }
+      ],
+      "totalCount": 1
+    },
+    "read": {
       "books": [
         {
           "key": "/works/OL20072759W",
@@ -17,23 +35,6 @@
           "coverUrl": "https://covers.openlibrary.org/b/id/13530844-M.jpg"
         },
         {
-          "key": "/works/OL18146664W",
-          "href": "/works/OL18146664W/The_Food_Lab?edition=key%3A%2Fbooks%2FOL26682267M",
-          "title": "The Food Lab: Better Home Cooking Through Science",
-          "authors": [
-            "J. Kenji López-Alt"
-          ],
-          "firstPublishYear": 2015,
-          "readAt": null,
-          "readOrder": 1,
-          "coverUrl": "https://covers.openlibrary.org/b/id/8355275-M.jpg"
-        }
-      ],
-      "totalCount": 2
-    },
-    "read": {
-      "books": [
-        {
           "key": "/works/OL19726995W",
           "href": "/works/OL19726995W/Iron_Gold?edition=key%3A%2Fbooks%2FOL26940101M",
           "title": "Iron Gold",
@@ -42,7 +43,7 @@
           ],
           "firstPublishYear": 2018,
           "readAt": null,
-          "readOrder": 0,
+          "readOrder": 1,
           "coverUrl": "https://covers.openlibrary.org/b/id/15093518-M.jpg"
         },
         {
@@ -54,7 +55,7 @@
           ],
           "firstPublishYear": 2016,
           "readAt": null,
-          "readOrder": 1,
+          "readOrder": 2,
           "coverUrl": "https://covers.openlibrary.org/b/id/12401168-M.jpg"
         },
         {
@@ -66,7 +67,7 @@
           ],
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 2,
+          "readOrder": 3,
           "coverUrl": "https://covers.openlibrary.org/b/id/15180063-M.jpg"
         },
         {
@@ -80,7 +81,7 @@
           ],
           "firstPublishYear": 1805,
           "readAt": null,
-          "readOrder": 3,
+          "readOrder": 4,
           "coverUrl": "https://covers.openlibrary.org/b/id/12007731-M.jpg"
         },
         {
@@ -92,7 +93,7 @@
           ],
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 4,
+          "readOrder": 5,
           "coverUrl": "https://covers.openlibrary.org/b/id/744794-M.jpg"
         },
         {
@@ -104,7 +105,7 @@
           ],
           "firstPublishYear": 2012,
           "readAt": null,
-          "readOrder": 5,
+          "readOrder": 6,
           "coverUrl": "https://covers.openlibrary.org/b/id/14951035-M.jpg"
         },
         {
@@ -116,7 +117,7 @@
           ],
           "firstPublishYear": 2014,
           "readAt": null,
-          "readOrder": 6,
+          "readOrder": 7,
           "coverUrl": "https://covers.openlibrary.org/b/id/8407136-M.jpg"
         },
         {
@@ -128,7 +129,7 @@
           ],
           "firstPublishYear": 2019,
           "readAt": null,
-          "readOrder": 7,
+          "readOrder": 8,
           "coverUrl": "https://covers.openlibrary.org/b/id/14140187-M.jpg"
         },
         {
@@ -140,7 +141,7 @@
           ],
           "firstPublishYear": 1983,
           "readAt": null,
-          "readOrder": 8,
+          "readOrder": 9,
           "coverUrl": "https://covers.openlibrary.org/b/id/10204362-M.jpg"
         },
         {
@@ -152,7 +153,7 @@
           ],
           "firstPublishYear": 2006,
           "readAt": null,
-          "readOrder": 9,
+          "readOrder": 10,
           "coverUrl": "https://covers.openlibrary.org/b/id/242579-M.jpg"
         },
         {
@@ -164,7 +165,7 @@
           ],
           "firstPublishYear": 1950,
           "readAt": null,
-          "readOrder": 10,
+          "readOrder": 11,
           "coverUrl": "https://covers.openlibrary.org/b/id/14828149-M.jpg"
         },
         {
@@ -178,7 +179,7 @@
           ],
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 11,
+          "readOrder": 12,
           "coverUrl": "https://covers.openlibrary.org/b/id/8090274-M.jpg"
         },
         {
@@ -190,7 +191,7 @@
           ],
           "firstPublishYear": 1818,
           "readAt": null,
-          "readOrder": 12,
+          "readOrder": 13,
           "coverUrl": "https://covers.openlibrary.org/b/id/15113302-M.jpg"
         },
         {
@@ -203,7 +204,7 @@
           ],
           "firstPublishYear": 2020,
           "readAt": null,
-          "readOrder": 13,
+          "readOrder": 14,
           "coverUrl": "https://covers.openlibrary.org/b/id/15111141-M.jpg"
         },
         {
@@ -215,20 +216,20 @@
           ],
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 14,
+          "readOrder": 15,
           "coverUrl": "https://covers.openlibrary.org/b/id/6933509-M.jpg"
         },
         {
           "key": "/works/OL20805971W",
-          "href": "/works/OL20805971W/Fugitive_Telemetry?edition=key%3A%2Fbooks%2FOL30014174M",
+          "href": "/works/OL20805971W/Fugitive_Telemetry?edition=key%3A%2Fbooks%2FOL61034497M",
           "title": "Fugitive Telemetry",
           "authors": [
             "Martha Wells"
           ],
           "firstPublishYear": 2021,
           "readAt": null,
-          "readOrder": 15,
-          "coverUrl": "https://covers.openlibrary.org/b/id/13348807-M.jpg"
+          "readOrder": 16,
+          "coverUrl": "https://covers.openlibrary.org/b/id/15156457-M.jpg"
         },
         {
           "key": "/works/OL20073906W",
@@ -239,7 +240,7 @@
           ],
           "firstPublishYear": 2019,
           "readAt": null,
-          "readOrder": 16,
+          "readOrder": 17,
           "coverUrl": "https://covers.openlibrary.org/b/id/10526597-M.jpg"
         },
         {
@@ -251,7 +252,7 @@
           ],
           "firstPublishYear": 2016,
           "readAt": null,
-          "readOrder": 17,
+          "readOrder": 18,
           "coverUrl": "https://covers.openlibrary.org/b/id/15104743-M.jpg"
         },
         {
@@ -263,7 +264,7 @@
           ],
           "firstPublishYear": 2007,
           "readAt": null,
-          "readOrder": 18,
+          "readOrder": 19,
           "coverUrl": "https://covers.openlibrary.org/b/id/12190767-M.jpg"
         },
         {
@@ -275,12 +276,12 @@
           ],
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 19,
+          "readOrder": 20,
           "coverUrl": "https://covers.openlibrary.org/b/id/9300824-M.jpg"
         },
         {
           "key": "/works/OL98484W",
-          "href": "/works/OL98484W/Player_Piano?edition=key%3A%2Fbooks%2FOL52255587M",
+          "href": "/works/OL98484W/Player_Piano?edition=key%3A%2Fbooks%2FOL59003606M",
           "title": "Player Piano",
           "authors": [
             "Kurt Vonnegut",
@@ -288,8 +289,8 @@
           ],
           "firstPublishYear": 1952,
           "readAt": null,
-          "readOrder": 20,
-          "coverUrl": "https://covers.openlibrary.org/b/id/14823383-M.jpg"
+          "readOrder": 21,
+          "coverUrl": "https://covers.openlibrary.org/b/id/15261718-M.jpg"
         },
         {
           "key": "/works/OL37620414W",
@@ -300,7 +301,7 @@
           ],
           "firstPublishYear": 2024,
           "readAt": null,
-          "readOrder": 21,
+          "readOrder": 22,
           "coverUrl": "https://covers.openlibrary.org/b/id/14652256-M.jpg"
         },
         {
@@ -312,20 +313,20 @@
           ],
           "firstPublishYear": 2020,
           "readAt": null,
-          "readOrder": 22,
+          "readOrder": 23,
           "coverUrl": "https://covers.openlibrary.org/b/id/9426689-M.jpg"
         },
         {
           "key": "/works/OL42406623W",
-          "href": "/works/OL42406623W/Source_Code?edition=key%3A%2Fbooks%2FOL57535416M",
+          "href": "/works/OL42406623W/Source_Code?edition=key%3A%2Fbooks%2FOL57563027M",
           "title": "Source Code",
           "authors": [
             "Bill Gates"
           ],
           "firstPublishYear": 2025,
           "readAt": null,
-          "readOrder": 23,
-          "coverUrl": "https://covers.openlibrary.org/b/id/14851913-M.jpg"
+          "readOrder": 24,
+          "coverUrl": "https://covers.openlibrary.org/b/id/15125219-M.jpg"
         },
         {
           "key": "/works/OL52114W",
@@ -336,7 +337,7 @@
           ],
           "firstPublishYear": null,
           "readAt": null,
-          "readOrder": 24,
+          "readOrder": 25,
           "coverUrl": "https://covers.openlibrary.org/b/id/11938007-M.jpg"
         },
         {
@@ -348,19 +349,19 @@
           ],
           "firstPublishYear": 2021,
           "readAt": null,
-          "readOrder": 25,
+          "readOrder": 26,
           "coverUrl": "https://covers.openlibrary.org/b/id/10874214-M.jpg"
         },
         {
           "key": "/works/OL11374287W",
-          "href": "/works/OL11374287W/I_am_Legend?edition=key%3A%2Fbooks%2FOL29638130M",
-          "title": "I am Legend",
+          "href": "/works/OL11374287W/I_Am_Legend?edition=key%3A%2Fbooks%2FOL29638130M",
+          "title": "I Am Legend",
           "authors": [
             "Richard Matheson"
           ],
           "firstPublishYear": 1954,
           "readAt": null,
-          "readOrder": 26,
+          "readOrder": 27,
           "coverUrl": "https://covers.openlibrary.org/b/id/10403208-M.jpg"
         },
         {
@@ -372,7 +373,7 @@
           ],
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 27,
+          "readOrder": 28,
           "coverUrl": "https://covers.openlibrary.org/b/id/13048107-M.jpg"
         },
         {
@@ -384,7 +385,7 @@
           ],
           "firstPublishYear": 2018,
           "readAt": null,
-          "readOrder": 28,
+          "readOrder": 29,
           "coverUrl": "https://covers.openlibrary.org/b/id/13010167-M.jpg"
         },
         {
@@ -396,7 +397,7 @@
           ],
           "firstPublishYear": 2018,
           "readAt": null,
-          "readOrder": 29,
+          "readOrder": 30,
           "coverUrl": "https://covers.openlibrary.org/b/id/12013488-M.jpg"
         },
         {
@@ -408,7 +409,7 @@
           ],
           "firstPublishYear": 2014,
           "readAt": null,
-          "readOrder": 30,
+          "readOrder": 31,
           "coverUrl": "https://covers.openlibrary.org/b/id/15142260-M.jpg"
         },
         {
@@ -420,7 +421,7 @@
           ],
           "firstPublishYear": 2010,
           "readAt": null,
-          "readOrder": 31,
+          "readOrder": 32,
           "coverUrl": "https://covers.openlibrary.org/b/id/7466856-M.jpg"
         },
         {
@@ -433,7 +434,7 @@
           ],
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 32,
+          "readOrder": 33,
           "coverUrl": "https://covers.openlibrary.org/b/id/15215439-M.jpg"
         },
         {
@@ -445,7 +446,7 @@
           ],
           "firstPublishYear": 2018,
           "readAt": null,
-          "readOrder": 33,
+          "readOrder": 34,
           "coverUrl": "https://covers.openlibrary.org/b/id/15156453-M.jpg"
         },
         {
@@ -457,7 +458,7 @@
           ],
           "firstPublishYear": 2017,
           "readAt": null,
-          "readOrder": 34,
+          "readOrder": 35,
           "coverUrl": "https://covers.openlibrary.org/b/id/9157148-M.jpg"
         },
         {
@@ -469,7 +470,7 @@
           ],
           "firstPublishYear": 2008,
           "readAt": null,
-          "readOrder": 35,
+          "readOrder": 36,
           "coverUrl": "https://covers.openlibrary.org/b/id/8750149-M.jpg"
         },
         {
@@ -481,7 +482,7 @@
           ],
           "firstPublishYear": 1972,
           "readAt": null,
-          "readOrder": 36,
+          "readOrder": 37,
           "coverUrl": "https://covers.openlibrary.org/b/id/14608473-M.jpg"
         },
         {
@@ -493,7 +494,7 @@
           ],
           "firstPublishYear": 1951,
           "readAt": null,
-          "readOrder": 37,
+          "readOrder": 38,
           "coverUrl": "https://covers.openlibrary.org/b/id/14553269-M.jpg"
         },
         {
@@ -505,7 +506,7 @@
           ],
           "firstPublishYear": 2024,
           "readAt": null,
-          "readOrder": 38,
+          "readOrder": 39,
           "coverUrl": "https://covers.openlibrary.org/b/id/14819750-M.jpg"
         },
         {
@@ -517,7 +518,7 @@
           ],
           "firstPublishYear": 2011,
           "readAt": null,
-          "readOrder": 39,
+          "readOrder": 40,
           "coverUrl": "https://covers.openlibrary.org/b/id/9137127-M.jpg"
         },
         {
@@ -531,7 +532,7 @@
           ],
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 40,
+          "readOrder": 41,
           "coverUrl": "https://covers.openlibrary.org/b/id/6620462-M.jpg"
         },
         {
@@ -543,7 +544,7 @@
           ],
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 41,
+          "readOrder": 42,
           "coverUrl": "https://covers.openlibrary.org/b/id/13007011-M.jpg"
         },
         {
@@ -555,7 +556,7 @@
           ],
           "firstPublishYear": 1626,
           "readAt": null,
-          "readOrder": 42,
+          "readOrder": 43,
           "coverUrl": "https://covers.openlibrary.org/b/id/15175524-M.jpg"
         },
         {
@@ -567,7 +568,7 @@
           ],
           "firstPublishYear": 2004,
           "readAt": null,
-          "readOrder": 43,
+          "readOrder": 44,
           "coverUrl": "https://covers.openlibrary.org/b/id/107192-M.jpg"
         },
         {
@@ -579,7 +580,7 @@
           ],
           "firstPublishYear": 2002,
           "readAt": null,
-          "readOrder": 44,
+          "readOrder": 45,
           "coverUrl": "https://covers.openlibrary.org/b/id/12882958-M.jpg"
         },
         {
@@ -592,7 +593,7 @@
           ],
           "firstPublishYear": 2001,
           "readAt": null,
-          "readOrder": 45,
+          "readOrder": 46,
           "coverUrl": "https://covers.openlibrary.org/b/id/302355-M.jpg"
         },
         {
@@ -604,7 +605,7 @@
           ],
           "firstPublishYear": 1989,
           "readAt": null,
-          "readOrder": 46,
+          "readOrder": 47,
           "coverUrl": "https://covers.openlibrary.org/b/id/310523-M.jpg"
         },
         {
@@ -616,7 +617,7 @@
           ],
           "firstPublishYear": 1956,
           "readAt": null,
-          "readOrder": 47,
+          "readOrder": 48,
           "coverUrl": "https://covers.openlibrary.org/b/id/15241037-M.jpg"
         },
         {
@@ -629,7 +630,7 @@
           ],
           "firstPublishYear": 1974,
           "readAt": null,
-          "readOrder": 48,
+          "readOrder": 49,
           "coverUrl": "https://covers.openlibrary.org/b/id/6640658-M.jpg"
         },
         {
@@ -641,7 +642,7 @@
           ],
           "firstPublishYear": 1994,
           "readAt": null,
-          "readOrder": 49,
+          "readOrder": 50,
           "coverUrl": "https://covers.openlibrary.org/b/id/44156-M.jpg"
         },
         {
@@ -653,7 +654,7 @@
           ],
           "firstPublishYear": 1991,
           "readAt": null,
-          "readOrder": 50,
+          "readOrder": 51,
           "coverUrl": "https://covers.openlibrary.org/b/id/8660138-M.jpg"
         },
         {
@@ -665,7 +666,7 @@
           ],
           "firstPublishYear": 2023,
           "readAt": null,
-          "readOrder": 51,
+          "readOrder": 52,
           "coverUrl": "https://covers.openlibrary.org/b/id/14420016-M.jpg"
         },
         {
@@ -677,7 +678,7 @@
           ],
           "firstPublishYear": 1927,
           "readAt": null,
-          "readOrder": 52,
+          "readOrder": 53,
           "coverUrl": "https://covers.openlibrary.org/b/id/13770925-M.jpg"
         },
         {
@@ -689,7 +690,7 @@
           ],
           "firstPublishYear": 1917,
           "readAt": null,
-          "readOrder": 53,
+          "readOrder": 54,
           "coverUrl": "https://covers.openlibrary.org/b/id/13436621-M.jpg"
         },
         {
@@ -701,7 +702,7 @@
           ],
           "firstPublishYear": 1914,
           "readAt": null,
-          "readOrder": 54,
+          "readOrder": 55,
           "coverUrl": "https://covers.openlibrary.org/b/id/12622180-M.jpg"
         },
         {
@@ -713,7 +714,7 @@
           ],
           "firstPublishYear": 1903,
           "readAt": null,
-          "readOrder": 55,
+          "readOrder": 56,
           "coverUrl": "https://covers.openlibrary.org/b/id/12506287-M.jpg"
         },
         {
@@ -725,7 +726,7 @@
           ],
           "firstPublishYear": 1900,
           "readAt": null,
-          "readOrder": 56,
+          "readOrder": 57,
           "coverUrl": "https://covers.openlibrary.org/b/id/15148697-M.jpg"
         },
         {
@@ -737,7 +738,7 @@
           ],
           "firstPublishYear": 1893,
           "readAt": null,
-          "readOrder": 57,
+          "readOrder": 58,
           "coverUrl": "https://covers.openlibrary.org/b/id/13379339-M.jpg"
         },
         {
@@ -749,7 +750,7 @@
           ],
           "firstPublishYear": 1892,
           "readAt": null,
-          "readOrder": 58,
+          "readOrder": 59,
           "coverUrl": "https://covers.openlibrary.org/b/id/15098626-M.jpg"
         },
         {
@@ -761,7 +762,7 @@
           ],
           "firstPublishYear": 1889,
           "readAt": null,
-          "readOrder": 59,
+          "readOrder": 60,
           "coverUrl": "https://covers.openlibrary.org/b/id/12622181-M.jpg"
         },
         {
@@ -773,8 +774,8 @@
           ],
           "firstPublishYear": 1887,
           "readAt": null,
-          "readOrder": 60,
-          "coverUrl": "https://covers.openlibrary.org/b/id/12621754-M.jpg"
+          "readOrder": 61,
+          "coverUrl": "https://covers.openlibrary.org/b/id/15264254-M.jpg"
         },
         {
           "key": "/works/OL27258W",
@@ -785,7 +786,7 @@
           ],
           "firstPublishYear": 1984,
           "readAt": null,
-          "readOrder": 61,
+          "readOrder": 62,
           "coverUrl": "https://covers.openlibrary.org/b/id/8904053-M.jpg"
         },
         {
@@ -797,7 +798,7 @@
           ],
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 62,
+          "readOrder": 63,
           "coverUrl": "https://covers.openlibrary.org/b/id/12373919-M.jpg"
         },
         {
@@ -811,7 +812,7 @@
           ],
           "firstPublishYear": 2022,
           "readAt": null,
-          "readOrder": 63,
+          "readOrder": 64,
           "coverUrl": "https://covers.openlibrary.org/b/id/12736555-M.jpg"
         },
         {
@@ -825,7 +826,7 @@
           ],
           "firstPublishYear": 1966,
           "readAt": null,
-          "readOrder": 64,
+          "readOrder": 65,
           "coverUrl": "https://covers.openlibrary.org/b/id/14886211-M.jpg"
         },
         {
@@ -837,7 +838,7 @@
           ],
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 65,
+          "readOrder": 66,
           "coverUrl": "https://covers.openlibrary.org/b/id/12003490-M.jpg"
         },
         {
@@ -849,7 +850,7 @@
           ],
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 66,
+          "readOrder": 67,
           "coverUrl": "https://covers.openlibrary.org/b/id/15125163-M.jpg"
         },
         {
@@ -861,7 +862,7 @@
           ],
           "firstPublishYear": 1992,
           "readAt": null,
-          "readOrder": 67,
+          "readOrder": 68,
           "coverUrl": "https://covers.openlibrary.org/b/id/7004665-M.jpg"
         },
         {
@@ -873,7 +874,7 @@
           ],
           "firstPublishYear": 1999,
           "readAt": null,
-          "readOrder": 68,
+          "readOrder": 69,
           "coverUrl": "https://covers.openlibrary.org/b/id/11540410-M.jpg"
         },
         {
@@ -885,7 +886,7 @@
           ],
           "firstPublishYear": 2010,
           "readAt": null,
-          "readOrder": 69,
+          "readOrder": 70,
           "coverUrl": "https://covers.openlibrary.org/b/id/8231871-M.jpg"
         },
         {
@@ -897,7 +898,7 @@
           ],
           "firstPublishYear": 1990,
           "readAt": null,
-          "readOrder": 70,
+          "readOrder": 71,
           "coverUrl": "https://covers.openlibrary.org/b/id/14552636-M.jpg"
         },
         {
@@ -909,7 +910,7 @@
           ],
           "firstPublishYear": 1986,
           "readAt": null,
-          "readOrder": 71,
+          "readOrder": 72,
           "coverUrl": "https://covers.openlibrary.org/b/id/10618261-M.jpg"
         },
         {
@@ -921,7 +922,7 @@
           ],
           "firstPublishYear": 2010,
           "readAt": null,
-          "readOrder": 72,
+          "readOrder": 73,
           "coverUrl": "https://covers.openlibrary.org/b/id/8091016-M.jpg"
         },
         {
@@ -933,7 +934,7 @@
           ],
           "firstPublishYear": 2021,
           "readAt": null,
-          "readOrder": 73,
+          "readOrder": 74,
           "coverUrl": "https://covers.openlibrary.org/b/id/15208263-M.jpg"
         },
         {
@@ -945,7 +946,7 @@
           ],
           "firstPublishYear": 1985,
           "readAt": null,
-          "readOrder": 74,
+          "readOrder": 75,
           "coverUrl": "https://covers.openlibrary.org/b/id/15142594-M.jpg"
         },
         {
@@ -957,7 +958,7 @@
           ],
           "firstPublishYear": 1972,
           "readAt": null,
-          "readOrder": 75,
+          "readOrder": 76,
           "coverUrl": "https://covers.openlibrary.org/b/id/10651147-M.jpg"
         },
         {
@@ -969,7 +970,7 @@
           ],
           "firstPublishYear": 2011,
           "readAt": null,
-          "readOrder": 76,
+          "readOrder": 77,
           "coverUrl": "https://covers.openlibrary.org/b/id/7090206-M.jpg"
         },
         {
@@ -981,7 +982,7 @@
           ],
           "firstPublishYear": 1984,
           "readAt": null,
-          "readOrder": 77,
+          "readOrder": 78,
           "coverUrl": "https://covers.openlibrary.org/b/id/380218-M.jpg"
         },
         {
@@ -996,7 +997,7 @@
           ],
           "firstPublishYear": 1973,
           "readAt": null,
-          "readOrder": 78,
+          "readOrder": 79,
           "coverUrl": "https://covers.openlibrary.org/b/id/14862018-M.jpg"
         },
         {
@@ -1008,7 +1009,7 @@
           ],
           "firstPublishYear": 1981,
           "readAt": null,
-          "readOrder": 79,
+          "readOrder": 80,
           "coverUrl": "https://covers.openlibrary.org/b/id/13396751-M.jpg"
         },
         {
@@ -1020,7 +1021,7 @@
           ],
           "firstPublishYear": 1976,
           "readAt": null,
-          "readOrder": 80,
+          "readOrder": 81,
           "coverUrl": "https://covers.openlibrary.org/b/id/284479-M.jpg"
         },
         {
@@ -1032,7 +1033,7 @@
           ],
           "firstPublishYear": 1969,
           "readAt": null,
-          "readOrder": 81,
+          "readOrder": 82,
           "coverUrl": "https://covers.openlibrary.org/b/id/6781122-M.jpg"
         },
         {
@@ -1044,7 +1045,7 @@
           ],
           "firstPublishYear": 1965,
           "readAt": null,
-          "readOrder": 82,
+          "readOrder": 83,
           "coverUrl": "https://covers.openlibrary.org/b/id/9705237-M.jpg"
         },
         {
@@ -1056,7 +1057,7 @@
           ],
           "firstPublishYear": 1815,
           "readAt": null,
-          "readOrder": 83,
+          "readOrder": 84,
           "coverUrl": "https://covers.openlibrary.org/b/id/14847114-M.jpg"
         },
         {
@@ -1068,7 +1069,7 @@
           ],
           "firstPublishYear": 1996,
           "readAt": null,
-          "readOrder": 84,
+          "readOrder": 85,
           "coverUrl": "https://covers.openlibrary.org/b/id/9243864-M.jpg"
         },
         {
@@ -1080,7 +1081,7 @@
           ],
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 85,
+          "readOrder": 86,
           "coverUrl": "https://covers.openlibrary.org/b/id/12882943-M.jpg"
         },
         {
@@ -1092,7 +1093,7 @@
           ],
           "firstPublishYear": 1990,
           "readAt": null,
-          "readOrder": 86,
+          "readOrder": 87,
           "coverUrl": "https://covers.openlibrary.org/b/id/12456920-M.jpg"
         },
         {
@@ -1104,7 +1105,7 @@
           ],
           "firstPublishYear": 2011,
           "readAt": null,
-          "readOrder": 87,
+          "readOrder": 88,
           "coverUrl": "https://covers.openlibrary.org/b/id/14641755-M.jpg"
         },
         {
@@ -1116,7 +1117,7 @@
           ],
           "firstPublishYear": 2009,
           "readAt": null,
-          "readOrder": 88,
+          "readOrder": 89,
           "coverUrl": "https://covers.openlibrary.org/b/id/5549851-M.jpg"
         },
         {
@@ -1128,7 +1129,7 @@
           ],
           "firstPublishYear": 2019,
           "readAt": null,
-          "readOrder": 89,
+          "readOrder": 90,
           "coverUrl": "https://covers.openlibrary.org/b/id/15104849-M.jpg"
         },
         {
@@ -1140,7 +1141,7 @@
           ],
           "firstPublishYear": 1982,
           "readAt": null,
-          "readOrder": 90,
+          "readOrder": 91,
           "coverUrl": "https://covers.openlibrary.org/b/id/12709841-M.jpg"
         },
         {
@@ -1152,7 +1153,7 @@
           ],
           "firstPublishYear": 1979,
           "readAt": null,
-          "readOrder": 91,
+          "readOrder": 92,
           "coverUrl": "https://covers.openlibrary.org/b/id/14612687-M.jpg"
         },
         {
@@ -1164,7 +1165,7 @@
           ],
           "firstPublishYear": 1980,
           "readAt": null,
-          "readOrder": 92,
+          "readOrder": 93,
           "coverUrl": "https://covers.openlibrary.org/b/id/12714921-M.jpg"
         },
         {
@@ -1180,7 +1181,7 @@
           ],
           "firstPublishYear": 1995,
           "readAt": null,
-          "readOrder": 93,
+          "readOrder": 94,
           "coverUrl": "https://covers.openlibrary.org/b/id/846922-M.jpg"
         },
         {
@@ -1192,7 +1193,7 @@
           ],
           "firstPublishYear": 1998,
           "readAt": null,
-          "readOrder": 94,
+          "readOrder": 95,
           "coverUrl": "https://covers.openlibrary.org/b/id/12384358-M.jpg"
         },
         {
@@ -1204,7 +1205,7 @@
           ],
           "firstPublishYear": 1971,
           "readAt": null,
-          "readOrder": 95,
+          "readOrder": 96,
           "coverUrl": "https://covers.openlibrary.org/b/id/14637487-M.jpg"
         },
         {
@@ -1216,7 +1217,7 @@
           ],
           "firstPublishYear": 1968,
           "readAt": null,
-          "readOrder": 96,
+          "readOrder": 97,
           "coverUrl": "https://covers.openlibrary.org/b/id/10734433-M.jpg"
         },
         {
@@ -1228,7 +1229,7 @@
           ],
           "firstPublishYear": 1540,
           "readAt": null,
-          "readOrder": 97,
+          "readOrder": 98,
           "coverUrl": "https://covers.openlibrary.org/b/id/15160183-M.jpg"
         },
         {
@@ -1241,7 +1242,7 @@
           ],
           "firstPublishYear": 1979,
           "readAt": null,
-          "readOrder": 98,
+          "readOrder": 99,
           "coverUrl": "https://covers.openlibrary.org/b/id/6730914-M.jpg"
         },
         {
@@ -1253,7 +1254,7 @@
           ],
           "firstPublishYear": 2015,
           "readAt": null,
-          "readOrder": 99,
+          "readOrder": 100,
           "coverUrl": "https://covers.openlibrary.org/b/id/7415562-M.jpg"
         },
         {
@@ -1265,7 +1266,7 @@
           ],
           "firstPublishYear": 2013,
           "readAt": null,
-          "readOrder": 100,
+          "readOrder": 101,
           "coverUrl": "https://covers.openlibrary.org/b/id/14630458-M.jpg"
         },
         {
@@ -1277,7 +1278,7 @@
           ],
           "firstPublishYear": 2012,
           "readAt": null,
-          "readOrder": 101,
+          "readOrder": 102,
           "coverUrl": "https://covers.openlibrary.org/b/id/7261361-M.jpg"
         },
         {
@@ -1289,7 +1290,7 @@
           ],
           "firstPublishYear": 1974,
           "readAt": null,
-          "readOrder": 102,
+          "readOrder": 103,
           "coverUrl": "https://covers.openlibrary.org/b/id/6902259-M.jpg"
         },
         {
@@ -1301,7 +1302,7 @@
           ],
           "firstPublishYear": 2002,
           "readAt": null,
-          "readOrder": 103,
+          "readOrder": 104,
           "coverUrl": "https://covers.openlibrary.org/b/id/15098886-M.jpg"
         },
         {
@@ -1313,7 +1314,7 @@
           ],
           "firstPublishYear": 1977,
           "readAt": null,
-          "readOrder": 104,
+          "readOrder": 105,
           "coverUrl": "https://covers.openlibrary.org/b/id/14613035-M.jpg"
         },
         {
@@ -1325,7 +1326,7 @@
           ],
           "firstPublishYear": 1953,
           "readAt": null,
-          "readOrder": 105,
+          "readOrder": 106,
           "coverUrl": "https://covers.openlibrary.org/b/id/13790336-M.jpg"
         },
         {
@@ -1337,7 +1338,7 @@
           ],
           "firstPublishYear": 2014,
           "readAt": null,
-          "readOrder": 106,
+          "readOrder": 107,
           "coverUrl": "https://covers.openlibrary.org/b/id/8793546-M.jpg"
         },
         {
@@ -1349,7 +1350,7 @@
           ],
           "firstPublishYear": 1952,
           "readAt": null,
-          "readOrder": 107,
+          "readOrder": 108,
           "coverUrl": "https://covers.openlibrary.org/b/id/15210569-M.jpg"
         },
         {
@@ -1361,7 +1362,7 @@
           ],
           "firstPublishYear": 2014,
           "readAt": null,
-          "readOrder": 108,
+          "readOrder": 109,
           "coverUrl": "https://covers.openlibrary.org/b/id/10194294-M.jpg"
         },
         {
@@ -1373,7 +1374,7 @@
           ],
           "firstPublishYear": 2006,
           "readAt": null,
-          "readOrder": 109,
+          "readOrder": 110,
           "coverUrl": "https://covers.openlibrary.org/b/id/14818120-M.jpg"
         },
         {
@@ -1385,7 +1386,7 @@
           ],
           "firstPublishYear": 2010,
           "readAt": null,
-          "readOrder": 110,
+          "readOrder": 111,
           "coverUrl": "https://covers.openlibrary.org/b/id/10246599-M.jpg"
         },
         {
@@ -1397,7 +1398,7 @@
           ],
           "firstPublishYear": 2008,
           "readAt": null,
-          "readOrder": 111,
+          "readOrder": 112,
           "coverUrl": "https://covers.openlibrary.org/b/id/10526598-M.jpg"
         },
         {
@@ -1412,7 +1413,7 @@
           ],
           "firstPublishYear": 2008,
           "readAt": null,
-          "readOrder": 112,
+          "readOrder": 113,
           "coverUrl": "https://covers.openlibrary.org/b/id/9157544-M.jpg"
         },
         {
@@ -1424,7 +1425,7 @@
           ],
           "firstPublishYear": 2009,
           "readAt": null,
-          "readOrder": 113,
+          "readOrder": 114,
           "coverUrl": "https://covers.openlibrary.org/b/id/8260475-M.jpg"
         },
         {
@@ -1436,7 +1437,7 @@
           ],
           "firstPublishYear": 2008,
           "readAt": null,
-          "readOrder": 114,
+          "readOrder": 115,
           "coverUrl": "https://covers.openlibrary.org/b/id/13012127-M.jpg"
         },
         {
@@ -1448,7 +1449,7 @@
           ],
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 115,
+          "readOrder": 116,
           "coverUrl": "https://covers.openlibrary.org/b/id/14940002-M.jpg"
         },
         {
@@ -1460,7 +1461,7 @@
           ],
           "firstPublishYear": 2007,
           "readAt": null,
-          "readOrder": 116,
+          "readOrder": 117,
           "coverUrl": "https://covers.openlibrary.org/b/id/14859914-M.jpg"
         },
         {
@@ -1472,7 +1473,7 @@
           ],
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 117,
+          "readOrder": 118,
           "coverUrl": "https://covers.openlibrary.org/b/id/15153394-M.jpg"
         },
         {
@@ -1484,7 +1485,7 @@
           ],
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 118,
+          "readOrder": 119,
           "coverUrl": "https://covers.openlibrary.org/b/id/15246544-M.jpg"
         },
         {
@@ -1496,7 +1497,7 @@
           ],
           "firstPublishYear": 1932,
           "readAt": null,
-          "readOrder": 119,
+          "readOrder": 120,
           "coverUrl": "https://covers.openlibrary.org/b/id/15170943-M.jpg"
         },
         {
@@ -1508,7 +1509,7 @@
           ],
           "firstPublishYear": 2007,
           "readAt": null,
-          "readOrder": 120,
+          "readOrder": 121,
           "coverUrl": "https://covers.openlibrary.org/b/id/15159977-M.jpg"
         },
         {
@@ -1520,7 +1521,7 @@
           ],
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 121,
+          "readOrder": 122,
           "coverUrl": "https://covers.openlibrary.org/b/id/15159601-M.jpg"
         },
         {
@@ -1532,7 +1533,7 @@
           ],
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 122,
+          "readOrder": 123,
           "coverUrl": "https://covers.openlibrary.org/b/id/15166468-M.jpg"
         },
         {
@@ -1544,7 +1545,7 @@
           ],
           "firstPublishYear": 2000,
           "readAt": null,
-          "readOrder": 123,
+          "readOrder": 124,
           "coverUrl": "https://covers.openlibrary.org/b/id/15158659-M.jpg"
         },
         {
@@ -1556,7 +1557,7 @@
           ],
           "firstPublishYear": 1999,
           "readAt": null,
-          "readOrder": 124,
+          "readOrder": 125,
           "coverUrl": "https://covers.openlibrary.org/b/id/15159588-M.jpg"
         },
         {
@@ -1568,7 +1569,7 @@
           ],
           "firstPublishYear": 1998,
           "readAt": null,
-          "readOrder": 125,
+          "readOrder": 126,
           "coverUrl": "https://covers.openlibrary.org/b/id/15158664-M.jpg"
         },
         {
@@ -1580,7 +1581,7 @@
           ],
           "firstPublishYear": 1997,
           "readAt": null,
-          "readOrder": 126,
+          "readOrder": 127,
           "coverUrl": "https://covers.openlibrary.org/b/id/15159585-M.jpg"
         },
         {
@@ -1592,7 +1593,7 @@
           ],
           "firstPublishYear": 1980,
           "readAt": null,
-          "readOrder": 127,
+          "readOrder": 128,
           "coverUrl": "https://covers.openlibrary.org/b/id/15067739-M.jpg"
         },
         {
@@ -1604,7 +1605,7 @@
           ],
           "firstPublishYear": 1993,
           "readAt": null,
-          "readOrder": 128,
+          "readOrder": 129,
           "coverUrl": "https://covers.openlibrary.org/b/id/15176861-M.jpg"
         },
         {
@@ -1616,7 +1617,7 @@
           ],
           "firstPublishYear": 1945,
           "readAt": null,
-          "readOrder": 129,
+          "readOrder": 130,
           "coverUrl": "https://covers.openlibrary.org/b/id/15246098-M.jpg"
         },
         {
@@ -1632,7 +1633,7 @@
           ],
           "firstPublishYear": 1980,
           "readAt": null,
-          "readOrder": 130,
+          "readOrder": 131,
           "coverUrl": "https://covers.openlibrary.org/b/id/15190793-M.jpg"
         },
         {
@@ -1645,7 +1646,7 @@
           ],
           "firstPublishYear": 1948,
           "readAt": null,
-          "readOrder": 131,
+          "readOrder": 132,
           "coverUrl": "https://covers.openlibrary.org/b/id/14418516-M.jpg"
         },
         {
@@ -1657,7 +1658,7 @@
           ],
           "firstPublishYear": 1950,
           "readAt": null,
-          "readOrder": 132,
+          "readOrder": 133,
           "coverUrl": "https://covers.openlibrary.org/b/id/14534444-M.jpg"
         },
         {
@@ -1669,7 +1670,7 @@
           ],
           "firstPublishYear": 1945,
           "readAt": null,
-          "readOrder": 133,
+          "readOrder": 134,
           "coverUrl": "https://covers.openlibrary.org/b/id/13440818-M.jpg"
         },
         {
@@ -1681,12 +1682,12 @@
           ],
           "firstPublishYear": 1951,
           "readAt": null,
-          "readOrder": 134,
+          "readOrder": 135,
           "coverUrl": "https://covers.openlibrary.org/b/id/14612980-M.jpg"
         },
         {
           "key": "/works/OL98454W",
-          "href": "/works/OL98454W/Cat's_Cradle?edition=key%3A%2Fbooks%2FOL50566963M",
+          "href": "/works/OL98454W/Cat's_Cradle?edition=key%3A%2Fbooks%2FOL58744796M",
           "title": "Cat's Cradle",
           "authors": [
             "Kurt Vonnegut",
@@ -1694,8 +1695,8 @@
           ],
           "firstPublishYear": 1963,
           "readAt": null,
-          "readOrder": 135,
-          "coverUrl": "https://covers.openlibrary.org/b/id/14572638-M.jpg"
+          "readOrder": 136,
+          "coverUrl": "https://covers.openlibrary.org/b/id/15261710-M.jpg"
         },
         {
           "key": "/works/OL46377W",
@@ -1706,7 +1707,7 @@
           ],
           "firstPublishYear": 1983,
           "readAt": null,
-          "readOrder": 136,
+          "readOrder": 137,
           "coverUrl": "https://covers.openlibrary.org/b/id/13145622-M.jpg"
         },
         {
@@ -1718,7 +1719,7 @@
           ],
           "firstPublishYear": 1954,
           "readAt": null,
-          "readOrder": 137,
+          "readOrder": 138,
           "coverUrl": "https://covers.openlibrary.org/b/id/15215045-M.jpg"
         },
         {
@@ -1730,7 +1731,7 @@
           ],
           "firstPublishYear": 1993,
           "readAt": null,
-          "readOrder": 138,
+          "readOrder": 139,
           "coverUrl": "https://covers.openlibrary.org/b/id/9253429-M.jpg"
         },
         {
@@ -1742,7 +1743,7 @@
           ],
           "firstPublishYear": 2003,
           "readAt": null,
-          "readOrder": 139,
+          "readOrder": 140,
           "coverUrl": "https://covers.openlibrary.org/b/id/226869-M.jpg"
         },
         {
@@ -1754,7 +1755,7 @@
           ],
           "firstPublishYear": 2000,
           "readAt": null,
-          "readOrder": 140,
+          "readOrder": 141,
           "coverUrl": "https://covers.openlibrary.org/b/id/15190573-M.jpg"
         },
         {
@@ -1766,7 +1767,7 @@
           ],
           "firstPublishYear": 1953,
           "readAt": null,
-          "readOrder": 141,
+          "readOrder": 142,
           "coverUrl": "https://covers.openlibrary.org/b/id/15141082-M.jpg"
         },
         {
@@ -1778,7 +1779,7 @@
           ],
           "firstPublishYear": 1999,
           "readAt": null,
-          "readOrder": 142,
+          "readOrder": 143,
           "coverUrl": "https://covers.openlibrary.org/b/id/241815-M.jpg"
         },
         {
@@ -1790,7 +1791,7 @@
           ],
           "firstPublishYear": 1969,
           "readAt": null,
-          "readOrder": 143,
+          "readOrder": 144,
           "coverUrl": "https://covers.openlibrary.org/b/id/14864193-M.jpg"
         },
         {
@@ -1802,7 +1803,7 @@
           ],
           "firstPublishYear": 1953,
           "readAt": null,
-          "readOrder": 144,
+          "readOrder": 145,
           "coverUrl": "https://covers.openlibrary.org/b/id/6621014-M.jpg"
         },
         {
@@ -1814,7 +1815,7 @@
           ],
           "firstPublishYear": 1969,
           "readAt": null,
-          "readOrder": 145,
+          "readOrder": 146,
           "coverUrl": "https://covers.openlibrary.org/b/id/14920821-M.jpg"
         },
         {
@@ -1826,7 +1827,7 @@
           ],
           "firstPublishYear": 1980,
           "readAt": null,
-          "readOrder": 146,
+          "readOrder": 147,
           "coverUrl": "https://covers.openlibrary.org/b/id/15156407-M.jpg"
         },
         {
@@ -1838,7 +1839,7 @@
           ],
           "firstPublishYear": 1996,
           "readAt": null,
-          "readOrder": 147,
+          "readOrder": 148,
           "coverUrl": "https://covers.openlibrary.org/b/id/8545846-M.jpg"
         },
         {
@@ -1850,7 +1851,7 @@
           ],
           "firstPublishYear": 1993,
           "readAt": null,
-          "readOrder": 148,
+          "readOrder": 149,
           "coverUrl": "https://covers.openlibrary.org/b/id/8281190-M.jpg"
         },
         {
@@ -1863,20 +1864,20 @@
           ],
           "firstPublishYear": 1999,
           "readAt": null,
-          "readOrder": 149,
+          "readOrder": 150,
           "coverUrl": "https://covers.openlibrary.org/b/id/15136784-M.jpg"
         },
         {
           "key": "/works/OL1168083W",
-          "href": "/works/OL1168083W/Nineteen_Eighty-Four?edition=key%3A%2Fbooks%2FOL3174961M",
+          "href": "/works/OL1168083W/Nineteen_Eighty-Four?edition=key%3A%2Fbooks%2FOL58626452M",
           "title": "Nineteen Eighty-Four",
           "authors": [
             "George Orwell"
           ],
           "firstPublishYear": 1949,
           "readAt": null,
-          "readOrder": 150,
-          "coverUrl": "https://covers.openlibrary.org/b/id/15255315-M.jpg"
+          "readOrder": 151,
+          "coverUrl": "https://covers.openlibrary.org/b/id/15256044-M.jpg"
         },
         {
           "key": "/works/OL278022W",
@@ -1884,16 +1885,15 @@
           "title": "Freakonomics",
           "authors": [
             "Steven D. Levitt",
-            "Stephen J. Dubner",
-            "Andrea Montero Cusset"
+            "Stephen J. Dubner"
           ],
           "firstPublishYear": 2005,
           "readAt": null,
-          "readOrder": 151,
+          "readOrder": 152,
           "coverUrl": "https://covers.openlibrary.org/b/id/14849328-M.jpg"
         }
       ],
-      "totalCount": 152
+      "totalCount": 153
     }
   }
 }
