@@ -1101,6 +1101,7 @@ body.site-text-color-active .portfolio-hero-console span {
   }
 
   .outdoor-thumbnail-strip {
+    padding: 0.375rem 0.25rem;
     scrollbar-color: var(--border-strong) transparent;
   }
 
@@ -1194,24 +1195,35 @@ body.site-text-color-active .portfolio-hero-console span {
     z-index: 1000;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 1rem;
     width: 100vw;
     height: 100dvh;
+    padding: max(1rem, env(safe-area-inset-top))
+      max(0.75rem, env(safe-area-inset-right))
+      max(0.75rem, env(safe-area-inset-bottom))
+      max(0.75rem, env(safe-area-inset-left));
     overflow: hidden;
     background: radial-gradient(circle at 50% 0%, rgba(14, 116, 144, 0.24), transparent 42%),
-      rgba(2, 6, 23, 0.94);
+      #090e16;
+  }
+
+  .photo-lightbox-toolbar {
+    width: min(100%, 72rem);
+    flex: 0 0 auto;
+    --foreground: #f8fafc;
+    --text-soft: #cbd5e1;
+    --border: #475569;
+    --surface-muted: #1e293b;
+    color: var(--foreground);
   }
 
   .photo-lightbox-thumbnails {
-    position: fixed;
-    right: max(0.75rem, env(safe-area-inset-right));
-    bottom: max(0.75rem, env(safe-area-inset-bottom));
-    left: max(0.75rem, env(safe-area-inset-left));
-    z-index: 3;
+    flex: 0 0 auto;
     overflow-x: auto;
     overflow-y: hidden;
-    margin-inline: auto;
-    width: min(calc(100vw - 1.5rem), 58rem);
+    width: min(100%, 72rem);
     border: 1px solid rgba(148, 163, 184, 0.32);
     border-radius: 1rem;
     background: rgba(15, 23, 42, 0.82);
@@ -1249,13 +1261,11 @@ body.site-text-color-active .portfolio-hero-console span {
     position: relative;
     z-index: 1;
     display: flex;
-    width: 100vw;
-    height: 100dvh;
+    flex: 1 1 auto;
+    min-height: 0;
+    width: min(100%, 72rem);
     align-items: center;
     justify-content: center;
-    padding: max(4rem, env(safe-area-inset-top))
-      clamp(3.25rem, 7vw, 5.5rem)
-      calc(max(5.75rem, env(safe-area-inset-bottom)) + 0.75rem);
   }
 
   .photo-lightbox-image-area {
@@ -1269,38 +1279,6 @@ body.site-text-color-active .portfolio-hero-console span {
   .photo-lightbox-image-area img {
     border-radius: 1rem;
     user-select: none;
-  }
-
-  .photo-lightbox-close {
-    position: fixed;
-    z-index: 6;
-    top: max(1rem, env(safe-area-inset-top));
-    left: max(1rem, env(safe-area-inset-left));
-  }
-
-  .photo-lightbox-close:hover,
-  .photo-lightbox-close:focus-visible {
-    transform: translateY(-1px);
-  }
-
-  .photo-lightbox-nav {
-    position: fixed;
-    z-index: 4;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .photo-lightbox-nav:hover,
-  .photo-lightbox-nav:focus-visible {
-    transform: translateY(calc(-50% - 1px));
-  }
-
-  .photo-lightbox-nav-previous {
-    left: max(1rem, env(safe-area-inset-left));
-  }
-
-  .photo-lightbox-nav-next {
-    right: max(1rem, env(safe-area-inset-right));
   }
 
   .photo-lightbox-thumbnail {
@@ -1534,23 +1512,6 @@ body.site-text-color-active .portfolio-hero-console span {
     flex-direction: column;
     gap: 0.35rem;
   }
-
-  .photo-lightbox-stage {
-    padding: max(4rem, env(safe-area-inset-top))
-      0.75rem
-      calc(max(5.75rem, env(safe-area-inset-bottom)) + 0.75rem);
-  }
-
-  .photo-lightbox-nav {
-    top: auto;
-    bottom: calc(max(5.75rem, env(safe-area-inset-bottom)) + 1rem);
-    transform: none;
-  }
-
-  .photo-lightbox-nav:hover,
-  .photo-lightbox-nav:focus-visible {
-    transform: translateY(-1px);
-  }
 }
 
 @media (hover: none), (pointer: coarse) {
@@ -1757,23 +1718,23 @@ body.site-text-color-active .portfolio-hero-console span {
   place-items: center;
   min-width: 2.75rem;
   min-height: 2.75rem;
-  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: var(--text-soft);
+  font-size: 0.8125rem;
+  font-variant-numeric: tabular-nums;
 }
 
-.chess-pagination-button span {
-  width: 1.25rem;
-  height: 3px;
-  border-radius: 2px;
-  background: var(--border-strong);
-  transition: background-color var(--dur-fast), width var(--dur-fast);
+.chess-pagination-button[aria-pressed="true"] {
+  border-color: var(--border-strong);
+  background: var(--surface-inset);
+  color: var(--foreground);
+  font-weight: 600;
 }
 
-.chess-pagination-button[aria-pressed="true"] span {
-  width: 2rem;
-  background: var(--accent);
+.chess-pagination-button:hover {
+  background: var(--surface-muted);
 }
-
-.chess-pagination-button:hover { background: var(--surface-muted); }
 
 .chess-puzzle-workspace {
   max-width: 960px;
