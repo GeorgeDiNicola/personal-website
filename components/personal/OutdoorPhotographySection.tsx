@@ -5,6 +5,7 @@ import type { KeyboardEvent as ReactKeyboardEvent, TouchEvent as ReactTouchEvent
 import { createPortal } from "react-dom";
 import Image from "next/image";
 
+import { CarouselControls } from "./CarouselControls";
 import { SectionCard } from "@/components/personal/SectionCard";
 
 type OutdoorPhoto = {
@@ -106,6 +107,9 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
   };
 
   const onCarouselKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
+    // Portal events also bubble here; the lightbox handles its own arrow keys.
+    if (isPhotoLightboxOpen) return;
+
     if (event.key === "ArrowLeft") {
       event.preventDefault();
       goToPreviousPhoto();
@@ -228,13 +232,14 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
     ) => {
       if (!button || !strip) return;
 
-      const targetLeft = button.offsetLeft
-        - strip.clientWidth / 2
-        + button.clientWidth / 2;
+      const stripBounds = strip.getBoundingClientRect();
+      const buttonBounds = button.getBoundingClientRect();
+      const targetLeft = strip.scrollLeft + buttonBounds.left - stripBounds.left
+        - strip.clientWidth / 2 + buttonBounds.width / 2;
 
       strip.scrollTo({
         left: Math.max(0, targetLeft),
-        behavior: "smooth"
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth"
       });
     };
 
@@ -246,7 +251,7 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
       lightboxThumbnailStripRef.current,
       lightboxThumbnailButtonRefs.current[normalizedPhotoIndex] ?? null
     );
-  }, [normalizedPhotoIndex, totalPhotos]);
+  }, [isPhotoLightboxOpen, normalizedPhotoIndex, totalPhotos]);
 
   return (
     <SectionCard
@@ -262,34 +267,52 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
         </div>
       ) : activePhoto ? (
         <div
-          className="space-y-4"
+          className="personal-carousel"
           tabIndex={0}
           onKeyDown={onCarouselKeyDown}
           aria-label="Outdoor photo carousel"
         >
-          <div className="flex items-center justify-between gap-3">
-            <p className="portfolio-panel-label site-text-static">
-              Photo {normalizedPhotoIndex + 1} of {totalPhotos}
-            </p>
-            <div className="flex items-center gap-2">
-              <button
-                type="button"
-                onClick={goToPreviousPhoto}
-                aria-label="Previous photo"
-                title="Previous photo"
-                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
-              >
-                <ChevronLeftIcon />
-              </button>
-              <button
-                type="button"
-                onClick={goToNextPhoto}
-                aria-label="Next photo"
-                title="Next photo"
-                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
-              >
-                <ChevronRightIcon />
-              </button>
+          <CarouselControls
+            itemName="Photo"
+            activeIndex={normalizedPhotoIndex}
+            totalItems={totalPhotos}
+            onPrevious={goToPreviousPhoto}
+            onNext={goToNextPhoto}
+          />
+
+          <div ref={thumbnailStripRef} className="outdoor-thumbnail-strip overflow-x-auto pb-1">
+            <div className="flex w-max gap-2.5 md:gap-3">
+              {outdoorPhotos.map((photo, index) => (
+                <button
+                  key={photo.src}
+                  type="button"
+                  ref={(element) => {
+                    thumbnailButtonRefs.current[index] = element;
+                  }}
+                  onClick={() => setActivePhotoIndex(index)}
+                  aria-label={`View photo ${index + 1}`}
+                  aria-pressed={index === normalizedPhotoIndex}
+                  className={`outdoor-thumbnail-button relative h-16 w-24 overflow-hidden rounded-xl border bg-[var(--surface-inset)] transition-all duration-200 md:h-20 md:w-28 ${
+                    index === normalizedPhotoIndex
+                      ? isDark
+                        ? "border-cyan-300 shadow-[0_0_0_3px_rgba(103,232,249,0.14)]"
+                        : "border-cyan-700 shadow-[0_0_0_3px_rgba(14,116,144,0.12)]"
+                      : isDark
+                        ? "border-slate-700 hover:border-slate-500"
+                        : "border-slate-300 hover:border-slate-400"
+                  }`}
+                >
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="112px"
+                    loading="lazy"
+                    quality={100}
+                    className="object-contain"
+                  />
+                </button>
+              ))}
             </div>
           </div>
 
@@ -325,32 +348,61 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
               tabIndex={-1}
               onClick={closeLightbox}
             >
-              <button
-                ref={lightboxCloseButtonRef}
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  closeLightbox();
-                }}
-                aria-label="Close expanded photo"
-                title="Close expanded photo"
-                className="photo-lightbox-control photo-lightbox-close"
-              >
-                <CloseIcon />
-              </button>
+              <div className="photo-lightbox-toolbar" onClick={(event) => event.stopPropagation()}>
+                <CarouselControls
+                  itemName="Photo"
+                  activeIndex={normalizedPhotoIndex}
+                  totalItems={totalPhotos}
+                  onPrevious={goToPreviousPhoto}
+                  onNext={goToNextPhoto}
+                  trailingAction={
+                    <button
+                      ref={lightboxCloseButtonRef}
+                      type="button"
+                      onClick={closeLightbox}
+                      aria-label="Close expanded photo"
+                      title="Close expanded photo"
+                      className="photo-lightbox-control photo-lightbox-close"
+                    >
+                      <CloseIcon />
+                    </button>
+                  }
+                />
+              </div>
 
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  goToPreviousPhoto();
-                }}
-                aria-label="Previous photo"
-                title="Previous photo"
-                className="photo-lightbox-control photo-lightbox-nav photo-lightbox-nav-previous"
+              <div
+                ref={lightboxThumbnailStripRef}
+                className="photo-lightbox-thumbnails"
+                onClick={(event) => event.stopPropagation()}
               >
-                <ChevronLeftIcon />
-              </button>
+                <div className="flex w-max gap-2">
+                  {outdoorPhotos.map((photo, index) => (
+                    <button
+                      key={`lightbox-${photo.src}`}
+                      type="button"
+                      ref={(element) => {
+                        lightboxThumbnailButtonRefs.current[index] = element;
+                      }}
+                      onClick={() => setActivePhotoIndex(index)}
+                      aria-label={`View photo ${index + 1}`}
+                      aria-pressed={index === normalizedPhotoIndex}
+                      className={`photo-lightbox-thumbnail ${
+                        index === normalizedPhotoIndex ? "photo-lightbox-thumbnail-active" : ""
+                      }`}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.alt}
+                        fill
+                        sizes="88px"
+                        loading="lazy"
+                        quality={100}
+                        className="object-contain"
+                      />
+                    </button>
+                  ))}
+                </div>
+              </div>
 
               <div className="photo-lightbox-stage">
                 <div
@@ -371,90 +423,9 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
                   />
                 </div>
               </div>
-
-              <button
-                type="button"
-                onClick={(event) => {
-                  event.stopPropagation();
-                  goToNextPhoto();
-                }}
-                aria-label="Next photo"
-                title="Next photo"
-                className="photo-lightbox-control photo-lightbox-nav photo-lightbox-nav-next"
-              >
-                <ChevronRightIcon />
-              </button>
-
-              <div
-                ref={lightboxThumbnailStripRef}
-                className="photo-lightbox-thumbnails"
-                onClick={(event) => event.stopPropagation()}
-              >
-                <div className="flex w-max gap-2">
-                  {outdoorPhotos.map((photo, index) => (
-                    <button
-                      key={`lightbox-${photo.src}`}
-                      type="button"
-                      ref={(element) => {
-                        lightboxThumbnailButtonRefs.current[index] = element;
-                      }}
-                      onClick={() => setActivePhotoIndex(index)}
-                      aria-label={`View photo ${index + 1}`}
-                      className={`photo-lightbox-thumbnail ${
-                        index === normalizedPhotoIndex ? "photo-lightbox-thumbnail-active" : ""
-                      }`}
-                    >
-                      <Image
-                        src={photo.src}
-                        alt={photo.alt}
-                        fill
-                        sizes="88px"
-                        loading="lazy"
-                        quality={100}
-                        className="object-contain"
-                      />
-                    </button>
-                  ))}
-                </div>
-              </div>
             </div>,
             document.body
           ) : null}
-
-          <div ref={thumbnailStripRef} className="outdoor-thumbnail-strip overflow-x-auto pb-1">
-            <div className="flex w-max gap-2.5 md:gap-3">
-              {outdoorPhotos.map((photo, index) => (
-                <button
-                  key={photo.src}
-                  type="button"
-                  ref={(element) => {
-                    thumbnailButtonRefs.current[index] = element;
-                  }}
-                  onClick={() => setActivePhotoIndex(index)}
-                  aria-label={`View photo ${index + 1}`}
-                  className={`outdoor-thumbnail-button relative h-16 w-24 overflow-hidden rounded-xl border bg-[var(--surface-inset)] transition-all duration-200 md:h-20 md:w-28 ${
-                    index === normalizedPhotoIndex
-                      ? isDark
-                        ? "border-cyan-300 shadow-[0_0_0_3px_rgba(103,232,249,0.14)]"
-                        : "border-cyan-700 shadow-[0_0_0_3px_rgba(14,116,144,0.12)]"
-                      : isDark
-                        ? "border-slate-700 hover:border-slate-500"
-                        : "border-slate-300 hover:border-slate-400"
-                  }`}
-                >
-                  <Image
-                    src={photo.src}
-                    alt={photo.alt}
-                    fill
-                    sizes="112px"
-                    loading="lazy"
-                    quality={100}
-                    className="object-contain"
-                  />
-                </button>
-              ))}
-            </div>
-          </div>
         </div>
       ) : (
         <div
@@ -471,40 +442,6 @@ export function OutdoorPhotographySection({ isDark }: OutdoorPhotographySectionP
         </div>
       )}
     </SectionCard>
-  );
-}
-
-function ChevronLeftIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.9"
-    >
-      <path d="m10 3.5-4.5 4.5 4.5 4.5" />
-    </svg>
-  );
-}
-
-function ChevronRightIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.9"
-    >
-      <path d="m6 3.5 4.5 4.5-4.5 4.5" />
-    </svg>
   );
 }
 

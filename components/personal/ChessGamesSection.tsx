@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
+import { CarouselControls } from "./CarouselControls";
 import { SectionCard } from "@/components/personal/SectionCard";
 
 const CHESS_EMBED_ORIGIN = "https://www.chess.com";
@@ -42,7 +43,7 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
     : "";
 
   useEffect(() => {
-    if (!totalGames) return;
+    if (!activeGameId) return;
 
     const onMessage = (event: MessageEvent) => {
       if (event.origin !== CHESS_EMBED_ORIGIN) return;
@@ -52,7 +53,7 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
       const data = event.data as { id?: string; frameHeight?: number };
       const { id, frameHeight } = data;
       if (!id || typeof frameHeight !== "number" || !Number.isFinite(frameHeight)) return;
-      if (!chessGamesEmbedIds.includes(id)) return;
+      if (id !== activeGameId) return;
       if (frameHeight < MIN_CHESS_EMBED_HEIGHT || frameHeight > MAX_CHESS_EMBED_HEIGHT) return;
 
       const measuredHeight = frameHeight + 37;
@@ -62,7 +63,7 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
     window.addEventListener("message", onMessage);
     // remove the listener to prevent memory leaks
     return () => window.removeEventListener("message", onMessage);
-  }, [totalGames]);
+  }, [activeGameId]);
 
   const goToPreviousGame = () => {
     if (!totalGames) return;
@@ -82,31 +83,28 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
       isDark={isDark}
     >
       {activeGameUrl ? (
-        <div className="space-y-5">
-          <div className="flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
-            <p className="portfolio-panel-label site-text-static">
-              Game {activeGameIndex + 1} of {totalGames}
-            </p>
-            <div className="flex items-center gap-2">
+        <div className="mx-auto w-full max-w-[880px] personal-carousel">
+          <CarouselControls
+            itemName="Game"
+            activeIndex={activeGameIndex}
+            totalItems={totalGames}
+            onPrevious={goToPreviousGame}
+            onNext={goToNextGame}
+          />
+
+          <div className="flex flex-wrap items-center gap-1" role="group" aria-label="Choose a chess game">
+            {chessGamesEmbedIds.map((id, index) => (
               <button
+                key={id}
                 type="button"
-                onClick={goToPreviousGame}
-                aria-label="Previous game"
-                title="Previous game"
-                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
+                aria-label={`View chess game ${index + 1}`}
+                aria-pressed={index === activeGameIndex}
+                onClick={() => setActiveGameIndex(index)}
+                className="chess-pagination-button"
               >
-                <ChevronLeftIcon />
+                {index + 1}
               </button>
-              <button
-                type="button"
-                onClick={goToNextGame}
-                aria-label="Next game"
-                title="Next game"
-                className="portfolio-control inline-flex h-9 w-9 items-center justify-center rounded-full"
-              >
-                <ChevronRightIcon />
-              </button>
-            </div>
+            ))}
           </div>
 
           <div className="portfolio-card chess-frame mx-auto w-full max-w-[880px] p-2 md:p-3">
@@ -127,20 +125,6 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {chessGamesEmbedIds.map((id, index) => (
-              <button
-                key={id}
-                type="button"
-                aria-label={`View chess game ${index + 1}`}
-                aria-pressed={index === activeGameIndex}
-                onClick={() => setActiveGameIndex(index)}
-                className="chess-pagination-button"
-              >
-                <span aria-hidden="true" />
-              </button>
-            ))}
-          </div>
           <div className="text-center">
             <a href={activeGameUrl} target="_blank" rel="noopener noreferrer" className="portfolio-action">
               Open game on Chess.com <span aria-hidden="true">↗</span>
@@ -155,39 +139,5 @@ export function ChessGamesSection({ isDark }: ChessGamesSectionProps) {
         </div>
       )}
     </SectionCard>
-  );
-}
-
-function ChevronLeftIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.9"
-    >
-      <path d="m10 3.5-4.5 4.5 4.5 4.5" />
-    </svg>
-  );
-}
-
-function ChevronRightIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      viewBox="0 0 16 16"
-      className="h-4 w-4"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.9"
-    >
-      <path d="m6 3.5 4.5 4.5-4.5 4.5" />
-    </svg>
   );
 }
