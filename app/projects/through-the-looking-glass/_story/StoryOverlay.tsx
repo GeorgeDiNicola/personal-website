@@ -102,6 +102,22 @@ export function StoryOverlay({
     };
   }, []);
 
+  useLayoutEffect(() => {
+    const stage = stageRef.current;
+    if (!showingStory || isOpening || !stage || !window.matchMedia('(max-width: 999px)').matches)
+      return;
+    const viewportTop = window.visualViewport?.offsetTop ?? 0;
+    if (stage.getBoundingClientRect().top >= viewportTop) return;
+
+    // Returning from a scrolled passage can put the miniature above the viewport.
+    // Place it directly on the illustration when the page also needs to move.
+    stage.dataset.repositioned = '';
+    stage.scrollIntoView({ block: 'start', behavior: 'instant' });
+    return () => {
+      delete stage.dataset.repositioned;
+    };
+  }, [showingStory, isOpening]);
+
   useEffect(() => {
     if (!holdBoard) return;
     boardControlRef.current?.focus({ preventScroll: true });
