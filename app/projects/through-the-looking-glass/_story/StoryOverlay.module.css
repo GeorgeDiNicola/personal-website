@@ -66,7 +66,7 @@
   right: calc(100% - var(--board-center-x, 50cqw) - var(--board-size) / 2);
   bottom: calc(100% - var(--board-center-y, 50%) - var(--board-size) / 2);
   z-index: 1;
-  filter: drop-shadow(0 16px 24px #1d2e3430);
+  box-shadow: 0 16px 24px #1d2e3430;
   transition:
     width 850ms cubic-bezier(0.4, 0, 0.2, 1),
     right 850ms cubic-bezier(0.4, 0, 0.2, 1),
