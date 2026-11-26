@@ -1,0 +1,287 @@
+.overlay {
+  container-type: inline-size;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.visual {
+  min-width: 0;
+}
+.mobileOptions {
+  display: none;
+}
+.stage {
+  position: relative;
+  isolation: isolate;
+  aspect-ratio: 3 / 2;
+  /* The focused board centers across both columns without moving the story layout. */
+  overflow: visible;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+}
+.illustration {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  overflow: hidden;
+  border-radius: inherit;
+  opacity: 0;
+  visibility: hidden;
+}
+.illustration picture,
+.illustration img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.sceneLabel {
+  margin: 0;
+  padding: 12px 0 0;
+  color: var(--muted);
+  font:
+    0.875rem/1.5 system-ui,
+    sans-serif;
+}
+.boardCaption {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  padding: 6px 12px;
+  border: 1px solid #ad751e;
+  border-radius: 4px;
+  background: var(--ivory);
+  color: var(--ink);
+  white-space: nowrap;
+  font:
+    600 0.875rem/1.5 system-ui,
+    sans-serif;
+}
+.boardLayer {
+  position: absolute;
+  width: var(--focused-board-size, 64%);
+  right: calc(100% - var(--board-center-x, 50cqw));
+  bottom: calc(100% - var(--board-center-y, 50%));
+  transform: translate(50%, 50%);
+  z-index: 1;
+  filter: drop-shadow(0 16px 24px #1d2e3430);
+  transition:
+    width 850ms cubic-bezier(0.4, 0, 0.2, 1),
+    right 850ms cubic-bezier(0.4, 0, 0.2, 1),
+    bottom 850ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 850ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.stage[data-phase='board'] .boardLayer {
+  /* Resizing a focused board must not animate its center away from the viewport center. */
+  transition-property: width;
+}
+.stage[data-phase='story'] {
+  border-color: var(--line);
+}
+.stage[data-phase='story'] .illustration {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 1100ms ease;
+}
+.stage[data-phase='story'] .boardLayer {
+  width: min(18%, 180px);
+  right: 3%;
+  bottom: 4.5%;
+  transform: translate(0, 0);
+  transition-duration: 1350ms;
+}
+.enlargeBoard {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in !important;
+}
+.enlargeBoard[data-focused='true'] {
+  cursor: zoom-out !important;
+}
+.returnToStory {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--ivory);
+  color: var(--ink);
+  white-space: nowrap;
+  cursor: pointer;
+  font:
+    1rem/1.5 system-ui,
+    sans-serif;
+}
+.enlargeBoard:hover .returnToStory,
+.enlargeBoard:focus-visible .returnToStory {
+  border-color: var(--ink);
+}
+.sceneTools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  column-gap: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.sceneTools button {
+  min-height: 48px;
+  padding: 8px 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font:
+    0.875rem/1.5 system-ui,
+    sans-serif;
+}
+.sceneTools button[aria-pressed='true'] {
+  color: var(--red);
+}
+.overlay .momentsTrigger {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 6px 4px 6px 0;
+  border: 0;
+  background: transparent;
+  color: var(--red);
+  text-align: left;
+  font:
+    600 0.875rem/1.5 system-ui,
+    sans-serif;
+}
+.momentsTrigger span:first-child {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.momentsTrigger span[aria-hidden] {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+.passage {
+  max-width: 680px;
+  margin: 0 auto;
+  scroll-margin-top: 24px;
+  min-width: 0;
+}
+.passage:focus {
+  outline: none;
+}
+.readCue {
+  position: fixed;
+  bottom: calc(89px + env(safe-area-inset-bottom));
+  left: 0;
+  right: 0;
+  z-index: 9;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: var(--ivory);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font:
+    0.875rem/1.5 system-ui,
+    sans-serif !important;
+}
+.passage > div {
+  max-width: none;
+}
+.passage h1 {
+  margin-top: 12px;
+}
+@media (min-width: 760px) {
+  .overlay {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 1fr);
+    align-items: start;
+    gap: clamp(24px, 3.5vw, 56px);
+  }
+  .passage {
+    margin: 0;
+  }
+  .passage > div {
+    padding-top: 0;
+  }
+}
+@media (min-width: 1000px) {
+  .overlay {
+    --story-width: clamp(20rem, 29vw, 34rem);
+    --column-gap: clamp(24px, 2.5vw, 48px);
+    /* Let short windows scroll before the artwork and board become too small to read. */
+    --scene-height: max(15rem, 100svh - 12rem - env(safe-area-inset-bottom));
+    max-width: min(100%, calc(var(--scene-height) * 1.5 + var(--story-width) + var(--column-gap)));
+    grid-template-columns: minmax(0, 1fr) var(--story-width);
+    gap: var(--column-gap);
+  }
+  .overlay[data-opening='false'] {
+    --scene-height: max(15rem, 100svh - 15rem - env(safe-area-inset-bottom));
+  }
+  .passage {
+    align-self: center;
+  }
+  .passage p {
+    font-size: clamp(1.125rem, 1.4vw, 1.5rem);
+  }
+}
+@media (max-width: 899px) {
+  .readCue {
+    bottom: calc(83px + env(safe-area-inset-bottom));
+  }
+  .stage[data-phase='story'] .boardLayer {
+    width: 22%;
+  }
+}
+@media (max-height: 500px) and (max-width: 899px) {
+  .readCue {
+    bottom: calc(73px + env(safe-area-inset-bottom));
+  }
+}
+@media (max-width: 759px), (max-width: 899px) and (max-height: 500px) {
+  .desktopControls,
+  .sceneLabel {
+    display: none;
+  }
+  .mobileOptions {
+    display: block;
+    grid-column: 2;
+    margin-top: 12px;
+    border-top: 1px solid var(--line);
+    font: 0.875rem/1.5 system-ui, sans-serif;
+  }
+  .mobileOptions summary {
+    width: fit-content;
+    min-height: 44px;
+    padding: 12px 4px;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .stage[data-phase='story'] .boardLayer {
+    width: max(52px, 19%);
+  }
+}
+@media (max-width: 759px) {
+  .stage {
+    margin-inline: -2vw;
+  }
+  .passage > div {
+    padding-top: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .overlay * {
+    transition: none !important;
+  }
+}
