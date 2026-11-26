@@ -11,9 +11,23 @@ import { Board } from './Board';
 import { PieceArt } from './PieceArt';
 import { StoryOverlay } from './StoryOverlay';
 import { usePlayback } from './PlaybackProvider';
+import { closingNoteId, openingNoteId, playbackMomentId, storyDestination } from './playback';
 import { story, characterRole, storyMomentHref } from './story';
 import type { Piece, StoryEvent } from './types';
 import styles from './LookingGlass.module.css';
+
+const storyOutline = [
+  { id: openingNoteId, title: 'Opening note', detail: null },
+  ...story.map((moment, index) => ({
+    id: moment.id,
+    title: moment.momentTitle ?? moment.title,
+    detail: index === 0
+      ? 'Beginning'
+      : `Move ${index} · ${moment.kind === 'encounter' ? 'The board stays the same' : moment.label}`,
+  })),
+  { id: closingNoteId, title: 'A closing note', detail: null },
+];
+
 function Modal({
   children,
   title,
@@ -74,14 +88,18 @@ export function Experience() {
   const totalSteps = story.length - 1;
   const atCheckmate = state.index === totalSteps;
   const showNote = state.showDisclaimer || state.showClosingNote;
+  const currentMomentId = playbackMomentId(state);
   const progress = state.index === 0 ? 'Beginning' : `Move ${state.index}/${totalSteps}`;
   const [dialog, setDialog] = useState<
     | { kind: 'character'; event: StoryEvent; piece: Piece }
-    | { kind: 'inspect' | 'moments'; event: StoryEvent }
+    | { kind: 'inspect'; event: StoryEvent }
+    | { kind: 'moments'; momentId: string }
     | null
   >(null);
   // Browser history and shared links can change the scene while a dialog is open.
-  if (dialog && (dialog.event !== event || showNote)) setDialog(null);
+  if (dialog && (dialog.kind === 'moments'
+    ? dialog.momentId !== currentMomentId
+    : dialog.event !== event || showNote)) setDialog(null);
   const showMoments = dialog?.kind === 'moments';
   const noteHeadingRef = useRef<HTMLHeadingElement>(null);
   const journeyRef = useRef<HTMLDivElement>(null);
@@ -117,19 +135,27 @@ export function Experience() {
       }
     } else if (focusAfterJump.current) {
       focusAfterJump.current = false;
-      journeyRef.current?.focus({ preventScroll: true });
-      journeyRef.current?.scrollIntoView({ block: 'start', behavior: 'instant' });
+      const target = showNote ? noteHeadingRef.current : journeyRef.current;
+      target?.focus({ preventScroll: true });
+      target?.scrollIntoView({ block: 'start', behavior: 'instant' });
     }
-  }, [showMoments, state.index]);
-  function selectMoment(click: MouseEvent<HTMLAnchorElement>, index: number) {
+  }, [showMoments, currentMomentId, showNote]);
+  function openMoments() {
+    dispatch({ type: 'pause' });
+    setDialog({ kind: 'moments', momentId: currentMomentId });
+  }
+  function selectMoment(click: MouseEvent<HTMLAnchorElement>) {
     if (click.button !== 0 || click.altKey || click.ctrlKey || click.metaKey || click.shiftKey)
       return;
+    const destination = storyDestination(click.currentTarget.hash);
+    if (destination === null) return;
     click.preventDefault();
-    const currentLink = storyMomentHref(event.id);
+    const currentLink = storyMomentHref(currentMomentId);
     // The browser's Back button should return to the scene the reader jumped from.
     if (window.location.hash !== currentLink) window.history.replaceState(null, '', currentLink);
-    if (index !== state.index) window.history.pushState(null, '', click.currentTarget.href);
-    dispatch({ type: 'jump', index });
+    if (click.currentTarget.hash !== currentLink)
+      window.history.pushState(null, '', click.currentTarget.href);
+    dispatch({ type: 'jump', destination });
     focusAfterJump.current = true;
     setDialog(null);
   }
@@ -137,6 +163,12 @@ export function Experience() {
     dispatch({ type: 'pause' });
     setDialog({ kind: 'character', event, piece });
   }
+  const noteOutlineButton = (
+    <button type="button" className={styles.momentsTrigger} aria-haspopup="dialog" onClick={openMoments}>
+      <span>Jump to a story moment</span>
+      <span aria-hidden="true">›</span>
+    </button>
+  );
   return (
     <main id="main-content" className={styles.experience}>
       {state.showDisclaimer && (
@@ -183,6 +215,7 @@ export function Experience() {
               </cite>
             </p>
             <p className={styles.openingHint}>Select Next or Play to continue.</p>
+            {noteOutlineButton}
           </div>
         </section>
       )}
@@ -214,6 +247,7 @@ export function Experience() {
                 View Carroll’s original chess diagram and move list
               </a>
             </p>
+            {noteOutlineButton}
           </div>
         </section>
       )}
@@ -238,10 +272,7 @@ export function Experience() {
               playing={state.playing}
               onPiece={openPiece}
               onPause={() => dispatch({ type: 'pause' })}
-              onOpenMoments={() => {
-                dispatch({ type: 'pause' });
-                setDialog({ kind: 'moments', event });
-              }}
+              onOpenMoments={openMoments}
               onInspect={() => {
                 dispatch({ type: 'pause' });
                 setDialog({ kind: 'inspect', event });
@@ -280,7 +311,6 @@ export function Experience() {
             {!state.showDisclaimer && (
               <button
                 onClick={() => dispatch({ type: 'step', delta: -1 })}
-                disabled={state.index === 0}
                 aria-label="Back one step"
               >
                 <span aria-hidden="true">←</span>
@@ -371,7 +401,7 @@ export function Experience() {
         <Modal
           title="Story moments"
           onClose={() => setDialog(null)}
-          fallbackFocus={journeyRef}
+          fallbackFocus={showNote ? noteHeadingRef : journeyRef}
           className={styles.momentsDialog}
         >
           <h2 className={styles.momentsHeading}>Story moments</h2>
@@ -382,27 +412,19 @@ export function Experience() {
             ref={momentListRef}
           >
             <ol className={styles.momentsList} role="list">
-              {story.map((moment, index) => {
-                const isCurrent = index === state.index;
-                const boardDetail =
-                  moment.kind === 'encounter'
-                    ? 'The board stays the same'
-                    : moment.label;
+              {storyOutline.map((moment) => {
+                const isCurrent = moment.id === currentMomentId;
                 return (
                   <li key={moment.id}>
                     <a
                       href={storyMomentHref(moment.id)}
                       aria-current={isCurrent ? 'step' : undefined}
                       ref={isCurrent ? currentMomentRef : undefined}
-                      onClick={(click) => selectMoment(click, index)}
+                      onClick={selectMoment}
                     >
                       <span>
-                        <span className={styles.momentTitle}>
-                          {moment.momentTitle ?? moment.title}
-                        </span>
-                        <span className={styles.momentDetail}>
-                          {index === 0 ? 'Beginning' : `Move ${index} · ${boardDetail}`}
-                        </span>
+                        <span className={styles.momentTitle}>{moment.title}</span>
+                        {moment.detail && <span className={styles.momentDetail}>{moment.detail}</span>}
                       </span>
                       {isCurrent && <span className={styles.currentMoment}>You’re here</span>}
                       {!isCurrent && (

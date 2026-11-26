@@ -149,28 +149,6 @@
 .sceneTools button[aria-pressed='true'] {
   color: var(--red);
 }
-.overlay .momentsTrigger {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-  padding: 6px 4px 6px 0;
-  border: 0;
-  background: transparent;
-  color: var(--red);
-  text-align: left;
-  font:
-    600 0.875rem/1.5 system-ui,
-    sans-serif;
-}
-.momentsTrigger span:first-child {
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-.momentsTrigger span[aria-hidden] {
-  font-size: 1.25rem;
-  line-height: 1;
-}
 .passage {
   max-width: 680px;
   margin: 0 auto;
