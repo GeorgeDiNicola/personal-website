@@ -197,7 +197,7 @@ export function StoryOverlay({
       )}
       <button
         type="button"
-        className={styles.momentsTrigger}
+        className={shared.momentsTrigger}
         aria-haspopup="dialog"
         onClick={onOpenMoments}
       >

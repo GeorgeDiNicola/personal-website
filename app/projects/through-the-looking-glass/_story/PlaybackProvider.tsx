@@ -11,12 +11,15 @@ import {
 import { usePathname } from 'next/navigation';
 import {
   initialPlayback,
+  openingNoteId,
+  playbackMomentId,
   playbackReducer,
   readingTime,
+  storyDestination,
   type PlaybackAction,
   type PlaybackState,
 } from './playback';
-import { story, storyMomentHref, storyMomentIndex } from './story';
+import { story, storyMomentHref } from './story';
 const Context = createContext<{
   state: PlaybackState;
   dispatch: Dispatch<ProviderAction>;
@@ -38,15 +41,16 @@ function providerReducer(state: ProviderState, action: ProviderAction): Provider
     if (state.hasStarted) return state;
     // The former starting-board stop now leads directly into the Queen’s meeting.
     const eventId = action.eventId === 'chessboard' ? 'red-queen-meeting' : action.eventId;
-    const index = eventId ? storyMomentIndex(storyMomentHref(eventId)) : -1;
-    if (index < 0) return state;
+    const destination = eventId ? storyDestination(storyMomentHref(eventId)) : null;
+    if (destination === null) return state;
     return {
-      playback: { ...state.playback, index, showDisclaimer: false, playing: false },
+      playback: playbackReducer(state.playback, { type: 'jump', destination }),
       hasStarted: true,
     };
   }
   const playback = playbackReducer(state.playback, action);
-  const hasStarted = state.hasStarted || !playback.showDisclaimer || action.type === 'restart';
+  const hasStarted =
+    state.hasStarted || !playback.showDisclaimer || action.type === 'restart' || action.type === 'jump';
   return { playback, hasStarted };
 }
 
@@ -54,13 +58,14 @@ function providerReducer(state: ProviderState, action: ProviderAction): Provider
 export function PlaybackProvider({ children }: { children: ReactNode }) {
   const [providerState, dispatch] = useReducer(providerReducer, initialProviderState);
   const { playback: state, hasStarted } = providerState;
-  const savedEventId = state.showDisclaimer ? null : story[state.index].id;
+  const momentId = playbackMomentId(state);
+  const savedEventId = state.showDisclaimer ? null : momentId;
   const path = usePathname();
   useEffect(() => {
     function followMomentLink() {
-      const index = storyMomentIndex(window.location.hash);
-      if (index === -1) return false;
-      dispatch({ type: 'jump', index });
+      const destination = storyDestination(window.location.hash);
+      if (destination === null) return false;
+      dispatch({ type: 'jump', destination });
       return true;
     }
     function restoreRestartedEntry(event: PopStateEvent) {
@@ -69,8 +74,8 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
       if (eventId === null) {
         dispatch({ type: 'restart' });
       } else if (typeof eventId === 'string') {
-        const index = storyMomentIndex(storyMomentHref(eventId));
-        if (index !== -1) dispatch({ type: 'jump', index });
+        const destination = storyDestination(storyMomentHref(eventId));
+        if (destination !== null) dispatch({ type: 'jump', destination });
       }
     }
     if (!followMomentLink()) {
@@ -94,11 +99,11 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
     const { pathname, search, hash } = window.location;
     const path = pathname + search;
     // Keep a linked page current without adding an extra history entry for each playback step.
-    if (storyMomentIndex(hash) !== -1) {
-      if (savedEventId === null) {
+    if (storyDestination(hash) !== null) {
+      if (savedEventId === null && hash !== storyMomentHref(openingNoteId)) {
         window.history.replaceState({ [restartedMomentKey]: null }, '', path);
       } else {
-        const moment = storyMomentHref(savedEventId);
+        const moment = storyMomentHref(momentId);
         if (hash !== moment) window.history.replaceState(null, '', path + moment);
       }
       return;
@@ -108,7 +113,7 @@ export function PlaybackProvider({ children }: { children: ReactNode }) {
     if (!hash && restartedMoment !== undefined && restartedMoment !== savedEventId) {
       window.history.replaceState({ [restartedMomentKey]: savedEventId }, '', path);
     }
-  }, [hasStarted, savedEventId]);
+  }, [hasStarted, momentId, savedEventId]);
   useEffect(() => {
     // Wait for restoration before writing so mounting cannot overwrite saved progress.
     if (!hasStarted) return;

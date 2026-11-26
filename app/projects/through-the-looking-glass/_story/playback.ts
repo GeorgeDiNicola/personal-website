@@ -1,4 +1,4 @@
-import { story } from './story';
+import { story, storyMomentHref, storyMomentIndex } from './story';
 import type { StoryEvent } from './types';
 export interface PlaybackState {
   readonly showDisclaimer: boolean;
@@ -7,9 +7,26 @@ export interface PlaybackState {
   readonly playing: boolean;
   readonly speed: number;
 }
+export const openingNoteId = 'opening-note';
+export const closingNoteId = 'closing-note';
+type StoryDestination = number | typeof openingNoteId | typeof closingNoteId;
+
+export function storyDestination(hash: string): StoryDestination | null {
+  if (hash === storyMomentHref(openingNoteId)) return openingNoteId;
+  if (hash === storyMomentHref(closingNoteId)) return closingNoteId;
+  const index = storyMomentIndex(hash);
+  return index < 0 ? null : index;
+}
+
+export function playbackMomentId(state: PlaybackState): string {
+  if (state.showDisclaimer) return openingNoteId;
+  if (state.showClosingNote) return closingNoteId;
+  return story[state.index].id;
+}
+
 export type PlaybackAction =
   | { type: 'step'; delta: number }
-  | { type: 'jump'; index: number }
+  | { type: 'jump'; destination: StoryDestination }
   | { type: 'toggle' }
   | { type: 'pause' }
   | { type: 'tick' }
@@ -34,6 +51,9 @@ export function playbackReducer(state: PlaybackState, action: PlaybackAction): P
       if (state.showClosingNote) {
         return action.delta < 0 ? { ...state, showClosingNote: false } : state;
       }
+      if (state.index === 0 && action.delta < 0) {
+        return { ...state, showDisclaimer: true, playing: false };
+      }
       if (state.index === end && action.delta > 0) {
         return { ...state, showClosingNote: true, playing: false };
       }
@@ -42,16 +62,22 @@ export function playbackReducer(state: PlaybackState, action: PlaybackAction): P
         index: Math.max(0, Math.min(end, state.index + action.delta)),
         playing: false,
       };
-    case 'jump':
-      return story[action.index]
+    case 'jump': {
+      const { destination } = action;
+      if (destination === openingNoteId) return { ...initialPlayback, speed: state.speed };
+      if (destination === closingNoteId) {
+        return { ...state, index: end, showDisclaimer: false, showClosingNote: true, playing: false };
+      }
+      return story[destination]
         ? {
             ...state,
-            index: action.index,
+            index: destination,
             showDisclaimer: false,
             showClosingNote: false,
             playing: false,
           }
         : state;
+    }
     case 'toggle':
       return {
         ...state,
