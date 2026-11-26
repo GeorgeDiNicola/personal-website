@@ -1,0 +1,244 @@
+{
+  "source": "https://standardebooks.org/ebooks/lewis-carroll/through-the-looking-glass/john-tenniel/text/single-page#preamble",
+  "diagramScan": "https://lewiscarrollresources.net/chess/TTLGpages/Image2.jpg",
+  "checked": "2026-11-19",
+  "downloadSha256": "6efbde0d1bcaf685f56e57daf87686afaf3d2a15b46cc68a6bdefe4d957d514a",
+  "diagramAlt": "A chess problem. Red has pieces as follows: Ng8, Ke4, Qe2. White has pieces as follows: Kc6, Nf5, Pd2, Qc1, Rf1.",
+  "initialSquares": {
+    "white-king": "c6",
+    "white-queen": "c1",
+    "white-knight": "f5",
+    "white-rook": "f1",
+    "alice": "d2",
+    "red-king": "e4",
+    "red-queen": "e2",
+    "red-knight": "g8"
+  },
+  "events": [
+    {
+      "turn": 1,
+      "id": "red-queen-meeting",
+      "printed": "Alice meets R. Q.",
+      "changes": {},
+      "pages": [
+        35
+      ]
+    },
+    {
+      "turn": 1,
+      "id": "red-queen-departs",
+      "printed": "R. Q. to K. R.’s 4th",
+      "changes": {
+        "red-queen": "h5"
+      },
+      "pages": [
+        45
+      ]
+    },
+    {
+      "turn": 2,
+      "id": "railway",
+      "printed": "Alice Through Q.’s 3rd (by railway) to Q.’s 4th (Tweedledum And Tweedledee)",
+      "changes": {
+        "alice": "d4"
+      },
+      "pages": [
+        48,
+        54
+      ]
+    },
+    {
+      "turn": 2,
+      "id": "shawl",
+      "printed": "W. Q. to Q. B.’s 4th (after shawl)",
+      "changes": {
+        "white-queen": "c4"
+      },
+      "pages": [
+        91
+      ]
+    },
+    {
+      "turn": 3,
+      "id": "white-queen-meeting",
+      "printed": "Alice meets W. Q. (with shawl)",
+      "changes": {},
+      "pages": [
+        91
+      ]
+    },
+    {
+      "turn": 3,
+      "id": "sheep",
+      "printed": "W. Q. to Q. B.’s 5th (becomes sheep)",
+      "changes": {
+        "white-queen": "c5"
+      },
+      "pages": [
+        100
+      ]
+    },
+    {
+      "turn": 4,
+      "id": "river",
+      "printed": "Alice to Q.’s 5th (shop, river, shop)",
+      "changes": {
+        "alice": "d5"
+      },
+      "pages": [
+        101
+      ]
+    },
+    {
+      "turn": 4,
+      "id": "egg-shelf",
+      "printed": "W. Q. to K. B.’s 8th (leaves egg on shelf)",
+      "changes": {
+        "white-queen": "f8"
+      },
+      "pages": [
+        111
+      ]
+    },
+    {
+      "turn": 5,
+      "id": "humpty",
+      "printed": "Alice to Q.’s 6th (Humpty Dumpty)",
+      "changes": {
+        "alice": "d6"
+      },
+      "pages": [
+        112
+      ]
+    },
+    {
+      "turn": 5,
+      "id": "queen-flight",
+      "printed": "W. Q. to Q. B.’s 8th (flying from R. Kt.)",
+      "changes": {
+        "white-queen": "c8"
+      },
+      "pages": [
+        149
+      ]
+    },
+    {
+      "turn": 6,
+      "id": "forest",
+      "printed": "Alice to Q.’s 7th (forest)",
+      "changes": {
+        "alice": "d7"
+      },
+      "pages": [
+        155
+      ]
+    },
+    {
+      "turn": 6,
+      "id": "knight-check",
+      "printed": "R. Kt. to K.’s 2nd (check)",
+      "changes": {
+        "red-knight": "e7"
+      },
+      "pages": [
+        158
+      ]
+    },
+    {
+      "turn": 7,
+      "id": "knight-capture",
+      "printed": "W. Kt. takes R. Kt.",
+      "changes": {
+        "white-knight": "e7",
+        "red-knight": null
+      },
+      "pages": [
+        161
+      ]
+    },
+    {
+      "turn": 7,
+      "id": "knight-return",
+      "printed": "W. Kt. to K. B.’s 5th",
+      "changes": {
+        "white-knight": "f5"
+      },
+      "pages": [
+        182
+      ]
+    },
+    {
+      "turn": 8,
+      "id": "arrival",
+      "printed": "Alice to Q.’s 8th (Coronation)",
+      "changes": {
+        "alice": "d8"
+      },
+      "pages": [
+        183
+      ]
+    },
+    {
+      "turn": 8,
+      "id": "examination",
+      "printed": "R. Q. to K.’s Sq. (Examination)",
+      "changes": {
+        "red-queen": "e8"
+      },
+      "pages": [
+        186
+      ]
+    },
+    {
+      "turn": 9,
+      "id": "promotion",
+      "printed": "Alice becomes Queen",
+      "changes": {},
+      "promotion": "queen",
+      "pages": [
+        196
+      ]
+    },
+    {
+      "turn": 9,
+      "id": "queens-palace",
+      "printed": "Queens castle",
+      "changes": {},
+      "pages": [
+        199
+      ]
+    },
+    {
+      "turn": 10,
+      "id": "alice-palace",
+      "printed": "Alice Castles (feast)",
+      "changes": {},
+      "pages": [
+        204
+      ]
+    },
+    {
+      "turn": 10,
+      "id": "soup",
+      "printed": "W. to Q. R.’s 6th (soup)",
+      "changes": {
+        "white-queen": "a6"
+      },
+      "pages": [
+        211
+      ]
+    },
+    {
+      "turn": 11,
+      "id": "checkmate",
+      "printed": "Alice takes R. Q. and wins",
+      "changes": {
+        "alice": "e8",
+        "red-queen": null
+      },
+      "pages": [
+        215
+      ]
+    }
+  ]
+}

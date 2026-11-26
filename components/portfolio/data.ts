@@ -63,6 +63,15 @@ export const schools: School[] = [
 
 export const projects: Project[] = [
   {
+    title: "Through the Looking-Glass Chess Interactive",
+    description:
+      "I created an illustrated chessboard that lets readers follow Alice from pawn to queen, moving through Lewis Carroll’s story one move at a time.",
+    accent: "var(--accent)",
+    featured: true,
+    link: "/projects/through-the-looking-glass/",
+    tags: ["Chess", "Interactive Storytelling"]
+  },
+  {
     title: "Automated Jeopardy! Insights Dashboard & Predictive Machine Learning Model",
     description:
       "I designed and built a Jeopardy! data system that automates ETL processes for a live Tableau dashboard and implements a self-developed machine learning model to forecast game outcomes for reigning champions.",

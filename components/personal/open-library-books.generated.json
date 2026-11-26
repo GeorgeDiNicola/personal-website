@@ -1,9 +1,21 @@
 {
-  "generatedAt": "2026-11-17T06:10:05.056Z",
+  "generatedAt": "2026-11-26T04:13:27.292Z",
   "username": "george3d",
   "shelves": {
     "currently-reading": {
       "books": [
+        {
+          "key": "/works/OL26768541W",
+          "href": "/works/OL26768541W/Designing_Machine_Learning_Systems?edition=key%3A%2Fbooks%2FOL36277220M",
+          "title": "Designing Machine Learning Systems: An Iterative Process for Production-Ready Applications",
+          "authors": [
+            "Chip Huyen"
+          ],
+          "firstPublishYear": 2022,
+          "readAt": null,
+          "readOrder": 0,
+          "coverUrl": "https://covers.openlibrary.org/b/id/13314480-M.jpg"
+        },
         {
           "key": "/works/OL3483748W",
           "href": "/works/OL3483748W/Logic?edition=key%3A%2Fbooks%2FOL26939467M",
@@ -15,11 +27,11 @@
           ],
           "firstPublishYear": 2000,
           "readAt": null,
-          "readOrder": 0,
+          "readOrder": 1,
           "coverUrl": "https://covers.openlibrary.org/b/id/14381991-M.jpg"
         }
       ],
-      "totalCount": 1
+      "totalCount": 2
     },
     "read": {
       "books": [
@@ -49,7 +61,7 @@
         },
         {
           "key": "/works/OL41168W",
-          "href": "/works/OL41168W/Zero?edition=key%3A%2Fbooks%2FOL7352663M",
+          "href": "/works/OL41168W/Zero?edition=key%3A%2Fbooks%2FOL43063M",
           "title": "Zero: the biography of a dangerous idea",
           "authors": [
             "Charles Seife"
@@ -57,7 +69,7 @@
           "firstPublishYear": 2000,
           "readAt": null,
           "readOrder": 2,
-          "coverUrl": "https://covers.openlibrary.org/b/id/7942963-M.jpg"
+          "coverUrl": "https://covers.openlibrary.org/b/id/9333713-M.jpg"
         },
         {
           "key": "/works/OL45032671W",
@@ -148,7 +160,7 @@
         },
         {
           "key": "/works/OL16564627W",
-          "href": "/works/OL16564627W/Redshirts?edition=key%3A%2Fbooks%2FOL25253043M",
+          "href": "/works/OL16564627W/Redshirts?edition=key%3A%2Fbooks%2FOL26784040M",
           "title": "Redshirts",
           "authors": [
             "John Scalzi"
@@ -156,7 +168,7 @@
           "firstPublishYear": 2012,
           "readAt": null,
           "readOrder": 10,
-          "coverUrl": "https://covers.openlibrary.org/b/id/14951035-M.jpg"
+          "coverUrl": "https://covers.openlibrary.org/b/id/8436525-M.jpg"
         },
         {
           "key": "/works/OL17076473W",
@@ -356,7 +368,7 @@
         },
         {
           "key": "/works/OL20735675W",
-          "href": "/works/OL20735675W/Network_Effect?edition=key%3A%2Fbooks%2FOL28044727M",
+          "href": "/works/OL20735675W/Network_Effect?edition=key%3A%2Fbooks%2FOL61034480M",
           "title": "Network Effect",
           "authors": [
             "Martha Wells"
@@ -364,7 +376,7 @@
           "firstPublishYear": 2020,
           "readAt": null,
           "readOrder": 27,
-          "coverUrl": "https://covers.openlibrary.org/b/id/9426689-M.jpg"
+          "coverUrl": "https://covers.openlibrary.org/b/id/15156456-M.jpg"
         },
         {
           "key": "/works/OL42406623W",
@@ -476,7 +488,7 @@
         },
         {
           "key": "/works/OL17940461W",
-          "href": "/works/OL17940461W/The_art_of_thinking_clearly?edition=key%3A%2Fbooks%2FOL26531571M",
+          "href": "/works/OL17940461W/The_art_of_thinking_clearly?edition=key%3A%2Fbooks%2FOL46556356M",
           "title": "The art of thinking clearly",
           "authors": [
             "Rolf Dobelli",
@@ -485,7 +497,7 @@
           "firstPublishYear": 2013,
           "readAt": null,
           "readOrder": 37,
-          "coverUrl": "https://covers.openlibrary.org/b/id/15215439-M.jpg"
+          "coverUrl": "https://covers.openlibrary.org/b/id/15215438-M.jpg"
         },
         {
           "key": "/works/OL19747311W",
@@ -1001,7 +1013,7 @@
         },
         {
           "key": "/works/OL46395W",
-          "href": "/works/OL46395W/The_Gods_Themselves?edition=key%3A%2Fbooks%2FOL31974029M",
+          "href": "/works/OL46395W/The_Gods_Themselves?edition=key%3A%2Fbooks%2FOL47807138M",
           "title": "The Gods Themselves",
           "authors": [
             "Isaac Asimov"
@@ -1009,7 +1021,7 @@
           "firstPublishYear": 1972,
           "readAt": null,
           "readOrder": 80,
-          "coverUrl": "https://covers.openlibrary.org/b/id/10651147-M.jpg"
+          "coverUrl": "https://covers.openlibrary.org/b/id/14322777-M.jpg"
         },
         {
           "key": "/works/OL16132451W",
