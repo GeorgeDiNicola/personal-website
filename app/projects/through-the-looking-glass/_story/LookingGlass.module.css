@@ -169,12 +169,13 @@
 .squares {
   position: absolute;
   inset: 0;
+  contain: strict;
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-template-rows: repeat(8, minmax(0, 1fr));
 }
 .square {
   position: relative;
-  aspect-ratio: 1;
 }
 .light {
   background: #e8e3cd;
