@@ -989,46 +989,6 @@ body.site-text-color-active .portfolio-hero-console span {
     font-size: 0.8125rem;
   }
 
-  .dashboard-hero-grid {
-    display: grid;
-    gap: 1.5rem;
-    align-items: center;
-  }
-
-  .dashboard-signal-panel {
-    border-left: 1px solid var(--border);
-    padding-left: 2rem;
-  }
-
-  .dashboard-signal-row {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    border-top: 1px solid var(--border);
-    padding: 0.85rem 0;
-    font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 0.75rem;
-  }
-
-  .dashboard-signal-row:first-child {
-    border-top: 0;
-  }
-
-  .dashboard-signal-name {
-    color: var(--text-soft);
-    font-weight: 650;
-  }
-
-  .dashboard-signal-type {
-    color: var(--accent-strong);
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-
   .dashboard-card {
     isolation: isolate;
   }
@@ -1469,10 +1429,6 @@ body.site-text-color-active .portfolio-hero-console span {
 
 @media (min-width: 768px) {
 
-  .dashboard-hero-grid {
-    grid-template-columns: minmax(0, 1.05fr) minmax(18rem, 0.95fr);
-  }
-
   .dog-photo-grid {
     grid-template-columns: repeat(12, minmax(0, 1fr));
     grid-template-rows: repeat(3, clamp(8.5rem, 14vw, 11rem));
@@ -1502,15 +1458,6 @@ body.site-text-color-active .portfolio-hero-console span {
   .dog-photo-tile--detail-three {
     grid-column: 7 / 10;
     grid-row: 3;
-  }
-}
-
-@media (max-width: 640px) {
-
-  .dashboard-signal-row {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 0.35rem;
   }
 }
 

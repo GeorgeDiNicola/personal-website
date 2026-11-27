@@ -17,7 +17,7 @@ export const workHistory: WorkExperience[] = [
     company: "Qualtrics",
     period: "2022 - 2024",
     summary:
-      "Developed & scaled core infrastructure and identity systems, while maintaining Tier-0 system availability."
+      "Developed & scaled core infrastructure and identity systems while maintaining Tier-0 system availability."
   },
   {
     role: "Full-Stack Software Engineer",
@@ -33,7 +33,7 @@ export const workHistory: WorkExperience[] = [
     company: "Comcast Business",
     period: "2019 - 2021",
     summary:
-      "Optimized data infrastructure and reliability, delivering automated systems that significantly reduced operational overhead and infrastructure costs. Built robust ingestion pipelines and custom internal tools to streamline cross-team development workflows."
+      "Cut infrastructure costs through automation and developed ingestion pipelines and internal tools that streamlined cross-team development."
   },
   {
     role: "Business Intelligence Analyst II",
@@ -41,7 +41,22 @@ export const workHistory: WorkExperience[] = [
     company: "Newrez",
     period: "2018 - 2019",
     summary:
-      "Led the end-to-end modernization of data operations by developing database stored procedures, designing interactive dashboards, and engineering predictive machine learning models that significantly improved forecast accuracy."
+      "Led the development of machine learning models that improved forecast accuracy. Built stored procedures and interactive dashboards to modernize data operations."
+  },
+  {
+    role: "Research Assistant Co-op",
+    company: "Drexel University",
+    period: "2015 - 2016"
+  },
+  {
+    role: "Private Wealth Management Co-op",
+    company: "Goldman Sachs",
+    period: "2014 - 2015"
+  },
+  {
+    role: "State & Local Tax Co-op",
+    company: "Comcast",
+    period: "2013 - 2014"
   }
 ];
 
@@ -69,12 +84,12 @@ export const projects: Project[] = [
     accent: "var(--accent)",
     featured: true,
     link: "/projects/through-the-looking-glass/",
-    tags: ["Chess", "Interactive Storytelling"]
+    tags: ["Interactive Storytelling", "Chess"]
   },
   {
     title: "Automated Jeopardy! Insights Dashboard & Predictive Machine Learning Model",
     description:
-      "I designed and built a Jeopardy! data system that automates ETL processes for a live Tableau dashboard and implements a self-developed machine learning model to forecast game outcomes for reigning champions.",
+      "I built an automated data pipeline for a live Tableau dashboard and a machine learning model that predicts whether the reigning Jeopardy! champion will win their next game.",
     accent: "var(--accent)",
     featured: true,
     link: "/projects/jeopardy/",
@@ -83,7 +98,7 @@ export const projects: Project[] = [
   {
     title: "Macroeconomic Data Pipeline - World Bank Dataset",
     description:
-      "I built a pipeline that discovers and groups high-quality indicators using rules-based logic and artificial intelligence, generates metadata, and performs ETL for macroeconomic data from the World Bank API. The dataset has 15k+ views and 3k+ downloads.",
+      "I built a pipeline that processes macroeconomic data from the World Bank API, uses rules and AI to select and group indicators, and generates metadata. The dataset has received 15k+ views and 3k+ downloads on Kaggle.com.",
     accent: "var(--accent-three)",
     featured: true,
     link: "https://www.kaggle.com/datasets/georgejdinicola/world-bank-indicators",
@@ -121,11 +136,13 @@ export const projects: Project[] = [
       "I created public dashboards using Tableau and Flourish to explore data, compare rankings, and visualize trends through interactive analytics.",
     accent: "var(--accent)",
     link: "/data-visualizations/",
-    tags: ["Analytics", "Tableau", "Flourish"]
+    tags: ["Analytics / Data Visualization"]
   }
 ];
 
 export const skills: Skill[] = [
+  { name: "Claude Code", logo: "https://cdn.simpleicons.org/claudecode" },
+  { name: "Codex", logo: "https://devicons.io/devicons/icons/codex-icon.svg" },
   { name: "Go", logo: "https://cdn.simpleicons.org/go" },
   { name: "Python", logo: "https://cdn.simpleicons.org/python" },
   { name: "pytest", logo: "https://cdn.simpleicons.org/pytest" },
@@ -138,7 +155,6 @@ export const skills: Skill[] = [
   { name: "SQL", logo: "https://cdn.simpleicons.org/sqlite" },
   { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql" },
   { name: "Git", logo: "https://cdn.simpleicons.org/git" },
-  { name: "Terraform", logo: "https://cdn.simpleicons.org/terraform" },
   { name: "Prometheus", logo: "https://cdn.simpleicons.org/prometheus" },
   { name: "Grafana", logo: "https://cdn.simpleicons.org/grafana" },
   { name: "GitHub Actions", logo: "https://cdn.simpleicons.org/githubactions" },

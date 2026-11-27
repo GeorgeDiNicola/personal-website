@@ -5,7 +5,7 @@ export type WorkExperience = {
   department?: string;
   company: string;
   period: string;
-  summary: string;
+  summary?: string;
 };
 
 export type School = {
